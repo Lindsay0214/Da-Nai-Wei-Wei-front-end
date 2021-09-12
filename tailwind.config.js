@@ -13,7 +13,7 @@ module.exports = {
         gray: colors.trueGray,
         purple: { default: '#AB82EC', ...colors.violet },
         red: colors.rose,
-        yellow: { default: '#F5D892', ...colors.amber }
+        yellow: { default: '#F4EEE6', hover: '#FFCC69' }
       },
       backgroundImage: {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"

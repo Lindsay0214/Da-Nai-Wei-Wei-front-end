@@ -1,11 +1,11 @@
 /* eslint-disable react/button-has-type */
 const Navbar = () => {
   return (
-    <nav className="flex items-center py-6 bg-yellow-default">
+    <nav className="flex items-center h-24 bg-yellow-default">
       <div className="container flex items-center justify-between mx-auto">
-        <div className="flex px-4">
+        <div className="flex">
           <a
-            className="w-56 py-2 text-4xl leading-relaxed text-black bg-cover h-28 bg-logo"
+            className="w-56 h-24 text-4xl leading-relaxed text-black bg-cover bg-logo"
             href="/"
           >
             {/* 大奶薇薇 */}
@@ -14,7 +14,7 @@ const Navbar = () => {
         <ul className="flex -ml-16 space-x-8">
           <li className="nav-item">
             <a
-              className="flex items-center px-3 py-2 text-xl leading-snug text-black hover:opacity-75"
+              className="flex items-center px-8 text-lg leading-snug text-black py-9 hover:bg-yellow-hover hover:text-white"
               href="/store"
             >
               附近店家
@@ -23,7 +23,7 @@ const Navbar = () => {
 
           <li className="nav-item">
             <a
-              className="flex items-center px-3 py-2 text-xl leading-snug text-black hover:opacity-75"
+              className="flex items-center px-8 text-lg leading-snug text-black py-9 hover:bg-yellow-hover hover:text-white"
               href="/stores"
             >
               所有店家
@@ -32,7 +32,7 @@ const Navbar = () => {
 
           <li className="mx-4 nav-item">
             <a
-              className="flex items-center px-3 py-2 text-xl leading-snug text-black hover:opacity-75"
+              className="flex items-center text-lg leading-snug text-black px-9 py-9 hover:bg-yellow-hover hover:text-white"
               href="/cart"
             >
               購物車
@@ -41,7 +41,7 @@ const Navbar = () => {
 
           <li className="mx-4 nav-item">
             <a
-              className="flex items-center px-3 py-2 text-xl leading-snug text-black hover:opacity-75"
+              className="flex items-center text-lg leading-snug text-black px-11 py-9 hover:bg-yellow-hover hover:text-white"
               href="/order"
             >
               訂單
@@ -49,11 +49,11 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="mx-4 nav-item">
-          {/* <button className="flex items-center px-12 py-3 text-lg leading-snug tracking-widest text-white rounded-lg bg-purple-default hover:opacity-75">
+          {/* <button className="flex items-center px-12 text-lg leading-snug tracking-widest text-black rounded-lg py-9 bg-yellow-default hover:bg-yellow-hover hover:text-white">
             登出
           </button> */}
           <button
-            className="flex items-center px-12 py-3 text-lg leading-snug tracking-widest text-white rounded-lg bg-purple-default hover:opacity-75"
+            className="items-center block px-12 text-lg leading-snug tracking-widest text-black py-9 bg-yellow-default hover:bg-yellow-hover hover:text-white"
             href="/login"
           >
             登入
