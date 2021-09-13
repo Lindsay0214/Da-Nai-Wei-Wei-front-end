@@ -61,12 +61,15 @@ module.exports = {
           left: '-50%',
           zIndex: '-999px'
         },
-        '.content-none': {
-          content: 'none'
+        '.hover': {
+          backgroundColor: '#FFCC69',
+          border: '1px solid #ffffff',
+          color: 'white',
+          margin: '1.5rem 0'
         }
       };
       addUtilities(newUtilities, {
-        variants: ['before', 'after']
+        variants: ['before', 'after', 'hover']
       });
     })
   ]

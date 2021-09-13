@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 const Navbar = () => {
   return (
     <nav className="flex items-center h-24 bg-yellow-default">
@@ -49,15 +48,15 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="mx-4 nav-item">
-          {/* <button className="flex items-center px-12 text-lg leading-snug tracking-widest text-black rounded-lg py-9 bg-yellow-default hover:bg-yellow-hover hover:text-white">
+          {/* <div className="flex items-center px-12 text-lg leading-snug tracking-widest text-black rounded-lg py-9 bg-yellow-default hover:bg-yellow-hover hover:text-white">
             登出
-          </button> */}
-          <button
+          </div> */}
+          <div
             className="items-center block px-12 text-lg leading-snug tracking-widest text-black py-9 bg-yellow-default hover:bg-yellow-hover hover:text-white"
             href="/login"
           >
             登入
-          </button>
+          </div>
         </div>
       </div>
     </nav>

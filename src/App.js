@@ -3,6 +3,7 @@ import Home from './pages/HomePage';
 import OrderPage from './pages/OrderPage';
 import OrderCheckPage from './pages/OrderCheckPage';
 import OrderPayPage from './pages/OrderPayPage';
+import SuccessPage from './pages/SuccessPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/order" component={OrderPage} exact />
         <Route path="/order/check" component={OrderCheckPage} exact />
         <Route path="/order/pay" component={OrderPayPage} exact />
+        <Route path="/success" component={SuccessPage} exact />
       </Switch>
     </Router>
   );

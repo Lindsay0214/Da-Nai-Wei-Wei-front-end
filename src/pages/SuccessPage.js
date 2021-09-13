@@ -1,15 +1,15 @@
 import Navbar from '../components/Navbar';
-import OrderPayBoard from '../components/OrderPayBoard';
+import Success from '../components/Success';
 import Footer from '../components/Footer';
 
-const OrderPayPage = () => {
+const SuccessPage = () => {
   return (
     <>
       <Navbar />
-      <OrderPayBoard />
+      <Success />
       <Footer />
     </>
   );
 };
 
-export default OrderPayPage;
+export default SuccessPage;
