@@ -14,7 +14,8 @@ module.exports = {
         gray: colors.trueGray,
         purple: { default: '#AB82EC', ...colors.violet },
         red: colors.rose,
-        yellow: { default: '#F4EEE6', hover: '#FFCC69' }
+        yellow: { default: '#F4EEE6', hover: '#FFCC69' },
+        brown: { default: '#84754F' }
       },
       backgroundImage: {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
@@ -48,13 +49,14 @@ module.exports = {
           textAlign: 'center',
           borderRadius: '50%',
           margin: '50px auto 10px auto',
-          lineHeight: '30px'
+          lineHeight: '30px',
+          zIndex: '999px'
         },
         '.process-after': {
           content: '""',
           width: '80%',
           height: '4px',
-          marginLeft: '50px',
+          margin: '0 2%',
           backgroundColor: 'white',
           position: 'absolute',
           top: '55%',
@@ -66,6 +68,20 @@ module.exports = {
           border: '1px solid #ffffff',
           color: 'white',
           margin: '1.5rem 0'
+        },
+        '.border': {
+          content: '""',
+          height: '1px',
+          backgroundColor: 'white',
+          width: '100%',
+          position: 'absolute',
+          top: '10%',
+          marginTop: '30px'
+        },
+        '.order-hover': {
+          backgroundColor: '#FFCC69',
+          border: '1px solid #ffffff',
+          color: 'white'
         }
       };
       addUtilities(newUtilities, {

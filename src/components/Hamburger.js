@@ -13,36 +13,36 @@ const Hamburger = () => {
         </div>
         {/* button */}
         <div className="mx-4 nav-item ">
-          <div
+          <a
             className="items-center block px-32 py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg hover:hover"
             href="/"
           >
             回首頁
-          </div>
-          <div
+          </a>
+          <a
             className="items-center block px-32 py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg hover:hover"
             href="/cart"
           >
             購物車
-          </div>
-          <div
+          </a>
+          <a
             className="items-center block px-32 py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg hover:hover"
             href="/order"
           >
             訂單
-          </div>
-          <div
+          </a>
+          <a
             className="items-center block px-32 py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg hover:hover"
             href="/login"
           >
             登入
-          </div>
-          <div
+          </a>
+          <a
             className="items-center block px-32 py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg hover:hover"
             href="/register"
           >
             註冊
-          </div>
+          </a>
         </div>
       </div>
     </div>
