@@ -6,7 +6,7 @@ const ProgressBar = () => {
         <li className="relative w-1/3 text-xs text-center lg:text-base nav-item before:process-active text-brown-default">
           訂購明細
         </li>
-        <li className="relative w-1/3 text-xs text-center nav-item lg:text-base before:process-before after:process-after text-brown-default">
+        <li className="relative w-1/3 text-xs text-center nav-item lg:text-base before:process-before after:process-after text-brown-default ">
           訂購資訊
         </li>
         <li className="relative w-1/3 text-xs text-center nav-item lg:text-base before:process-before after:process-after text-brown-default">

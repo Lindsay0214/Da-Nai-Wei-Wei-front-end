@@ -6,7 +6,7 @@ const OrderBoard = () => {
           迷客夏 台北南京店
         </h1>
         <div className="flex">
-          <div className="flex justify-start w-10 h-10 mt-6 rounded-full ml-9 lg:w-20 lg:h-20 lg:mt-24 lg:ml-32 bg-yellow-hover"></div>
+          <div className="flex justify-start w-10 h-10 mt-6 bg-cover rounded-full ml-9 lg:w-20 lg:h-20 lg:mt-24 lg:ml-32 bg-logo"></div>
           <p className="h-6 mt-8 ml-3.5 mb-10 text-base lg:mt-32 lg:ml-6 lg:text-xl lg:mb-28">
             王小明
           </p>
@@ -20,7 +20,7 @@ const OrderBoard = () => {
       </div>
       <div className="flex justify-end pr-10 -my-14 lg:pr-40">
         <a
-          className="block w-56 h-10 px-20 py-2 mt-20 text-center text-white rounded-lg lg:leading-3 lg:tracking-wide hover:order-hover ml-96 bg-yellow-hover"
+          className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white rounded-lg hover:order-hover bg-yellow-hover md:w-28 md:mr-8 lg:mr-40"
           href="/order/check"
         >
           下一步

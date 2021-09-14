@@ -1,11 +1,11 @@
-import Navbar from '../components/Navbar';
-// import Hamburger from '../components/Hamburger';
+// import Navbar from '../components/Navbar';
+import Hamburger from '../components/Hamburger';
 
 const HomePage = () => {
   return (
     <>
-      <Navbar />
-      {/* <Hamburger /> */}
+      {/* <Navbar /> */}
+      <Hamburger />
     </>
   );
 };

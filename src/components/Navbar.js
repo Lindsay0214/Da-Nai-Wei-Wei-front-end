@@ -3,7 +3,7 @@ import { FaBars } from 'react-icons/fa';
 const Navbar = () => {
   return (
     <>
-      <nav className="flex items-center h-24 py-16 after:border lg:border-0 lg:py-0 bg-yellow-default ">
+      <nav className="flex items-center h-24 py-16 md:py-20 after:border lg:after:border-none lg:py-0 bg-yellow-default">
         <div className="container flex items-center justify-center mx-auto lg:justify-between">
           {/* logo */}
           <div className="flex">
@@ -19,7 +19,7 @@ const Navbar = () => {
             <FaBars className="absolute top-14 right-10" />
           </div>
           {/* list */}
-          <ul className="hidden -ml-16 space-x-8 md:flex ">
+          <ul className="hidden -ml-16 space-x-8 md:flex md:space-x-0">
             <li className="nav-item">
               <a
                 className="flex items-center px-8 text-lg leading-snug text-black py-9 hover:bg-yellow-hover hover:text-white"

@@ -49,34 +49,35 @@ module.exports = {
           textAlign: 'center',
           borderRadius: '50%',
           margin: '50px auto 10px auto',
-          lineHeight: '30px',
-          zIndex: '999px'
+          lineHeight: '30px'
         },
         '.process-after': {
           content: '""',
-          width: '80%',
+          width: '65%',
           height: '4px',
           margin: '0 2%',
           backgroundColor: 'white',
           position: 'absolute',
-          top: '55%',
-          left: '-50%',
-          zIndex: '-999px'
+          top: '57%',
+          left: '-35%'
         },
         '.hover': {
-          backgroundColor: '#FFCC69',
+          backgroundColor: 'transparent',
           border: '1px solid #ffffff',
-          color: 'white',
-          margin: '1.5rem 0'
+          color: 'white'
         },
         '.border': {
           content: '""',
           height: '1px',
           backgroundColor: 'white',
-          width: '100%',
+          width: '95%',
           position: 'absolute',
-          top: '10%',
-          marginTop: '30px'
+          top: '17%',
+          left: '19%',
+          transform: 'translate(-17%, 19%)'
+        },
+        '.border-none': {
+          content: ''
         },
         '.order-hover': {
           backgroundColor: '#FFCC69',
