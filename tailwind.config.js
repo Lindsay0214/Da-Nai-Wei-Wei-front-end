@@ -10,15 +10,15 @@ module.exports = {
         current: 'currentColor',
         black: colors.black,
         white: colors.white,
-        gray: colors.trueGray,
+        gray: { default: '#727272', input: '#F3F3F3' },
         purple: { default: '#AB82EC', ...colors.violet },
         red: colors.rose,
-        yellow: { default: '#F5D892', ...colors.amber },
-      },
-    },
+        yellow: { default: '#F4EEE6', noted: '#FFCC69', ...colors.amber }
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
