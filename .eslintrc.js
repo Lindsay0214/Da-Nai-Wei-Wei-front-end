@@ -13,6 +13,7 @@ module.exports = {
   plugins: ['jsx-a11y', 'prettier'],
   parser: 'babel-eslint',
   rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'prettier/prettier': 'error',
     complexity: ['error', { max: 5 }],
     'default-param-last': 'error',
