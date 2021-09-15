@@ -10,17 +10,25 @@ module.exports = {
         current: 'currentColor',
         black: colors.black,
         white: colors.white,
-        gray: colors.trueGray,
-        purple: { default: '#AB82EC', ...colors.violet },
+        gray: {
+          ...colors.trueGray,
+          default: '#E5E5E5',
+          heavy: '#040404',
+          light: '#F3F3F3',
+          font: '#727272'
+        },
+        purple: { ...colors.violet, default: '#AB82EC' },
         red: colors.rose,
-        yellow: { default: '#FFCC69', light: '#F4EEE6', ...colors.amber }
+        yellow: { ...colors.amber, default: '#FFCC69', light: '#F4EEE6' }
       },
       spacing: {
         128: '32rem',
         144: '36rem',
         160: '40rem',
         176: '44rem',
-        192: '48rem'
+        192: '48rem',
+        206: '52rem',
+        388: '96rem'
       },
       letterSpacing: {
         tightest: '-.075em',
