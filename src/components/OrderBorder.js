@@ -1,6 +1,6 @@
 const OrderBoard = () => {
   return (
-    <div className="absolute w-full h-full bg-yellow-default">
+    <div className="absolute w-full h-full bg-yellow-lightYellow">
       <div className="w-5/6 h-auto pb-10 m-auto bg-white rounded-lg lg:w-8/12 lg:h-5/6">
         <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
           迷客夏 台北南京店
@@ -11,7 +11,7 @@ const OrderBoard = () => {
             王小明
           </p>
         </div>
-        <div className="w-10/12 lg:w-9/12 p-2.5 m-auto rounded-lg bg-yellow-hover h-1/5">
+        <div className="w-10/12 lg:w-9/12 p-2.5 m-auto rounded-lg bg-yellow-deepYellow h-1/5">
           <p className="m-auto text-white lg:p-7">鮮奶紅茶</p>
           <p className="text-white lg:pl-7">
             大杯熱 / 熱 / 標準甜 / $55 / 1 份
@@ -20,8 +20,8 @@ const OrderBoard = () => {
       </div>
       <div className="flex justify-end pr-10 -my-14 lg:pr-40">
         <a
-          className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white rounded-lg hover:order-hover bg-yellow-hover md:w-28 md:mr-8 lg:mr-40"
-          href="/order/check"
+          className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
+          href="#/order-check"
         >
           下一步
         </a>

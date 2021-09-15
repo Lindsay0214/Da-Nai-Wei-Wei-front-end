@@ -17,6 +17,8 @@ module.exports = {
     'prettier/prettier': 'error',
     complexity: ['error', { max: 5 }],
     'default-param-last': 'error',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }]
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 0,
+    'react/button-has-type': 0
   }
 };

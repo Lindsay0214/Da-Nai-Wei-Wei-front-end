@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors');
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -11,14 +11,43 @@ module.exports = {
         current: 'currentColor',
         black: colors.black,
         white: colors.white,
-        gray: { default: '#727272', input: '#F3F3F3' },
-        purple: { default: '#AB82EC', ...colors.violet },
-        red: colors.rose,
-        yellow: { default: '#F4EEE6', hover: '#FFCC69', ...colors.amber },
+        gray: {
+          ...colors.trueGray,
+          default: '#E5E5E5',
+          deepGray: '#727272',
+          lightGray: '#7A7A7A',
+          input: '#F3F3F3'
+        },
+        yellow: {
+          deepYellow: '#FFCC69',
+          lightYellow: '#F4EEE6',
+          ...colors.amber
+        },
         brown: { default: '#84754F' }
       },
       backgroundImage: {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
+      },
+      spacing: {
+        128: '32rem',
+        144: '36rem',
+        160: '40rem',
+        176: '44rem',
+        192: '48rem',
+        206: '52rem',
+        388: '96rem'
+      },
+      letterSpacing: {
+        tightest: '-.075em',
+        tighter: '-.05em',
+        normal: '0',
+        wide: '.1em',
+        wider: '.2em',
+        widest: '.3em'
+      },
+      transitionDelay: {
+        0: '0ms',
+        2000: '2000ms'
       }
     }
   },
@@ -26,6 +55,7 @@ module.exports = {
     extend: {}
   },
   plugins: [
+    // eslint-disable-next-line global-require
     require('tailwindcss-pseudo-elements'),
     plugin(({ addUtilities }) => {
       const newUtilities = {
@@ -63,8 +93,8 @@ module.exports = {
         },
         '.hover': {
           backgroundColor: 'transparent',
-          border: '1px solid #ffffff',
-          color: 'white'
+          border: '1px solid #FFCC69',
+          color: '#FFCC69'
         },
         '.border': {
           content: '""',
@@ -78,12 +108,12 @@ module.exports = {
         },
         '.border-none': {
           content: ''
-        },
-        '.order-hover': {
-          backgroundColor: '#FFCC69',
-          border: '1px solid #ffffff',
-          color: 'white'
         }
+        // '.order-hover': {
+        //   backgroundColor: '#ffffff',
+        //   border: '1px solid #FFCC69',
+        //   color: 'white'
+        // }
       };
       addUtilities(newUtilities, {
         variants: ['before', 'after', 'hover']
