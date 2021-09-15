@@ -11,10 +11,10 @@ module.exports = {
         current: 'currentColor',
         black: colors.black,
         white: colors.white,
-        gray: colors.trueGray,
+        gray: { default: '#727272', input: '#F3F3F3' },
         purple: { default: '#AB82EC', ...colors.violet },
         red: colors.rose,
-        yellow: { default: '#F4EEE6', hover: '#FFCC69' },
+        yellow: { default: '#F4EEE6', hover: '#FFCC69', ...colors.amber },
         brown: { default: '#84754F' }
       },
       backgroundImage: {

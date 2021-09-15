@@ -1,5 +1,5 @@
 // import Navbar from '../components/Navbar';
-import Hamburger from '../components/Hamburger';
+import Hamburger from '../../components/Hamburger';
 
 const HomePage = () => {
   return (
