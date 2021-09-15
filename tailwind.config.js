@@ -20,7 +20,12 @@ module.exports = {
         },
         purple: { ...colors.violet, default: '#AB82EC' },
         red: colors.rose,
-        yellow: { default: '#F4EEE6', noted: '#FFCC69', ...colors.amber, light: '#F4EEE6' }
+        yellow: {
+          default: '#F4EEE6',
+          noted: '#FFCC69',
+          ...colors.amber,
+          light: '#F4EEE6'
+        }
       },
       spacing: {
         128: '32rem',
@@ -42,9 +47,6 @@ module.exports = {
       transitionDelay: {
         0: '0ms',
         2000: '2000ms'
-
-
-
       }
     }
   },
