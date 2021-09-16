@@ -1,7 +1,7 @@
-import EditButton from './components/EditButton';
-import TitleArea from './components/TitleArea';
+import EditButton from '../../components/EditButton';
+import TitleArea from '../../components/TitleArea';
 
-const AdjustMemberData = () => {
+const AdjustMemberDataPage = () => {
   return (
     <div className="flex-col bg-yellow-lightYellow">
       <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-lightYellow lg:w-176 ">
@@ -16,4 +16,4 @@ const AdjustMemberData = () => {
     </div>
   );
 };
-export default AdjustMemberData;
+export default AdjustMemberDataPage;

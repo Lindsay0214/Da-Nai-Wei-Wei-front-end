@@ -1,11 +1,13 @@
+/* eslint-disable */
+import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 // import CMSPage from '../pages/CMSPage';
 import HomePage from '../pages/HomePage';
 import MenuPage from '../pages/MenuPage';
 import LoginPage from '../pages/LoginPage';
-import OrderPage from '../pages/OrderPage';
-import OrderPayPage from '../pages/OrderPayPage';
+// import OrderPage from '../pages/OrderPage';
+// import OrderPayPage from '../pages/OrderPayPage';
 import RegisterPage from '../pages/RegisterPage';
 // import CMSStorePage from '../pages/CMSStorePage';
 // import CMSMemberPage from '../pages/CMSMemberPage';
