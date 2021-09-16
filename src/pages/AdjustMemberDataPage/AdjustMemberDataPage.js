@@ -3,7 +3,7 @@ import TitleArea from '../../components/TitleArea';
 
 const AdjustMemberDataPage = () => {
   return (
-    <div className="flex-col bg-yellow-lightYellow">
+    <div className="flex-col h-screen bg-yellow-lightYellow">
       <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-lightYellow lg:w-176 ">
         <TitleArea data="修改資料"></TitleArea>
         <div className="flex flex-wrap w-48 pb-10 m-auto justify-evenly lg:w-176">

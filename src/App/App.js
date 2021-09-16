@@ -9,16 +9,16 @@ import LoginPage from '../pages/LoginPage';
 import OrderPage from '../pages/OrderPage';
 import OrderPayPage from '../pages/OrderPayPage';
 import RegisterPage from '../pages/RegisterPage';
-// import CMSStorePage from '../pages/CMSStorePage';
-// import CMSMemberPage from '../pages/CMSMemberPage';
+import CMSStorePage from '../pages/CMSStorePage';
+import CMSMemberPage from '../pages/CMSMemberPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
 import OrdersPage from '../pages/OrdersPage';
 import NoPermissionPage from '../pages/NoPermissionPage';
-// import CreditCardStartPage from '../pages/CreditCardStartPage';
-// import CreditCardDeletePage from '../pages/CreditCardDeletePage';
-// import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
+import CreditCardStartPage from '../pages/CreditCardStartPage';
+import CreditCardDeletePage from '../pages/CreditCardDeletePage';
+import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import AdjustMemberDataPage from '../pages/AdjustMemberDataPage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -61,25 +61,25 @@ function App() {
             <MenuPage />
           </Route>
           <Route path="/credit-card-start" exact>
-            {/* <CreditCardStartPage /> */}
+            <CreditCardStartPage />
           </Route>
           <Route path="/credit-card-delete" exact>
-            {/* <CreditCardDeletePage /> */}
+            <CreditCardDeletePage />
           </Route>
           <Route path="/credit-card-update" exact>
-            {/* <CreditCardUpdatePage /> */}
+            <CreditCardUpdatePage />
           </Route>
           <Route path="/adjust-member-data" exact>
             {/* <AdjustMemberDataPage /> */}
           </Route>
           <Route path="/CMS" exact>
-            {/* <CMSPage /> */}
+            <CMSPage />
           </Route>
           <Route path="/CMS-store" exact>
-            {/* <CMSStorePage /> */}
+            <CMSStorePage />
           </Route>
           <Route path="/CMS-member" exact>
-            {/* <CMSMemberPage /> */}
+            <CMSMemberPage />
           </Route>
         </Switch>
         <Footer />
