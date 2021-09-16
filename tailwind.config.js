@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
@@ -102,7 +103,7 @@ module.exports = {
           border: '1px solid #FFCC69',
           color: '#FFCC69'
         },
-        '.border': {
+        '.nav-bottom': {
           content: '""',
           height: '1px',
           backgroundColor: 'white',

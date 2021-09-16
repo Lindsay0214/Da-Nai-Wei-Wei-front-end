@@ -1,7 +1,7 @@
 const OrdersPage = () => {
   return (
     <div className="bg-yellow-lightYellow">
-      <div className="flex justify-center py-10 text-5xl font-black tracking-wide">
+      <div className="flex justify-center py-20 text-3xl text-black">
         所有訂單
       </div>
       <div className="flex items-center justify-center ">
@@ -107,7 +107,7 @@ const OrdersPage = () => {
             </div>
           </div>
           <a
-            className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg-lg hover:hover rounded-lg"
+            className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg-lg hover:hover rounded-lg mt-16"
             type="button"
             href="#/order-info"
           >

@@ -14,12 +14,12 @@ import RegisterPage from '../pages/RegisterPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
-import OrdersPage from '../pages/OrdersPage/OrdersPage';
+import OrdersPage from '../pages/OrdersPage';
 import NoPermissionPage from '../pages/NoPermissionPage';
 // import CreditCardStartPage from '../pages/CreditCardStartPage';
 // import CreditCardDeletePage from '../pages/CreditCardDeletePage';
 // import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
-// import AdjustMemberDataPage from '../pages/AdjustMemberData';
+import AdjustMemberDataPage from '../pages/AdjustMemberDataPage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 

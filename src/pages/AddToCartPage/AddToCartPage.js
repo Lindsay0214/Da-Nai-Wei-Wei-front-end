@@ -9,7 +9,7 @@ const AddToCartPage = () => {
             烏龍奶綠
           </div>
         </div>
-        <div className="m-10 mx-5 text-xs md:mx-8 md:text-base">
+        <div className="m-10 mx-12 text-xs md:mx-12 md:text-base">
           <div className="flex flex-col pb-4 mb-4 border-b border-black">
             <label>
               <input type="radio" className="mr-2" name="size"></input>
@@ -35,7 +35,7 @@ const AddToCartPage = () => {
                 五分甜
               </label>
             </div>
-            <div className="flex flex-col md:ml-28">
+            <div className="flex flex-col md:ml-20">
               <label>
                 <input type="radio" className="mr-2" name="sugar"></input>
                 三分甜
@@ -61,7 +61,7 @@ const AddToCartPage = () => {
             </label>
           </div>
           <button
-            className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg hover:hover"
+            className="px-8 py-2 m-2 mt-12 ml-20 text-white rounded-lg md:ml-24 bg-yellow-deepYellow md:px-8 hover:hover "
             type="button"
           >
             確認
