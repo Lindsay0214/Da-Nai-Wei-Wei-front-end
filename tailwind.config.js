@@ -28,6 +28,10 @@ module.exports = {
       backgroundImage: {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
       },
+      transition: {
+        transition:
+          'transition-delay: 500ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);'
+      },
       spacing: {
         128: '32rem',
         144: '36rem',
@@ -35,6 +39,7 @@ module.exports = {
         176: '44rem',
         192: '48rem',
         206: '52rem',
+        234: '60rem',
         388: '96rem'
       },
       letterSpacing: {
@@ -92,7 +97,7 @@ module.exports = {
           left: '-35%'
         },
         '.hover': {
-          backgroundColor: 'transparent',
+          backgroundColor: '#FFFFFF',
           border: '1px solid #FFCC69',
           color: '#FFCC69'
         },

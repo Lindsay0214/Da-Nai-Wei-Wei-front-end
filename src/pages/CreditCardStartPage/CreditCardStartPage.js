@@ -3,9 +3,8 @@ import EditButton from '../../components/EditButton';
 
 const CreditCardStartPage = () => {
   return (
-    <div className="flex-col bg-yellow-light">
-      <div className="text-center h-28">header</div>
-      <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-light lg:w-176 ">
+    <div className="flex-col bg-yellow-lightYellow">
+      <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:pt-20 lg:bg-yellow-lightYellow lg:w-176 ">
         <TitleArea data="信用卡"></TitleArea>
         <div className="flex-col m-auto text-sm leading-7 tracking-normal text-center rounded-md lg:leading-10 lg:text-2xl lg:tracking-widest lg:w-144 my-11">
           <div>歡迎使用信用卡支付</div>

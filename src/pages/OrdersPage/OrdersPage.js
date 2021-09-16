@@ -107,7 +107,7 @@ const OrdersPage = () => {
             </div>
           </div>
           <a
-            className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg-lg hover:hover rounded-lg"
+            className="bg-yellow-deepYellow m-2  text-white  md:px-4 px-4 py-1.5 rounded-lg-lg hover:hover rounded-lg"
             type="button"
             href="#/order-info"
           >
