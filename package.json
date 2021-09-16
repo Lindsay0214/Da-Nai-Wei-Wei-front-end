@@ -17,6 +17,8 @@
     "prettier": "^1.16.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
@@ -56,6 +58,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
+    "tailwindcss-pseudo-elements": "^2.0.0"
   }
 }
