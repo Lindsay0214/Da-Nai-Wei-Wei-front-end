@@ -14,7 +14,7 @@ import CMSMemberPage from '../pages/CMSMemberPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
-import OrdersPage from '../pages/OrdersPage/OrdersPage';
+import OrdersPage from '../pages/OrdersPage';
 import NoPermissionPage from '../pages/NoPermissionPage';
 import CreditCardStartPage from '../pages/CreditCardStartPage';
 import CreditCardDeletePage from '../pages/CreditCardDeletePage';
@@ -25,7 +25,7 @@ import Footer from '../components/Footer';
 
 function App() {
   return (
-    <div>
+    <div className=" bg-yellow-lightYellow">
       <Router>
         <Navbar />
         <Switch>
@@ -56,9 +56,7 @@ function App() {
           <Route path="/order-check">
             <OrderCheckPage />
           </Route>
-          <Route path="/order-pay">
-            <OrderPayPage />
-          </Route>
+          <Route path="/order-pay">{/* <OrderPayPage /> */}</Route>
           <Route path="/menu" exact>
             <MenuPage />
           </Route>
@@ -72,7 +70,7 @@ function App() {
             <CreditCardUpdatePage />
           </Route>
           <Route path="/adjust-member-data" exact>
-            <AdjustMemberDataPage />
+            {/* <AdjustMemberDataPage /> */}
           </Route>
           <Route path="/CMS" exact>
             <CMSPage />

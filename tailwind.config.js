@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
@@ -33,9 +34,12 @@ module.exports = {
           'transition-delay: 500ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);'
       },
       spacing: {
+        120: '26rem',
+        124: '451px',
         128: '32rem',
         144: '36rem',
         160: '40rem',
+        164: '43rem',
         176: '44rem',
         192: '48rem',
         206: '52rem',
@@ -53,6 +57,9 @@ module.exports = {
       transitionDelay: {
         0: '0ms',
         2000: '2000ms'
+      },
+      width: {
+        '9/20': '46%'
       }
     }
   },
@@ -101,7 +108,7 @@ module.exports = {
           border: '1px solid #FFCC69',
           color: '#FFCC69'
         },
-        '.border': {
+        '.nav-bottom': {
           content: '""',
           height: '1px',
           backgroundColor: 'white',
