@@ -30,9 +30,12 @@ module.exports = {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
       },
       spacing: {
+        120: '26rem',
+        124: '451px',
         128: '32rem',
         144: '36rem',
         160: '40rem',
+        164: '43rem',
         176: '44rem',
         192: '48rem',
         206: '52rem',
@@ -49,6 +52,9 @@ module.exports = {
       transitionDelay: {
         0: '0ms',
         2000: '2000ms'
+      },
+      width: {
+        '9/20': '46%'
       }
     }
   },

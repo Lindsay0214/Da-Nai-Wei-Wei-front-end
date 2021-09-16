@@ -2,7 +2,7 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
-// import CMSPage from '../pages/CMSPage';
+import CMSPage from '../pages/CMSPage';
 import HomePage from '../pages/HomePage';
 import MenuPage from '../pages/MenuPage';
 import LoginPage from '../pages/LoginPage';
@@ -25,7 +25,7 @@ import Footer from '../components/Footer';
 
 function App() {
   return (
-    <div>
+    <div className=" bg-yellow-lightYellow">
       <Router>
         <Navbar />
         <Switch>
@@ -56,9 +56,7 @@ function App() {
           <Route path="/order-check">
             <OrderCheckPage />
           </Route>
-          <Route path="/order-pay">
-            <OrderPayPage />
-          </Route>
+          <Route path="/order-pay">{/* <OrderPayPage /> */}</Route>
           <Route path="/menu" exact>
             <MenuPage />
           </Route>
@@ -72,7 +70,7 @@ function App() {
             {/* <CreditCardUpdatePage /> */}
           </Route>
           <Route path="/adjust-member-data" exact>
-            <AdjustMemberDataPage />
+            {/* <AdjustMemberDataPage /> */}
           </Route>
           <Route path="/CMS" exact>
             {/* <CMSPage /> */}
