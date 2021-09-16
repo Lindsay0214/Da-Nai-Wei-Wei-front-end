@@ -4,7 +4,7 @@ const RegisterPage = () => {
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex h-screen">
-        <div className="pt-16 m-auto mt-8 bg-white rounded-lg pb-96 md:pt-20 w-80 md:w-3/6 mb-36 h-4/6">
+        <div className="pt-16 m-auto mt-16 bg-white rounded-lg pb-96 md:pt-20 w-80 md:w-3/6 mb-36 h-5/6">
           <div className="flex items-center justify-center text-2xl font-bold tracking-wider text-gray-deepGray">
             註冊訂飲料囉！
           </div>
@@ -28,16 +28,16 @@ const RegisterPage = () => {
           </div>
           <div className="flex items-center justify-center">
             <button
-              className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg hover:hover"
+              className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
               type="button"
             >
-              登入
+              註冊
             </button>
             <button
-              className=" m-2 text-black border-2 border-black md:px-4 px-2 py-1.5 rounded-lg hover:hover"
+              className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
             >
-              忘記密碼
+              已有帳號
             </button>
           </div>
         </div>

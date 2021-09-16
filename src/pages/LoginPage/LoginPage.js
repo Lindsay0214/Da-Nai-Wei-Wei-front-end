@@ -17,13 +17,13 @@ const LoginPage = () => {
             ></input>
             <div className="flex m-12">
               <button
-                className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg hover:hover"
+                className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
                 type="button"
               >
                 登入
               </button>
               <button
-                className=" m-2 text-black border-2 border-black md:px-4 px-2 py-1.5 rounded-lg hover:hover"
+                className=" m-2 border border-gray-200 text-gray-500 md:px-4 px-2 py-1.5 rounded-lg bg-gray-200 hover:hover"
                 type="button"
               >
                 忘記密碼
