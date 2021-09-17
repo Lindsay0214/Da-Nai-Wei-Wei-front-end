@@ -1,11 +1,28 @@
 import { FaBars } from 'react-icons/fa';
 
+const NavbarButton = ({ data }) => {
+  return (
+    <li className="nav-item">
+      <a
+        className="flex items-center px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white"
+        href={data.url}
+      >
+        {data.name}
+      </a>
+    </li>
+  );
+};
 const Navbar = () => {
+  const data1 = { name: '附近店家', url: '#/' };
+  const data2 = { name: '所有店家', url: '#/' };
+  const data3 = { name: '購物車', url: '#/orders' };
+  const data4 = { name: '訂單', url: '#/order' };
+
   return (
     <>
       <nav className="flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
         {/* after:border lg:after:border-none */}
-        <div className="container flex items-center justify-center mx-auto lg:justify-between">
+        <div className="container flex items-center justify-center mx-auto md: lg:justify-between">
           {/* logo */}
           <div className="flex">
             <a
@@ -21,46 +38,18 @@ const Navbar = () => {
           </div>
           {/* list */}
           <ul className="hidden -ml-16 space-x-8 md:flex md:space-x-0">
-            <li className="nav-item">
-              <a
-                className="flex items-center px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white"
-                href="#/register"
-              >
-                附近店家
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a
-                className="flex items-center px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white"
-                href="#/menu"
-              >
-                所有店家
-              </a>
-            </li>
-
-            <li className="mx-4 nav-item">
-              <a
-                className="flex items-center text-lg leading-snug tracking-wide text-black px-9 py-9 hover:bg-yellow-deepYellow hover:text-white"
-                href="#/orders"
-              >
-                購物車
-              </a>
-            </li>
-
-            <li className="mx-4 nav-item">
-              <a
-                className="flex items-center text-lg leading-snug tracking-wide text-black px-11 py-9 hover:bg-yellow-deepYellow hover:text-white"
-                href="#/order"
-              >
-                訂單
-              </a>
-            </li>
+            <NavbarButton data={data1}></NavbarButton>
+            <NavbarButton data={data2}></NavbarButton>
+            <NavbarButton data={data3}></NavbarButton>
+            <NavbarButton data={data4}></NavbarButton>
           </ul>
           <div className="hidden mx-4 nav-item sm:flex">
-            {/* <a className="flex items-center px-12 text-lg leading-snug tracking-wide text-black rounded-lg py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white">
-      登出
-    </a> */}
+            <a
+              className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+              href="#/login"
+            >
+              登出
+            </a>
             <a
               className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
               href="#/login"
