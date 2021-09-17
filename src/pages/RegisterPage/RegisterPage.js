@@ -1,6 +1,20 @@
-// import React from 'react';
+import { useState } from 'react';
+import { register, login } from '../../api';
 
 const RegisterPage = () => {
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleClick = async () => {
+    const payload = {
+      // nickname,
+      email,
+      password
+    };
+    const result = await login(payload);
+    console.log(result);
+  };
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex h-screen">
@@ -12,14 +26,23 @@ const RegisterPage = () => {
             <input
               placeholder="真實姓名"
               className="flex-col p-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
             ></input>
             <input
               placeholder="電子信箱"
               className="p-2 mt-4 font-light rounded-lg w-60 md:w-80 bg-gray-input"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             ></input>
             <input
               placeholder="密碼"
               className="flex-col p-2 mt-4 font-light rounded-lg w-60 bg-gray-input md:w-80"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             ></input>
             <input
               placeholder="密碼確認"
@@ -30,6 +53,7 @@ const RegisterPage = () => {
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg hover:hover"
               type="button"
+              onClick={handleClick}
             >
               登入
             </button>

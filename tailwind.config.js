@@ -29,6 +29,7 @@ module.exports = {
         logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
       },
       spacing: {
+        86: '22rem',
         120: '26rem',
         124: '451px',
         128: '32rem',
