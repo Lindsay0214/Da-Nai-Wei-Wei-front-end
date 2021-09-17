@@ -1,4 +1,18 @@
+import { useState } from 'react';
+import { login } from '../../api';
+
 const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleClick = async () => {
+    const payload = {
+      email,
+      password
+    };
+    const result = await login(payload);
+    console.log(result);
+  };
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex h-screen">
@@ -10,23 +24,31 @@ const LoginPage = () => {
             <input
               placeholder="電子信箱"
               className="flex-col p-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             ></input>
             <input
               placeholder="密碼"
               className="p-2 mt-4 font-light rounded-lg w-60 md:w-80 bg-gray-input"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             ></input>
             <div className="flex m-12">
               <button
                 className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
                 type="button"
+                onClick={handleClick}
               >
                 登入
               </button>
               <button
                 className=" m-2 border border-gray-200 text-gray-500 md:px-4 px-2 py-1.5 rounded-lg bg-gray-200 hover:hover"
                 type="button"
+                to="/register"
               >
-                忘記密碼
+                還不是會員嗎？
               </button>
             </div>
           </div>
