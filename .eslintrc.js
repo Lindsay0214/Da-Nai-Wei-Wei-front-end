@@ -19,6 +19,7 @@ module.exports = {
     'default-param-last': 'error',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/prop-types': 0,
-    'react/button-has-type': 0
+    'react/button-has-type': 0,
+    'no-unused-vars': 'off'
   }
 };

@@ -25,8 +25,8 @@ const HomePage = () => {
       </div>
       <div className="flex flex-col w-3/4 mx-auto my-4 lg:flex-wrap lg:flex lg:flex-row lg:justify-between">
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
-          <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store1} alt="store1"></img>
+          <div className="w-full mb-2 overflow-hidden rounded-lg">
+            <img className="w-full lg:h-86" src={store1} alt="store1"></img>
           </div>
           <span className="text-xl font-black">摳口 台北南京店</span>
           <div className="flex">
@@ -45,8 +45,8 @@ const HomePage = () => {
           <p>台北市松山區南京東路四段108號</p>
         </div>
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
-          <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store2} alt="store2"></img>
+          <div className="w-full mb-2 overflow-hidden rounded-lg">
+            <img className="w-full lg:h-86" src={store2} alt="store2"></img>
           </div>
           <span className="text-xl font-black">綠豆沙 台北南京店</span>
           <div className="flex">
@@ -65,8 +65,8 @@ const HomePage = () => {
           <p>台北市松山區南京東路四段108號</p>
         </div>
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
-          <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store3} alt="store3"></img>
+          <div className="w-full mb-2 overflow-hidden rounded-lg">
+            <img className="w-full lg:h-86" src={store3} alt="store3"></img>
           </div>
           <span className="text-xl font-black">康敗 台北南京店</span>
           <div className="flex">
@@ -86,7 +86,7 @@ const HomePage = () => {
         </div>
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
           <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store4} alt="store4"></img>
+            <img className="w-full lg:h-86" src={store4} alt="store4"></img>
           </div>
           <span className="text-xl font-black">魯伊撒 台北南京店</span>
           <div className="flex">
@@ -106,7 +106,7 @@ const HomePage = () => {
         </div>
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
           <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store1} alt="store1"></img>
+            <img className="w-full lg:h-86" src={store1} alt="store1"></img>
           </div>
           <span className="text-xl font-black">摳口 台北南京店</span>
           <div className="flex">
@@ -126,7 +126,7 @@ const HomePage = () => {
         </div>
         <div className="pb-3 my-6 border-b-2 border-gray-300 lg:w-124 lg:border-0">
           <div className="mb-2 overflow-hidden rounded-lg">
-            <img className="w-full" src={store2} alt="store2"></img>
+            <img className="w-full lg:h-86" src={store2} alt="store2"></img>
           </div>
           <span className="text-xl font-black">綠豆沙 台北南京店</span>
           <div className="flex">
