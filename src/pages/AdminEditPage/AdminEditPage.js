@@ -1,4 +1,4 @@
-import CMSHeader from '../../components/CMSHeader';
+import AdminNavbar from '../../components/AdminNavbar';
 
 const EditInput = ({ data }) => {
   return (
@@ -18,11 +18,11 @@ const EditInput = ({ data }) => {
   );
 };
 
-const CMSStorePage = () => {
+const AdminEditPage = () => {
   return (
     <div className="flex-col w-auto h-auto bg-yellow-lightYellow">
       <div className="flex-col items-center justify-center w-auto ">
-        <CMSHeader data="後台管理"></CMSHeader>
+        <AdminNavbar data="後台管理"></AdminNavbar>
         <div className="flex-col p-2 m-auto bg-white rounded-md w-80 lg:w-160 ">
           <div className="mt-4 text-center lg:text-4xl">珍煮丹</div>
           <div className="text-center lg:text-4xl">台北南京店</div>
@@ -38,4 +38,4 @@ const CMSStorePage = () => {
     </div>
   );
 };
-export default CMSStorePage;
+export default AdminEditPage;

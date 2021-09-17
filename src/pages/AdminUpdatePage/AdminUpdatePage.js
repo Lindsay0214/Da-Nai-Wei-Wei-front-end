@@ -1,4 +1,4 @@
-import CMSHeader from '../../components/CMSHeader';
+import AdminNavbar from '../../components/AdminNavbar';
 
 const Store = ({ brandName, nickName }) => {
   return (
@@ -26,11 +26,11 @@ const StoreClicked = () => {
     </div>
   );
 };
-const CMSPage = () => {
+const AdminUpdatePage = () => {
   return (
     <div className="flex-col w-auto h-auto bg-yellow-lightYellow">
       <div className="flex-col items-center justify-center w-auto ">
-        <CMSHeader data="後台管理"></CMSHeader>
+        <AdminNavbar data="後台管理"></AdminNavbar>
         <div className="mx-auto mt-10 lg:mt-20 w-min md:w-160 lg:w-270">
           <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
             <div></div>
@@ -45,4 +45,4 @@ const CMSPage = () => {
     </div>
   );
 };
-export default CMSPage;
+export default AdminUpdatePage;

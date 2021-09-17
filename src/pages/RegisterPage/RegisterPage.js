@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { register, login } from '../../api';
+import { register } from '../../api';
 
 const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
@@ -8,11 +8,11 @@ const RegisterPage = () => {
 
   const handleClick = async () => {
     const payload = {
-      // nickname,
+      nickname,
       email,
       password
     };
-    const result = await login(payload);
+    const result = await register(payload);
     console.log(result);
   };
   return (
@@ -60,6 +60,7 @@ const RegisterPage = () => {
             <button
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
+              to="/login"
             >
               已有帳號
             </button>
