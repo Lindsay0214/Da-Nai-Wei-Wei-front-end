@@ -45,6 +45,7 @@ module.exports = {
         192: '48rem',
         206: '52rem',
         234: '60rem',
+        270: '66rem',
         388: '96rem'
       },
       letterSpacing: {

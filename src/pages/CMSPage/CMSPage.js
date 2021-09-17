@@ -31,8 +31,8 @@ const CMSPage = () => {
     <div className="flex-col w-auto h-auto bg-yellow-lightYellow">
       <div className="flex-col items-center justify-center w-auto ">
         <CMSHeader data="後台管理"></CMSHeader>
-        <div className="mx-auto mt-10 lg:mt-20 w-min md:w-160 lg:w-234">
-          <div className="flex flex-wrap h-auto m-auto space-x-12 bg-yellow-light">
+        <div className="mx-auto mt-10 lg:mt-20 w-min md:w-160 lg:w-270">
+          <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
             <div></div>
             <StoreClicked></StoreClicked>
             <Store brandName="麻雞" nickName="台北南京店"></Store>

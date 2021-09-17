@@ -70,7 +70,7 @@ function App() {
             <CreditCardUpdatePage />
           </Route>
           <Route path="/adjust-member-data" exact>
-            {/* <AdjustMemberDataPage /> */}
+            <AdjustMemberDataPage />
           </Route>
           <Route path="/CMS" exact>
             <CMSPage />
