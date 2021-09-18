@@ -45,12 +45,12 @@ const AdminEditPage = () => {
   const handleSetAddress = (string) => {
     setAddress(string);
   };
-  const handleOnClick = () => {
+  const handleOnClick = async () => {
     const payload = {
       brand_name: brandName,
       address
     };
-    updateShop(id, payload);
+    await updateShop(id, payload);
     history.push('/admin-update');
   };
   return (
