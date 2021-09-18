@@ -17,54 +17,62 @@ const AddToCartPage = () => {
             </label>
             <label>
               <input type="radio" className="mr-2" name="size"></input>
-              小杯
+              中杯
             </label>
           </div>
           <div className="flex pb-4 mb-4 space-x-16 border-b border-black md:space-x-32">
             <div className="flex flex-col">
               <label>
-                <input type="radio" name="sugar" className="mr-2"></input>
-                正常甜
+                <input type="radio" name="sweetness" className="mr-2"></input>
+                正常糖
               </label>
               <label>
-                <input type="radio" className="mr-2" name="sugar"></input>
-                七分甜
+                <input type="radio" className="mr-2" name="sweetness"></input>
+                少糖
               </label>
               <label>
-                <input type="radio" className="mr-2" name="sugar"></input>
-                五分甜
+                <input type="radio" className="mr-2" name="sweetness"></input>
+                半糖
               </label>
             </div>
             <div className="flex flex-col md:ml-20">
               <label>
-                <input type="radio" className="mr-2" name="sugar"></input>
-                三分甜
+                <input type="radio" className="mr-2" name="sweetness"></input>
+                微糖
               </label>
               <label>
-                <input type="radio" className="mr-2" name="sugar"></input>
-                一分甜
-              </label>
-              <label>
-                <input type="radio" className="mr-2" name="sugar"></input>
-                不要甜
+                <input type="radio" className="mr-2" name="sweetness"></input>
+                無糖
               </label>
             </div>
           </div>
-          <div className="flex flex-col">
-            <label>
-              <input type="radio" className="mr-2" name="temperature"></input>
-              熱的
-            </label>
-            <label>
-              <input type="radio" className="mr-2" name="temperature"></input>
-              冰的
-            </label>
+          <div className="flex pb-4 mb-4 space-x-16 border-b border-black md:space-x-32">
+            <div className="flex flex-col">
+              <label>
+                <input type="radio" className="mr-2" name="ice"></input>
+                正常冰
+              </label>
+              <label>
+                <input type="radio" className="mr-2" name="ice"></input>
+                少冰
+              </label>
+              <label>
+                <input type="radio" className="mr-2" name="ice"></input>
+                微冰
+              </label>
+            </div>
+            <div className="flex flex-col md:ml-20">
+              <label>
+                <input type="radio" className="mr-2" name="ice"></input>
+                去冰
+              </label>
+            </div>
           </div>
           <button
-            className="px-8 py-2 m-2 mt-12 ml-20 text-white rounded-lg md:ml-24 bg-yellow-deepYellow md:px-8 hover:hover "
+            className="px-8 py-2 m-2 mt-12 ml-20 text-white duration-500 ease-in-out border rounded-lg border-yellow-deepYellow md:ml-24 bg-yellow-deepYellow md:px-8 hover:hover "
             type="button"
           >
-            確認
+            <a href="#/order">確認</a>
           </button>
         </div>
       </div>

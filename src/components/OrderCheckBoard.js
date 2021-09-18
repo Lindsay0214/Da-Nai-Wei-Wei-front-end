@@ -60,7 +60,7 @@ const OrderBoard = () => {
         {/* button */}
         <div className="flex justify-end pr-10 -my-14 lg:pr-40">
           <a
-            className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
+            className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
             href="#/order-pay"
           >
             付款去

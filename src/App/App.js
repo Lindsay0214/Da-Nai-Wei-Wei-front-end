@@ -24,6 +24,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 function App() {
+  // const [currentDrink, setCurrentDrink] = useState('');
+
   return (
     <div className=" bg-yellow-lightYellow">
       <Router>
