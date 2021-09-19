@@ -56,6 +56,9 @@ module.exports = {
         wider: '.2em',
         widest: '.3em'
       },
+      zIndex: {
+        default: '999'
+      },
       transitionDelay: {
         0: '0ms',
         2000: '2000ms'

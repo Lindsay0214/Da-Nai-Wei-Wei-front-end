@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { register } from '../../api';
+import { register } from '../../../api';
 
 const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
@@ -57,13 +57,13 @@ const RegisterPage = () => {
             >
               註冊
             </button>
-            <a
+            <button
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
-              href="#/login"
+              to="/login"
             >
               已有帳號
-            </a>
+            </button>
           </div>
         </div>
       </div>

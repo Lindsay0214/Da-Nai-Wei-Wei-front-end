@@ -1,4 +1,7 @@
+import { useContext, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { useHistory } from 'react-router';
+import { AuthContext } from '../contexts';
 
 const NavbarButton = ({ data }) => {
   return (
@@ -18,11 +21,19 @@ const Navbar = () => {
   const data3 = { name: '購物車', url: '#/orders' };
   const data4 = { name: '訂單', url: '#/order' };
 
+  const history = useHistory();
+  const { user, setUser } = useContext(AuthContext);
+  const [isActive, setActive] = useState(false);
+
+  const handleLogout = () => {
+    setUser(null);
+    history.push('/');
+  };
+
   return (
     <>
-      <nav className="flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
-        {/* after:border lg:after:border-none */}
-        <div className="container flex items-center justify-center mx-auto md: lg:justify-between">
+      <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow after:border lg:after:border-none">
+        <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
           {/* logo */}
           <div className="flex">
             <a
@@ -33,9 +44,14 @@ const Navbar = () => {
             </a>
           </div>
           {/* mobile */}
-          <div className="sm:hidden">
+          <button className="sm:hidden" onClick={() => setActive(!isActive)}>
             <FaBars className="absolute top-14 right-10" />
-          </div>
+          </button>
+          {/* <div
+            className={`lg:flex flex-grow items-center
+            ${navbarOpen ? ' flex' : ' hidden'}
+            }
+          > */}
           {/* list */}
           <ul className="hidden -ml-16 space-x-8 md:flex md:space-x-0">
             <NavbarButton data={data1}></NavbarButton>
@@ -44,18 +60,31 @@ const Navbar = () => {
             <NavbarButton data={data4}></NavbarButton>
           </ul>
           <div className="hidden mx-4 nav-item sm:flex">
-            <a
-              className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-              href="#/login"
-            >
-              登出
-            </a>
-            <a
-              className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-              href="#/login"
-            >
-              登入
-            </a>
+            {!user && (
+              <a
+                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/register"
+              >
+                註冊
+              </a>
+            )}
+            {!user && (
+              <a
+                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/login"
+              >
+                登入
+              </a>
+            )}
+            {user && (
+              <a
+                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/logout"
+                onClick={handleLogout}
+              >
+                登出
+              </a>
+            )}
           </div>
         </div>
       </nav>

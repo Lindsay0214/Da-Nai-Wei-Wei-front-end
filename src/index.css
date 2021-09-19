@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* button */
+.btn {
+  @apply w-56 h-10 px-2 py-2 text-center rounded-lg;
+}
+
+.btn-fadeout {
+  @apply transition duration-500 ease-in-out;
+}
