@@ -1,4 +1,11 @@
+import { getOrderItem } from '../api';
+
 const OrderBoard = () => {
+  async function aa() {
+    const result = await getOrderItem();
+    console.log(result);
+  }
+
   return (
     <div className="absolute w-full h-full bg-yellow-lightYellow">
       <div className="w-5/6 h-auto pb-10 m-auto bg-white rounded-lg lg:w-8/12 lg:h-5/6">
@@ -25,6 +32,7 @@ const OrderBoard = () => {
         >
           下一步
         </a>
+        <button onClick={aa}>click</button>
       </div>
     </div>
   );

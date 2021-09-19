@@ -11,7 +11,7 @@ const LoginPage = () => {
       password
     };
     const result = await login(payload);
-    console.log(result);
+    // console.log(result);
   };
   return (
     <div className="bg-yellow-lightYellow">
