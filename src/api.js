@@ -20,6 +20,11 @@ export const updateMyInfo = (payload) =>
   instance.patch('/user', payload, config);
 export const getMe = () => instance.get('/users/me', config);
 
+// set new info
+export const newNickName = (payload) =>
+  instance.post('/users/edit', payload, config);
+// ? err catch ? how
+
 // orderItem
 export const getDetailId = (payload) =>
   instance.post('/product-details', payload, config);
