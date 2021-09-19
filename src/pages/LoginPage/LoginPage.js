@@ -11,7 +11,7 @@ const LoginPage = () => {
       password
     };
     const result = await login(payload);
-    console.log(result);
+    // console.log(result);
   };
   return (
     <div className="bg-yellow-lightYellow">
@@ -43,13 +43,13 @@ const LoginPage = () => {
               >
                 登入
               </button>
-              <button
+              <a
                 className=" m-2 border border-gray-200 text-gray-500 md:px-4 px-2 py-1.5 rounded-lg bg-gray-200 hover:hover"
                 type="button"
-                to="/register"
+                href="#/register"
               >
-                還不是會員嗎？
-              </button>
+                還沒註冊？
+              </a>
             </div>
           </div>
         </div>

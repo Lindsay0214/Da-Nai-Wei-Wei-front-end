@@ -45,6 +45,7 @@ module.exports = {
         192: '48rem',
         206: '52rem',
         234: '60rem',
+        270: '66rem',
         388: '96rem'
       },
       letterSpacing: {
@@ -54,6 +55,9 @@ module.exports = {
         wide: '.1em',
         wider: '.2em',
         widest: '.3em'
+      },
+      zIndex: {
+        default: '999'
       },
       transitionDelay: {
         0: '0ms',
