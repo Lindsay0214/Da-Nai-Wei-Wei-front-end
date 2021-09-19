@@ -2,16 +2,12 @@ import { useState } from 'react';
 import { getMyInfo, updateMyInfo } from '../../api';
 import InputBar from '../../components/InputBar';
 
-const UserEditPage = () => {
-  const [nickname, setNickname] = useState('nickname');
+const UserPasswordPage = () => {
   const [password, setPassword] = useState('password');
-  const [creditCard, setCreditCard] = useState('creditCard');
 
   const handleChange = async () => {
     const payload = {
-      nickname,
-      password,
-      creditCard
+      password
     };
     const result = await getMyInfo(payload);
     console.log(result);
@@ -20,12 +16,12 @@ const UserEditPage = () => {
     <div className="flex-col w-auto h-auto mt-40 bg-yellow-lightYellow">
       <div className="flex-col items-center justify-center w-auto ">
         <div className="flex-col w-64 p-2 m-auto bg-white rounded-lg lg:mt-10 lg:w-160 ">
-          <div className="flex content-center justify-center mt-10 lg:text-4xl">
-            修改暱稱
+          <div className="flex content-center justify-center mt-10 text-4xl">
+            修改密碼
           </div>
           <div className="flex flex-col mt-10">
-            <InputBar data="原暱稱"></InputBar>
-            <InputBar data="新暱稱"></InputBar>
+            <InputBar data="原密碼"></InputBar>
+            <InputBar data="新密碼"></InputBar>
             <button
               className="w-16 px-4 py-1 mx-auto my-6 text-white rounded-md h-7 lg:h-12 bg-yellow-deepYellow"
               onChange={handleChange}
@@ -44,4 +40,4 @@ const UserEditPage = () => {
     </div>
   );
 };
-export default UserEditPage;
+export default UserPasswordPage;

@@ -5,11 +5,11 @@ import { AuthContext } from '../contexts';
 
 const Hamburger = ({ isOpen, toggle }) => {
   const [isActive, setActive] = useState(false);
-  const { user, setUser } = useContext(AuthContext);
+  const { role, setRole } = useContext(AuthContext);
   const history = useHistory();
 
   const handleLogout = () => {
-    setUser(null);
+    setRole(null);
     history.push('/');
   };
 
@@ -55,7 +55,7 @@ const Hamburger = ({ isOpen, toggle }) => {
           >
             訂單
           </a>
-          {!user && (
+          {!role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
               href="#/login"
@@ -63,7 +63,7 @@ const Hamburger = ({ isOpen, toggle }) => {
               登入
             </a>
           )}
-          {!user && (
+          {!role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
               href="#/register"
@@ -71,7 +71,7 @@ const Hamburger = ({ isOpen, toggle }) => {
               註冊
             </a>
           )}
-          {user && (
+          {role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
               href="#/logout"

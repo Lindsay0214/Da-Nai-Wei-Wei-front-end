@@ -9,7 +9,7 @@ const HomePageInput = ({ data }) => {
   return (
     <input
       placeholder={data}
-      className="w-20 text-xs text-center rounded-full lg:w-48 md:w-28 lg:h-10 md:mx-16 h-7 lg:rounded-md md:text-lg"
+      className="w-3/12 text-xs text-center rounded-lg lg:w-60 md:w-48 lg:h-10 md:mx-2 h-7 lg:rounded-md md:text-lg"
     ></input>
   );
 };
@@ -71,8 +71,8 @@ const HomePage = () => {
   };
   return (
     <>
-      <div className="flex items-center mx-auto rounded-full mt-28 md:w-160 w-80 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
-        <div className="flex justify-between mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
+      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
+        <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput data="找品牌..."></HomePageInput>
           <HomePageInput data="找種類..."></HomePageInput>
           <HomePageInput data="找評價..."></HomePageInput>

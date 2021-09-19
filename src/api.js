@@ -19,6 +19,7 @@ export const getMyInfo = () => instance.get('/user', config);
 export const updateMyInfo = (payload) =>
   instance.patch('/user', payload, config);
 export const getMe = () => instance.get('/users/me', config);
+
 // orderItem
 export const getDetailId = (payload) =>
   instance.post('/product-details', payload, config);

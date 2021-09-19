@@ -24,6 +24,9 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
+import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
+import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 // import Hamburger from '../components/Hamburger';
 
 function App() {
@@ -38,7 +41,7 @@ function App() {
   }, []);
   return (
     <AuthContext.Provider value={{ user, setUser }}>
-      <div className=" bg-yellow-lightYellow">
+      <div className="h-auto bg-yellow-lightYellow">
         <Router>
           <Navbar />
           {/* <Hamburger /> */}
@@ -96,6 +99,15 @@ function App() {
             </Route>
             <Route path="/user-edit" exact>
               <UserEditPage />
+            </Route>
+            <Route path="/user-edit-password" exact>
+              <UserPasswordPage />
+            </Route>
+            <Route path="/user-edit-email" exact>
+              <UserEmailPage />
+            </Route>
+            <Route path="/user-edit-creditcard" exact>
+              <UserCreditCardPage />
             </Route>
           </Switch>
           <Footer />

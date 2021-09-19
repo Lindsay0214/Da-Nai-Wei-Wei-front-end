@@ -22,10 +22,18 @@ const UserUpdatePage = () => {
       <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-lightYellow lg:w-176 ">
         <TitleArea data="修改資料"></TitleArea>
         <div className="flex flex-wrap w-48 pb-10 m-auto justify-evenly lg:w-176">
-          <EditButton data="修改姓名" onClick={handleClick}></EditButton>
-          <EditButton data="修改密碼" onClick={handleClick}></EditButton>
-          <EditButton data="修改信箱" onClick={handleClick}></EditButton>
-          <EditButton data="修改信用卡" onClick={handleClick}></EditButton>
+          <a href="#/user-edit">
+            <EditButton data="修改姓名" onClick={handleClick}></EditButton>
+          </a>
+          <a href="#/user-edit-password">
+            <EditButton data="修改密碼" onClick={handleClick}></EditButton>
+          </a>
+          <a href="#/user-edit-email">
+            <EditButton data="修改信箱" onClick={handleClick}></EditButton>
+          </a>
+          <a href="#/user-edit-creditcard">
+            <EditButton data="修改信用卡" onClick={handleClick}></EditButton>
+          </a>
         </div>
       </div>
     </div>

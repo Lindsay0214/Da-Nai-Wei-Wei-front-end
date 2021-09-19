@@ -8,10 +8,8 @@ const NavbarButton = ({ data }) => {
     <li className="nav-item">
       <a
         className="items-center hidden px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white lg:inline-block lg:mt-0"
-        // block mt-4 text-teal-200  hover:text-white
         href={data.url}
       >
-        {/* hidden mt-4 mr-4 text-teal-200 lg:inline-block lg:mt-0 hover:text-black */}
         {data.name}
       </a>
     </li>
@@ -35,7 +33,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow after:border lg:after:border-none">
+      <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
+        {/* after:border lg:after:border-none */}
         <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
           {/* logo */}
           <div className="flex">

@@ -1,17 +1,31 @@
-import { useState } from 'react';
-import { login } from '../../api';
+/* eslint-disable react/void-dom-elements-no-children */
+import { useState, useContext } from 'react';
+import { useHistory } from 'react-router';
+import { login, getMe } from '../../api';
+// import { AuthContext } from '../../contexts';
 
 const LoginPage = () => {
+  // const { setRole } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
+  const history = useHistory();
 
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage(null);
     const payload = {
       email,
       password
     };
     const result = await login(payload);
-    // console.log(result);
+    // console.log(result.data);
+    // if (result.data === 0) throw setErrorMessage(result.data.message);
+    const response = await getMe();
+    console.log(response.data);
+    // return setErrorMessage(response.toString());
+    // if role === consumer (response.data);
+    history.push('/');
   };
   return (
     <div className="bg-yellow-lightYellow">
@@ -35,11 +49,14 @@ const LoginPage = () => {
                 setPassword(e.target.value);
               }}
             ></input>
+            {errorMessage && (
+              <div className="p-3 text-red">無此帳號密碼，請再次確認</div>
+            )}
             <div className="flex m-12">
               <button
                 className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
                 type="button"
-                onClick={handleClick}
+                onClick={handleSubmit}
               >
                 登入
               </button>
