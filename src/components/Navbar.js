@@ -7,14 +7,17 @@ const NavbarButton = ({ data }) => {
   return (
     <li className="nav-item">
       <a
-        className="flex items-center px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white"
+        className="items-center hidden px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white lg:inline-block lg:mt-0"
+        // block mt-4 text-teal-200  hover:text-white
         href={data.url}
       >
+        {/* hidden mt-4 mr-4 text-teal-200 lg:inline-block lg:mt-0 hover:text-black */}
         {data.name}
       </a>
     </li>
   );
 };
+// eslint-disable-next-line complexity
 const Navbar = () => {
   const data1 = { name: '附近店家', url: '#/' };
   const data2 = { name: '所有店家', url: '#/' };
@@ -44,7 +47,10 @@ const Navbar = () => {
             </a>
           </div>
           {/* mobile */}
-          <button className="sm:hidden" onClick={() => setActive(!isActive)}>
+          <button
+            className="block lg:hidden"
+            onClick={() => setActive(!isActive)}
+          >
             <FaBars className="absolute top-14 right-10" />
           </button>
           {/* <div
@@ -53,7 +59,7 @@ const Navbar = () => {
             }
           > */}
           {/* list */}
-          <ul className="hidden -ml-16 space-x-8 md:flex md:space-x-0">
+          <ul className="flex -ml-16 space-x-8 md:space-x-0">
             <NavbarButton data={data1}></NavbarButton>
             <NavbarButton data={data2}></NavbarButton>
             <NavbarButton data={data3}></NavbarButton>
@@ -62,7 +68,7 @@ const Navbar = () => {
           <div className="hidden mx-4 nav-item sm:flex">
             {!user && (
               <a
-                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                 href="#/register"
               >
                 註冊
@@ -70,7 +76,7 @@ const Navbar = () => {
             )}
             {!user && (
               <a
-                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                 href="#/login"
               >
                 登入
@@ -78,7 +84,7 @@ const Navbar = () => {
             )}
             {user && (
               <a
-                className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                 href="#/logout"
                 onClick={handleLogout}
               >

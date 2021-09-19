@@ -24,5 +24,4 @@ export const getDetailId = (payload) =>
   instance.post('/product-details', payload, config);
 export const addOrderItem = (payload) =>
   instance.post('/order-items', payload, config);
-export const getOrderItem = (payload) =>
-  instance.get('/order-items', payload, config);
+export const getOrderItem = () => instance.get('/order-items', config);
