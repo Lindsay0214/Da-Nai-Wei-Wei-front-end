@@ -24,7 +24,7 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Hamburger from '../components/Hamburger';
+// import Hamburger from '../components/Hamburger';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,7 +42,7 @@ function App() {
       <div className=" bg-yellow-lightYellow">
         <Router>
           <Navbar />
-          <Hamburger />
+          {/* <Hamburger /> */}
           <Switch>
             <Route path="/" exact>
               <HomePage />

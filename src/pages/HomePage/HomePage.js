@@ -71,7 +71,7 @@ const HomePage = () => {
   };
   return (
     <>
-      <div className="flex items-center mx-auto mt-6 rounded-full md:w-176 w-80 h-14 bg-yellow-deepYellow lg:w-270 lg:rounded-lg lg:h-24">
+      <div className="flex items-center mx-auto rounded-full mt-28 md:w-160 w-80 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
         <div className="flex justify-between mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput data="找品牌..."></HomePageInput>
           <HomePageInput data="找種類..."></HomePageInput>
