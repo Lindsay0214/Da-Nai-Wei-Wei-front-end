@@ -1,10 +1,13 @@
+import { useContext, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { useHistory } from 'react-router';
+import { AuthContext } from '../contexts';
 
 const NavbarButton = ({ data }) => {
   return (
     <li className="nav-item">
       <a
-        className="flex items-center px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white"
+        className="items-center hidden px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white lg:inline-block lg:mt-0"
         href={data.url}
       >
         {data.name}
@@ -12,17 +15,27 @@ const NavbarButton = ({ data }) => {
     </li>
   );
 };
+// eslint-disable-next-line complexity
 const Navbar = () => {
   const data1 = { name: '附近店家', url: '#/' };
   const data2 = { name: '所有店家', url: '#/' };
   const data3 = { name: '購物車', url: '#/orders' };
   const data4 = { name: '訂單', url: '#/order' };
 
+  const history = useHistory();
+  const { user, setUser } = useContext(AuthContext);
+  const [isActive, setActive] = useState(false);
+
+  const handleLogout = () => {
+    setUser(null);
+    history.push('/');
+  };
+
   return (
     <>
-      <nav className="flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
+      <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
         {/* after:border lg:after:border-none */}
-        <div className="container flex items-center justify-center mx-auto md: lg:justify-between">
+        <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
           {/* logo */}
           <div className="flex">
             <a
@@ -33,29 +46,50 @@ const Navbar = () => {
             </a>
           </div>
           {/* mobile */}
-          <div className="sm:hidden">
+          <button
+            className="block lg:hidden"
+            onClick={() => setActive(!isActive)}
+          >
             <FaBars className="absolute top-14 right-10" />
-          </div>
+          </button>
+          {/* <div
+            className={`lg:flex flex-grow items-center
+            ${navbarOpen ? ' flex' : ' hidden'}
+            }
+          > */}
           {/* list */}
-          <ul className="hidden -ml-16 space-x-8 md:flex md:space-x-0">
+          <ul className="flex -ml-16 space-x-8 md:space-x-0">
             <NavbarButton data={data1}></NavbarButton>
             <NavbarButton data={data2}></NavbarButton>
             <NavbarButton data={data3}></NavbarButton>
             <NavbarButton data={data4}></NavbarButton>
           </ul>
           <div className="hidden mx-4 nav-item sm:flex">
-            <a
-              className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-              href="#/login"
-            >
-              登出
-            </a>
-            <a
-              className="items-center block px-12 text-lg leading-snug tracking-wide text-black py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-              href="#/login"
-            >
-              登入
-            </a>
+            {!user && (
+              <a
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/register"
+              >
+                註冊
+              </a>
+            )}
+            {!user && (
+              <a
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/login"
+              >
+                登入
+              </a>
+            )}
+            {user && (
+              <a
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                href="#/logout"
+                onClick={handleLogout}
+              >
+                登出
+              </a>
+            )}
           </div>
         </div>
       </nav>
