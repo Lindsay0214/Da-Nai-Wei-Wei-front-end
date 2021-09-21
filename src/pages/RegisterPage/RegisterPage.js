@@ -1,19 +1,28 @@
 import { useState } from 'react';
-import { register } from '../../api';
+import { useHistory } from 'react-router';
+import { register, getMe } from '../../api';
 
 const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
+  const history = useHistory();
 
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage(null);
     const payload = {
       nickname,
       email,
       password
     };
     const result = await register(payload);
-    console.log(result);
+    // console.log(result);
+    const response = await getMe();
+    // error message
+    // success message
+    history.push('/');
   };
   return (
     <div className="bg-yellow-lightYellow">
@@ -53,17 +62,17 @@ const RegisterPage = () => {
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
               type="button"
-              onClick={handleClick}
+              onClick={handleSubmit}
             >
               註冊
             </button>
-            <button
+            <a
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
-              to="/login"
+              href="#/login"
             >
               已有帳號
-            </button>
+            </a>
           </div>
         </div>
       </div>

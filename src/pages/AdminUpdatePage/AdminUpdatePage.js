@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminNavbar from '../../components/AdminNavbar';
@@ -33,6 +32,7 @@ const AdminUpdatePage = () => {
         onClick={handleOnClick}
         role="button"
         tabIndex={0}
+        aria-hidden="true"
       >
         <div className="flex flex-col m-auto space-y-10 ">
           <span className="inline-block mx-auto text-4xl my- h-ew">
@@ -68,6 +68,7 @@ const AdminUpdatePage = () => {
         role="button"
         onClick={handleOnClick}
         tabIndex={0}
+        aria-hidden="true"
       >
         <div className="flex flex-col m-auto space-y-5 ">
           <Link to={`/admin-edit/${id}`}>
