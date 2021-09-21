@@ -9,6 +9,13 @@ const config = {
   withCredentials: true
 };
 
+// admin
+export const getAllShop = () => instance.get('/shops', config);
+export const getShop = (id) => instance.get(`/shops/${id}`, config);
+export const updateShop = (id, payload) =>
+  instance.patch(`/shops/${id}`, payload, config);
+export const deleteShop = (id) => instance.delete(`/shops/${id}`, config);
+
 // user
 export const register = (payload) =>
   instance.post('/users/register', payload, config);
