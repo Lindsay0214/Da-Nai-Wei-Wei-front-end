@@ -11,7 +11,7 @@ const config = {
 
 // user
 export const register = (payload) =>
-  instance.post('/users/register', payload, { withCredentials: true });
+  instance.post('/users/register', payload, config);
 export const login = (payload) =>
   instance.post('/users/login', payload, config);
 export const getAllInfo = () => instance.get('/users', config);

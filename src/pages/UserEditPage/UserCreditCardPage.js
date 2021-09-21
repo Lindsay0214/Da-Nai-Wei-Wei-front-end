@@ -10,7 +10,7 @@ const UserCreditCardPage = () => {
       creditCard
     };
     const result = await getMyInfo(payload);
-    console.log(result);
+    // console.log(result);
   };
   return (
     <div className="flex-col w-auto h-auto mt-40 bg-yellow-lightYellow">

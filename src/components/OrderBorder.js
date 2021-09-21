@@ -4,7 +4,6 @@ import { getOrderItem } from '../api';
 const OrderBoard = () => {
   async function aa() {
     const result = await getOrderItem();
-    console.log(result);
   }
 
   return (

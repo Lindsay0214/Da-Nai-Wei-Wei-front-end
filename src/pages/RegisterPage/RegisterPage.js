@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { isRegister } from '../../features/userSlice';
 import { register, getMe } from '../../api';
 
 const RegisterPage = () => {
@@ -9,10 +11,10 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(null);
     const payload = {
       nickname,
       email,
@@ -20,11 +22,17 @@ const RegisterPage = () => {
     };
     const result = await register(payload);
     // console.log(result);
+    dispatch(
+      isRegister({
+        email,
+        password,
+        isRegister: true
+      })
+    );
     const response = await getMe();
-    // error message
-    // success message
     history.push('/');
   };
+
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex h-screen">

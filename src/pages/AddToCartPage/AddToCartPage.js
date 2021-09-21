@@ -42,7 +42,7 @@ const AddToCartPage = () => {
         const result2 = await addOrderItem(payload);
         // console.log(result2.data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   }

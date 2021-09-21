@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { selectUser, logout } from '../features/userSlice';
 
 const NavbarButton = ({ data }) => {
@@ -26,9 +26,11 @@ const Navbar = () => {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const history = useHistory();
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/');
   };
   return (
     <>
