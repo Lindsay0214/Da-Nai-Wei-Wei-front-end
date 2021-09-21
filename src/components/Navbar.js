@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { useHistory } from 'react-router';
-import { AuthContext } from '../contexts';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser, logout } from '../features/userSlice';
 
 const NavbarButton = ({ data }) => {
   return (
@@ -15,20 +15,19 @@ const NavbarButton = ({ data }) => {
     </li>
   );
 };
-// eslint-disable-next-line complexity
 const Navbar = () => {
-  const data1 = { name: '附近店家', url: '#/' };
-  const data2 = { name: '所有店家', url: '#/' };
-  const data3 = { name: '購物車', url: '#/orders' };
-  const data4 = { name: '訂單', url: '#/order' };
+  const data1 = { name: '附近店家', url: '/' };
+  const data2 = { name: '所有店家', url: '/' };
+  const data3 = { name: '購物車', url: '/orders' };
+  const data4 = { name: '訂單', url: '/order' };
 
-  const history = useHistory();
-  const { user, setUser } = useContext(AuthContext);
   const [isActive, setActive] = useState(false);
 
-  const handleLogout = () => {
-    setUser(null);
-    history.push('/');
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
   };
 
   return (
@@ -40,7 +39,7 @@ const Navbar = () => {
           <div className="flex">
             <a
               className="flex w-40 h-20 mr-6 text-4xl leading-relaxed text-black bg-cover bg-logo lg:w-56 lg:h-24"
-              href="#/"
+              href="/"
             >
               {/* 大奶薇薇 */}
             </a>
@@ -68,7 +67,7 @@ const Navbar = () => {
             {!user && (
               <a
                 className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                href="#/register"
+                href="/register"
               >
                 註冊
               </a>
@@ -76,19 +75,24 @@ const Navbar = () => {
             {!user && (
               <a
                 className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                href="#/login"
+                href="/login"
               >
                 登入
               </a>
             )}
             {user && (
-              <a
-                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                href="#/logout"
-                onClick={handleLogout}
-              >
-                登出
-              </a>
+              <>
+                <p className="items-center hidden leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default">
+                  <a href="/user-update">{user.email} info</a>
+                </p>
+                <a
+                  className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                  href="/logout"
+                  onClick={(e) => handleLogout(e)}
+                >
+                  登出
+                </a>
+              </>
             )}
           </div>
         </div>

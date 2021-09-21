@@ -197,7 +197,7 @@ const AddToCartPage = () => {
             onClick={handleClick}
           >
             確認
-            <a href="#/order">確認</a>
+            <a href="/order">確認</a>
           </button>
         </div>
       </div>

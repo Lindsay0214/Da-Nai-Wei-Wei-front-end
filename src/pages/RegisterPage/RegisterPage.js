@@ -53,10 +53,6 @@ const RegisterPage = () => {
                 setPassword(e.target.value);
               }}
             ></input>
-            <input
-              placeholder="密碼確認"
-              className="flex-col p-2 mt-4 font-light rounded-lg w-60 bg-gray-input md:w-80"
-            ></input>
           </div>
           <div className="flex items-center justify-center">
             <button
@@ -69,7 +65,7 @@ const RegisterPage = () => {
             <a
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
-              href="#/login"
+              href="/login"
             >
               已有帳號
             </a>

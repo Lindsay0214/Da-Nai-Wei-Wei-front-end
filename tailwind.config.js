@@ -3,10 +3,15 @@ const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        // eslint-disable-next-line no-undef
+        sans: ['Poppins']
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

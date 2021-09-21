@@ -45,7 +45,7 @@ const OrderInfoPage = () => {
             <a
               className="bg-yellow-deepYellow ml-20 m-2 text-white  md:px-8 px-4 py-1.5 rounded-lg hover:hover"
               type="button"
-              href="#/"
+              href="/"
             >
               回首頁
             </a>

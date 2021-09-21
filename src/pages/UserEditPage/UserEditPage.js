@@ -14,7 +14,7 @@ const UserEditPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await newNickName(nickname);
-    history.push('#/user-update');
+    history.push('/user-update');
   };
 
   // const handleChange = async () => {

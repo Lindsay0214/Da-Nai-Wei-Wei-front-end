@@ -4,7 +4,7 @@ const CMSHeader = ({ data }) => {
       <div className="flex ">
         <a
           className="flex w-40 h-20 mx-auto text-4xl leading-relaxed text-black bg-cover bg-logo lg:w-56 lg:h-24"
-          href="#/"
+          href="/"
         >
           {/* 大奶薇薇 */}
         </a>

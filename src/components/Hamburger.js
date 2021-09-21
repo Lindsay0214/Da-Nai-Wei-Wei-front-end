@@ -36,21 +36,21 @@ const Hamburger = ({ isOpen, toggle }) => {
         <div className="mx-4 nav-item ">
           <a
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="#/"
+            href="/"
             onClick={toggle}
           >
             回首頁
           </a>
           <a
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="#/cart"
+            href="/cart"
             onClick={toggle}
           >
             購物車
           </a>
           <a
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="#/order"
+            href="/order"
             onClick={toggle}
           >
             訂單
@@ -58,7 +58,7 @@ const Hamburger = ({ isOpen, toggle }) => {
           {!role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="#/login"
+              href="/login"
             >
               登入
             </a>
@@ -66,7 +66,7 @@ const Hamburger = ({ isOpen, toggle }) => {
           {!role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="#/register"
+              href="/register"
             >
               註冊
             </a>
@@ -74,7 +74,7 @@ const Hamburger = ({ isOpen, toggle }) => {
           {role && (
             <a
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="#/logout"
+              href="/logout"
               onClick={handleLogout}
             >
               登出
