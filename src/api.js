@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000'
+  baseURL: 'http://localhost:5000',
+  withCredentials: true
 });
 
 const config = {
@@ -38,3 +39,13 @@ export const getDetailId = (payload) =>
 export const addOrderItem = (payload) =>
   instance.post('/order-items', payload, config);
 export const getOrderItem = () => instance.get('/order-items', config);
+export const deleteOrderItem = (payload) =>
+  instance.delete('/order-items', { data: payload }, config);
+export const getSingleOrderItem = (id) =>
+  instance.get(`/order-item/${id}`, config);
+export const updateOrderItem = (payload) =>
+  instance.patch('/order-items', payload, config);
+export const getTotalPriceAmount = () => instance.get(`/orders`, config);
+export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
+export const addShoppingCart = () => instance.post('/orders', config);
+export const getOrdersHistory = () => instance.get(`/orders-history`, config);

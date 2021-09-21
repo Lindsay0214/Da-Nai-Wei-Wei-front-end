@@ -1,9 +1,13 @@
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MenuDrink = ({ data }) => {
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
       <h2 className="p-2 text-base tracking-wide">{data}</h2>
+      <Link to="/add-to-cart">
+        <FaShoppingCart className="pl-2 text-2xl"></FaShoppingCart>
+      </Link>
       <div className="w-1/2 h-4 mt-2 ml-2 bg-gray-300"></div>
       <div className="w-1/2 h-4 mt-2 ml-2 bg-gray-300"></div>
       <div className="w-1/2 h-4 mt-2 ml-2 bg-gray-300"></div>
