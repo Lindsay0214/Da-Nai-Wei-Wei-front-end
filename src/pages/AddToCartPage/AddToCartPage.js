@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useRef } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { getDetailId, addOrderItem } from '../../api';
 
 const AddToCartPage = () => {
@@ -41,7 +42,7 @@ const AddToCartPage = () => {
         const result2 = await addOrderItem(payload);
         // console.log(result2.data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   }
@@ -197,7 +198,7 @@ const AddToCartPage = () => {
             onClick={handleClick}
           >
             確認
-            <a href="#/order">確認</a>
+            <Link to="/order">確認</Link>
           </button>
         </div>
       </div>

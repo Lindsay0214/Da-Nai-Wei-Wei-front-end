@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { getMe } from '../api';
-import { AuthContext } from '../contexts';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
 import HomePage from '../pages/HomePage';
@@ -39,81 +37,42 @@ function App() {
       }
     });
   }, []);
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      <div className="h-auto bg-yellow-lightYellow">
-        <Router>
-          <Navbar />
-          {/* <Hamburger /> */}
-          <Switch>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
-            <Route path="/login" exact>
-              <LoginPage />
-            </Route>
-            <Route path="/register">
-              <RegisterPage />
-            </Route>
-            <Route path="/orders">
-              <OrdersPage />
-            </Route>
-            <Route path="/order-info">
-              <OrderInfoPage />
-            </Route>
-            <Route path="/add-to-cart">
-              <AddToCartPage />
-            </Route>
-            <Route path="/no-permission">
-              <NoPermissionPage />
-            </Route>
-            <Route path="/order">
-              <OrderPage />
-            </Route>
-            <Route path="/order-check">
-              <OrderCheckPage />
-            </Route>
-            <Route path="/order-pay">
-              <OrderPayPage />
-            </Route>
-            <Route path="/menu" exact>
-              <MenuPage />
-            </Route>
-            <Route path="/credit-card-start" exact>
-              <CreditCardStartPage />
-            </Route>
-            <Route path="/credit-card-delete" exact>
-              <CreditCardDeletePage />
-            </Route>
-            <Route path="/credit-card-update" exact>
-              <CreditCardUpdatePage />
-            </Route>
-            <Route path="/user-update" exact>
-              <UserUpdatePage />
-            </Route>
-            <Route path="/admin-update" exact>
-              <AdminUpdatePage />
-            </Route>
-            <Route path="/admin-edit/:id" exact>
-              <AdminEditPage />
-            </Route>
-            <Route path="/user-edit" exact>
-              <UserEditPage />
-            </Route>
-            <Route path="/user-edit-password" exact>
-              <UserPasswordPage />
-            </Route>
-            <Route path="/user-edit-email" exact>
-              <UserEmailPage />
-            </Route>
-            <Route path="/user-edit-creditcard" exact>
-              <UserCreditCardPage />
-            </Route>
-          </Switch>
-          <Footer />
-        </Router>
-      </div>
-    </AuthContext.Provider>
+    <div className="h-auto bg-yellow-lightYellow">
+      <Router>
+        <Navbar />
+        {/* <Hamburger /> */}
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/menu" component={MenuPage} />
+          {/* <Route path="*" component={NoFoundPage} /> */}
+          {/* user */}
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/no-permission" component={NoPermissionPage} />
+          <Route path="/user-update" component={UserUpdatePage} />
+          <Route path="/user-edit" component={UserEditPage} />
+          <Route path="/user-edit-password" component={UserPasswordPage} />
+          <Route path="/user-edit-email" component={UserEmailPage} />
+          <Route path="/user-edit-creditcard" component={UserCreditCardPage} />
+          <Route path="/credit-card-start" component={CreditCardStartPage} />
+          <Route path="/credit-card-delete" component={CreditCardDeletePage} />
+          <Route path="/credit-card-update" component={CreditCardUpdatePage} />
+          {/* order */}
+          <Route path="/order" component={OrderPage} />
+          <Route path="/orders" component={OrdersPage} />
+          <Route path="/order-pay" component={OrderPayPage} />
+          <Route path="/order-info" component={OrderInfoPage} />
+          <Route path="/add-to-cart" component={AddToCartPage} />
+          <Route path="/order-check" component={OrderCheckPage} />
+          {/* admin */}
+          <Route path="/admin-update" component={AdminUpdatePage} />
+          <Route path="/admin-edit" component={AdminEditPage} />
+        </Switch>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
