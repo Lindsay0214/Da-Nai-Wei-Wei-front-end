@@ -12,8 +12,7 @@ const DrinkDetail = ({
   ice,
   sweetness,
   id,
-  handleDelete,
-  handleEdit
+  handleDelete
 }) => {
   return (
     <div className="relative w-10/12 mb-8 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow h-1/5">
@@ -25,18 +24,15 @@ const DrinkDetail = ({
           {size} / {ice} / {sweetness}
         </p>
         <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          $ {price} / {quantity} 份
+          $ {price} / {quantity} 份 /{id}
         </p>
       </div>
       <div id={id}>
         <Link to={'/order-item-edit/' + id}>
-          <FaEdit
-            onClick={handleEdit}
-            className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"
-          ></FaEdit>
+          <FaEdit className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"></FaEdit>
         </Link>
         <FaTrashAlt
-          onClick={handleDelete}
+          onClick={() => handleDelete(id)}
           className="absolute text-red-500 cursor-pointer md:top-17 top-15 right-4 "
         ></FaTrashAlt>
       </div>
@@ -54,22 +50,20 @@ const OrderBoard = () => {
     }
     sendGetOrderItem();
   }, [change]);
-  const handleDelete = async (e) => {
-    console.log(e.target.parentNode.id); // 有時點擊無效，似乎是點到裡面的物件，所以沒有觸發？
-    // console.log(e.target);
-    const payload = { id: e.target.parentNode.id };
+  const handleDelete = async (id) => {
+    const payload = { id };
     const result = await deleteOrderItem(payload);
-    console.log(result);
     setChange(change + 1);
-  };
-  const handleEdit = async (e) => {
-    console.log(e.target.parentNode.id);
   };
   const handleClick = async () => {
     await (async function() {
       const result = await updateTotalPriceAmount();
+      console.log(result);
     })();
     history.push('/order-check');
+  };
+  const handleTest = (e) => {
+    console.log(e.target.value);
   };
   return (
     <>
@@ -95,7 +89,6 @@ const OrderBoard = () => {
                   ice={drink.ice}
                   key={drink.order_item_id}
                   id={drink.order_item_id}
-                  handleEdit={handleEdit}
                 ></DrinkDetail>
               );
             })}
