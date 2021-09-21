@@ -8,10 +8,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      fontFamily: {
-        // eslint-disable-next-line no-undef
-        sans: ['Poppins']
-      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

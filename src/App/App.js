@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div className="h-auto bg-yellow-lightYellow">
+    <>
       <Router>
         <Navbar />
         {/* <Hamburger /> */}
@@ -68,11 +68,11 @@ function App() {
           <Route path="/order-check" component={OrderCheckPage} />
           {/* admin */}
           <Route path="/admin-update" component={AdminUpdatePage} />
-          <Route path="/admin-edit" component={AdminEditPage} />
+          <Route path="/admin-edit/:id" component={AdminEditPage} />
         </Switch>
         <Footer />
       </Router>
-    </div>
+    </>
   );
 }
 
