@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const OrdersPage = () => {
   return (
     <div className="bg-yellow-lightYellow">
@@ -106,13 +108,13 @@ const OrdersPage = () => {
               </div>
             </div>
           </div>
-          <a
+          <Link
             className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 rounded-lg-lg hover:hover rounded-lg mt-16"
             type="button"
-            href="/order-info"
+            to="/order-info"
           >
             確認訂單狀態
-          </a>
+          </Link>
         </div>
       </div>
     </div>

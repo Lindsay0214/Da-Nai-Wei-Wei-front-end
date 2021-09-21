@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../../features/userSlice';
 // import { login, getMe } from '../../api';
 
@@ -72,13 +73,13 @@ const LoginPage = () => {
               >
                 登入
               </button>
-              <a
+              <Link
                 className=" m-2 border border-gray-200 text-gray-500 md:px-4 px-2 py-1.5 rounded-lg bg-gray-200 hover:hover"
                 type="button"
-                href="/register"
+                to="/register"
               >
                 還沒註冊？
-              </a>
+              </Link>
             </div>
           </div>
         </div>

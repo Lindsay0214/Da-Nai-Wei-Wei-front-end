@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getMyInfo } from '../../api';
 import EditButton from '../../components/EditButton';
 import TitleArea from '../../components/TitleArea';
@@ -22,18 +23,18 @@ const UserUpdatePage = () => {
       <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-lightYellow lg:w-176 ">
         <TitleArea data="修改資料"></TitleArea>
         <div className="flex flex-wrap w-48 pb-10 m-auto justify-evenly lg:w-176">
-          <a href="/user-edit">
+          <Link to="/user-edit">
             <EditButton data="修改姓名" onClick={handleClick}></EditButton>
-          </a>
-          <a href="/user-edit-password">
+          </Link>
+          <Link to="/user-edit-password">
             <EditButton data="修改密碼" onClick={handleClick}></EditButton>
-          </a>
-          <a href="/user-edit-email">
+          </Link>
+          <Link to="/user-edit-email">
             <EditButton data="修改信箱" onClick={handleClick}></EditButton>
-          </a>
-          <a href="/user-edit-creditcard">
+          </Link>
+          <Link to="/user-edit-creditcard">
             <EditButton data="修改信用卡" onClick={handleClick}></EditButton>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

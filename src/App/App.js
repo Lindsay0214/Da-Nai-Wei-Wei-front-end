@@ -37,6 +37,7 @@ function App() {
       }
     });
   }, []);
+
   return (
     <div className="h-auto bg-yellow-lightYellow">
       <Router>
@@ -45,6 +46,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/menu" component={MenuPage} />
+          {/* <Route path="*" component={NoFoundPage} /> */}
           {/* user */}
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />

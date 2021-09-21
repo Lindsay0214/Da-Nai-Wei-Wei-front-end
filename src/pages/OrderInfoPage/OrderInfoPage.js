@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
+
 const OrderInfoPage = () => {
   return (
     <div className=" bg-yellow-lightYellow">
@@ -42,13 +43,13 @@ const OrderInfoPage = () => {
             </div>
           </div>
           <div className="ml-56 md:ml-72">
-            <a
+            <Link
               className="bg-yellow-deepYellow ml-20 m-2 text-white  md:px-8 px-4 py-1.5 rounded-lg hover:hover"
               type="button"
-              href="/"
+              to="/"
             >
               回首頁
-            </a>
+            </Link>
           </div>
         </div>
       </div>

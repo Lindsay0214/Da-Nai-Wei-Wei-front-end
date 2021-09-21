@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getOrderItem } from '../api';
 
 const OrderBoard = () => {
@@ -26,12 +27,12 @@ const OrderBoard = () => {
         </div>
       </div>
       <div className="flex justify-end pr-10 -my-14 lg:pr-40">
-        <a
+        <Link
           className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
-          href="/order-check"
+          to="/order-check"
         >
           下一步
-        </a>
+        </Link>
         <button onClick={aa}>click</button>
       </div>
     </div>

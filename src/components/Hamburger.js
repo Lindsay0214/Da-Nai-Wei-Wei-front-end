@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts';
 
 const Hamburger = ({ isOpen, toggle }) => {
@@ -25,60 +26,60 @@ const Hamburger = ({ isOpen, toggle }) => {
       <div className="container flex flex-col items-center content-around h-auto pt-2 mx-auto pb-28">
         {/* logo */}
         <div className="flex mt-2 mb-20 nav-item">
-          <a
+          <Link
             className="h-32 text-4xl leading-relaxed text-black bg-cover w-72 bg-logo"
-            href="/"
+            to="/"
           >
             {/* 大奶薇薇 */}
-          </a>
+          </Link>
         </div>
         {/* button */}
         <div className="mx-4 nav-item ">
-          <a
+          <Link
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="/"
+            to="/"
             onClick={toggle}
           >
             回首頁
-          </a>
-          <a
+          </Link>
+          <Link
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="/cart"
+            to="/cart"
             onClick={toggle}
           >
             購物車
-          </a>
-          <a
+          </Link>
+          <Link
             className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-black bg-white rounded-lg px-28 hover:hover"
-            href="/order"
+            to="/order"
             onClick={toggle}
           >
             訂單
-          </a>
+          </Link>
           {!role && (
-            <a
+            <Link
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="/login"
+              to="/login"
             >
               登入
-            </a>
+            </Link>
           )}
           {!role && (
-            <a
+            <Link
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="/register"
+              to="/register"
             >
               註冊
-            </a>
+            </Link>
           )}
           {role && (
-            <a
+            <Link
               className="items-center block py-4 mt-6 text-lg leading-snug tracking-widest text-white bg-black rounded-lg px-28 hover:hover"
-              href="/logout"
+              to="/logout"
               onClick={handleLogout}
             >
               登出
-            </a>
+            </Link>
           )}
         </div>
       </div>

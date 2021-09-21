@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectUser, logout } from '../features/userSlice';
 
 const NavbarButton = ({ data }) => {
   return (
     <li className="nav-item">
-      <a
+      <Link
         className="items-center hidden px-8 text-lg leading-snug tracking-wide text-black py-9 hover:bg-yellow-deepYellow hover:text-white lg:inline-block lg:mt-0"
-        href={data.url}
+        to={data.url}
       >
         {data.name}
-      </a>
+      </Link>
     </li>
   );
 };
@@ -29,7 +30,6 @@ const Navbar = () => {
     e.preventDefault();
     dispatch(logout());
   };
-
   return (
     <>
       <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
@@ -37,12 +37,12 @@ const Navbar = () => {
         <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
           {/* logo */}
           <div className="flex">
-            <a
+            <Link
               className="flex w-40 h-20 mr-6 text-4xl leading-relaxed text-black bg-cover bg-logo lg:w-56 lg:h-24"
-              href="/"
+              to="/"
             >
               {/* 大奶薇薇 */}
-            </a>
+            </Link>
           </div>
           {/* mobile */}
           <button
@@ -65,33 +65,33 @@ const Navbar = () => {
           </ul>
           <div className="hidden mx-4 nav-item sm:flex">
             {!user && (
-              <a
+              <Link
                 className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                href="/register"
+                to="/register"
               >
                 註冊
-              </a>
+              </Link>
             )}
             {!user && (
-              <a
+              <Link
                 className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                href="/login"
+                to="/login"
               >
                 登入
-              </a>
+              </Link>
             )}
             {user && (
               <>
                 <p className="items-center hidden leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default">
-                  <a href="/user-update">{user.email} info</a>
+                  <Link to="/user-update">{user.email} info</Link>
                 </p>
-                <a
+                <Link
                   className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
-                  href="/logout"
+                  to="/logout"
                   onClick={(e) => handleLogout(e)}
                 >
                   登出
-                </a>
+                </Link>
               </>
             )}
           </div>

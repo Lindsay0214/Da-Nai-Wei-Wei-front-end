@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import store1 from '../../image/store1.png';
 import store2 from '../../image/store2.png';
 import store3 from '../../image/store3.png';
@@ -80,42 +81,42 @@ const HomePage = () => {
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
-          <a href="/menu">
+          <Link to="/menu">
             <HomePageStore data={data1}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data2}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data3}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data4}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data1}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data2}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data3}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data4}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data1}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data2}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data3}></HomePageStore>
-          </a>
-          <a href="/menu">
+          </Link>
+          <Link to="/menu">
             <HomePageStore data={data4}></HomePageStore>
-          </a>
+          </Link>
         </div>
       </div>
     </>
