@@ -28,11 +28,11 @@ const AdminUpdatePage = () => {
       );
     };
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         className="flex w-64 h-48 mb-10 bg-gray-default rounded-3xl"
         onClick={handleOnClick}
+        role="button"
+        tabIndex={0}
       >
         <div className="flex flex-col m-auto space-y-10 ">
           <span className="inline-block mx-auto text-4xl my- h-ew">
@@ -56,16 +56,18 @@ const AdminUpdatePage = () => {
         })
       );
     };
+
     const handleDelete = async () => {
       await deleteShop(id);
       await setShops(shops.filter((shop) => shop.id !== id));
     };
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         className="flex w-64 h-48 mb-10 bg-gray-600 rounded-3xl"
+        role="button"
         onClick={handleOnClick}
+        tabIndex={0}
       >
         <div className="flex flex-col m-auto space-y-5 ">
           <Link to={`/admin-edit/${id}`}>

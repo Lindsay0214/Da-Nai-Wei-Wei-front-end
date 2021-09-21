@@ -18,9 +18,6 @@ const EditInput = ({ data, shopDetail = '', setInput }) => {
           setInput(e.target.value);
         }}
       />
-      {/* <button className="px-4 py-1 ml-4 text-white duration-500 ease-in-out border rounded-md hover:hover lg:ml-0 lg:h-12 bg-yellow-deepYellow">
-        修改
-      </button> */}
     </div>
   );
 };
@@ -58,7 +55,9 @@ const AdminEditPage = () => {
       <div className="flex-col items-center justify-center w-auto ">
         <AdminNavbar data="後台管理"></AdminNavbar>
         <div className="flex-col p-2 m-auto bg-white rounded-md w-80 lg:w-160 ">
-          <div className="mt-4 text-center lg:text-4xl">{brandName}</div>
+          <div className="mt-4 text-center lg:text-4xl">
+            {shopInfo.brand_name}
+          </div>
           <div className="text-center lg:text-4xl">{shopInfo.nickname}</div>
           <div className="w-48 mx-auto my-6 border-b border-gray-default lg:invisible"></div>
           <div className="flex flex-col mt-4 ">
