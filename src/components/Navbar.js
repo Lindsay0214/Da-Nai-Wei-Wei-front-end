@@ -18,8 +18,8 @@ const NavbarButton = ({ data }) => {
 const Navbar = () => {
   const data1 = { name: '附近店家', url: '#/' };
   const data2 = { name: '所有店家', url: '#/' };
-  const data3 = { name: '購物車', url: '#/orders' };
-  const data4 = { name: '訂單', url: '#/order' };
+  const data3 = { name: '購物車', url: '#/order' };
+  const data4 = { name: '歷史訂單', url: '#/orders' };
 
   const history = useHistory();
   const { user, setUser } = useContext(AuthContext);

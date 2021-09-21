@@ -14,6 +14,7 @@ import RegisterPage from '../pages/RegisterPage';
 import AdminEditPage from '../pages/AdminEditPage';
 import UserEditPage from '../pages/UserEditPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
+import OrderItemEditPage from '../pages/OrderItemEditPage';
 import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
 import OrdersPage from '../pages/OrdersPage';
@@ -57,6 +58,9 @@ function App() {
             </Route>
             <Route path="/order-info">
               <OrderInfoPage />
+            </Route>
+            <Route path="/order-item-edit/:id">
+              <OrderItemEditPage />
             </Route>
             <Route path="/add-to-cart">
               <AddToCartPage />
