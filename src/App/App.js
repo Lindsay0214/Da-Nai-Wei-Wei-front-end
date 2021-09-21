@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getMe } from '../api';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
@@ -42,6 +44,7 @@ function App() {
   return (
     <div className="h-auto bg-yellow-lightYellow">
       <Router>
+        <ToastContainer />
         <Navbar />
         {/* <Hamburger /> */}
         <Switch>
