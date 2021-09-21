@@ -39,6 +39,9 @@ module.exports = {
           'transition-delay: 500ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);'
       },
       spacing: {
+        15: '3.75rem',
+        17: '4.25rem',
+        76: '19rem',
         86: '22rem',
         120: '26rem',
         124: '451px',

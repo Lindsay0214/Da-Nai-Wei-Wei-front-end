@@ -1,6 +1,17 @@
+import { useState, useEffect } from 'react';
+import { getTotalPriceAmount } from '../api';
 import { Link } from 'react-router-dom';
 
+
 const OrderBoard = () => {
+  const [data, setData] = useState(0);
+  useEffect(() => {
+    (async function() {
+      const result = await getTotalPriceAmount();
+      setData(result.data);
+      console.log(result.data);
+    })();
+  }, []);
   return (
     <div className="h-auto">
       {/* progress bar  start */}
@@ -20,55 +31,36 @@ const OrderBoard = () => {
       {/* container start */}
       <div className="w-full h-auto bg-yellow-lightYellow">
         {/* board start */}
-        <div className="w-5/6 h-auto pb-10 m-auto bg-white rounded-lg lg:w-8/12 lg:h-5/6">
+        <div className="h-auto pb-10 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
           {/* div */}
-          <div>
-            <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black lg:py-10 lg:text-4xl border-opacity-40 font-seminole">
-              訂購人
-            </h1>
-            <div className="flex w-4/5 m-auto border-b-2 border-black border-opacity-40">
-              <div className="flex justify-start w-10 h-10 ml-5 bg-cover rounded-full lg:w-20 lg:h-20 lg:mt-24 lg:ml-32 bg-logo"></div>
-              <p className="h-6 mt-2 mb-8 ml-3 text-sm lg:mt-28 lg:ml-6 lg:text-xl">
-                王小明
-              </p>
-              <p className="h-6 mt-2 mb-8 text-sm lg:text-lg lg:mt-36 lg:-ml-14 lg:mb-14">
-                0911-123-321
-              </p>
+          <div className="tracking-wider">
+            <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
+              訂購資訊
+            </div>
+            <div className="flex flex-col w-4/5 mx-auto mt-8 leading-8 md:leading-10 md:text-xl text-md ">
+              <div>訂購人：{data.nickname}</div>
+              <div>電子信箱：{data.email}</div>
+              <div>訂單編號: No.{data.order_id}</div>
+              <div>飲料總數量: {data.item_count} 杯</div>
+              <div>總金額: {data.total_price} 元</div>
             </div>
           </div>
-
-          <div>
-            <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black lg:py-10 lg:text-4xl border-opacity-40 font-seminole">
+          <div className="flex flex-col ">
+            <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
               付款方式
-            </h1>
-            <div className="flex w-9/12 mb-8 ml-12 rounded-lg h-36 lg:w-1/4 lg:mt-20 lg:mb-14 lg:h-48 lg:ml-32 bg-yellow-deepYellow">
-              <p className="text-white space-around p-7">0000-0000-1111-1111</p>
+            </div>
+            <div className="flex flex-col-reverse m-auto text-left rounded-md md:w-72 md:h-36 h-28 w-52 bg-yellow-deepYellow my-11">
+              <span className="pb-2 pl-4 text-sm">XXXX-XXXX-XXXX-XXXX</span>
             </div>
           </div>
-
-          {/* div */}
-          <div className="w-4/5 m-auto border-t-2 border-black border-opacity-40">
-            <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black lg:py-10 lg:text-4xl border-opacity-40 font-seminole">
-              最後確認
-            </h1>
-            <div className="w-10/12 lg:w-9/12 p-2.5 m-auto rounded-lg bg-yellow-deepYellow h-1/5 lg:p-7">
-              <p className="m-auto text-white lg:pb-5">鮮奶紅茶</p>
-              <p className="text-white">大杯熱 / 熱 / 標準甜 / $55 / 1 份</p>
-            </div>
-            {/* div end */}
+          <div className="flex justify-end mr-12 ">
+            <Link to="/order-pay">
+              <button className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow ">
+                結帳
+              </button>
+            </Link>
           </div>
         </div>
-        {/* board end */}
-        {/* button */}
-        <div className="flex justify-end pr-10 -my-14 lg:pr-40">
-          <Link
-            className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40 btn btn-fadeout"
-            to="/order-pay"
-          >
-            付款去
-          </Link>
-        </div>
-        {/* button end */}
       </div>
     </div>
   );

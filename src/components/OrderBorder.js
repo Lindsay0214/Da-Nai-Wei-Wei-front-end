@@ -1,40 +1,116 @@
-import { Link } from 'react-router-dom';
-import { getOrderItem } from '../api';
+/* eslint-disable */
+import { useState, useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { getOrderItem, deleteOrderItem, updateTotalPriceAmount } from '../api';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 
-const OrderBoard = () => {
-  async function aa() {
-    const result = await getOrderItem();
-  }
-
+const DrinkDetail = ({
+  name,
+  quantity,
+  price,
+  size,
+  ice,
+  sweetness,
+  id,
+  handleDelete,
+  handleEdit
+}) => {
   return (
-    <div className="absolute w-full h-full bg-yellow-lightYellow">
-      <div className="w-5/6 h-auto pb-10 m-auto bg-white rounded-lg lg:w-8/12 lg:h-5/6">
-        <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
-          迷客夏 台北南京店
-        </h1>
-        <div className="flex">
-          <div className="flex justify-start w-10 h-10 mt-6 bg-cover rounded-full ml-9 lg:w-20 lg:h-20 lg:mt-24 lg:ml-32 bg-logo"></div>
-          <p className="h-6 mt-8 ml-3.5 mb-10 text-base lg:mt-32 lg:ml-6 lg:text-xl lg:mb-28">
-            王小明
-          </p>
-        </div>
-        <div className="w-10/12 lg:w-9/12 p-2.5 m-auto rounded-lg bg-yellow-deepYellow h-1/5">
-          <p className="m-auto text-white lg:p-7">鮮奶紅茶</p>
-          <p className="text-white lg:pl-7">
-            大杯熱 / 熱 / 標準甜 / $55 / 1 份
-          </p>
-        </div>
+    <div className="relative w-10/12 mb-8 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow h-1/5">
+      <div className="flex flex-col justify-start leading-6 md:pl-3 md:leading-7 lg:leading-10">
+        <p className="tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
+          {name}{' '}
+        </p>
+        <p className="inline-flex w-48 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
+          {size} / {ice} / {sweetness}
+        </p>
+        <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
+          $ {price} / {quantity} 份
+        </p>
       </div>
-      <div className="flex justify-end pr-10 -my-14 lg:pr-40">
-        <Link
-          className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
-          to="/order-check"
-        >
-          下一步
+      <div id={id}>
+        <Link to={'/order-item-edit/' + id}>
+          <FaEdit
+            onClick={handleEdit}
+            className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"
+          ></FaEdit>
         </Link>
-        <button onClick={aa}>click</button>
+        <FaTrashAlt
+          onClick={handleDelete}
+          className="absolute text-red-500 cursor-pointer md:top-17 top-15 right-4 "
+        ></FaTrashAlt>
       </div>
     </div>
+  );
+};
+const OrderBoard = () => {
+  const history = useHistory();
+  const [change, setChange] = useState(0);
+  const [drinks, setDrinks] = useState([]);
+  useEffect(() => {
+    async function sendGetOrderItem() {
+      const result = await getOrderItem();
+      setDrinks(result.data.productInfo);
+    }
+    sendGetOrderItem();
+  }, [change]);
+  const handleDelete = async (e) => {
+    // console.log(e.target.parentNode.id); // 有時點擊無效，似乎是點到裡面的物件，所以沒有觸發？
+    // console.log(e.target);
+    const payload = { id: e.target.parentNode.id };
+    const result = await deleteOrderItem(payload);
+    console.log(result);
+    setChange(change + 1);
+  };
+  const handleEdit = async (e) => {
+    console.log(e.target.parentNode.id);
+  };
+  const handleClick = async () => {
+    await (async function() {
+      const result = await updateTotalPriceAmount();
+    })();
+    history.push('/order-check');
+  };
+  return (
+    <>
+      <div className="absolute w-full h-auto min-h-screen bg-yellow-lightYellow">
+        <div className="h-auto pb-16 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
+          <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
+            在購物車內的所有飲料
+          </h1>
+          <div className="flex md:ml-7">
+            <div className="flex justify-start w-10 h-10 mt-4 bg-cover rounded-full ml-9 bg-logo"></div>
+            <p className="h-6 pt-6 ml-3.5 mb-10 text-base ">王小明</p>
+          </div>
+          <div className="relative">
+            {drinks.map((drink) => {
+              return (
+                <DrinkDetail
+                  handleDelete={handleDelete}
+                  name={drink.name}
+                  quantity={drink.quantity}
+                  price={drink.price}
+                  size={drink.size}
+                  sweetness={drink.sweetness}
+                  ice={drink.ice}
+                  key={drink.order_item_id}
+                  id={drink.order_item_id}
+                  handleEdit={handleEdit}
+                ></DrinkDetail>
+              );
+            })}
+            <div className="absolute -bottom-16 right-6 md:right-14 lg:right-16">
+              <button
+                onClick={handleClick}
+                className="w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow "
+              >
+                下一步
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ import RegisterPage from '../pages/RegisterPage';
 import AdminEditPage from '../pages/AdminEditPage';
 import UserEditPage from '../pages/UserEditPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
+import OrderItemEditPage from '../pages/OrderItemEditPage';
 import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
 import OrdersPage from '../pages/OrdersPage';
@@ -64,6 +65,7 @@ function App() {
           <Route path="/orders" component={OrdersPage} />
           <Route path="/order-pay" component={OrderPayPage} />
           <Route path="/order-info" component={OrderInfoPage} />
+          <Route path="/order-item-edit/:id" component={OrderItemEditPage}>
           <Route path="/add-to-cart" component={AddToCartPage} />
           <Route path="/order-check" component={OrderCheckPage} />
           {/* admin */}
