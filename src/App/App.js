@@ -94,7 +94,7 @@ function App() {
             <Route path="/admin-update" exact>
               <AdminUpdatePage />
             </Route>
-            <Route path="/admin-edit" exact>
+            <Route path="/admin-edit/:id" exact>
               <AdminEditPage />
             </Route>
             <Route path="/user-edit" exact>
