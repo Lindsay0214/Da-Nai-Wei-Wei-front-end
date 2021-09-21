@@ -10,9 +10,16 @@ const config = {
   withCredentials: true
 };
 
+// admin
+export const getAllShop = () => instance.get('/shops', config);
+export const getShop = (id) => instance.get(`/shops/${id}`, config);
+export const updateShop = (id, payload) =>
+  instance.patch(`/shops/${id}`, payload, config);
+export const deleteShop = (id) => instance.delete(`/shops/${id}`, config);
+
 // user
 export const register = (payload) =>
-  instance.post('/users/register', payload, { withCredentials: true });
+  instance.post('/users/register', payload, config);
 export const login = (payload) =>
   instance.post('/users/login', payload, config);
 export const getAllInfo = () => instance.get('/users', config);
@@ -20,6 +27,12 @@ export const getMyInfo = () => instance.get('/user', config);
 export const updateMyInfo = (payload) =>
   instance.patch('/user', payload, config);
 export const getMe = () => instance.get('/users/me', config);
+
+// set new info
+export const newNickName = (payload) =>
+  instance.post('/users/edit', payload, config);
+// ? err catch ? how
+
 // orderItem
 export const getDetailId = (payload) =>
   instance.post('/product-details', payload, config);
@@ -36,3 +49,4 @@ export const getTotalPriceAmount = () => instance.get(`/orders`, config);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
 export const addShoppingCart = () => instance.post('/orders', config);
 export const getOrdersHistory = () => instance.get(`/orders-history`, config);
+

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getTotalPriceAmount } from '../api';
+import { Link } from 'react-router-dom';
+
 
 const OrderBoard = () => {
   const [data, setData] = useState(0);
@@ -52,11 +54,11 @@ const OrderBoard = () => {
             </div>
           </div>
           <div className="flex justify-end mr-12 ">
-            <a href="#/order-pay">
+            <Link to="/order-pay">
               <button className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow ">
                 結帳
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

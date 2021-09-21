@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getOrderItem, deleteOrderItem, updateTotalPriceAmount } from '../api';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 
@@ -29,12 +29,12 @@ const DrinkDetail = ({
         </p>
       </div>
       <div id={id}>
-        <a href={'#/order-item-edit/' + id}>
+        <Link to={'/order-item-edit/' + id}>
           <FaEdit
             onClick={handleEdit}
             className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"
           ></FaEdit>
-        </a>
+        </Link>
         <FaTrashAlt
           onClick={handleDelete}
           className="absolute text-red-500 cursor-pointer md:top-17 top-15 right-4 "

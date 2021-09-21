@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { getDetailId, addOrderItem, addShoppingCart } from '../../api';
 
@@ -44,7 +44,7 @@ const AddToCartPage = () => {
         const result2 = await addOrderItem(payload);
         history.push('/order');
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     } else {
       alert('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到');

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react';
 import { getTotalPriceAmount } from '../../api';
+import { Link } from 'react-router-dom';
 
 const OrderInfoPage = () => {
   const [data, setData] = useState(0);
@@ -35,11 +36,11 @@ const OrderInfoPage = () => {
               </div>
 
               <div className="flex justify-end mt-5 mr-6 md:mr-14 md:mt-10">
-                <a href="#/">
+                <Link to="/">
                   <button className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow ">
                     回首頁
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

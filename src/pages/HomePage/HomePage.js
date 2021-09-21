@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import store1 from '../../image/store1.png';
 import store2 from '../../image/store2.png';
 import store3 from '../../image/store3.png';
@@ -9,7 +9,7 @@ const HomePageInput = ({ data }) => {
   return (
     <input
       placeholder={data}
-      className="w-20 text-xs text-center rounded-full lg:w-48 md:w-28 lg:h-10 md:mx-16 h-7 lg:rounded-md md:text-lg"
+      className="w-3/12 text-xs text-center rounded-lg lg:w-60 md:w-48 lg:h-10 md:mx-2 h-7 lg:rounded-md md:text-lg"
     ></input>
   );
 };
@@ -71,8 +71,8 @@ const HomePage = () => {
   };
   return (
     <>
-      <div className="flex items-center mx-auto rounded-full mt-28 md:w-160 w-80 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
-        <div className="flex justify-between mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
+      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
+        <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput data="找品牌..."></HomePageInput>
           <HomePageInput data="找種類..."></HomePageInput>
           <HomePageInput data="找評價..."></HomePageInput>
@@ -81,18 +81,42 @@ const HomePage = () => {
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
-          <HomePageStore data={data1}></HomePageStore>
-          <HomePageStore data={data2}></HomePageStore>
-          <HomePageStore data={data3}></HomePageStore>
-          <HomePageStore data={data4}></HomePageStore>
-          <HomePageStore data={data1}></HomePageStore>
-          <HomePageStore data={data2}></HomePageStore>
-          <HomePageStore data={data3}></HomePageStore>
-          <HomePageStore data={data4}></HomePageStore>
-          <HomePageStore data={data1}></HomePageStore>
-          <HomePageStore data={data2}></HomePageStore>
-          <HomePageStore data={data3}></HomePageStore>
-          <HomePageStore data={data4}></HomePageStore>
+          <Link to="/menu">
+            <HomePageStore data={data1}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data2}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data3}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data4}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data1}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data2}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data3}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data4}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data1}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data2}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data3}></HomePageStore>
+          </Link>
+          <Link to="/menu">
+            <HomePageStore data={data4}></HomePageStore>
+          </Link>
         </div>
       </div>
     </>
