@@ -1,7 +1,7 @@
+/* eslint-disable func-names */
 import { useState, useEffect } from 'react';
-import { getTotalPriceAmount } from '../api';
 import { Link } from 'react-router-dom';
-
+import { getTotalPriceAmount } from '../api';
 
 const OrderBoard = () => {
   const [data, setData] = useState(0);
@@ -9,7 +9,7 @@ const OrderBoard = () => {
     (async function() {
       const result = await getTotalPriceAmount();
       setData(result.data);
-      console.log(result.data);
+      // console.log(result.data);
     })();
   }, []);
   return (

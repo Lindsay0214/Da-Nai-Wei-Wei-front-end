@@ -49,4 +49,3 @@ export const getTotalPriceAmount = () => instance.get(`/orders`, config);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
 export const addShoppingCart = () => instance.post('/orders', config);
 export const getOrdersHistory = () => instance.get(`/orders-history`, config);
-

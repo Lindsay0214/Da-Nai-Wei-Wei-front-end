@@ -1,7 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable func-names */
 import { useState, useEffect } from 'react';
-import { getTotalPriceAmount } from '../../api';
 import { Link } from 'react-router-dom';
+import { getTotalPriceAmount } from '../../api';
 
 const OrderInfoPage = () => {
   const [data, setData] = useState(0);

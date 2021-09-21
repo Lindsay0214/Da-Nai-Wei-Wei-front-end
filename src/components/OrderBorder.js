@@ -55,7 +55,7 @@ const OrderBoard = () => {
     sendGetOrderItem();
   }, [change]);
   const handleDelete = async (e) => {
-    // console.log(e.target.parentNode.id); // 有時點擊無效，似乎是點到裡面的物件，所以沒有觸發？
+    console.log(e.target.parentNode.id); // 有時點擊無效，似乎是點到裡面的物件，所以沒有觸發？
     // console.log(e.target);
     const payload = { id: e.target.parentNode.id };
     const result = await deleteOrderItem(payload);

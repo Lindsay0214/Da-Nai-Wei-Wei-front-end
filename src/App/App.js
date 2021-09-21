@@ -65,7 +65,7 @@ function App() {
           <Route path="/orders" component={OrdersPage} />
           <Route path="/order-pay" component={OrderPayPage} />
           <Route path="/order-info" component={OrderInfoPage} />
-          <Route path="/order-item-edit/:id" component={OrderItemEditPage}>
+          <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
           <Route path="/add-to-cart" component={AddToCartPage} />
           <Route path="/order-check" component={OrderCheckPage} />
           {/* admin */}

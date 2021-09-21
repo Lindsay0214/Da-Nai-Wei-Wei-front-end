@@ -1,6 +1,6 @@
+/* eslint-disable func-names */
 import { useState, useEffect } from 'react';
 import { getOrdersHistory } from '../../api';
-import { Link } from 'react-router-dom';
 
 const OrdersBlock = ({ data }) => {
   return (
@@ -35,7 +35,7 @@ const OrdersPage = () => {
     (async function() {
       const result = await getOrdersHistory();
       setData(result.data.data);
-      console.log(result.data.data);
+      // console.log(result.data.data);
     })();
   }, []);
   return (
