@@ -62,9 +62,6 @@ const OrderBoard = () => {
     })();
     history.push('/order-check');
   };
-  const handleTest = (e) => {
-    console.log(e.target.value);
-  };
   return (
     <>
       <div className="absolute w-full h-auto min-h-screen bg-yellow-lightYellow">
