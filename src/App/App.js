@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="h-auto bg-yellow-lightYellow">
       <Router>
-        {console.log('首頁：', user)}
+        {/* {console.log('首頁：', user)} */}
         {user && user.role === 'admin' ? (
           <>
             <AdminNavbar />
