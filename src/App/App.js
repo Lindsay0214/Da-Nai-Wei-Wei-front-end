@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -6,7 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getMe } from '../api';
+import { deleteProduct, getMe } from '../api';
 import { selectUser } from '../features/userSlice';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
@@ -67,6 +68,16 @@ function App() {
             {user.role === 'admin' && (
               <Route path="/admin-edit/:id" component={AdminEditPage} />
             )}
+            {/* products */}
+            {user.role === 'shop' && (
+              <Route path="/products" exact component={ProductsPage} />
+            )}
+            {user.role === 'shop' && (
+              <Route path="/product" component={AddProductPage} />
+            )}
+            {user.role === 'shop' && (
+              <Route path="/products/:id" component={UpdateProductPage} />
+            )}
             <Route path="/" exact component={HomePage} />
             <Route path="/menu" component={MenuPage} />
             {/* <Route path="*" component={NoFoundPage} /> */}
@@ -101,10 +112,8 @@ function App() {
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/add-to-cart" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
-            <Route
-              path="/order-item-edit/:id"
-              component={OrderItemEditPage}
-            />
+            <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
+
             <Redirect to="/" component={HomePage} />
           </Switch>
         </>
