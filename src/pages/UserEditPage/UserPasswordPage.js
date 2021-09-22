@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getMyInfo, updateMyInfo } from '../../api';
 import InputBar from '../../components/InputBar';
 
 const UserPasswordPage = () => {
   const [password, setPassword] = useState('password');
+
+  useEffect(async () => {
+    const result = await getMyInfo();
+    console.log('getResult', result.data.data.password);
+    setPassword(result.data.data.password);
+    // setUserInfo(result.data.data);
+  }, []);
 
   const handleChange = async () => {
     const payload = {
@@ -20,7 +27,7 @@ const UserPasswordPage = () => {
             修改密碼
           </div>
           <div className="flex flex-col mt-10">
-            <InputBar data="原密碼"></InputBar>
+            <InputBar data="************"></InputBar>
             <InputBar data="新密碼"></InputBar>
             <button
               className="w-16 px-4 py-1 mx-auto my-6 text-white rounded-md h-7 lg:h-12 bg-yellow-deepYellow"

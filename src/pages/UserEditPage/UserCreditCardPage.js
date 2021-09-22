@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getMyInfo, updateMyInfo } from '../../api';
 import InputBar from '../../components/InputBar';
 
 const UserCreditCardPage = () => {
   const [creditCard, setCreditCard] = useState('creditCard');
+
+  useEffect(async () => {
+    const result = await getMyInfo();
+    console.log('getResult', result.data.data.creditCard);
+    setCreditCard(result.data.data.creditCard);
+    // setUserInfo(result.data.data);
+  }, []);
 
   const handleChange = async () => {
     const payload = {
@@ -20,7 +27,7 @@ const UserCreditCardPage = () => {
             修改信用卡
           </div>
           <div className="flex flex-col mt-10">
-            <InputBar data="原信用卡"></InputBar>
+            <InputBar data={creditCard}></InputBar>
             <InputBar data="重新綁定"></InputBar>
             <button
               className="px-4 py-1 mx-auto my-6 text-white rounded-md w-28 h-7 lg:h-12 bg-yellow-deepYellow"
