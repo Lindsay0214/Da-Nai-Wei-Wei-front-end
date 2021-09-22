@@ -22,6 +22,9 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ProductsPage from '../pages/ProductsPage';
+import UpdateProductPage from '../pages/UpdateProductPage';
+import AddProductPage from '../pages/AddProductPage';
 
 function App() {
   return (
@@ -82,6 +85,15 @@ function App() {
           </Route>
           <Route path="/user-edit" exact>
             <UserEditPage />
+          </Route>
+          <Route path="/products" exact>
+            <ProductsPage />
+          </Route>
+          <Route path="/products/:id" exact>
+            <UpdateProductPage />
+          </Route>
+          <Route path="/product" exact>
+            <AddProductPage />
           </Route>
         </Switch>
         <Footer />

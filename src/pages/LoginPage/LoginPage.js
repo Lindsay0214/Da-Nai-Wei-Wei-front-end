@@ -1,17 +1,31 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { login } from '../../api';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
+
+  const history = useHistory();
 
   const handleClick = async () => {
+    setIsLogin(false);
     const payload = {
       email,
       password
     };
     const result = await login(payload);
-    console.log(result);
+    if (result.data.ok === 1) {
+      console.log(result);
+      setIsLogin(true);
+      setTimeout(() => {
+        history.push('/');
+      }, 1000);
+    }
+    if (result.data.ok !== 1) {
+      console.log('error!!');
+    }
   };
   return (
     <div className="bg-yellow-lightYellow">

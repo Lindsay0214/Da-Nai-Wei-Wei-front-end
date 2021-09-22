@@ -15,7 +15,6 @@ const UserUpdatePage = () => {
       creditCard
     };
     const result = await getMyInfo(payload);
-    console.log(result);
   };
   return (
     <div className="flex-col h-screen bg-yellow-lightYellow">

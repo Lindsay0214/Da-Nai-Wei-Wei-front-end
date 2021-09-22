@@ -28,7 +28,6 @@ const UserEditPage = () => {
       creditCard
     };
     const result = await getMyInfo(payload);
-    console.log(result);
   };
   return (
     <div className="flex-col w-auto h-auto bg-yellow-lightYellow">

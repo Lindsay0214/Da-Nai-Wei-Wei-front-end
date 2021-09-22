@@ -13,7 +13,6 @@ const RegisterPage = () => {
       password
     };
     const result = await register(payload);
-    console.log(result);
   };
   return (
     <div className="bg-yellow-lightYellow">
