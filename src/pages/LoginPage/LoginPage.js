@@ -43,7 +43,7 @@ const LoginPage = () => {
             role: 'admin'
           })
         );
-        history.push('/admin-edit');
+        history.push('/admin-update');
       } else if (result.data.role === 'shop') {
         dispatch(
           isLogin({
