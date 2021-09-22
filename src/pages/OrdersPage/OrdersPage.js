@@ -39,7 +39,7 @@ const OrdersPage = () => {
     })();
   }, []);
   return (
-    <div className="bg-yellow-lightYellow">
+    <div className="min-h-screen bg-yellow-lightYellow">
       <div className="flex justify-center py-20 text-3xl text-black">
         所有訂單
       </div>
