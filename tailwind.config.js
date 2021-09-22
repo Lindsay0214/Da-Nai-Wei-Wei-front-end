@@ -3,10 +3,15 @@ const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        // eslint-disable-next-line no-undef
+        sans: ['Poppins']
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -34,6 +39,9 @@ module.exports = {
           'transition-delay: 500ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);'
       },
       spacing: {
+        15: '3.75rem',
+        17: '4.25rem',
+        76: '19rem',
         86: '22rem',
         120: '26rem',
         124: '451px',
@@ -55,6 +63,9 @@ module.exports = {
         wide: '.1em',
         wider: '.2em',
         widest: '.3em'
+      },
+      zIndex: {
+        default: '999'
       },
       transitionDelay: {
         0: '0ms',

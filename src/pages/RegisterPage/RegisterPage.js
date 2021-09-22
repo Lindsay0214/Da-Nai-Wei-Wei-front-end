@@ -1,19 +1,40 @@
 import { useState } from 'react';
-import { register } from '../../api';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { isRegister } from '../../features/userSlice';
+import { register, getMe } from '../../api';
 
 const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const payload = {
       nickname,
       email,
       password
     };
     const result = await register(payload);
+
+    // console.log(result);
+    dispatch(
+      isRegister({
+        email,
+        password,
+        isRegister: true
+      })
+    );
+    const response = await getMe();
+    history.push('/');
+
   };
+
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex h-screen">
@@ -43,26 +64,22 @@ const RegisterPage = () => {
                 setPassword(e.target.value);
               }}
             ></input>
-            <input
-              placeholder="密碼確認"
-              className="flex-col p-2 mt-4 font-light rounded-lg w-60 bg-gray-input md:w-80"
-            ></input>
           </div>
           <div className="flex items-center justify-center">
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
               type="button"
-              onClick={handleClick}
+              onClick={handleSubmit}
             >
               註冊
             </button>
-            <button
+            <Link
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
               type="button"
               to="/login"
             >
               已有帳號
-            </button>
+            </Link>
           </div>
         </div>
       </div>
