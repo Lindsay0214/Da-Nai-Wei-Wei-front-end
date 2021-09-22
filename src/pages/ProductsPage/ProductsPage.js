@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getProducts, deleteProduct, getProduct } from '../../api';
+import { getProducts, deleteProduct } from '../../api';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);

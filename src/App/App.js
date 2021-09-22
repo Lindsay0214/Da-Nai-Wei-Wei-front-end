@@ -36,7 +36,6 @@ import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 // import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
 
-
 function App() {
   // const [user, setUser] = useState(null);
 
@@ -58,6 +57,10 @@ function App() {
             <AdminNavbar />
             <Route path="/admin-update" component={AdminUpdatePage} />
             <Route path="/admin-edit" component={AdminEditPage} />
+            {/* <Route path="/products" exact component={ProductsPage} />
+            <Route path="/products/:id" component={UpdateProductPage} />
+            <Route path="/product" component={AddProductPage} /> */}
+            {/* 權限判斷暫時先這樣，之後優化 */}
           </>
         ) : (
           <>
@@ -98,6 +101,7 @@ function App() {
               <Route path="/order-info" component={OrderInfoPage} />
               <Route path="/add-to-cart" component={AddToCartPage} />
               <Route path="/order-check" component={OrderCheckPage} />
+              <Route path="/order-item-edit" />
             </Switch>
           </>
         )}
