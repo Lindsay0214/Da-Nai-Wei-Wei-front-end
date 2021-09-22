@@ -17,14 +17,10 @@ const LoginPage = () => {
     };
     const result = await login(payload);
     if (result.data.ok === 1) {
-      console.log(result);
       setIsLogin(true);
       setTimeout(() => {
         history.push('/');
       }, 1000);
-    }
-    if (result.data.ok !== 1) {
-      console.log('error!!');
     }
   };
   return (

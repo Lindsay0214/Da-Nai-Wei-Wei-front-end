@@ -27,7 +27,6 @@ const AddProductPage = () => {
         history.push('/products');
       }, 2000);
     }
-    console.log(result);
   };
 
   return (
