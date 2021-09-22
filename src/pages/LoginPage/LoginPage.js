@@ -44,6 +44,16 @@ const LoginPage = () => {
           })
         );
         history.push('/admin-edit');
+      } else if (result.data.role === 'shop') {
+        dispatch(
+          isLogin({
+            email,
+            password,
+            isLogin: true,
+            role: 'shop'
+          })
+        );
+        history.push('/products');
       }
     } catch (err) {
       console.log(err);

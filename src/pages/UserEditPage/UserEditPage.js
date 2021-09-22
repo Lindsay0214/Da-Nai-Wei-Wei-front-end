@@ -9,7 +9,7 @@ const UserEditPage = () => {
 
   useEffect(async () => {
     const result = await getMyInfo();
-    console.log('getResult', result.data.data.nickname);
+    // console.log('getResult', result.data.data.nickname);
     setNickname(result.data.data.nickname);
     // setUserInfo(result.data.data);
   }, []);
@@ -34,7 +34,6 @@ const UserEditPage = () => {
     const user = result.user_id;
     console.log(user);
     return user;
-
   };
 
   return (
