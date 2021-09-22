@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
+  // baseURL: 'https://da-nai-wei-wei.herokuapp.com'
   baseURL: 'http://localhost:5000',
   withCredentials: true
 });
@@ -9,6 +10,15 @@ const config = {
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true
 };
+
+// product
+export const getProducts = () => instance.get('/products', config);
+export const deleteProduct = (id) => instance.delete(`/products/${id}`, config);
+export const addProduct = (payload) =>
+  instance.post('/product', payload, config);
+export const getProduct = (id) => instance.get(`/products/${id}`, config);
+export const updateProduct = (id, payload) =>
+  instance.patch(`/products/${id}`, payload, config);
 
 // admin
 export const getAllShop = () => instance.get('/shops', config);

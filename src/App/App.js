@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getMe } from '../api';
 import { selectUser } from '../features/userSlice';
@@ -25,6 +30,11 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+import ProductsPage from '../pages/ProductsPage';
+import UpdateProductPage from '../pages/UpdateProductPage';
+import AddProductPage from '../pages/AddProductPage';
+
 import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
@@ -46,55 +56,55 @@ function App() {
   return (
     <>
       <Router>
-        {console.log('首頁：', user)}
-        {user && user.role === 'admin' ? (
-          <>
-            <AdminNavbar />
-            <Route path="/admin-update" component={AdminUpdatePage} />
-            <Route path="/admin-edit/:id" component={AdminEditPage} />
-          </>
-        ) : (
-          <>
-            <Navbar />
-            {/* <Hamburger /> */}
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/menu" component={MenuPage} />
-              {/* <Route path="*" component={NoFoundPage} /> */}
-              {/* user */}
-              <Route path="/login" component={LoginPage} />
-              <Route path="/register" component={RegisterPage} />
-              <Route path="/no-permission" component={NoPermissionPage} />
-              <Route path="/user-update" component={UserUpdatePage} />
-              <Route path="/user-edit" component={UserEditPage} />
-              <Route path="/user-edit-password" component={UserPasswordPage} />
-              <Route path="/user-edit-email" component={UserEmailPage} />
-              <Route
-                path="/user-edit-creditcard"
-                component={UserCreditCardPage}
-              />
-              <Route
-                path="/credit-card-start"
-                component={CreditCardStartPage}
-              />
-              <Route
-                path="/credit-card-delete"
-                component={CreditCardDeletePage}
-              />
-              <Route
-                path="/credit-card-update"
-                component={CreditCardUpdatePage}
-              />
-              {/* order */}
+        {/* {console.log('首頁：', user)} */}
+        <>
+          {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
+          {/* <Hamburger /> */}
+          <Switch>
+            {user.role === 'admin' && (
+              <Route path="/admin-update" component={AdminUpdatePage} />
+            )}
+            {user.role === 'admin' && (
+              <Route path="/admin-edit/:id" component={AdminEditPage} />
+            )}
+            <Route path="/" exact component={HomePage} />
+            <Route path="/menu" component={MenuPage} />
+            {/* <Route path="*" component={NoFoundPage} /> */}
+            {/* user */}
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/user-update" component={UserUpdatePage} />
+            <Route path="/user-edit" component={UserEditPage} />
+            <Route path="/user-edit-password" component={UserPasswordPage} />
+            <Route path="/user-edit-email" component={UserEmailPage} />
+            <Route
+              path="/user-edit-creditcard"
+              component={UserCreditCardPage}
+            />
+            <Route path="/credit-card-start" component={CreditCardStartPage} />
+            <Route
+              path="/credit-card-delete"
+              component={CreditCardDeletePage}
+            />
+            <Route
+              path="/credit-card-update"
+              component={CreditCardUpdatePage}
+            />
+            {/* order */}
+            {user ? (
               <Route path="/order" component={OrderPage} />
-              <Route path="/orders" component={OrdersPage} />
-              <Route path="/order-pay" component={OrderPayPage} />
-              <Route path="/order-info" component={OrderInfoPage} />
-              <Route path="/add-to-cart" component={AddToCartPage} />
-              <Route path="/order-check" component={OrderCheckPage} />
-            </Switch>
-          </>
-        )}
+            ) : (
+              <Route path="/order" component={NoPermissionPage} />
+            )}
+            <Route path="/orders" component={OrdersPage} />
+            <Route path="/order-pay" component={OrderPayPage} />
+            <Route path="/order-info" component={OrderInfoPage} />
+            <Route path="/add-to-cart" component={AddToCartPage} />
+            <Route path="/order-check" component={OrderCheckPage} />
+            <Route path="/order-item-edit" />
+            <Redirect to="/" component={HomePage} />
+          </Switch>
+        </>
         <Footer />
       </Router>
     </>

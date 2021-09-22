@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { isRegister } from '../../features/userSlice';
 import { register, getMe } from '../../api';
 
@@ -9,7 +11,7 @@ const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState();
+  const [error, setError] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,17 +22,26 @@ const RegisterPage = () => {
       email,
       password
     };
-    const result = await register(payload);
-    // console.log(result);
-    dispatch(
-      isRegister({
-        email,
-        password,
-        isRegister: true
-      })
-    );
-    const response = await getMe();
-    history.push('/');
+    try {
+      const result = await register(payload);
+      // console.log(result);
+      dispatch(
+        isRegister({
+          email,
+          password,
+          isRegister: true
+        })
+      );
+      const response = await getMe();
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+      setError(
+        toast.error('有錯喔，檢查一下！', {
+          position: toast.POSITION.TOP_CENTER
+        })
+      );
+    }
   };
 
   return (
@@ -63,6 +74,7 @@ const RegisterPage = () => {
               }}
             ></input>
           </div>
+          {error && <ToastContainer />}
           <div className="flex items-center justify-center">
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"

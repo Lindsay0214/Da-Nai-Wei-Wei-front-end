@@ -2,44 +2,66 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { isLogin, role } from '../../features/userSlice';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+import { isLogin } from '../../features/userSlice';
 import { login, getMe } from '../../api';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState();
+  const [error, setError] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const payload = {
       email,
       password
     };
-    const result = await login(payload);
-    // console.log(result.data.role);
-    if (result.data.role === 'consumer') {
-      dispatch(
-        isLogin({
-          email,
-          password,
-          isLogin: true,
-          role: 'consumer'
+    try {
+      const result = await login(payload);
+      // console.log(result.data.role);
+      if (result.data.role === 'consumer') {
+        dispatch(
+          isLogin({
+            email,
+            password,
+            isLogin: true,
+            role: 'consumer'
+          })
+        );
+        history.push('/');
+      } else if (result.data.role === 'admin') {
+        dispatch(
+          isLogin({
+            email,
+            password,
+            isLogin: true,
+            role: 'admin'
+          })
+        );
+        history.push('/admin-update');
+      } else if (result.data.role === 'shop') {
+        dispatch(
+          isLogin({
+            email,
+            password,
+            isLogin: true,
+            role: 'shop'
+          })
+        );
+        history.push('/products');
+      }
+    } catch (err) {
+      console.log(err);
+      setError(
+        toast.error('有錯喔，檢查一下！', {
+          position: toast.POSITION.TOP_CENTER
         })
       );
-      history.push('/');
-    } else if (result.data.role === 'admin') {
-      dispatch(
-        isLogin({
-          email,
-          password,
-          isLogin: true,
-          role: 'admin'
-        })
-      );
-      history.push('/admin-edit');
     }
   };
 
@@ -67,9 +89,7 @@ const LoginPage = () => {
                 setPassword(e.target.value);
               }}
             ></input>
-            {errorMessage && (
-              <div className="p-3 text-red">無此帳號密碼，請再次確認</div>
-            )}
+            {error && <ToastContainer />}
             <div className="flex m-12">
               <button
                 className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"

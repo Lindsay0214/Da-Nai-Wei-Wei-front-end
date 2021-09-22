@@ -20,16 +20,8 @@ const UserEmailPage = () => {
     // setUserInfo(result.data.data);
   }, []);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const payload = {
-  //     email
-  //   };
-  //   const result = await updateMyInfo(payload);
-  //   history.push('/user-update');
-  // };
-
   const handleOnClick = async () => {
+    console.log(123);
     const payload = {
       email
     };
@@ -58,9 +50,9 @@ const UserEmailPage = () => {
               titleData="新信箱"
               data="新信箱"
               value={email}
-              // onChange={(e) => {
-              //   handleSetEmail(e.target.value);
-              // }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             ></InputBar>
             <button
               className="px-4 py-1 mx-auto my-6 text-white rounded-md w-28 h-7 lg:h-12 bg-yellow-deepYellow"
