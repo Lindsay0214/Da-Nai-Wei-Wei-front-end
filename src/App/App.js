@@ -101,7 +101,10 @@ function App() {
               <Route path="/order-info" component={OrderInfoPage} />
               <Route path="/add-to-cart" component={AddToCartPage} />
               <Route path="/order-check" component={OrderCheckPage} />
-              <Route path="/order-item-edit" />
+              <Route
+                path="/order-item-edit/:id"
+                component={OrderItemEditPage}
+              />
             </Switch>
           </>
         )}
