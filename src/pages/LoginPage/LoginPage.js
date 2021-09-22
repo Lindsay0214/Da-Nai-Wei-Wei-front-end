@@ -1,24 +1,29 @@
 import { useState } from 'react';
+
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isLogin, role } from '../../features/userSlice';
 import { login, getMe } from '../../api';
 
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const [errorMessage, setErrorMessage] = useState();
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const payload = {
       email,
       password
     };
     const result = await login(payload);
+
     // console.log(result.data.role);
     if (result.data.role === 'consumer') {
       dispatch(
@@ -40,6 +45,7 @@ const LoginPage = () => {
         })
       );
       history.push('/admin-edit');
+
     }
   };
 

@@ -29,10 +29,12 @@ const UserEditPage = () => {
       nickname
     };
     const result = await getMyInfo(payload);
+
     // console.log(result.user_id);
     const user = result.user_id;
     console.log(user);
     return user;
+
   };
 
   return (

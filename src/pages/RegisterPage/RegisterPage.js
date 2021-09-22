@@ -21,6 +21,7 @@ const RegisterPage = () => {
       password
     };
     const result = await register(payload);
+
     // console.log(result);
     dispatch(
       isRegister({
@@ -31,6 +32,7 @@ const RegisterPage = () => {
     );
     const response = await getMe();
     history.push('/');
+
   };
 
   return (

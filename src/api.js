@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
+  // baseURL: 'https://da-nai-wei-wei.herokuapp.com'
   baseURL: 'http://localhost:5000',
   withCredentials: true
 });
@@ -9,6 +10,26 @@ const config = {
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true
 };
+
+
+// user
+const register = (payload) =>
+  instance.post('/users/register', payload, { withCredentials: true });
+const login = (payload) => instance.post('/users/login', payload, config);
+const getAllInfo = (payload) => instance.get('/users', payload, config);
+const getMyInfo = (payload) => instance.get('/user', payload, config);
+const updateMyInfo = (payload) => instance.patch('/user', payload, config);
+
+// product
+export const getProducts = () => instance.get('/products', config);
+export const deleteProduct = (id) => instance.delete(`/products/${id}`, config);
+export const addProduct = (payload) => instance.post('/product', payload, config);
+export const getProduct = (id) => instance.get(`/products/${id}`, config);
+export const updateProduct = (id, payload) =>
+  instance.patch(`/products/${id}`, payload, config);
+
+
+
 
 // admin
 export const getAllShop = () => instance.get('/shops', config);
@@ -49,3 +70,4 @@ export const getTotalPriceAmount = () => instance.get(`/orders`, config);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
 export const addShoppingCart = () => instance.post('/orders', config);
 export const getOrdersHistory = () => instance.get(`/orders-history`, config);
+
