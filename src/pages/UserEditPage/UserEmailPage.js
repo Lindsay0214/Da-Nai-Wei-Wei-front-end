@@ -1,30 +1,63 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { getMyInfo, updateMyInfo } from '../../api';
 import InputBar from '../../components/InputBar';
 
 const UserEmailPage = () => {
-  const [email, setEmail] = useState('email');
+  // const [userInfo, setUserInfo] = useState({});
+  const [email, setEmail] = useState('');
+  const history = useHistory();
 
-  const handleChange = async () => {
+  useEffect(async () => {
+    const result = await getMyInfo();
+    if (result.data.ok !== 1) {
+      console.log('失敗');
+    } else {
+      console.log('成功');
+    }
+    console.log('getResult', result.data.data.email);
+    setEmail(result.data.data.email);
+    // setUserInfo(result.data.data);
+  }, []);
+
+  const handleOnClick = async () => {
+    console.log(123);
     const payload = {
       email
     };
-    const result = await getMyInfo(payload);
-    // console.log(result);
+    const result = await updateMyInfo(payload);
+    console.log('updateResult', result);
+    history.push('/user-update');
   };
+
   return (
     <div className="flex-col w-auto h-auto mt-40 bg-yellow-lightYellow">
       <div className="flex-col items-center justify-center w-auto ">
-        <div className="flex-col w-64 p-2 m-auto bg-white rounded-lg lg:mt-10 lg:w-160 ">
+        <div
+          className="flex-col w-64 p-2 m-auto bg-white rounded-lg lg:mt-10 lg:w-160 "
+          // onSubmit={(e) => handleSubmit(e)}
+        >
           <div className="flex content-center justify-center mt-10 text-4xl">
             修改信箱
           </div>
           <div className="flex flex-col mt-10">
-            <InputBar data="原信箱"></InputBar>
-            <InputBar data="新信箱"></InputBar>
+            <InputBar
+              titleData="原信箱"
+              data={email}
+              disabled="disabled"
+            ></InputBar>
+            <InputBar
+              titleData="新信箱"
+              data="新信箱"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            ></InputBar>
             <button
               className="px-4 py-1 mx-auto my-6 text-white rounded-md w-28 h-7 lg:h-12 bg-yellow-deepYellow"
-              onChange={handleChange}
+              type="submit"
+              onClick={handleOnClick}
             >
               發送認證信
             </button>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import AdminNavbar from '../../components/AdminNavbar';
 import { getShop, updateShop } from '../../api';
 
 const EditInput = ({ data, shopDetail = '', setInput }) => {
@@ -52,8 +51,7 @@ const AdminEditPage = () => {
   };
   return (
     <div className="flex-col w-auto h-auto bg-yellow-lightYellow">
-      <div className="flex-col items-center justify-center w-auto ">
-        <AdminNavbar data="後台管理"></AdminNavbar>
+      <div className="flex-col items-center justify-center w-auto">
         <div className="flex-col p-2 m-auto bg-white rounded-md w-80 lg:w-160 ">
           <div className="mt-4 text-center lg:text-4xl">
             {shopInfo.brand_name}

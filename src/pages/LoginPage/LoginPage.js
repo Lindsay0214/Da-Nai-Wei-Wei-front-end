@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { isLogin } from '../../features/userSlice';
+import { isLogin, role } from '../../features/userSlice';
 import { login, getMe } from '../../api';
 
 const LoginPage = () => {
@@ -14,21 +14,34 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if (result.data =)
     const payload = {
       email,
       password
     };
     const result = await login(payload);
-    // console.log(result.data);
-    dispatch(
-      isLogin({
-        email,
-        password,
-        isLogin: true
-      })
-    );
-    const response = await getMe();
-    history.push('/');
+    // console.log(result.data.role);
+    if (result.data.role === 'consumer') {
+      dispatch(
+        isLogin({
+          email,
+          password,
+          isLogin: true,
+          role: 'consumer'
+        })
+      );
+      history.push('/');
+    } else if (result.data.role === 'admin') {
+      dispatch(
+        isLogin({
+          email,
+          password,
+          isLogin: true,
+          role: 'admin'
+        })
+      );
+      history.push('/admin-edit');
+    }
   };
 
   return (
