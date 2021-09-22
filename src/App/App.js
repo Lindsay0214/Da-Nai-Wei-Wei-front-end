@@ -25,11 +25,17 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+import ProductsPage from '../pages/ProductsPage';
+import UpdateProductPage from '../pages/UpdateProductPage';
+import AddProductPage from '../pages/AddProductPage';
+
 import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 // import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
+
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -95,6 +101,7 @@ function App() {
             </Switch>
           </>
         )}
+
         <Footer />
       </Router>
     </div>

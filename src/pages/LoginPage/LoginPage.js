@@ -16,6 +16,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const payload = {
       email,
       password
