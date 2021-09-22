@@ -19,7 +19,6 @@ const OrderItemEditPage = () => {
   useEffect(() => {
     (async function() {
       const result = await getSingleOrderItem(id);
-      console.log(result.data.data);
       const {
         ice,
         order_item_id,
@@ -63,7 +62,6 @@ const OrderItemEditPage = () => {
     };
     const result = await getDetailId(payload);
     const { detail_id } = result.data;
-    console.log(detail_id);
     const payload2 = {
       id: data.order_item_id,
       detail_id,
