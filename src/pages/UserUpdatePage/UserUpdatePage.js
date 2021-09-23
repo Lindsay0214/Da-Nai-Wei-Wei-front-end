@@ -35,6 +35,9 @@ const UserUpdatePage = () => {
           <Link to="/user-edit-creditcard">
             <EditButton data="修改信用卡" onClick={handleClick}></EditButton>
           </Link>
+          <Link to="/user-edit-creditcard">
+            <EditButton data="上傳圖片" onClick={handleClick}></EditButton>
+          </Link>
         </div>
       </div>
     </div>

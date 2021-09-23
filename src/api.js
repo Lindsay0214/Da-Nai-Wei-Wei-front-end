@@ -43,19 +43,23 @@ export const newNickName = (payload) =>
   instance.post('/users/edit', payload, config);
 // ? err catch ? how
 
-// orderItem
+// productDetail
 export const getDetailId = (payload) =>
   instance.post('/product-details', payload, config);
+
+// orderItem
 export const addOrderItem = (payload) =>
   instance.post('/order-items', payload, config);
 export const getOrderItem = () => instance.get('/order-items', config);
-export const deleteOrderItem = (payload) =>
-  instance.delete('/order-items', { data: payload }, config);
 export const getSingleOrderItem = (id) =>
   instance.get(`/order-item/${id}`, config);
 export const updateOrderItem = (payload) =>
   instance.patch('/order-items', payload, config);
-export const getTotalPriceAmount = () => instance.get(`/orders`, config);
-export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
+export const deleteOrderItem = (payload) =>
+  instance.delete('/order-items', { data: payload }, config);
+
+// order
 export const addShoppingCart = () => instance.post('/orders', config);
+export const getTotalPriceAmount = () => instance.get(`/orders`, config);
 export const getOrdersHistory = () => instance.get(`/orders-history`, config);
+export const updateTotalPriceAmount = () => instance.patch(`/orders`, config);
