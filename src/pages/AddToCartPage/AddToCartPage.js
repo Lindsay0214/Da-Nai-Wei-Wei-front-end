@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable  */
 import { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaPlus, FaMinus } from 'react-icons/fa';
@@ -7,9 +7,9 @@ import { getDetailId, addOrderItem, addShoppingCart } from '../../api';
 const AddToCartPage = () => {
   const history = useHistory();
   const detail = useRef({
-    size: null,
-    sweetness: null,
-    ice: null
+    size: '',
+    sweetness: '',
+    ice: ''
   });
   function handleChangeSize(e) {
     detail.current.size = e.target.value;
@@ -22,15 +22,16 @@ const AddToCartPage = () => {
   }
   const [quantity, setQuantity] = useState(1);
   const handlePlus = () => {
-    setQuantity(quantity + 1);
+    setQuantity((pre) => pre + 1);
   };
   const handleMinus = () => {
-    setQuantity(quantity - 1);
+    setQuantity((pre) => pre - 1);
   };
   async function handleClick() {
     (async function() {
       await addShoppingCart(); // 確保有購物車可以裝商品
     })();
+    if (quantity <= 0) return alert('數量不能是 0 或是負數');
     if (detail.current.size && detail.current.sweetness && detail.current.ice) {
       try {
         const result = await getDetailId(detail.current);
@@ -186,10 +187,15 @@ const AddToCartPage = () => {
           </div>
           <div className="flex items-center pb-4 border-b border-black">
             <span className="inline-block my-auto ml-1 mr-5 ">數量</span>
-            <FaMinus
-              className="mx-2 cursor-pointer"
-              onClick={handleMinus}
-            ></FaMinus>
+            {quantity > 0 && (
+              <FaMinus
+                className="mx-2 cursor-pointer"
+                onClick={handleMinus}
+              ></FaMinus>
+            )}
+            {quantity <= 0 && (
+              <FaMinus className="mx-2 cursor-pointer"></FaMinus>
+            )}
             <span className="mx-2">{quantity}</span>
             <FaPlus
               className="mx-2 cursor-pointer"

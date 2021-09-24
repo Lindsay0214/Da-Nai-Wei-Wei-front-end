@@ -18,6 +18,15 @@ const UserUpdatePage = () => {
     const result = await getMyInfo(payload);
     // console.log(result);
   };
+  const handleUpload = async () => {
+    const payload = {
+      nickname,
+      password,
+      creditCard
+    };
+    const result = await getMyInfo(payload);
+    // console.log(result);
+  };
   return (
     <div className="flex-col h-screen bg-yellow-lightYellow">
       <div className="flex-col w-64 p-2 m-auto bg-white rounded-md lg:bg-yellow-lightYellow lg:w-176 ">
@@ -35,8 +44,8 @@ const UserUpdatePage = () => {
           <Link to="/user-edit-creditcard">
             <EditButton data="修改信用卡" onClick={handleClick}></EditButton>
           </Link>
-          <Link to="/user-edit-creditcard">
-            <EditButton data="上傳圖片" onClick={handleClick}></EditButton>
+          <Link to="/user-upload-image">
+            <EditButton data="上傳圖片" onClick={handleUpload}></EditButton>
           </Link>
         </div>
       </div>

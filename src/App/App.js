@@ -39,6 +39,8 @@ import AddProductPage from '../pages/AddProductPage';
 import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
+import UserUploadImage from '../pages/UserUploadImagePage';
+
 // import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
 
@@ -88,6 +90,8 @@ function App() {
             <Route path="/user-edit" component={UserEditPage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
+            <Route path="/user-upload-image" component={UserUploadImage} />
+
             <Route
               path="/user-edit-creditcard"
               component={UserCreditCardPage}
@@ -113,7 +117,6 @@ function App() {
             <Route path="/add-to-cart" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
-
             <Redirect to="/" component={HomePage} />
           </Switch>
         </>
