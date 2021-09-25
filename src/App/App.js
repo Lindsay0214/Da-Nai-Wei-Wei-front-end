@@ -5,9 +5,12 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import { getMe } from '../api';
 import { selectUser } from '../features/userSlice';
+import { selectLoading, setLoading } from '../features/loadingSlice';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
 import HomePage from '../pages/HomePage';
@@ -30,6 +33,7 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loading from '../components/Loading';
 
 import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
@@ -42,21 +46,21 @@ import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import AdminNavbar from '../components/AdminNavbar';
 
 function App() {
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   getMe().then((response) => {
-  //     if (response.ok) {
-  //       setUser(response.data);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    // getMe().then((response) => {
+    //   if (response.ok) {
+    //     setUser(response.data);
+    //   }
+    // });
+  }, []);
   const user = useSelector(selectUser);
-
+  const isLoading = useSelector(selectLoading);
   return (
     <>
+      {isLoading && <Loading />}
       <Router>
         {/* {console.log('首頁：', user)} */}
+        <ToastContainer />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
           {/* <Hamburger /> */}
@@ -77,10 +81,7 @@ function App() {
             <Route path="/user-edit" component={UserEditPage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
-            <Route
-              path="/user-edit-creditcard"
-              component={UserCreditCardPage}
-            />
+            <Route path="/user-edit-creditors" component={UserCreditCardPage} />
             <Route path="/credit-card-start" component={CreditCardStartPage} />
             <Route
               path="/credit-card-delete"
@@ -101,10 +102,7 @@ function App() {
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/add-to-cart" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
-            <Route
-              path="/order-item-edit/:id"
-              component={OrderItemEditPage}
-            />
+            <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
             <Redirect to="/" component={HomePage} />
           </Switch>
         </>
