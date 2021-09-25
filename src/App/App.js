@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable complexity */
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from 'react-router-dom';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { getMe } from '../api';
-import { selectUser } from '../features/userSlice';
-import { selectLoading, setLoading } from '../features/loadingSlice';
+import 'react-toastify/dist/ReactToastify.css';
+import { deleteProduct } from '../api';
+import { selectUser, getMe } from '../features/userSlice';
+import { selectLoading } from '../features/loadingSlice';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
 import HomePage from '../pages/HomePage';
@@ -46,15 +47,14 @@ import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import AdminNavbar from '../components/AdminNavbar';
 
 function App() {
-  useEffect(() => {
-    // getMe().then((response) => {
-    //   if (response.ok) {
-    //     setUser(response.data);
-    //   }
-    // });
-  }, []);
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // 應該要有 cookie 才做
+    dispatch(getMe());
+  }, []);
+
   return (
     <>
       {isLoading && <Loading />}
@@ -70,6 +70,16 @@ function App() {
             )}
             {user.role === 'admin' && (
               <Route path="/admin-edit/:id" component={AdminEditPage} />
+            )}
+            {/* products */}
+            {user.role === 'shop' && (
+              <Route path="/products" exact component={ProductsPage} />
+            )}
+            {user.role === 'shop' && (
+              <Route path="/product" component={AddProductPage} />
+            )}
+            {user.role === 'shop' && (
+              <Route path="/products/:id" component={UpdateProductPage} />
             )}
             <Route path="/" exact component={HomePage} />
             <Route path="/menu" component={MenuPage} />

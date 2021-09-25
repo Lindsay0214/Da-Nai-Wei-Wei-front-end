@@ -59,12 +59,14 @@ export const updateShop = (id, payload) =>
 export const deleteShop = (id) => instance.delete(`/shops/${id}`);
 
 // user
-export const register = (payload) => instance.post('/users/register', payload);
-export const login = (payload) => instance.post('/users/login', payload);
+export const registerApi = (payload) =>
+  instance.post('/users/register', payload);
+export const loginApi = (payload) => instance.post('/users/login', payload);
+export const logoutApi = () => instance.get('/users/logout');
 export const getAllInfo = () => instance.get('/users');
 export const getMyInfo = () => instance.get('/user');
 export const updateMyInfo = (payload) => instance.patch('/user', payload);
-export const getMe = () => instance.get('/users/me');
+export const getMeApi = () => instance.get('/users/me');
 
 // set new info
 export const newNickName = (payload) => instance.post('/users/edit', payload);

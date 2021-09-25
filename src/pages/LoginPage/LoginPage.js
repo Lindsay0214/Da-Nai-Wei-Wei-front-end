@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { setLogin } from '../../features/userSlice';
-import { setLoading } from '../../features/loadingSlice';
-import { login } from '../../api';
+import { login, getMe } from '../../features/userSlice';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,44 +13,11 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const payload = {
       email,
       password
     };
-    try {
-      const result = await login(payload);
-      if (result.data.role === 'consumer') {
-        dispatch(
-          setLogin({
-            email,
-            role: 'consumer'
-          })
-        );
-        history.push('/');
-      } else if (result.data.role === 'admin') {
-        dispatch(
-          setLogin({
-            email,
-            role: 'admin'
-          })
-        );
-        history.push('/admin-update');
-      } else if (result.data.role === 'shop') {
-        dispatch(
-          setLogin({
-            email,
-            role: 'shop'
-          })
-        );
-        history.push('/products');
-      }
-      toast.success('登入成功', {
-        position: toast.POSITION.TOP_CENTER
-      });
-    } catch (err) {
-      dispatch(setLoading(false));
-    }
+    dispatch(login(history, payload));
   };
 
   return (
