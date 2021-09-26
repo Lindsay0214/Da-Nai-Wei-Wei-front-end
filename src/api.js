@@ -33,7 +33,7 @@ export const register = (payload) =>
 export const login = (payload) =>
   instance.post('/users/login', payload, config);
 export const getAllInfo = () => instance.get('/users', config);
-export const getMyInfo = () => instance.get('/user', config);
+export const getMyInfo = () => instance.get('/user/:id', config);
 export const updateMyInfo = (payload) =>
   instance.patch('/user', payload, config);
 export const getMe = () => instance.get('/users/me', config);

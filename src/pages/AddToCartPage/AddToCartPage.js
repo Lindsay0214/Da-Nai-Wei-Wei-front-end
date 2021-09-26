@@ -1,7 +1,9 @@
+/* eslint-disable func-names */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
 import { getDetailId, addOrderItem, addShoppingCart } from '../../api';
 
 const AddToCartPage = () => {
@@ -11,6 +13,7 @@ const AddToCartPage = () => {
     sweetness: null,
     ice: null
   });
+  const [error, setError] = useState('');
   function handleChangeSize(e) {
     detail.current.size = e.target.value;
   }
@@ -43,11 +46,15 @@ const AddToCartPage = () => {
         };
         const result2 = await addOrderItem(payload);
         history.push('/order');
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        // console.log(err);
       }
     } else {
-      alert('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到');
+      setError(
+        toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
+          position: toast.POSITION.TOP_CENTER
+        })
+      );
     }
   }
   return (
@@ -204,6 +211,7 @@ const AddToCartPage = () => {
             >
               確認
             </button>
+            {error && <ToastContainer />}
           </div>
         </div>
       </div>

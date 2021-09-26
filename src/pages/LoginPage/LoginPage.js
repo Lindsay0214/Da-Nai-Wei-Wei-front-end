@@ -56,7 +56,7 @@ const LoginPage = () => {
         history.push('/products');
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setError(
         toast.error('有錯喔，檢查一下！', {
           position: toast.POSITION.TOP_CENTER

@@ -32,7 +32,7 @@ const UserEditPage = () => {
 
     // console.log(result.user_id);
     const user = result.user_id;
-    console.log(user);
+    // console.log(user);
     return user;
   };
 

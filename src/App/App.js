@@ -87,7 +87,7 @@ function App() {
             <Route path="/user-update" component={UserUpdatePage} />
             <Route path="/user-edit" component={UserEditPage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
-            <Route path="/user-edit-email" component={UserEmailPage} />
+            <Route path="/use-edit/:id" component={UserEmailPage} />
             <Route
               path="/user-edit-creditcard"
               component={UserCreditCardPage}
