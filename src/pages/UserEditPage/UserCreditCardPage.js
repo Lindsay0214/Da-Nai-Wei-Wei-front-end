@@ -7,7 +7,7 @@ const UserCreditCardPage = () => {
 
   useEffect(async () => {
     const result = await getMyInfo();
-    console.log('getResult', result.data.data.creditCard);
+    // console.log('getResult', result.data.data.creditCard);
     setCreditCard(result.data.data.creditCard);
     // setUserInfo(result.data.data);
   }, []);

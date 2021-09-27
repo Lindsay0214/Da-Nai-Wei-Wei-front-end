@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getMyInfo, updateMyInfo, getMe, newNickName } from '../../api';
+import { getMyInfo, newNickName } from '../../api';
 import InputBar from '../../components/InputBar';
 
 const UserEditPage = () => {
@@ -32,7 +32,7 @@ const UserEditPage = () => {
 
     // console.log(result.user_id);
     const user = result.user_id;
-    console.log(user);
+    // console.log(user);
     return user;
   };
 

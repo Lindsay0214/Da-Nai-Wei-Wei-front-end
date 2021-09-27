@@ -1,14 +1,17 @@
 /* eslint-disable complexity */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { deleteProduct, getMe } from '../api';
-import { selectUser } from '../features/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { deleteProduct } from '../api';
+import { selectUser, getMe } from '../features/userSlice';
+import { selectLoading } from '../features/loadingSlice';
 
 import AdminUpdatePage from '../pages/AdminUpdatePage';
 import HomePage from '../pages/HomePage';
@@ -31,6 +34,7 @@ import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loading from '../components/Loading';
 
 import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
@@ -45,21 +49,20 @@ import UserUploadImage from '../pages/UserUploadImagePage';
 import AdminNavbar from '../components/AdminNavbar';
 
 function App() {
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   getMe().then((response) => {
-  //     if (response.ok) {
-  //       setUser(response.data);
-  //     }
-  //   });
-  // }, []);
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectLoading);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // 應該要有 cookie 才做
+    dispatch(getMe());
+  }, []);
 
   return (
     <>
+      {isLoading && <Loading />}
       <Router>
         {/* {console.log('首頁：', user)} */}
+        <ToastContainer />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
           {/* <Hamburger /> */}
@@ -91,11 +94,11 @@ function App() {
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
             <Route path="/user-upload-image" component={UserUploadImage} />
-
             <Route
               path="/user-edit-creditcard"
               component={UserCreditCardPage}
             />
+            <Route path="/user-edit-creditors" component={UserCreditCardPage} />
             <Route path="/credit-card-start" component={CreditCardStartPage} />
             <Route
               path="/credit-card-delete"

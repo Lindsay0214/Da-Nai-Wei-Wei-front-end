@@ -56,11 +56,15 @@ const AddToCartPage = () => {
         };
         await addOrderItem(payload);
         history.push('/order');
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        // console.log(err);
       }
     } else {
-      alert('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到');
+      setError(
+        toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
+          position: toast.POSITION.TOP_CENTER
+        })
+      );
     }
   }
   return (
@@ -216,6 +220,7 @@ const AddToCartPage = () => {
             >
               確認
             </button>
+            {error && <ToastContainer />}
           </div>
         </div>
       </div>

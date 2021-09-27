@@ -7,7 +7,7 @@ const UserPasswordPage = () => {
 
   useEffect(async () => {
     const result = await getMyInfo();
-    console.log('getResult', result.data.data.password);
+    // console.log('getResult', result.data.data.password);
     setPassword(result.data.data.password);
     // setUserInfo(result.data.data);
   }, []);
