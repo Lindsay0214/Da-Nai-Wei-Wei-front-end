@@ -45,7 +45,6 @@ import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import UserUploadImage from '../pages/UserUploadImagePage';
 
-import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
 
 function App() {
@@ -87,7 +86,7 @@ function App() {
             <Route path="/menu/:id" component={MenuPage} />
             {/* <Route path="*" component={NoFoundPage} /> */}
             {/* user */}
-            <Route path="/login" component={Hamburger} />
+            <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/user-update" component={UserUpdatePage} />
             <Route path="/user-edit" component={UserEditPage} />
