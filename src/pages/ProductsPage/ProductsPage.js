@@ -26,7 +26,7 @@ const ProductsPage = () => {
       <div className="mx-12 bg-white rounded-lg md:w-2/5 md:pl-12 md:mx-auto">
         <div className="flex justify-center pt-8 md:mr-12">
           <Link to="/product">
-            <button className="px-6 py-1 text-white border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
+            <button className="px-6 py-1 text-white duration-500 ease-in-out border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
               新增商品
             </button>
           </Link>
@@ -41,14 +41,14 @@ const ProductsPage = () => {
               <span className="">{product.name}</span>
               <div className="">
                 <Link to={`/products/${product.id}`}>
-                  <button className="px-6 py-1 text-white border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
+                  <button className="px-6 py-1 text-white duration-500 ease-in-out border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
                     修改
                   </button>
                 </Link>
 
                 <button
                   onClick={() => handleDeleteProductClick(product.id)}
-                  className="px-6 py-1 ml-2 text-red-500 border border-red-500 rounded-lg hover:text-white hover:bg-red-500"
+                  className="px-6 py-1 ml-2 text-red-500 duration-500 ease-in-out border border-red-500 rounded-lg hover:text-white hover:bg-red-500"
                 >
                   刪除
                 </button>

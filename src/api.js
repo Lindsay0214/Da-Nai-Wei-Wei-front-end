@@ -1,5 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
+/* eslint-disable */
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { setLoading } from './features/loadingSlice';
@@ -49,6 +50,9 @@ export const getProduct = (id) => instance.get(`/products/${id}`);
 export const updateProduct = (id, payload) =>
   instance.patch(`/products/${id}`, payload);
 
+export const getShopProducts = (userId) =>
+  instance.get(`/products-store/${userId}`);
+
 // admin
 export const getAllShop = () => instance.get('/shops');
 export const getShop = (id) => instance.get(`/shops/${id}`);
@@ -57,6 +61,7 @@ export const updateShop = (id, payload) =>
 export const deleteShop = (id) => instance.delete(`/shops/${id}`);
 
 // user
+
 export const registerApi = (payload) =>
   instance.post('/users/register', payload);
 export const loginApi = (payload) => instance.post('/users/login', payload);
@@ -65,12 +70,14 @@ export const getAllInfo = () => instance.get('/users');
 export const getMyInfo = () => instance.get('/user');
 export const updateMyInfo = (payload) => instance.patch('/user', payload);
 export const getMeApi = () => instance.get('/users/me');
+export const updateURL = (payload) => instance.patch('/user-URL', payload);
+export const getShops = () => instance.get('/users-shops');
 
 // set new info
 export const newNickName = (payload) => instance.post('/users/edit', payload);
 // ? err catch ? how
 
-// orderItem
+// productDetail
 export const getDetailId = (payload) =>
   instance.post('/product-details', payload);
 export const addOrderItem = (payload) => instance.post('/order-items', payload);

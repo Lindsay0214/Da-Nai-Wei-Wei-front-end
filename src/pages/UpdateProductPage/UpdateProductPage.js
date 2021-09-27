@@ -54,11 +54,13 @@ const UpdateProductPage = () => {
               setProductName(e.target.value);
             }}
             name="name"
+            placeholder="商品名稱"
             value={productName}
             className="flex-col p-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
           ></input>
           <input
             name="category"
+            placeholder="商品分類"
             onFocus={() => setIsUpdated(false)}
             onChange={(e) => {
               setProductCategory(e.target.value);
@@ -68,6 +70,7 @@ const UpdateProductPage = () => {
           ></input>
           <input
             name="price"
+            placeholder="商品價錢"
             onFocus={() => setIsUpdated(false)}
             onChange={(e) => {
               setProductPrice(e.target.value);
@@ -77,6 +80,7 @@ const UpdateProductPage = () => {
           ></input>
           <input
             name="status"
+            placeholder="商品狀態"
             onFocus={() => setIsUpdated(false)}
             onChange={(e) => {
               setProductStatus(e.target.value);

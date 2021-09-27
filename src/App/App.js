@@ -43,6 +43,8 @@ import AddProductPage from '../pages/AddProductPage';
 import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
+import UserUploadImage from '../pages/UserUploadImagePage';
+
 // import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
 
@@ -82,7 +84,7 @@ function App() {
               <Route path="/products/:id" component={UpdateProductPage} />
             )}
             <Route path="/" exact component={HomePage} />
-            <Route path="/menu" component={MenuPage} />
+            <Route path="/menu/:id" component={MenuPage} />
             {/* <Route path="*" component={NoFoundPage} /> */}
             {/* user */}
             <Route path="/login" component={LoginPage} />
@@ -91,6 +93,11 @@ function App() {
             <Route path="/user-edit" component={UserEditPage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
+            <Route path="/user-upload-image" component={UserUploadImage} />
+            <Route
+              path="/user-edit-creditcard"
+              component={UserCreditCardPage}
+            />
             <Route path="/user-edit-creditors" component={UserCreditCardPage} />
             <Route path="/credit-card-start" component={CreditCardStartPage} />
             <Route
@@ -110,7 +117,7 @@ function App() {
             <Route path="/orders" component={OrdersPage} />
             <Route path="/order-pay" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
-            <Route path="/add-to-cart" component={AddToCartPage} />
+            <Route path="/add-to-cart/:id" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
             <Redirect to="/" component={HomePage} />

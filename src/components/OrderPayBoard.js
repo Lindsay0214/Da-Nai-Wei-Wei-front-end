@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getTotalPriceAmount } from '../api';
 
 const OrderBoard = () => {
+  const [data, setData] = useState(0);
+  useEffect(() => {
+    (async function() {
+      const result = await getTotalPriceAmount();
+      setData(result.data);
+      // console.log(result.data);
+    })();
+  }, []);
   return (
-    <>
+    <div className="h-auto">
+      {/* progress bar  start */}
       <div className="pb-14 lg:p-20 bg-yellow-lightYellow">
         <ul className="flex justify-around w-full mx-auto">
           <li className="relative w-1/3 text-xs text-center lg:text-base nav-item before:process-before text-brown-default">
@@ -16,36 +27,34 @@ const OrderBoard = () => {
           </li>
         </ul>
       </div>
-      <div className="absolute w-full h-full bg-yellow-lightYellow">
-        <div className="w-5/6 h-auto pb-10 m-auto bg-white rounded-lg lg:w-8/12 lg:h-5/6">
-          <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
-            訂單完成
-          </h1>
-          <div className="flex">
-            <div className="flex justify-start w-10 h-10 mt-6 bg-cover rounded-full ml-9 lg:w-20 lg:h-20 lg:mt-24 lg:ml-32 bg-logo"></div>
-            <p className="h-6 mt-8 ml-3.5 mb-10 text-base lg:mt-32 lg:ml-6 lg:text-xl lg:mb-28">
-              王小明
-            </p>
+      {/* container start */}
+      <div className="w-full h-auto bg-yellow-lightYellow">
+        {/* board start */}
+        <div className="h-auto pb-10 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
+          {/* div */}
+          <div className="tracking-wider">
+            <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
+              訂購完成
+            </div>
+            <div className="flex flex-col w-4/5 mx-auto mt-8 leading-8 md:leading-10 md:text-xl text-md ">
+              <div>訂購人：{data.nickname}</div>
+              <div>電子信箱：{data.email}</div>
+              <div>訂單編號: No.{data.order_id}</div>
+              <div>飲料總數量: {data.item_count} 杯</div>
+              <div>總金額: {data.total_price} 元</div>
+            </div>
           </div>
-          <div className="w-10/12 lg:w-9/12 p-2.5 m-auto rounded-lg bg-yellow-deepYellow h-1/5">
-            <p className="m-auto text-white lg:p-7">鮮奶紅茶</p>
-            <p className="text-white lg:pl-7">
-              大杯熱 / 熱 / 標準甜 / $55 / 1 份
-            </p>
+          <div className="flex flex-col "></div>
+          <div className="flex justify-end mr-12 ">
+            <Link to="/">
+              <button className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow ">
+                回到首頁
+              </button>
+            </Link>
           </div>
         </div>
-        {/* button */}
-        <div className="flex justify-end pr-10 -my-14 lg:pr-40">
-          <Link
-            className="block w-56 h-10 px-2 py-2 mt-20 ml-56 text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow md:w-28 md:mr-8 lg:mr-40"
-            to="/"
-          >
-            回首頁
-          </Link>
-        </div>
-        {/* button end */}
       </div>
-    </>
+    </div>
   );
 };
 export default OrderBoard;

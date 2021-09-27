@@ -31,6 +31,7 @@ const LoginPage = () => {
               placeholder="電子信箱"
               className="flex-col p-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
               value={email}
+              type="text"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -39,6 +40,7 @@ const LoginPage = () => {
               placeholder="密碼"
               className="p-2 mt-4 font-light rounded-lg w-60 md:w-80 bg-gray-input"
               value={password}
+              type="password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
