@@ -23,7 +23,7 @@ const HomePageStore = ({ data, store }) => {
       <span className="text-lg ">{store.brandName}</span>
       <div className="flex text-sm">
         <div className="w-auto h-auto px-2 py-1 my-3 bg-white rounded-lg">
-          {data.time}
+          {store.isOpen}
         </div>
         <div className="w-auto h-auto px-2 py-1 my-3 ml-4 bg-white rounded-lg">
           {data.distance}

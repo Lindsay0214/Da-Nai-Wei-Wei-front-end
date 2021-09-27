@@ -15,7 +15,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'prettier/prettier': 'error',
-    complexity: ['error', { max: 5 }],
+    complexity: ['error', { max: 20 }],
     'default-param-last': 'error',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/prop-types': 0,

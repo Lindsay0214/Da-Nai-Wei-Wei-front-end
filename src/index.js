@@ -2,8 +2,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import App from './App/App';
+import { interceptor } from './api';
 import store from './store';
 
+interceptor(store);
 ReactDOM.render(
   <Provider store={store}>
     <App />
