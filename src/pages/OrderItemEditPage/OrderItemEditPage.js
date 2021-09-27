@@ -6,6 +6,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const OrderItemEditPage = () => {
   const { id } = useParams();
+  const history = useHistory();
   const [data, setData] = useState({
     ice: '',
     order_item_id: 0,
@@ -15,29 +16,26 @@ const OrderItemEditPage = () => {
     sweetness: '',
     quantity: 0
   });
-  const history = useHistory();
-  useEffect(() => {
-    (async function() {
-      const result = await getSingleOrderItem(id);
-      const {
-        ice,
-        order_item_id,
-        price,
-        productName,
-        size,
-        sweetness,
-        quantity
-      } = result.data.data;
-      setData({
-        ice,
-        order_item_id,
-        price,
-        productName,
-        size,
-        sweetness,
-        quantity
-      });
-    })();
+  useEffect(async () => {
+    const result = await getSingleOrderItem(id);
+    const {
+      ice,
+      order_item_id,
+      price,
+      productName,
+      size,
+      sweetness,
+      quantity
+    } = result.data.data;
+    setData({
+      ice,
+      order_item_id,
+      price,
+      productName,
+      size,
+      sweetness,
+      quantity
+    });
   }, []);
   function handleChangeSize(size) {
     setData(() => {
@@ -60,7 +58,7 @@ const OrderItemEditPage = () => {
   const handleMinus = () => {
     setData({ ...data, quantity: data.quantity - 1 });
   };
-  const handleClick = async () => {
+  const handleSubmit = async () => {
     const payload = {
       ice: data.ice,
       sweetness: data.sweetness,
@@ -73,7 +71,7 @@ const OrderItemEditPage = () => {
       detail_id,
       quantity: data.quantity
     };
-    const result2 = await updateOrderItem(payload2);
+    await updateOrderItem(payload2);
     history.push('/order');
   };
   return (
@@ -237,7 +235,7 @@ const OrderItemEditPage = () => {
                 <button
                   className="px-8 py-2 m-2 mt-12 ml-20 text-white duration-500 ease-in-out border rounded-lg border-yellow-deepYellow md:ml-24 bg-yellow-deepYellow md:px-8 hover:hover "
                   type="button"
-                  onClick={handleClick}
+                  onClick={handleSubmit}
                 >
                   確認
                   {/* <a href="#/order">確認</a> */}
