@@ -19,6 +19,8 @@ export const addProduct = (payload) =>
 export const getProduct = (id) => instance.get(`/products/${id}`, config);
 export const updateProduct = (id, payload) =>
   instance.patch(`/products/${id}`, payload, config);
+export const getShopProducts = (userId) =>
+  instance.get(`/products-store/${userId}`, config);
 
 // admin
 export const getAllShop = () => instance.get('/shops', config);
@@ -34,9 +36,13 @@ export const login = (payload) =>
   instance.post('/users/login', payload, config);
 export const getAllInfo = () => instance.get('/users', config);
 export const getMyInfo = () => instance.get('/user', config);
+export const getShops = () => instance.get('/users-shops', config);
+
 export const updateMyInfo = (payload) =>
   instance.patch('/user', payload, config);
 export const getMe = () => instance.get('/users/me', config);
+export const updateURL = (payload) =>
+  instance.patch('/user-URL', payload, config);
 
 // set new info
 export const newNickName = (payload) =>

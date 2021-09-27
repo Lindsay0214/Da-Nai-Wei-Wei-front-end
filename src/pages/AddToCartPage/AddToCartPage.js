@@ -1,24 +1,37 @@
 /* eslint-disable  */
-import { useState, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import { getDetailId, addOrderItem, addShoppingCart } from '../../api';
+import {
+  getDetailId,
+  addOrderItem,
+  addShoppingCart,
+  getProduct
+} from '../../api';
 
 const AddToCartPage = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    (async function() {
+      const result = await getProduct(id);
+      setProduct(result.data.product);
+    })();
+  }, []);
   const history = useHistory();
   const detail = useRef({
     size: '',
     sweetness: '',
     ice: ''
   });
-  function handleChangeSize(e) {
-    detail.current.size = e.target.value;
+  function handleChangeSize(size) {
+    detail.current.size = size;
   }
-  function handleChangeSweetness(e) {
-    detail.current.sweetness = e.target.value;
+  function handleChangeSweetness(sweetness) {
+    detail.current.sweetness = sweetness;
   }
-  function handleChangeIce(e) {
-    detail.current.ice = e.target.value;
+  function handleChangeIce(ice) {
+    detail.current.ice = ice;
   }
   const [quantity, setQuantity] = useState(1);
   const handlePlus = () => {
@@ -36,13 +49,12 @@ const AddToCartPage = () => {
       try {
         const result = await getDetailId(detail.current);
         const detailId = result.data.detail_id;
-        const productId = 1;
         const payload = {
           detail_id: detailId,
           quantity,
-          product_id: productId
+          product_id: id
         };
-        const result2 = await addOrderItem(payload);
+        await addOrderItem(payload);
         history.push('/order');
       } catch (error) {
         console.log(error);
@@ -53,11 +65,16 @@ const AddToCartPage = () => {
   }
   return (
     <div className="flex items-center justify-center bg-yellow-lightYellow">
-      <div className="pb-10 bg-white rounded-lg w-80 md:w-96">
-        <div className="flex items-center justify-around mt-8 ">
+      <div className="pb-10 mt-10 bg-white rounded-lg w-80 md:w-96">
+        <div className="flex items-center mt-8 justify-evenly">
           <div className="h-20 bg-gray-200 w-28 md:w-32 md:h-24"></div>
-          <div className="flex items-center justify-center mr-2 text-sm md:text-base md:mr-10">
-            烏龍奶綠
+          <div className="space-y-3">
+            <div className="flex items-center text-sm md:text-base md:mr-10">
+              品名：{product.name}
+            </div>
+            <div className="flex items-center text-sm md:text-base md:mr-10">
+              價格：{product.price} 元 / 杯
+            </div>
           </div>
         </div>
         <div className="m-10 mx-12 text-xs md:mx-12 md:text-base">
@@ -66,9 +83,8 @@ const AddToCartPage = () => {
               <input
                 type="radio"
                 className="mr-2 cursor-pointer"
-                value="大杯"
                 name="size"
-                onChange={handleChangeSize}
+                onChange={() => handleChangeSize('大杯')}
               ></input>
               大杯
             </label>
@@ -77,8 +93,7 @@ const AddToCartPage = () => {
                 type="radio"
                 className="mr-2 cursor-pointer"
                 name="size"
-                value="中杯"
-                onChange={handleChangeSize}
+                onChange={() => handleChangeSize('中杯')}
               ></input>
               中杯
             </label>
@@ -88,30 +103,27 @@ const AddToCartPage = () => {
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeSweetness}
+                  onChange={() => handleChangeSweetness('正常糖')}
                   name="sweetness"
                   className="mr-2 cursor-pointer"
-                  value="正常糖"
                 ></input>
                 正常糖
               </label>
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeSweetness}
+                  onChange={() => handleChangeSweetness('少糖')}
                   className="mr-2 cursor-pointer"
                   name="sweetness"
-                  value="少糖"
                 ></input>
                 少糖
               </label>
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeSweetness}
+                  onChange={() => handleChangeSweetness('半糖')}
                   className="mr-2 cursor-pointer"
                   name="sweetness"
-                  value="半糖"
                 ></input>
                 半糖
               </label>
@@ -120,20 +132,18 @@ const AddToCartPage = () => {
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeSweetness}
+                  onChange={() => handleChangeSweetness('微糖')}
                   className="mr-2 cursor-pointer"
                   name="sweetness"
-                  value="微糖"
                 ></input>
                 微糖
               </label>
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeSweetness}
+                  onChange={() => handleChangeSweetness('無糖')}
                   className="mr-2 cursor-pointer"
                   name="sweetness"
-                  value="無糖"
                 ></input>
                 無糖
               </label>
@@ -144,30 +154,27 @@ const AddToCartPage = () => {
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeIce}
+                  onChange={() => handleChangeIce('正常冰')}
                   className="mr-2 cursor-pointer"
                   name="ice"
-                  value="正常冰"
                 ></input>
                 正常冰
               </label>
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeIce}
+                  onChange={() => handleChangeIce('少冰')}
                   className="mr-2 cursor-pointer"
                   name="ice"
-                  value="少冰"
                 ></input>
                 少冰
               </label>
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeIce}
+                  onChange={() => handleChangeIce('微冰')}
                   className="mr-2 cursor-pointer"
                   name="ice"
-                  value="微冰"
                 ></input>
                 微冰
               </label>
@@ -176,10 +183,9 @@ const AddToCartPage = () => {
               <label className="cursor-pointer">
                 <input
                   type="radio"
-                  onChange={handleChangeIce}
+                  onChange={() => handleChangeIce('去冰')}
                   className="mr-2 cursor-pointer"
                   name="ice"
-                  value="去冰"
                 ></input>
                 去冰
               </label>

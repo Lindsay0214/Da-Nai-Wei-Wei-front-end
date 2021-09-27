@@ -7,13 +7,13 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 const OrderItemEditPage = () => {
   const { id } = useParams();
   const [data, setData] = useState({
-    ice: null,
-    order_item_id: null,
-    price: null,
-    productName: null,
-    size: null,
-    sweetness: null,
-    quantity: null
+    ice: '',
+    order_item_id: 0,
+    price: 0,
+    productName: '',
+    size: '',
+    sweetness: '',
+    quantity: 0
   });
   const history = useHistory();
   useEffect(() => {
@@ -39,14 +39,20 @@ const OrderItemEditPage = () => {
       });
     })();
   }, []);
-  function handleChangeSize(e) {
-    setData({ ...data, size: e.target.value });
+  function handleChangeSize(size) {
+    setData(() => {
+      return { ...data, size };
+    });
   }
-  function handleChangeSweetness(e) {
-    setData({ ...data, sweetness: e.target.value });
+  function handleChangeSweetness(sweetness) {
+    setData(() => {
+      return { ...data, sweetness };
+    });
   }
-  function handleChangeIce(e) {
-    setData({ ...data, ice: e.target.value });
+  function handleChangeIce(ice) {
+    setData(() => {
+      return { ...data, ice };
+    });
   }
   const handlePlus = () => {
     setData({ ...data, quantity: data.quantity + 1 });
@@ -91,10 +97,9 @@ const OrderItemEditPage = () => {
                     <input
                       type="radio"
                       className="mr-2"
-                      value="大杯"
                       name="size"
                       checked={data.size === '大杯'}
-                      onChange={handleChangeSize}
+                      onChange={() => handleChangeSize('大杯')}
                     ></input>
                     大杯
                   </label>
@@ -103,9 +108,8 @@ const OrderItemEditPage = () => {
                       type="radio"
                       className="mr-2"
                       name="size"
-                      value="中杯"
                       checked={data.size === '中杯'}
-                      onChange={handleChangeSize}
+                      onChange={() => handleChangeSize('中杯')}
                     ></input>
                     中杯
                   </label>
@@ -115,10 +119,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeSweetness}
+                        onChange={() => handleChangeSweetness('正常糖')}
                         name="sweetness"
                         className="mr-2"
-                        value="正常糖"
                         checked={data.sweetness === '正常糖'}
                       ></input>
                       正常糖
@@ -126,10 +129,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeSweetness}
+                        onChange={() => handleChangeSweetness('少糖')}
                         className="mr-2"
                         name="sweetness"
-                        value="少糖"
                         checked={data.sweetness === '少糖'}
                       ></input>
                       少糖
@@ -137,10 +139,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeSweetness}
+                        onChange={() => handleChangeSweetness('半糖')}
                         className="mr-2"
                         name="sweetness"
-                        value="半糖"
                         checked={data.sweetness === '半糖'}
                       ></input>
                       半糖
@@ -150,10 +151,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeSweetness}
+                        onChange={() => handleChangeSweetness('微糖')}
                         className="mr-2"
                         name="sweetness"
-                        value="微糖"
                         checked={data.sweetness === '微糖'}
                       ></input>
                       微糖
@@ -161,10 +161,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeSweetness}
+                        onChange={() => handleChangeSweetness('無糖')}
                         className="mr-2"
                         name="sweetness"
-                        value="無糖"
                         checked={data.sweetness === '無糖'}
                       ></input>
                       無糖
@@ -176,7 +175,7 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeIce}
+                        onChange={() => handleChangeIce('正常冰')}
                         className="mr-2"
                         name="ice"
                         value="正常冰"
@@ -187,10 +186,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeIce}
+                        onChange={() => handleChangeIce('少冰')}
                         className="mr-2"
                         name="ice"
-                        value="少冰"
                         checked={data.ice === '少冰'}
                       ></input>
                       少冰
@@ -198,10 +196,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeIce}
+                        onChange={() => handleChangeIce('微冰')}
                         className="mr-2"
                         name="ice"
-                        value="微冰"
                         checked={data.ice === '微冰'}
                       ></input>
                       微冰
@@ -211,10 +208,9 @@ const OrderItemEditPage = () => {
                     <label>
                       <input
                         type="radio"
-                        onChange={handleChangeIce}
+                        onChange={() => handleChangeIce('去冰')}
                         className="mr-2"
                         name="ice"
-                        value="去冰"
                         checked={data.ice === '去冰'}
                       ></input>
                       去冰
@@ -223,10 +219,15 @@ const OrderItemEditPage = () => {
                 </div>
                 <div className="flex items-center pb-4 border-b border-black">
                   <span className="inline-block my-auto ml-1 mr-5 ">數量</span>
-                  <FaMinus
-                    className="mx-2 cursor-pointer"
-                    onClick={handleMinus}
-                  ></FaMinus>
+                  {data.quantity > 0 && (
+                    <FaMinus
+                      className="mx-2 cursor-pointer"
+                      onClick={handleMinus}
+                    ></FaMinus>
+                  )}
+                  {data.quantity <= 0 && (
+                    <FaMinus className="mx-2 cursor-pointer"></FaMinus>
+                  )}
                   <span className="mx-2">{data.quantity}</span>
                   <FaPlus
                     className="mx-2 cursor-pointer"
@@ -243,15 +244,6 @@ const OrderItemEditPage = () => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="ml-56 md:ml-72">
-            <a
-              className="bg-yellow-deepYellow ml-20 m-2 text-white  md:px-8 px-4 py-1.5 rounded-lg hover:hover"
-              type="button"
-              href="#/order"
-            >
-              確認
-            </a>
           </div>
         </div>
       </div>

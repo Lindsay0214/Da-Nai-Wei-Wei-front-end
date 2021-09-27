@@ -24,7 +24,7 @@ const DrinkDetail = ({
           {size} / {ice} / {sweetness}
         </p>
         <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          $ {price} / {quantity} 份 /{id}
+          $ {price} / {quantity} 份
         </p>
       </div>
       <div id={id}>

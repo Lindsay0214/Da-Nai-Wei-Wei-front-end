@@ -30,7 +30,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "craco start && react-scripts start --host 0.0.0.0",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
