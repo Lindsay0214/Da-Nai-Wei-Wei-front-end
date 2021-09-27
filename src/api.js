@@ -79,7 +79,9 @@ export const newNickName = (payload) => instance.post('/users/edit', payload);
 
 // productDetail
 export const getDetailId = (payload) =>
-  instance.post('/product-details', payload);
+  instance.get(
+    `/product-details/${payload.size}/${payload.sweetness}/${payload.ice}`
+  );
 export const addOrderItem = (payload) => instance.post('/order-items', payload);
 export const getOrderItem = () => instance.get('/order-items');
 export const deleteOrderItem = (payload) =>

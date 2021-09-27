@@ -26,7 +26,7 @@ const UserPasswordPage = () => {
           <div className="flex content-center justify-center mt-10 text-4xl">
             修改密碼
           </div>
-          <div className="flex flex-col mt-10">
+          <div className="flex flex-col">
             <InputBar data="************"></InputBar>
             <InputBar data="新密碼"></InputBar>
             <button

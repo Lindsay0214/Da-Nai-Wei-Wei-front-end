@@ -4,35 +4,26 @@ import { useHistory, Link } from 'react-router-dom';
 import { getOrderItem, deleteOrderItem, updateTotalPriceAmount } from '../api';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 
-const DrinkDetail = ({
-  name,
-  quantity,
-  price,
-  size,
-  ice,
-  sweetness,
-  id,
-  handleDelete
-}) => {
+const DrinkDetail = ({ handleDelete, drink }) => {
   return (
     <div className="relative w-10/12 mb-8 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow h-1/5">
       <div className="flex flex-col justify-start leading-6 md:pl-3 md:leading-7 lg:leading-10">
         <p className="tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          {name}{' '}
+          {drink.name}{' '}
         </p>
         <p className="inline-flex w-48 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          {size} / {ice} / {sweetness}
+          {drink.size} / {drink.ice} / {drink.sweetness}
         </p>
         <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          $ {price} / {quantity} 份
+          $ {drink.price} / {drink.quantity} 份
         </p>
       </div>
-      <div id={id}>
-        <Link to={'/order-item-edit/' + id}>
+      <div>
+        <Link to={`/order-item-edit/${drink.order_item_id}`}>
           <FaEdit className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"></FaEdit>
         </Link>
         <FaTrashAlt
-          onClick={() => handleDelete(id)}
+          onClick={() => handleDelete(drink.order_item_id)}
           className="absolute text-red-500 cursor-pointer md:top-17 top-15 right-4 "
         ></FaTrashAlt>
       </div>
@@ -43,23 +34,17 @@ const OrderBoard = () => {
   const history = useHistory();
   const [change, setChange] = useState(0);
   const [drinks, setDrinks] = useState([]);
-  useEffect(() => {
-    async function sendGetOrderItem() {
-      const result = await getOrderItem();
-      setDrinks(result.data.productInfo);
-    }
-    sendGetOrderItem();
+  useEffect(async () => {
+    const result = await getOrderItem();
+    setDrinks(result.data.productInfo);
   }, [change]);
   const handleDelete = async (id) => {
     const payload = { id };
-    const result = await deleteOrderItem(payload);
+    await deleteOrderItem(payload);
     setChange(change + 1);
   };
   const handleClick = async () => {
-    await (async function() {
-      const result = await updateTotalPriceAmount();
-      console.log(result);
-    })();
+    await updateTotalPriceAmount();
     history.push('/order-check');
   };
   return (
@@ -78,14 +63,8 @@ const OrderBoard = () => {
               return (
                 <DrinkDetail
                   handleDelete={handleDelete}
-                  name={drink.name}
-                  quantity={drink.quantity}
-                  price={drink.price}
-                  size={drink.size}
-                  sweetness={drink.sweetness}
-                  ice={drink.ice}
+                  drink={drink}
                   key={drink.order_item_id}
-                  id={drink.order_item_id}
                 ></DrinkDetail>
               );
             })}

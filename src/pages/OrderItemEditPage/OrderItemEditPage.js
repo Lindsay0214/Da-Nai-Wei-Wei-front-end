@@ -6,6 +6,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const OrderItemEditPage = () => {
   const { id } = useParams();
+  const history = useHistory();
   const [data, setData] = useState({
     ice: '',
     order_item_id: 0,
@@ -15,29 +16,26 @@ const OrderItemEditPage = () => {
     sweetness: '',
     quantity: 0
   });
-  const history = useHistory();
-  useEffect(() => {
-    (async function() {
-      const result = await getSingleOrderItem(id);
-      const {
-        ice,
-        order_item_id,
-        price,
-        productName,
-        size,
-        sweetness,
-        quantity
-      } = result.data.data;
-      setData({
-        ice,
-        order_item_id,
-        price,
-        productName,
-        size,
-        sweetness,
-        quantity
-      });
-    })();
+  useEffect(async () => {
+    const result = await getSingleOrderItem(id);
+    const {
+      ice,
+      order_item_id,
+      price,
+      productName,
+      size,
+      sweetness,
+      quantity
+    } = result.data.data;
+    setData({
+      ice,
+      order_item_id,
+      price,
+      productName,
+      size,
+      sweetness,
+      quantity
+    });
   }, []);
   function handleChangeSize(size) {
     setData(() => {
@@ -60,7 +58,7 @@ const OrderItemEditPage = () => {
   const handleMinus = () => {
     setData({ ...data, quantity: data.quantity - 1 });
   };
-  const handleClick = async () => {
+  const handleSubmit = async () => {
     const payload = {
       ice: data.ice,
       sweetness: data.sweetness,
@@ -73,18 +71,18 @@ const OrderItemEditPage = () => {
       detail_id,
       quantity: data.quantity
     };
-    const result2 = await updateOrderItem(payload2);
+    await updateOrderItem(payload2);
     history.push('/order');
   };
   return (
     <div className=" bg-yellow-lightYellow">
-      <div className="flex justify-center py-20 text-3xl text-black ">
-        編輯 order-item
+      <div className="flex justify-center text-3xl text-black lg:mt-10">
+        客製化調整
       </div>
       <div className="flex items-center justify-center ">
         <div className="flex flex-col items-center justify-center mb-20 ">
           <div className="flex">
-            <div className="w-screen m-20 bg-white rounded-lg md:w-96">
+            <div className="m-10 bg-white rounded-lg w-80 md:m-20 md:w-96">
               <div className="flex items-center justify-around mt-8 ">
                 <div className="h-20 bg-gray-200 w-28 md:w-32 md:h-24"></div>
                 <div className="flex items-center justify-center mr-2 text-sm md:text-base md:mr-10">
@@ -234,14 +232,15 @@ const OrderItemEditPage = () => {
                     onClick={handlePlus}
                   ></FaPlus>
                 </div>
-                <button
-                  className="px-8 py-2 m-2 mt-12 ml-20 text-white duration-500 ease-in-out border rounded-lg border-yellow-deepYellow md:ml-24 bg-yellow-deepYellow md:px-8 hover:hover "
-                  type="button"
-                  onClick={handleClick}
-                >
-                  確認
-                  {/* <a href="#/order">確認</a> */}
-                </button>
+                <div className="relative w-auto h-20">
+                  <button
+                    className="absolute bottom-0 right-0 w-24 h-10 p-2 text-lg text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow "
+                    type="button"
+                    onClick={handleSubmit}
+                  >
+                    確 認{/* <a href="#/order">確認</a> */}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
