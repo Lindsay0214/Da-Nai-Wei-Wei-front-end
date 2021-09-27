@@ -1,32 +1,56 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { getMyInfo, updateMyInfo } from '../../api';
 import InputBar from '../../components/InputBar';
+
+const EditInput = ({ data, shopDetail = '', setInput }) => {
+  return (
+    <div className="w-56 mx-auto my-1 lg:my-6 lg:w-96">
+      <div className="relative invisible text-gray-400 lg:mb-2 left-2 lg:visible">
+        {data}
+      </div>
+      <input
+        className="w-full py-1 pl-2 bg-gray-200 rounded-md lg:h-12"
+        type="text"
+        placeholder={data}
+        value={shopDetail}
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+      />
+    </div>
+  );
+};
 
 const UserEmailPage = () => {
   // const [userInfo, setUserInfo] = useState({});
   const [email, setEmail] = useState('');
+  const { id } = useParams();
   const history = useHistory();
 
   useEffect(async () => {
-    const result = await getMyInfo();
+    const result = await getMyInfo(id);
     if (result.data.ok !== 1) {
-      console.log('失敗');
+      // console.log('失敗');
     } else {
-      console.log('成功');
+      // console.log('成功');
     }
-    console.log('getResult', result.data.data.email);
+    // console.log('getResult', result.data.data.email);
     setEmail(result.data.data.email);
     // setUserInfo(result.data.data);
   }, []);
 
+  const handleSetEmail = (string) => {
+    setEmail(string);
+  };
+
   const handleOnClick = async () => {
-    console.log(123);
+    // console.log(123);
     const payload = {
       email
     };
-    const result = await updateMyInfo(payload);
-    console.log('updateResult', result);
+    const result = await updateMyInfo(id, payload);
+    // console.log('updateResult', result);
     history.push('/user-update');
   };
 
@@ -41,11 +65,11 @@ const UserEmailPage = () => {
             修改信箱
           </div>
           <div className="flex flex-col mt-10">
-            <InputBar
-              titleData="原信箱"
-              data={email}
-              disabled="disabled"
-            ></InputBar>
+            <EditInput
+              shopDetail={email}
+              data="原信箱"
+              setInput={handleSetEmail}
+            ></EditInput>
             <InputBar
               titleData="新信箱"
               data="新信箱"

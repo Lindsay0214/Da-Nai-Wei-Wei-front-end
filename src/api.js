@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable consistent-return */
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { setLoading } from './features/loadingSlice';
@@ -13,15 +15,12 @@ export const interceptor = (store) => {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true
   };
-  // eslint-disable-next-line no-shadow
   instance.interceptors.request.use((config) => {
-    // eslint-disable-next-line no-param-reassign
     store.dispatch(setLoading(true));
     return config;
   });
   instance.interceptors.response.use(
     (response) => {
-      // Do something with response data
       store.dispatch(setLoading(false));
       return response;
     },
@@ -37,7 +36,6 @@ export const interceptor = (store) => {
         alert('網路出了點問題，請重新連線後重整網頁');
         return;
       }
-      // eslint-disable-next-line consistent-return
       return Promise.reject(error);
     }
   );
