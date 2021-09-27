@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from 'react';
-import ImageUploading from 'react-images-uploading';
+// import ImageUploading from 'react-images-uploading';
 import { useHistory } from 'react-router';
 import { updateURL } from '../../api';
 import axios from 'axios';
 
 const UserUpdatePage = () => {
-  const imgurKey = process.env.REACT_APP_IMGUR_KEY;
+  // const imgurKey = process.env.REACT_APP_IMGUR_KEY;
   const [images, setImages] = React.useState([]);
   const maxNumber = 1; // 可以傳幾張圖片
   const onChange = async (imageList, addUpdateIndex) => {
