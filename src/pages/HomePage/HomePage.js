@@ -48,8 +48,7 @@ const HomePage = () => {
   const [shops, setShops] = useState([]);
 
   const handleChange = (e) => {
-    // setShops(e);
-    console.log('Event:', e);
+    setShops(e);
   };
 
   const data = {
@@ -74,7 +73,11 @@ const HomePage = () => {
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
           {shops.map((shop) => {
-            return <HomePageShop data={data} shop={shop} />;
+            return (
+              <Link to={`/menu/${shop.id}`}>
+                <HomePageShop data={data} shop={shop} key={shop.key} />;
+              </Link>
+            );
           })}
         </div>
       </div>

@@ -114,6 +114,11 @@ function App() {
             ) : (
               <Route path="/order" component={NoPermissionPage} />
             )}
+            {user ? (
+              <Route path="/orders" component={OrdersPage} />
+            ) : (
+              <Route path="/orders" component={NoPermissionPage} />
+            )}
             <Route path="/orders" component={OrdersPage} />
             <Route path="/order-pay" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
