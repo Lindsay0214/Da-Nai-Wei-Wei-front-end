@@ -1,21 +1,24 @@
-import { FaStar, FaShoppingCart, FaGulp } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getShopProducts, getShop } from '../../api';
 
-const Drink = () => {
-  return <FaGulp></FaGulp>;
-};
-const MenuDrink = () => {
+const MenuDrink = ({ data, title }) => {
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
-      <h2 className="p-2 text-base tracking-wide text-center">
-        {/* {data.categories} 系列 */}
+      <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
+        {title} 系列
       </h2>
-      {/* <Link to={`/add-to-cart/${data.id}`}> */}
-      <FaShoppingCart className="pl-2 text-2xl"></FaShoppingCart>
-      {/* </Link> */}
-      {/* // <div>{data.price}</div> */}
+      {data.map((drink) => {
+        return drink.categories === title ? (
+          <Link to={`/add-to-cart/${drink.id}`}>
+            <div className="flex justify-between w-56 px-5 mx-auto my-4">
+              <span className="inline-block">{drink.name}</span>
+              <span className="inline-block">{drink.price}</span>
+            </div>
+          </Link>
+        ) : null; // 不要顯示要用 null 還是 ''
+      })}
     </div>
   );
 };
@@ -26,7 +29,6 @@ const MenuPage = () => {
   const [categories, setCategories] = useState([]);
   useEffect(async () => {
     const result = await getShopProducts(id);
-    console.log(result);
     await setData(result.data.products);
     const tempArray = [];
     console.log(result.data.products);
@@ -84,8 +86,8 @@ const MenuPage = () => {
           <div className="mx-auto mt-10 md:w-160 lg:mt-20 w-min lg:w-234">
             <div className="flex flex-wrap h-auto m-auto md:space-x-10 lg:space-x-12 bg-yellow-light">
               <div></div>
-              {categories.map(() => {
-                return <MenuDrink></MenuDrink>;
+              {categories.map((title) => {
+                return <MenuDrink data={data} title={title}></MenuDrink>;
               })}
             </div>
           </div>
