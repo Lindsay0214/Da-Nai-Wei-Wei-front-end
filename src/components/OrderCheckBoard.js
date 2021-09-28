@@ -1,4 +1,5 @@
 /* eslint-disable func-names */
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
@@ -20,23 +21,23 @@ const OrderBoard = () => {
   // 取得 is_paid 結果
   const handleGetIsPaidClick = () => {
     refetch();
-    console.log(data);
     dispatch(setLoading(true));
-    if (isSuccess) {
-      console.log(data);
-      history.push('/order-pay');
-      dispatch(setLoading(false));
-    }
   };
 
   useEffect(() => {
+    if (isSuccess) {
+      console.log(data);
+      console.log(isSuccess);
+      history.push('/order-pay');
+      dispatch(setLoading(false));
+    }
     // eslint-disable-next-line prettier/prettier
     (async function() {
       const result = await getTotalPriceAmount();
       setOrderData(result.data);
       // console.log(result.data);
     })();
-  }, []);
+  }, [data, isSuccess]);
   return (
     <div className="h-auto">
       {/* progress bar  start */}
