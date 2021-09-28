@@ -88,7 +88,10 @@ function App() {
               <Route path="/products/:id" component={UpdateProductPage} />
             )}
             <Route path="/" exact component={HomePage} />
-            <Route path="/menu/:id" component={MenuPage} />
+            <Route
+              path="/menu/:id/:brandName/:rating/:address"
+              component={MenuPage}
+            />
             {/* <Route path="*" component={NoFoundPage} /> */}
             {/* user */}
             <Route path="/login" component={LoginPage} />
@@ -127,9 +130,7 @@ function App() {
             <Route path="/order-pay" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/add-to-cart/:id" component={AddToCartPage} />
-            <QueryClientProvider client={queryClient}>
-              <Route path="/order-check" component={OrderCheckPage} />
-            </QueryClientProvider>
+            <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
             <Redirect to="/" component={HomePage} />
           </Switch>

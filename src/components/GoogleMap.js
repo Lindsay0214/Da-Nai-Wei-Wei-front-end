@@ -64,8 +64,6 @@ function GoogleMap({ handleChange }) {
               }
             });
           });
-          console.log('results', results);
-          console.log(data, shopData);
           handleChange(data);
         }
       });

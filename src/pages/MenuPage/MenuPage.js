@@ -1,7 +1,7 @@
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getShopProducts, getShop } from '../../api';
+import { getShopProducts, getShop, logoutApi } from '../../api';
 
 const MenuDrink = ({ data, title }) => {
   return (
@@ -23,7 +23,8 @@ const MenuDrink = ({ data, title }) => {
   );
 };
 const MenuPage = () => {
-  const { id } = useParams();
+  const { id, brandName, rating, address } = useParams();
+  const ratingArray = new Array(Math.floor(rating)).fill('star');
   const [data, setData] = useState([]);
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -31,14 +32,11 @@ const MenuPage = () => {
     const result = await getShopProducts(id);
     await setData(result.data.products);
     const tempArray = [];
-    console.log(result.data.products);
     for (let i = 0; i < result.data.products.length; i += 1) {
       if (!tempArray.includes(result.data.products[i].categories)) {
         tempArray.push(result.data.products[i].categories);
       }
     }
-    console.log(tempArray);
-    // for (let i = 0; i < result.data.products.length; i += 1) {}
     setCategories(tempArray);
     const result2 = await getShop(id);
     await setShop(result2.data.user);
@@ -59,23 +57,15 @@ const MenuPage = () => {
               </div>
               <div>
                 <div className="font-black text-black lg:text-xl">
-                  {shop.brand_name} {shop.nickname}
+                  {brandName}
                 </div>
-                <div className="flex text-white">
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
+                <div className="flex my-3 text-2xl text-white">
+                  {ratingArray.map(() => {
+                    return <FaStar className="mt-1 mr-1 " />;
+                  })}
                 </div>
-                <div className="mt-5 text-xs text-black lg:text-base ">
-                  10:30 - 20:30
-                </div>
-                <div className="text-xs text-black lg:text-base ">
-                  02-2747-5917
-                </div>
-                <div className="text-xs text-black lg:text-base ">
-                  {shop.address}
+                <div className="mt-2 text-black text-md lg:text-base">
+                  {address}
                 </div>
               </div>
             </div>
