@@ -5,6 +5,7 @@ import { getSingleOrderItem, getDetailId, updateOrderItem } from '../../api';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const OrderItemEditPage = () => {
+  console.log('orderitemeditpage');
   const { id } = useParams();
   const history = useHistory();
   const [data, setData] = useState({

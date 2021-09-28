@@ -1,28 +1,43 @@
-import { FaStar, FaShoppingCart, FaHome, FaRoad } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getShopProducts, getShop } from '../../api';
+import { getShopProducts, getShop, logoutApi } from '../../api';
 
-const MenuDrink = ({ data }) => {
+const MenuDrink = ({ data, title }) => {
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
-      <h2 className="p-2 text-base tracking-wide">{data.name}</h2>
-      <Link to={`/add-to-cart/${data.id}`}>
-        <FaHome className="pl-2 text-2xl"></FaHome>
-        <FaRoad className="pl-2 text-2xl"></FaRoad>
-        <FaShoppingCart className="pl-2 text-2xl"></FaShoppingCart>
-      </Link>
-      <div>{data.price}</div>
+      <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
+        {title} 系列
+      </h2>
+      {data.map((drink) => {
+        return drink.categories === title ? (
+          <Link to={`/add-to-cart/${drink.id}`}>
+            <div className="flex justify-between w-56 px-5 mx-auto my-4">
+              <span className="inline-block">{drink.name}</span>
+              <span className="inline-block">{drink.price}</span>
+            </div>
+          </Link>
+        ) : null; // 不要顯示要用 null 還是 ''
+      })}
     </div>
   );
 };
 const MenuPage = () => {
-  const { id } = useParams();
+  const { id, brandName, rating, address } = useParams();
+  const ratingArray = new Array(Math.floor(rating)).fill('star');
   const [data, setData] = useState([]);
   const [shop, setShop] = useState([]);
+  const [categories, setCategories] = useState([]);
   useEffect(async () => {
     const result = await getShopProducts(id);
     await setData(result.data.products);
+    const tempArray = [];
+    for (let i = 0; i < result.data.products.length; i += 1) {
+      if (!tempArray.includes(result.data.products[i].categories)) {
+        tempArray.push(result.data.products[i].categories);
+      }
+    }
+    setCategories(tempArray);
     const result2 = await getShop(id);
     await setShop(result2.data.user);
   }, []);
@@ -42,23 +57,15 @@ const MenuPage = () => {
               </div>
               <div>
                 <div className="font-black text-black lg:text-xl">
-                  {shop.brand_name} {shop.nickname}
+                  {brandName}
                 </div>
-                <div className="flex text-yellow-deepYellow">
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
-                  <FaStar className="mt-1 mr-1" />
+                <div className="flex my-3 text-2xl text-white">
+                  {ratingArray.map(() => {
+                    return <FaStar className="mt-1 mr-1 " />;
+                  })}
                 </div>
-                <div className="mt-5 text-xs text-black lg:text-base ">
-                  10:30 - 20:30
-                </div>
-                <div className="text-xs text-black lg:text-base ">
-                  02-2747-5917
-                </div>
-                <div className="text-xs text-black lg:text-base ">
-                  {shop.address}
+                <div className="mt-2 text-black text-md lg:text-base">
+                  {address}
                 </div>
               </div>
             </div>
@@ -69,8 +76,8 @@ const MenuPage = () => {
           <div className="mx-auto mt-10 md:w-160 lg:mt-20 w-min lg:w-234">
             <div className="flex flex-wrap h-auto m-auto md:space-x-10 lg:space-x-12 bg-yellow-light">
               <div></div>
-              {data.map((product) => {
-                return <MenuDrink key={product.id} data={product}></MenuDrink>;
+              {categories.map((title) => {
+                return <MenuDrink data={data} title={title}></MenuDrink>;
               })}
             </div>
           </div>
