@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 const MyPositionMarker = ({ text }) => <div>{text}</div>;
-// const KEY = process.env.REACT_APP_GOOGLE_KEY;
+const KEY = process.env.REACT_APP_GOOGLE_KEY;
 function GoogleMap({ handleChange }) {
   const [mapApiLoaded, setMapApiLoaded] = useState(false);
   const [mapInstance, setMapInstance] = useState(null);
@@ -68,7 +68,7 @@ function GoogleMap({ handleChange }) {
     <div style={{ display: 'none' }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: 'AIzaSyB4YldYNZC09oBrLDLGOzyVs10MzejVrc8',
+          key: KEY,
           libraries: ['places']
         }}
         // onBoundsChange={handleCenterChange}

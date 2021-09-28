@@ -33,7 +33,7 @@ const Navbar = () => {
     <>
       <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
         {/* after:border lg:after:border-none */}
-        <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
+        <div className="container flex items-center content-around justify-between mx-auto space-x-5">
           {/* logo */}
           <div className="flex">
             <Link
