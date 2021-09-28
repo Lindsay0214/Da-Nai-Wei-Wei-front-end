@@ -41,14 +41,14 @@ function GoogleMap({ handleChange }) {
       const service = new mapApi.places.PlacesService(mapInstance);
       const request = {
         location: myPosition,
-        radius: 90000,
-        name: ['麻古茶坊', '50嵐']
+        radius: 9000,
+        name: ['CoCo', '50嵐', '迷客夏']
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {
           const data = [];
           getShopsResult.data.data.forEach((item) => {
-            shopData.push({ id: item.id, brandName: item.brand_name });
+            shopData.push({ id: item.user_id, brandName: item.brand_name });
           });
           results.forEach((item) => {
             shopData.forEach((target) => {
@@ -81,7 +81,7 @@ function GoogleMap({ handleChange }) {
     <div style={{ display: 'none' }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: 'AIzaSyBVNVuasGv7fRAieoJKbsV7j5Rp-v5LEIg',
+          key: KEY,
           libraries: ['places']
         }}
         // onBoundsChange={handleCenterChange}

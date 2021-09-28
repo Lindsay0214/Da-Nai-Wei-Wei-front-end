@@ -1,7 +1,6 @@
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getTotalPriceAmount, getIsPaid } from '../api';

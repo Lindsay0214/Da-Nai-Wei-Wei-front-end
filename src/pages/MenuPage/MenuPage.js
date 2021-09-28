@@ -1,18 +1,21 @@
-import { FaStar, FaShoppingCart, FaHome, FaRoad } from 'react-icons/fa';
+import { FaStar, FaShoppingCart, FaGulp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getShopProducts, getShop } from '../../api';
 
-const MenuDrink = ({ data }) => {
+const Drink = () => {
+  return <FaGulp></FaGulp>;
+};
+const MenuDrink = () => {
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
-      <h2 className="p-2 text-base tracking-wide">{data.name}</h2>
-      <Link to={`/add-to-cart/${data.id}`}>
-        <FaHome className="pl-2 text-2xl"></FaHome>
-        <FaRoad className="pl-2 text-2xl"></FaRoad>
-        <FaShoppingCart className="pl-2 text-2xl"></FaShoppingCart>
-      </Link>
-      <div>{data.price}</div>
+      <h2 className="p-2 text-base tracking-wide text-center">
+        {/* {data.categories} 系列 */}
+      </h2>
+      {/* <Link to={`/add-to-cart/${data.id}`}> */}
+      <FaShoppingCart className="pl-2 text-2xl"></FaShoppingCart>
+      {/* </Link> */}
+      {/* // <div>{data.price}</div> */}
     </div>
   );
 };
@@ -20,9 +23,21 @@ const MenuPage = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [shop, setShop] = useState([]);
+  const [categories, setCategories] = useState([]);
   useEffect(async () => {
     const result = await getShopProducts(id);
+    console.log(result);
     await setData(result.data.products);
+    const tempArray = [];
+    console.log(result.data.products);
+    for (let i = 0; i < result.data.products.length; i += 1) {
+      if (!tempArray.includes(result.data.products[i].categories)) {
+        tempArray.push(result.data.products[i].categories);
+      }
+    }
+    console.log(tempArray);
+    // for (let i = 0; i < result.data.products.length; i += 1) {}
+    setCategories(tempArray);
     const result2 = await getShop(id);
     await setShop(result2.data.user);
   }, []);
@@ -44,7 +59,7 @@ const MenuPage = () => {
                 <div className="font-black text-black lg:text-xl">
                   {shop.brand_name} {shop.nickname}
                 </div>
-                <div className="flex text-yellow-deepYellow">
+                <div className="flex text-white">
                   <FaStar className="mt-1 mr-1" />
                   <FaStar className="mt-1 mr-1" />
                   <FaStar className="mt-1 mr-1" />
@@ -69,8 +84,8 @@ const MenuPage = () => {
           <div className="mx-auto mt-10 md:w-160 lg:mt-20 w-min lg:w-234">
             <div className="flex flex-wrap h-auto m-auto md:space-x-10 lg:space-x-12 bg-yellow-light">
               <div></div>
-              {data.map((product) => {
-                return <MenuDrink key={product.id} data={product}></MenuDrink>;
+              {categories.map(() => {
+                return <MenuDrink></MenuDrink>;
               })}
             </div>
           </div>
