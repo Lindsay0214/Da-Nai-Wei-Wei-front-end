@@ -55,7 +55,6 @@ function App() {
   useEffect(() => {
     // 應該要有 cookie 才做
     if (document.cookie) {
-      console.log(123);
       dispatch(getMe());
     }
   }, []);
@@ -64,7 +63,6 @@ function App() {
     <>
       {isLoading && <Loading />}
       <Router>
-        {/* {console.log('首頁：', user)} */}
         <ToastContainer />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
@@ -87,7 +85,10 @@ function App() {
               <Route path="/products/:id" component={UpdateProductPage} />
             )}
             <Route path="/" exact component={HomePage} />
-            <Route path="/menu/:id" component={MenuPage} />
+            <Route
+              path="/menu/:id/:brandName/:rating/:address"
+              component={MenuPage}
+            />
             {/* <Route path="*" component={NoFoundPage} /> */}
             {/* user */}
             <Route path="/login" component={LoginPage} />

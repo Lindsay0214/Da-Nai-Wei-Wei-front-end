@@ -72,7 +72,10 @@ const HomePage = () => {
           <div></div>
           {shops.map((shop) => {
             return (
-              <Link to={`/menu/${shop.id}`} key={shop.key}>
+              <Link
+                to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
+                key={shop.key}
+              >
                 <HomePageShop data={data} shop={shop} />
               </Link>
             );

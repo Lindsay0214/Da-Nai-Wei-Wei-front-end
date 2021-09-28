@@ -42,14 +42,14 @@ function GoogleMap({ handleChange }) {
       const request = {
         location: myPosition,
         radius: 900000,
-        name: ['迷客夏', '麻古茶坊']
+        name: ['麻古茶坊', '50嵐', '迷客夏']
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {
           const data = [];
           getShopsResult.data.data.forEach((item) => {
             shopData.push({
-              id: item.id,
+              id: item.user_id,
               brandName: item.brand_name,
               URL: item.URL
             });
@@ -69,8 +69,6 @@ function GoogleMap({ handleChange }) {
               }
             });
           });
-          console.log('results', results);
-          console.log(data, shopData);
           handleChange(data);
         }
       });

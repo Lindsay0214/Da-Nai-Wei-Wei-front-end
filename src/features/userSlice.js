@@ -74,7 +74,8 @@ export const getMe = () => async (dispatch) => {
     if (result.data.ok === 1) {
       const data = {
         email: result.data.email,
-        role: result.data.role
+        role: result.data.role,
+        nickname: result.data.nickname
       };
       dispatch(setMe(data));
     }
