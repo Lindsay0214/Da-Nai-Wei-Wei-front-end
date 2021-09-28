@@ -5,10 +5,10 @@ import { getShops } from '../api';
 
 const MyPositionMarker = ({ text }) => <div>{text}</div>;
 const KEY = process.env.REACT_APP_GOOGLE_KEY;
-let getShopsResult;
-const shopData = [];
 
 function GoogleMap({ handleChange }) {
+  let getShopsResult = null;
+  const shopData = [];
   const [mapApiLoaded, setMapApiLoaded] = useState(false);
   const [mapInstance, setMapInstance] = useState(null);
   const [mapApi, setMapApi] = useState(null);
@@ -41,14 +41,18 @@ function GoogleMap({ handleChange }) {
       const service = new mapApi.places.PlacesService(mapInstance);
       const request = {
         location: myPosition,
-        radius: 90000,
-        name: ['麻古茶坊', '50嵐']
+        radius: 900000,
+        name: ['迷客夏', '麻古茶坊']
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {
           const data = [];
           getShopsResult.data.data.forEach((item) => {
-            shopData.push({ id: item.id, brandName: item.brand_name });
+            shopData.push({
+              id: item.id,
+              brandName: item.brand_name,
+              URL: item.URL
+            });
           });
           results.forEach((item) => {
             shopData.forEach((target) => {
@@ -59,7 +63,8 @@ function GoogleMap({ handleChange }) {
                   brandName: item.name,
                   rating: item.rating,
                   address: item.vicinity,
-                  isOpen: item.business_status
+                  isOpen: item.business_status,
+                  URL: target.URL
                 });
               }
             });
@@ -81,7 +86,7 @@ function GoogleMap({ handleChange }) {
     <div style={{ display: 'none' }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: 'AIzaSyBVNVuasGv7fRAieoJKbsV7j5Rp-v5LEIg',
+          key: KEY,
           libraries: ['places']
         }}
         // onBoundsChange={handleCenterChange}

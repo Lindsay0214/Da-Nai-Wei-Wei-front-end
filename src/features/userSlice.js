@@ -36,6 +36,7 @@ export const login = (history, payload) => async (dispatch) => {
     toast.success('登入成功', {
       position: toast.POSITION.TOP_CENTER
     });
+    document.cookie = 'isLogin=true;';
     if (result.data.role === 'consumer') {
       dispatch(setMe(data));
       history.push('/');
@@ -63,6 +64,7 @@ export const register = (history, payload) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  document.cookie = 'isLogin=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
   logoutApi();
   dispatch(setLogout());
 };
