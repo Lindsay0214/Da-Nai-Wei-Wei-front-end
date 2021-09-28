@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { selectUser, logout } from '../features/userSlice';
+import Ham from './Ham';
 
 const NavbarButton = ({ data }) => {
   return (
@@ -22,8 +21,6 @@ const Navbar = () => {
   const data3 = { name: '購物車', url: '/order' };
   const data4 = { name: '歷史訂單', url: '/orders' };
 
-  const [isActive, setActive] = useState(false);
-
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -36,7 +33,7 @@ const Navbar = () => {
     <>
       <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow">
         {/* after:border lg:after:border-none */}
-        <div className="container flex items-center content-around justify-around mx-auto lg:justify-between">
+        <div className="container flex items-center content-around justify-between mx-auto space-x-5">
           {/* logo */}
           <div className="flex">
             <Link
@@ -47,17 +44,7 @@ const Navbar = () => {
             </Link>
           </div>
           {/* mobile */}
-          <button
-            className="block lg:hidden"
-            onClick={() => setActive(!isActive)}
-          >
-            <FaBars className="absolute top-14 right-10" />
-          </button>
-          {/* <div
-            className={`lg:flex flex-grow items-center
-            ${navbarOpen ? ' flex' : ' hidden'}
-            }
-          > */}
+          <Ham />
           {/* list */}
           <ul className="flex -ml-16 space-x-8 md:space-x-0">
             <NavbarButton data={data1}></NavbarButton>

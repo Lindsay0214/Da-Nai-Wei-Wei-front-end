@@ -45,7 +45,6 @@ import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import UserUploadImage from '../pages/UserUploadImagePage';
 
-// import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
 
 function App() {

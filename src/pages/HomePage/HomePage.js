@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
-
 import store1 from '../../image/store1.png';
 // import useGeolocation from '../../components/useGeolocation';
 
@@ -48,7 +47,7 @@ const HomePage = () => {
   const [shops, setShops] = useState([]);
 
   const handleChange = (e) => {
-    // setShops(e);
+    setShops(e);
     console.log('Event:', e);
   };
 
