@@ -54,11 +54,8 @@ const OrderBoard = () => {
           </li>
         </ul>
       </div>
-      {/* container start */}
       <div className="w-full h-auto bg-yellow-lightYellow">
-        {/* board start */}
         <div className="h-auto pb-10 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
-          {/* div */}
           <div className="tracking-wider">
             <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
               訂購資訊

@@ -4,16 +4,12 @@ import { getTotalPriceAmount } from '../api';
 
 const OrderBoard = () => {
   const [data, setData] = useState(0);
-  useEffect(() => {
-    (async function() {
-      const result = await getTotalPriceAmount();
-      setData(result.data);
-      // console.log(result.data);
-    })();
+  useEffect(async () => {
+    const result = await getTotalPriceAmount();
+    setData(result.data);
   }, []);
   return (
     <div className="h-auto">
-      {/* progress bar  start */}
       <div className="pb-14 lg:p-20 bg-yellow-lightYellow">
         <ul className="flex justify-around w-full mx-auto">
           <li className="relative w-1/3 text-xs text-center lg:text-base nav-item before:process-before text-brown-default">
@@ -27,11 +23,8 @@ const OrderBoard = () => {
           </li>
         </ul>
       </div>
-      {/* container start */}
       <div className="w-full h-auto bg-yellow-lightYellow">
-        {/* board start */}
         <div className="h-auto pb-10 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
-          {/* div */}
           <div className="tracking-wider">
             <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
               訂購完成

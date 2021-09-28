@@ -1,9 +1,13 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
+import { getShops } from '../api';
 
 const MyPositionMarker = ({ text }) => <div>{text}</div>;
 const KEY = process.env.REACT_APP_GOOGLE_KEY;
+let getShopsResult;
+const shopData = [];
+
 function GoogleMap({ handleChange }) {
   const [mapApiLoaded, setMapApiLoaded] = useState(false);
   const [mapInstance, setMapInstance] = useState(null);
@@ -27,7 +31,7 @@ function GoogleMap({ handleChange }) {
           lng: position.coords.longitude
         };
         setMyPosition(request);
-        console.log('where am I:', request);
+        // console.log('where am I:', request);
       });
     }
   };
@@ -37,29 +41,36 @@ function GoogleMap({ handleChange }) {
       const service = new mapApi.places.PlacesService(mapInstance);
       const request = {
         location: myPosition,
-        radius: 90000,
-        name: ['茶涎', 'CoCo', '清心']
+        radius: 9000,
+        name: ['CoCo', '50嵐', '迷客夏']
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {
           const data = [];
-          results.forEach((e) => {
-            data.push({
-              brandName: e.name,
-              rating: e.rating,
-              address: e.vicinity,
-              isOpen: e.business_status
-            });
-            console.log('data', data);
-            console.log('results', results);
-            handleChange(data);
+          getShopsResult.data.data.forEach((item) => {
+            shopData.push({ id: item.user_id, brandName: item.brand_name });
           });
+          results.forEach((item) => {
+            shopData.forEach((target) => {
+              if (item.name.includes(target.brandName)) {
+                data.push({
+                  id: target.id,
+                  key: item.place_id,
+                  brandName: item.name,
+                  rating: item.rating,
+                  address: item.vicinity,
+                  isOpen: item.business_status
+                });
+              }
+            });
+          });
+          handleChange(data);
         }
       });
     }
   };
-
-  useEffect(() => {
+  useEffect(async () => {
+    getShopsResult = await getShops();
     geoLocation();
     findDrinks();
   }, [mapApiLoaded]);
