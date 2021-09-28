@@ -1,8 +1,6 @@
 /* eslint-disable complexity */
 import React, { useEffect } from 'react';
 
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,22 +48,21 @@ import UserUploadImage from '../pages/UserUploadImagePage';
 
 import AdminNavbar from '../components/AdminNavbar';
 
-const queryClient = new QueryClient();
-
 function App() {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   useEffect(() => {
     // 應該要有 cookie 才做
-    dispatch(getMe());
+    if (document.cookie) {
+      dispatch(getMe());
+    }
   }, []);
 
   return (
     <>
       {isLoading && <Loading />}
       <Router>
-        {/* {console.log('首頁：', user)} */}
         <ToastContainer />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}

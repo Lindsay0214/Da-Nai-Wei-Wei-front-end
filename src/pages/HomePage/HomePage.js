@@ -21,7 +21,7 @@ const HomePageShop = ({ data, shop }) => {
         <img
           // className="flex-shrink m-auto "
           className="w-full h-full "
-          src={data.URL}
+          src={shop.URL}
           alt="品牌 logo 圖片"
         ></img>
       </div>
@@ -66,7 +66,6 @@ const HomePage = () => {
           <HomePageInput key="findCategory" data="找種類..."></HomePageInput>
           <HomePageInput key="findComment" data="找評價..."></HomePageInput>
         </div>
-        {/* {console.log(state)} */}
       </div>
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
@@ -75,8 +74,9 @@ const HomePage = () => {
             return (
               <Link
                 to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
+                key={shop.key}
               >
-                <HomePageShop data={data} shop={shop} key={shop.key} />;
+                <HomePageShop data={data} shop={shop} />
               </Link>
             );
           })}
