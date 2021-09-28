@@ -1,14 +1,39 @@
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getTotalPriceAmount } from '../api';
+import { useQuery } from 'react-query';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { getTotalPriceAmount, getIsPaid } from '../api';
+import { setLoading } from '../features/loadingSlice';
 
 const OrderBoard = () => {
-  const [data, setData] = useState(0);
+  const [orderData, setOrderData] = useState(0);
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const { data, isSuccess, refetch } = useQuery(
+    'isPaid',
+    getIsPaid,
+    { retry: 10, enabled: false } // 在顯示錯誤前，將重試 10 次
+  );
+
+  // 取得 is_paid 結果
+  const handleGetIsPaidClick = () => {
+    refetch();
+    console.log(data);
+    dispatch(setLoading(true));
+    if (isSuccess) {
+      console.log(data);
+      history.push('/order-pay');
+      dispatch(setLoading(false));
+    }
+  };
+
   useEffect(() => {
+    // eslint-disable-next-line prettier/prettier
     (async function() {
       const result = await getTotalPriceAmount();
-      setData(result.data);
+      setOrderData(result.data);
       // console.log(result.data);
     })();
   }, []);
@@ -38,11 +63,11 @@ const OrderBoard = () => {
               訂購資訊
             </div>
             <div className="flex flex-col w-4/5 mx-auto mt-8 leading-8 md:leading-10 md:text-xl text-md ">
-              <div>訂購人：{data.nickname}</div>
-              <div>電子信箱：{data.email}</div>
-              <div>訂單編號: No.{data.order_id}</div>
-              <div>飲料總數量: {data.item_count} 杯</div>
-              <div>總金額: {data.total_price} 元</div>
+              <div>訂購人：{orderData.nickname}</div>
+              <div>電子信箱：{orderData.email}</div>
+              <div>訂單編號: No.{orderData.order_id}</div>
+              <div>飲料總數量: {orderData.item_count} 杯</div>
+              <div>總金額: {orderData.total_price} 元</div>
             </div>
           </div>
           <div className="flex flex-col ">
@@ -54,11 +79,12 @@ const OrderBoard = () => {
             </div>
           </div>
           <div className="flex justify-end mr-12 ">
-            <Link to="/order-pay">
-              <button className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow ">
-                結帳
-              </button>
-            </Link>
+            <button
+              onClick={handleGetIsPaidClick}
+              className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow "
+            >
+              結帳
+            </button>
           </div>
         </div>
       </div>
