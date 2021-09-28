@@ -1,5 +1,7 @@
 /* eslint-disable complexity */
 import React, { useEffect } from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,8 +47,9 @@ import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import UserUploadImage from '../pages/UserUploadImagePage';
 
-// import Hamburger from '../components/Hamburger';
 import AdminNavbar from '../components/AdminNavbar';
+
+const queryClient = new QueryClient();
 
 function App() {
   const user = useSelector(selectUser);
@@ -123,7 +126,9 @@ function App() {
             <Route path="/order-pay" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/add-to-cart/:id" component={AddToCartPage} />
-            <Route path="/order-check" component={OrderCheckPage} />
+            <QueryClientProvider client={queryClient}>
+              <Route path="/order-check" component={OrderCheckPage} />
+            </QueryClientProvider>
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
             <Redirect to="/" component={HomePage} />
           </Switch>
