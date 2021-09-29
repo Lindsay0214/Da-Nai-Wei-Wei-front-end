@@ -11,14 +11,15 @@ const OrderBoard = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
-  const aa = async () => {
+
+  const getIsPaidResponse = async () => {
     const result = await getIsPaid(orderData.order_id);
     return result;
   };
 
   const { data, refetch, isSuccess } = useQuery(
     'isPaid',
-    aa,
+    getIsPaidResponse,
     { retry: 10, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
   );
 
