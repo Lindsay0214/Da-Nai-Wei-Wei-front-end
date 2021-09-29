@@ -81,7 +81,7 @@ function GoogleMap({ handleChange }) {
     <div style={{ display: 'none' }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: 'AIzaSyBVNVuasGv7fRAieoJKbsV7j5Rp-v5LEIg',
+          key: KEY,
           libraries: ['places']
         }}
         // onBoundsChange={handleCenterChange}

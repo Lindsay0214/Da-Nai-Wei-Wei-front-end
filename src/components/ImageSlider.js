@@ -45,6 +45,7 @@ const Wrapper = styled.div`
   flex-wrap: nowrap;
   overflow-x: hidden;
   position: relative;
+  z-index: -1;
 `;
 
 const Slide = styled.div`
@@ -76,7 +77,7 @@ const ChildrenWrapper = styled.div`
 const ImageSlider = ({
   images = [],
   autoPlay = true,
-  autoPlayTime = 3000,
+  autoPlayTime = 6000,
   children,
   ...props
 }) => {
