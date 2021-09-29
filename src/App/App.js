@@ -63,7 +63,7 @@ function App() {
     <>
       {isLoading && <Loading />}
       <Router>
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
           {/* <Hamburger /> */}

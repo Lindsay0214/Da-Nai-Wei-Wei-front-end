@@ -33,7 +33,8 @@ export const interceptor = (store) => {
         const { message } = error.response.data;
         store.dispatch(setLoading(false));
         toast.error(message, {
-          position: toast.POSITION.TOP_CENTER
+          position: toast.POSITION.TOP_CENTER,
+          theme: 'colored'
         });
       }
       if (!window.navigator.onLine) {

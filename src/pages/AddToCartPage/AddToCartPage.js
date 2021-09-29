@@ -58,7 +58,8 @@ const AddToCartPage = () => {
       history.push('/order');
     } else {
       toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
-        position: toast.POSITION.TOP_CENTER
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
       });
     }
   }

@@ -24,19 +24,14 @@ const OrderBoard = () => {
     dispatch(setLoading(true));
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     if (data) {
       console.log(data);
-
       history.push('/order-pay');
       dispatch(setLoading(false));
     }
-    // eslint-disable-next-line prettier/prettier
-    (async function() {
-      const result = await getTotalPriceAmount();
-      setOrderData(result.data);
-      // console.log(result.data);
-    })();
+    const result = await getTotalPriceAmount();
+    setOrderData(result.data);
   }, [data]);
   return (
     <div className="h-auto">
