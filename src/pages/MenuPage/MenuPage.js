@@ -46,7 +46,7 @@ const MenuPage = () => {
     <>
       <div className="mx-auto mt-8 w-132">
         <div className="">
-          <div className="p-2 mx-auto rounded-lg h-44 lg:p-6 lg:w-206 md:rounded-xl md:w-160 w-72 lg:h-48 bg-yellow-deepYellow ">
+          <div className="p-2 mx-auto rounded-lg h-44 lg:p-6 lg:mt-15 lg:w-206 md:rounded-xl md:w-160 w-72 lg:h-48 bg-yellow-deepYellow ">
             <div className="flex mt-2">
               <div className="w-12 h-12 mx-5 bg-white rounded-full">
                 <img
