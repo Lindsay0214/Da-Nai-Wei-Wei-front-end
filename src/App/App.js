@@ -37,11 +37,9 @@ import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
-
 import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
 import AddProductPage from '../pages/AddProductPage';
-
 import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';

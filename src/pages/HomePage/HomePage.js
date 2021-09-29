@@ -13,11 +13,18 @@ import carousel5 from '../../image/carousel5.png';
 import carousel6 from '../../image/carousel6.png';
 // import useGeolocation from '../../components/useGeolocation';
 
-const HomePageInput = ({ data }) => {
+const HomePageInput = ({ data, setSearchShop }) => {
   return (
     <input
       placeholder={data}
       className="w-3/12 text-xs text-center rounded-lg lg:w-60 md:w-48 lg:h-10 md:mx-2 h-7 lg:rounded-md md:text-lg"
+      onChange={async (e) => {
+        if (e.target.value === '') {
+          setSearchShop(['嵐', '麻古', '迷']);
+          return;
+        }
+        setSearchShop([e.target.value]);
+      }}
     ></input>
   );
 };
@@ -52,7 +59,7 @@ const HomePageShop = ({ shop }) => {
 
 const HomePage = () => {
   const [shops, setShops] = useState([]);
-
+  const [searchShop, setSearchShop] = useState(['嵐', '麻古', '迷']);
   const handleChange = (e) => {
     setShops(e);
   };
@@ -62,10 +69,9 @@ const HomePage = () => {
     distance: '7公尺',
     image: store1
   };
-
   return (
     <>
-      <GoogleMap handleChange={handleChange} />
+      <GoogleMap handleChange={handleChange} searchShop={searchShop} />
       <ImageSlider
         images={[
           carousel1,
@@ -87,9 +93,21 @@ const HomePage = () => {
       </ImageSlider>
       <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
         <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
-          <HomePageInput key="findBrand" data="找品牌..."></HomePageInput>
-          <HomePageInput key="findCategory" data="找種類..."></HomePageInput>
-          <HomePageInput key="findComment" data="找評價..."></HomePageInput>
+          <HomePageInput
+            key="findBrand"
+            data="找品牌..."
+            setSearchShop={setSearchShop}
+          ></HomePageInput>
+          <HomePageInput
+            key="findCategory"
+            data="找種類..."
+            setSearchShop={setSearchShop}
+          ></HomePageInput>
+          <HomePageInput
+            key="findComment"
+            data="找評價..."
+            setSearchShop={setSearchShop}
+          ></HomePageInput>
         </div>
       </div>
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
