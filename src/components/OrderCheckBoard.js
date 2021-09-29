@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, QueryCache } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getTotalPriceAmount, getIsPaid } from '../api';
@@ -11,32 +11,38 @@ const OrderBoard = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const queryCache = new QueryCache();
+  const queryKey = 'isPaid';
   const { data, isSuccess, refetch } = useQuery(
-    'isPaid',
+    queryKey,
     getIsPaid,
-    { retry: 10, enabled: false } // 在顯示錯誤前，將重試 10 次
+    {
+      retry: 10,
+      enabled: false,
+      cacheTime: 0,
+      // staleTime: 0,
+      initialData: undefined
+      // refetchOnMount: true
+    } // 在顯示錯誤前，將重試 10 次
   );
 
   // 取得 is_paid 結果
-  const handleGetIsPaidClick = () => {
-    refetch();
+  const handleGetIsPaidClick = async () => {
     dispatch(setLoading(true));
+    await refetch(queryKey);
   };
 
-  useEffect(() => {
+  useEffect(async () => {
+    console.log(data);
     if (isSuccess) {
       console.log(data);
       console.log(isSuccess);
+      queryCache.clear(queryKey);
       history.push('/order-pay');
       dispatch(setLoading(false));
     }
-    // eslint-disable-next-line prettier/prettier
-    (async function() {
-      const result = await getTotalPriceAmount();
-      setOrderData(result.data);
-      // console.log(result.data);
-    })();
+    const result = await getTotalPriceAmount();
+    setOrderData(result.data);
   }, [data, isSuccess]);
   return (
     <div className="h-auto">
