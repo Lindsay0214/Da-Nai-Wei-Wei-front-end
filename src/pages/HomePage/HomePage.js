@@ -4,6 +4,13 @@ import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
 import store1 from '../../image/store1.png';
+import ImageSlider from '../../components/ImageSlider';
+import carousel1 from '../../image/carousel1.png';
+import carousel2 from '../../image/carousel2.png';
+import carousel3 from '../../image/carousel3.png';
+import carousel4 from '../../image/carousel4.png';
+import carousel5 from '../../image/carousel5.png';
+import carousel6 from '../../image/carousel6.png';
 // import useGeolocation from '../../components/useGeolocation';
 
 const HomePageInput = ({ data, setSearchShop }) => {
@@ -21,7 +28,7 @@ const HomePageInput = ({ data, setSearchShop }) => {
     ></input>
   );
 };
-const HomePageShop = ({ data, shop }) => {
+const HomePageShop = ({ shop }) => {
   return (
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
       <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
@@ -62,10 +69,28 @@ const HomePage = () => {
     distance: '7公尺',
     image: store1
   };
-  // const state = useGeolocation();
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
+      <ImageSlider
+        images={[
+          carousel1,
+          carousel2,
+          carousel3,
+          carousel4,
+          carousel5,
+          carousel6
+        ]}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            color: '#fff'
+          }}
+        ></div>
+      </ImageSlider>
       <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
         <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput

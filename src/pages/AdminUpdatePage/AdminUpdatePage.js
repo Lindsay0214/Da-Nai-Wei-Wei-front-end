@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { getAllShop, deleteShop } from '../../api';
 
 const AdminUpdatePage = () => {
-  // console.log(132);
   const [shops, setShops] = useState([]);
 
   useEffect(async () => {

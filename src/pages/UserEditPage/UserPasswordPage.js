@@ -7,7 +7,6 @@ const UserPasswordPage = () => {
 
   useEffect(async () => {
     const result = await getMyInfo();
-    // console.log('getResult', result.data.data.password);
     setPassword(result.data.data.password);
     // setUserInfo(result.data.data);
   }, []);
@@ -16,8 +15,7 @@ const UserPasswordPage = () => {
     const payload = {
       password
     };
-    const result = await getMyInfo(payload);
-    // console.log(result);
+    await getMyInfo(payload);
   };
   return (
     <div className="flex-col w-auto h-auto mt-40 bg-yellow-lightYellow">

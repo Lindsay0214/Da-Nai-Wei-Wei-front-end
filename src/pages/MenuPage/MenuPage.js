@@ -46,7 +46,7 @@ const MenuPage = () => {
     <>
       <div className="mx-auto mt-8 w-132">
         <div className="">
-          <div className="p-2 mx-auto rounded-lg lg:p-6 lg:w-206 md:rounded-xl md:w-160 w-72 h-36 lg:h-48 bg-yellow-deepYellow ">
+          <div className="p-2 mx-auto rounded-lg h-44 lg:p-6 lg:mt-15 lg:w-206 md:rounded-xl md:w-160 w-72 lg:h-48 bg-yellow-deepYellow ">
             <div className="flex mt-2">
               <div className="w-12 h-12 mx-5 bg-white rounded-full">
                 <img
@@ -56,7 +56,7 @@ const MenuPage = () => {
                 />
               </div>
               <div>
-                <div className="font-black text-black lg:text-xl">
+                <div className="font-black text-black md:mt-5 lg:text-xl">
                   {brandName}
                 </div>
                 <div className="flex my-3 text-2xl text-white">

@@ -15,8 +15,7 @@ const UserUpdatePage = () => {
       password,
       creditCard
     };
-    const result = await getMyInfo(payload);
-    // console.log(result);
+    await getMyInfo(payload);
   };
   const handleUpload = async () => {
     const payload = {
@@ -24,8 +23,7 @@ const UserUpdatePage = () => {
       password,
       creditCard
     };
-    const result = await getMyInfo(payload);
-    // console.log(result);
+    await getMyInfo(payload);
   };
   return (
     <div className="flex-col h-screen bg-yellow-lightYellow">
