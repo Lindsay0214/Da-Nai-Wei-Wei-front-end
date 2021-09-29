@@ -42,7 +42,7 @@ function GoogleMap({ handleChange }) {
       const request = {
         location: myPosition,
         radius: 900000,
-        name: ['麻古茶坊', '50嵐', '迷客夏']
+        name: ['迷客夏']
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {

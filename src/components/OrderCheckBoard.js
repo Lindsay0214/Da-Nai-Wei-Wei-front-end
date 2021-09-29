@@ -12,7 +12,7 @@ const OrderBoard = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { data, isSuccess, refetch } = useQuery(
+  const { data, refetch } = useQuery(
     'isPaid',
     getIsPaid,
     { retry: 10, enabled: false } // 在顯示錯誤前，將重試 10 次
@@ -25,9 +25,9 @@ const OrderBoard = () => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (data) {
       console.log(data);
-      console.log(isSuccess);
+
       history.push('/order-pay');
       dispatch(setLoading(false));
     }
@@ -37,7 +37,7 @@ const OrderBoard = () => {
       setOrderData(result.data);
       // console.log(result.data);
     })();
-  }, [data, isSuccess]);
+  }, [data]);
   return (
     <div className="h-auto">
       {/* progress bar  start */}
