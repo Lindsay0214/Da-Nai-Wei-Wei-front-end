@@ -21,14 +21,14 @@ const HomePageInput = ({ data }) => {
     ></input>
   );
 };
-const HomePageShop = ({ data, shop }) => {
+const HomePageShop = ({ shop }) => {
   return (
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
       <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
         <img
           // className="flex-shrink m-auto "
           className="w-full h-full "
-          src={data.URL}
+          src={shop.URL}
           alt="品牌 logo 圖片"
         ></img>
       </div>
@@ -66,13 +66,6 @@ const HomePage = () => {
   return (
     <>
       <GoogleMap handleChange={handleChange} />
-      {/* <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
-        <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
-          <HomePageInput key="findBrand" data="找品牌..."></HomePageInput>
-          <HomePageInput key="findCategory" data="找種類..."></HomePageInput>
-          <HomePageInput key="findComment" data="找評價..."></HomePageInput>
-        </div>
-      </div> */}
       <ImageSlider
         images={[
           carousel1,
@@ -92,13 +85,23 @@ const HomePage = () => {
           }}
         ></div>
       </ImageSlider>
+      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
+        <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
+          <HomePageInput key="findBrand" data="找品牌..."></HomePageInput>
+          <HomePageInput key="findCategory" data="找種類..."></HomePageInput>
+          <HomePageInput key="findComment" data="找評價..."></HomePageInput>
+        </div>
+      </div>
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
           {shops.map((shop) => {
             return (
-              <Link to={`/menu/${shop.id}`}>
-                <HomePageShop data={data} shop={shop} key={shop.key} />;
+              <Link
+                to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
+                key={shop.key}
+              >
+                <HomePageShop data={data} shop={shop} />
               </Link>
             );
           })}

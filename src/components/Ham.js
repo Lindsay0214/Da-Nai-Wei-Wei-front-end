@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Menu, Transition } from '@headlessui/react';
-
 import { Fragment } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';

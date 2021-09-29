@@ -39,7 +39,7 @@ const Indicator = ({ currentSlide, amountSlides, nextSlide }) => {
 };
 
 const Wrapper = styled.div`
-  margin-top: 60px;
+  margin-top: 50px;
   height: 60vh;
   display: flex;
   flex-wrap: nowrap;
