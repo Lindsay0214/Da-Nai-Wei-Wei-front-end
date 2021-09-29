@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import {
   getDetailId,
   addOrderItem,
@@ -46,25 +47,20 @@ const AddToCartPage = () => {
     })();
     if (quantity <= 0) return alert('數量不能是 0 或是負數');
     if (detail.current.size && detail.current.sweetness && detail.current.ice) {
-      try {
-        const result = await getDetailId(detail.current);
-        const detailId = result.data.detail_id;
-        const payload = {
-          detail_id: detailId,
-          quantity,
-          product_id: id
-        };
-        await addOrderItem(payload);
-        history.push('/order');
-      } catch (err) {
-        // console.log(err);
-      }
+      const result = await getDetailId(detail.current);
+      const detailId = result.data.detail_id;
+      const payload = {
+        detail_id: detailId,
+        quantity,
+        product_id: id
+      };
+      await addOrderItem(payload);
+      history.push('/order');
     } else {
-      setError(
-        toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
-          position: toast.POSITION.TOP_CENTER
-        })
-      );
+      toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
     }
   }
   return (

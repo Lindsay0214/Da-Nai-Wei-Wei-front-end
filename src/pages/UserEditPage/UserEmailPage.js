@@ -45,12 +45,10 @@ const UserEmailPage = () => {
   };
 
   const handleOnClick = async () => {
-    // console.log(123);
     const payload = {
       email
     };
-    const result = await updateMyInfo(id, payload);
-    // console.log('updateResult', result);
+    await updateMyInfo(id, payload);
     history.push('/user-update');
   };
 

@@ -10,6 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from '../components/ScrollToTop';
 import { deleteProduct } from '../api';
 import { selectUser, getMe } from '../features/userSlice';
 import { selectLoading } from '../features/loadingSlice';
@@ -63,7 +64,8 @@ function App() {
     <>
       {isLoading && <Loading />}
       <Router>
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
+        <ScrollToTop />
         <>
           {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
           {/* <Hamburger /> */}
@@ -124,7 +126,7 @@ function App() {
               <Route path="/orders" component={NoPermissionPage} />
             )}
             <Route path="/orders" component={OrdersPage} />
-            <Route path="/order-pay" component={OrderPayPage} />
+            <Route path="/order-pay/:id" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/add-to-cart/:id" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />

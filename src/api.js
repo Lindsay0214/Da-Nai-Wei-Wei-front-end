@@ -10,7 +10,6 @@ const instance = axios.create({
   baseURL: 'http://localhost:5000',
   withCredentials: true
 });
-
 const config = {
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true
@@ -30,7 +29,8 @@ export const interceptor = (store) => {
         const { message } = error.response.data;
         store.dispatch(setLoading(false));
         toast.error(message, {
-          position: toast.POSITION.TOP_CENTER
+          position: toast.POSITION.TOP_CENTER,
+          theme: 'colored'
         });
       }
       if (!window.navigator.onLine) {
@@ -93,7 +93,8 @@ export const getTotalPriceAmount = () => instance.get(`/orders`);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`);
 export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
+export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
 
 // order-item
-export const getIsPaid = () =>
-  axios.get('http://localhost:5000/orders-get-is-paid', config);
+export const getIsPaid = (order_id) =>
+  axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
