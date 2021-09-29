@@ -97,7 +97,8 @@ export const getTotalPriceAmount = () => instance.get(`/orders`);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`);
 export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
+export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
 
 // order-item
-export const getIsPaid = () =>
-  axios.get('http://localhost:5000/orders-get-is-paid', config);
+export const getIsPaid = (order_id) =>
+  axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);

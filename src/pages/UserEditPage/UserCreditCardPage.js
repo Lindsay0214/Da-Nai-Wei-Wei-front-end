@@ -7,7 +7,6 @@ const UserCreditCardPage = () => {
 
   useEffect(async () => {
     const result = await getMyInfo();
-    // console.log('getResult', result.data.data.creditCard);
     setCreditCard(result.data.data.creditCard);
     // setUserInfo(result.data.data);
   }, []);
@@ -16,8 +15,7 @@ const UserCreditCardPage = () => {
     const payload = {
       creditCard
     };
-    const result = await getMyInfo(payload);
-    // console.log(result);
+    await getMyInfo(payload);
   };
   return (
     <div className="flex-col w-auto h-auto mt-40 bg-yellow-lightYellow">

@@ -11,11 +11,15 @@ const OrderBoard = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
+  const aa = async () => {
+    const result = await getIsPaid(orderData.order_id);
+    return result;
+  };
 
-  const { data, refetch } = useQuery(
+  const { data, refetch, isSuccess } = useQuery(
     'isPaid',
-    getIsPaid,
-    { retry: 10, enabled: false } // 在顯示錯誤前，將重試 10 次
+    aa,
+    { retry: 10, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
   );
 
   // 取得 is_paid 結果
@@ -23,16 +27,16 @@ const OrderBoard = () => {
     refetch();
     dispatch(setLoading(true));
   };
-
-  useEffect(async () => {
-    if (data) {
-      console.log(data);
-      history.push('/order-pay');
+  useEffect(() => {
+    if (isSuccess) {
+      history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }
+  }, [data, isSuccess]);
+  useEffect(async () => {
     const result = await getTotalPriceAmount();
     setOrderData(result.data);
-  }, [data]);
+  }, []);
   return (
     <div className="h-auto">
       {/* progress bar  start */}

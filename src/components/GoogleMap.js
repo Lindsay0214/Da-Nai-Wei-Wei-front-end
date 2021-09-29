@@ -31,7 +31,6 @@ function GoogleMap({ handleChange }) {
           lng: position.coords.longitude
         };
         setMyPosition(request);
-        // console.log('where am I:', request);
       });
     }
   };

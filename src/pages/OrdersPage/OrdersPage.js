@@ -35,7 +35,6 @@ const OrdersPage = () => {
     (async function() {
       const result = await getOrdersHistory();
       setData(result.data.data);
-      // console.log(result.data.data);
     })();
   }, []);
   return (

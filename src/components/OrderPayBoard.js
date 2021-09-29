@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getTotalPriceAmount } from '../api';
+import { Link, useParams } from 'react-router-dom';
+import { getOrderPaid } from '../api';
 
 const OrderBoard = () => {
+  const { id } = useParams();
   const [data, setData] = useState(0);
   useEffect(async () => {
-    const result = await getTotalPriceAmount();
+    const result = await getOrderPaid(id);
     setData(result.data);
   }, []);
   return (
