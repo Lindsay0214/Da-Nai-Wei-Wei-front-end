@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 
 const IndicatorWrapper = styled.div`
   display: flex;

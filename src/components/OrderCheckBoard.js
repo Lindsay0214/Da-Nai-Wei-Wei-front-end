@@ -24,8 +24,7 @@ const OrderBoard = () => {
   );
 
   // 取得 is_paid 結果
-  const handleGetIsPaidClick = () => {
-    refetch();
+  const handleGetIsPaidClick = async () => {
     dispatch(setLoading(true));
   };
   useEffect(() => {

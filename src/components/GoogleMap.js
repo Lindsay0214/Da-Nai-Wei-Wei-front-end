@@ -1,12 +1,13 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
+import useDebounce from '../utils';
 import { getShops } from '../api';
 
 const MyPositionMarker = ({ text }) => <div>{text}</div>;
 const KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-function GoogleMap({ handleChange }) {
+function GoogleMap({ handleChange, searchShop }) {
   let getShopsResult = null;
   const shopData = [];
   const [mapApiLoaded, setMapApiLoaded] = useState(false);
@@ -16,7 +17,7 @@ function GoogleMap({ handleChange }) {
     lat: 25.0522048,
     lng: 121.55581280000001
   });
-
+  const debouncedSearchShop = useDebounce(searchShop, 1000);
   const apiHasLoaded = (map, maps) => {
     setMapInstance(map);
     setMapApi(maps);
@@ -40,8 +41,8 @@ function GoogleMap({ handleChange }) {
       const service = new mapApi.places.PlacesService(mapInstance);
       const request = {
         location: myPosition,
-        radius: 900000,
-        name: ['迷客夏']
+        radius: 3000,
+        name: searchShop
       };
       service.nearbySearch(request, (results, status) => {
         if (status === mapApi.places.PlacesServiceStatus.OK) {
@@ -53,6 +54,7 @@ function GoogleMap({ handleChange }) {
               URL: item.URL
             });
           });
+          console.log(results);
           results.forEach((item) => {
             shopData.forEach((target) => {
               if (item.name.includes(target.brandName)) {
@@ -74,10 +76,12 @@ function GoogleMap({ handleChange }) {
     }
   };
   useEffect(async () => {
-    getShopsResult = await getShops();
-    geoLocation();
-    findDrinks();
-  }, [mapApiLoaded]);
+    if (debouncedSearchShop) {
+      getShopsResult = await getShops();
+      geoLocation();
+      findDrinks();
+    }
+  }, [mapApiLoaded, debouncedSearchShop]);
 
   return (
     <div style={{ display: 'none' }}>
