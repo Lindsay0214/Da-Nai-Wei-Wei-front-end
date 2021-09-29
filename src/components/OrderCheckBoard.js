@@ -31,6 +31,7 @@ const OrderBoard = () => {
       history.push('/order-pay');
       dispatch(setLoading(false));
     }
+
     // eslint-disable-next-line prettier/prettier
     (async function() {
       const result = await getTotalPriceAmount();

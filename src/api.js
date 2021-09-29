@@ -11,11 +11,11 @@ const instance = axios.create({
   withCredentials: true
 });
 
+const config = {
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true
+};
 export const interceptor = (store) => {
-  const config = {
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
-  };
   instance.interceptors.request.use((config) => {
     store.dispatch(setLoading(true));
     return config;
@@ -96,4 +96,4 @@ export const getOrdersHistory = () => instance.get(`/orders-history`);
 
 // order-item
 export const getIsPaid = () =>
-  axios.get('http://localhost:5000/orders-get-is-paid');
+  axios.get('http://localhost:5000/orders-get-is-paid', config);
