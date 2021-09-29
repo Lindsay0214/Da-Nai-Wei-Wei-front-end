@@ -34,7 +34,8 @@ export const login = (history, payload) => async (dispatch) => {
       role: result.data.role
     };
     toast.success('登入成功', {
-      position: toast.POSITION.TOP_CENTER
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'colored'
     });
     document.cookie = 'isLogin=true;';
     if (result.data.role === 'consumer') {
@@ -53,7 +54,8 @@ export const login = (history, payload) => async (dispatch) => {
 export const register = (history, payload) => (dispatch) => {
   registerApi(payload).then((result) => {
     toast.success('註冊成功', {
-      position: toast.POSITION.TOP_CENTER
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'colored'
     });
     const data = {
       email: payload.email,
