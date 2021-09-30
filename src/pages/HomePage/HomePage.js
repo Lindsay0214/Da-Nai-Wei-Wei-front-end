@@ -62,7 +62,7 @@ const HomePage = () => {
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
       <Carousel />
-      <div className="flex items-center mx-auto mt-16 rounded-md md:w-160 w-86 h-14 bg-yellow-deepYellow lg:w-2/3 lg:rounded-lg lg:h-24">
+      <div className="flex items-center mx-auto mt-16 rounded-md md:w-160 w-86 h-14 bg-yellow-deepYellow lg:w-270 lg:rounded-lg lg:h-24">
         <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput
             key="findBrand"
@@ -81,7 +81,7 @@ const HomePage = () => {
           ></HomePageInput>
         </div>
       </div>
-      <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
+      <div className="mx-auto mt-10  lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
           {shops.map((shop) => {
