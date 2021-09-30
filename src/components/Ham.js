@@ -17,15 +17,15 @@ export default function Ham() {
   };
 
   return (
-    <div className="fixed top-0 w-full text-right">
+    <div className="fixed top-0 z-10 w-full text-right">
       <Menu
         as="div"
         className="relative content-around inline-block transition"
       >
         {/* 漢堡按鈕 */}
         <div>
-          <Menu.Button className="block lg:hidden">
-            <FaBars className="absolute top-9 right-10" aria-hidden="true" />
+          <Menu.Button className="block md:hidden">
+            <FaBars className="absolute top-9 right-20" aria-hidden="true" />
           </Menu.Button>
         </div>
         {/* 漢堡按鈕 */}
@@ -52,7 +52,7 @@ export default function Ham() {
               <Menu.Item>
                 <Link
                   className="items-center inline-block px-12 py-2 mt-2 text-base leading-snug tracking-widest text-white rounded-lg hover:hover"
-                  to="/cart"
+                  to="/order"
                 >
                   購物
                 </Link>
@@ -60,7 +60,7 @@ export default function Ham() {
               <Menu.Item>
                 <Link
                   className="items-center inline-block px-12 py-2 mt-2 text-base leading-snug tracking-widest text-white rounded-lg bg-yellow-deepYellow hover:hover"
-                  to="/order"
+                  to="/orders"
                 >
                   訂單
                 </Link>
