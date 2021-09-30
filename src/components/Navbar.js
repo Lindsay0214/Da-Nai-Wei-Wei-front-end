@@ -69,9 +69,9 @@ const Navbar = () => {
             )}
             {user && (
               <>
-                <p className="items-center hidden leading-snug tracking-wide text-black transition duration-500 ease-in-out md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white">
+                <p className="items-center hidden w-40 overflow-hidden leading-snug tracking-wide text-black transition duration-500 ease-in-out overflow-ellipsis md:inline-block py-9 bg-yellow-default whitespace-nowrap hover:bg-yellow-deepYellow hover:text-white">
                   <Link to="/user-update" className="px-4 ">
-                    Hi，{user.nickname}
+                    {user.email}
                   </Link>
                 </p>
                 <Link

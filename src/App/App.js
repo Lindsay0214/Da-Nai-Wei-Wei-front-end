@@ -21,7 +21,6 @@ import LoginPage from '../pages/LoginPage';
 import OrderPage from '../pages/OrderPage';
 import OrderPayPage from '../pages/OrderPayPage';
 import RegisterPage from '../pages/RegisterPage';
-import UserNicknamePage from '../pages/UserEditPage/UserNicknamePage';
 import AdminEditPage from '../pages/AdminEditPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import OrderItemEditPage from '../pages/OrderItemEditPage';
@@ -93,7 +92,6 @@ function App() {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/user-update" component={UserUpdatePage} />
-            <Route path="/user-edit-nickname" component={UserNicknamePage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
             <Route path="/user-upload-image" component={UserUploadImage} />
