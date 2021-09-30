@@ -7,7 +7,7 @@ const NavbarButton = ({ data }) => {
   return (
     <li className="nav-item">
       <Link
-        className="items-center hidden text-lg leading-snug tracking-wide text-black md:px-2 lg:px-8 py-9 hover:bg-yellow-deepYellow hover:text-white md:inline-block md:mt-0"
+        className="items-center hidden text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:px-2 lg:px-8 py-9 hover:bg-yellow-deepYellow hover:text-white md:inline-block md:mt-0"
         to={data.url}
       >
         {data.name}
@@ -53,7 +53,7 @@ const Navbar = () => {
           <div className="hidden mx-4 nav-item sm:flex">
             {!user && (
               <Link
-                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                 to="/register"
               >
                 註冊
@@ -61,7 +61,7 @@ const Navbar = () => {
             )}
             {!user && (
               <Link
-                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                 to="/login"
               >
                 登入
@@ -69,13 +69,13 @@ const Navbar = () => {
             )}
             {user && (
               <>
-                <p className="items-center hidden leading-snug tracking-wide text-black md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white">
+                <p className="items-center hidden leading-snug tracking-wide text-black transition duration-500 ease-in-out md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white">
                   <Link to="/user-update" className="px-4 ">
                     Hi，{user.nickname}
                   </Link>
                 </p>
                 <Link
-                  className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                  className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                   to="/logout"
                   onClick={(e) => handleLogout(e)}
                 >
