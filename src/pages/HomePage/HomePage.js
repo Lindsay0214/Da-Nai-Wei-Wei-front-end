@@ -26,12 +26,14 @@ const HomePageShop = ({ shop }) => {
       <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
         <img
           // className="flex-shrink m-auto "
-          className="w-full h-full "
+          className="w-full h-full"
           src={shop.URL}
           alt="品牌 logo 圖片"
         ></img>
       </div>
-      <span className="text-lg tracking-wide">{shop.brandName}</span>
+      <p className="overflow-hidden text-lg tracking-wide break-all whitespace-nowrap w-72 overflow-ellipsis">
+        {shop.brandName}
+      </p>
       <div className="flex text-sm">
         <div className="w-auto h-auto px-2 py-1 my-3 bg-white rounded-lg">
           {shop.isOpen}
