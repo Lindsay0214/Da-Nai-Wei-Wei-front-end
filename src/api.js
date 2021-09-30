@@ -15,10 +15,6 @@ const config = {
   withCredentials: true
 };
 export const interceptor = (store) => {
-  const config = {
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
-  };
   instance.interceptors.request.use((config) => {
     store.dispatch(setLoading(true));
     return config;

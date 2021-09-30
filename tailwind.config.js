@@ -27,7 +27,8 @@ module.exports = {
         brown: { default: '#84754F' }
       },
       backgroundImage: {
-        logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')"
+        logo: "url('../src/image/Da-Nai-Wei-Wei_logo.png')",
+        creditCard: "url('../src/image/creditCard.png')"
       },
       transition: {
         transition:
