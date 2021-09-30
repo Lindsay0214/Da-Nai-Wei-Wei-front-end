@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../features/userSlice';
+import { login, getMe } from '../../features/userSlice';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
