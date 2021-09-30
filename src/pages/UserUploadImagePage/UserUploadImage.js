@@ -39,10 +39,10 @@ const UserUpdatePage = () => {
         }
       });
       const payload = { URL: result.data.data.link };
-      console.log(payload); // 先留著，有印出 url 代表 有傳到 imgur 上面
+      // console.log(payload); // 先留著，有印出 url 代表 有傳到 imgur 上面
       await updateURL(payload);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     setImages(imageList);
   };
