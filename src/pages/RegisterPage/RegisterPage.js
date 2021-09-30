@@ -23,8 +23,8 @@ const RegisterPage = () => {
 
   return (
     <div className="bg-yellow-lightYellow">
-      <div className="flex h-screen">
-        <div className="pt-16 m-auto mt-16 bg-white rounded-lg pb-96 md:pt-20 w-80 md:w-3/6 mb-36 h-5/6">
+      <div className="flex h-full">
+        <div className="py-16 m-auto mt-10 bg-white rounded-lg md:pt-20 w-80 md:w-3/6 lg:w-2/6 h-4/6 lg:mt-36">
           <div className="flex items-center justify-center text-2xl font-bold tracking-wider text-gray-deepGray">
             註冊訂飲料囉！
           </div>
@@ -61,7 +61,6 @@ const RegisterPage = () => {
             </button>
             <Link
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
-              type="button"
               to="/login"
             >
               已有帳號
