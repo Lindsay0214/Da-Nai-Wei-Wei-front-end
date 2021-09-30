@@ -11,7 +11,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from '../components/ScrollToTop';
-import { deleteProduct } from '../api';
 import { selectUser, getMe } from '../features/userSlice';
 import { selectLoading } from '../features/loadingSlice';
 
@@ -22,8 +21,8 @@ import LoginPage from '../pages/LoginPage';
 import OrderPage from '../pages/OrderPage';
 import OrderPayPage from '../pages/OrderPayPage';
 import RegisterPage from '../pages/RegisterPage';
+import UserNicknamePage from '../pages/UserEditPage/UserNicknamePage';
 import AdminEditPage from '../pages/AdminEditPage';
-import UserEditPage from '../pages/UserEditPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import OrderItemEditPage from '../pages/OrderItemEditPage';
 import AddToCartPage from '../pages/AddToCartPage';
@@ -94,7 +93,7 @@ function App() {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/user-update" component={UserUpdatePage} />
-            <Route path="/user-edit" component={UserEditPage} />
+            <Route path="/user-edit-nickname" component={UserNicknamePage} />
             <Route path="/user-edit-password" component={UserPasswordPage} />
             <Route path="/user-edit-email" component={UserEmailPage} />
             <Route path="/user-upload-image" component={UserUploadImage} />
