@@ -3,21 +3,13 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
-import store1 from '../../image/store1.png';
-import ImageSlider from '../../components/ImageSlider';
-import carousel1 from '../../image/carousel1.png';
-import carousel2 from '../../image/carousel2.png';
-import carousel3 from '../../image/carousel3.png';
-import carousel4 from '../../image/carousel4.png';
-import carousel5 from '../../image/carousel5.png';
-import carousel6 from '../../image/carousel6.png';
-// import useGeolocation from '../../components/useGeolocation';
+import Carousel from '../../components/Carousel';
 
 const HomePageInput = ({ data, setSearchShop }) => {
   return (
     <input
       placeholder={data}
-      className="w-3/12 text-xs text-center rounded-lg lg:w-60 md:w-48 lg:h-10 md:mx-2 h-7 lg:rounded-md md:text-lg"
+      className="w-4/12 h-8 mx-1 text-xs text-center rounded md:mx-2 lg:w-60 md:w-44 lg:h-10 lg:rounded-md md:text-base"
       onChange={async (e) => {
         if (e.target.value === '') {
           setSearchShop(['嵐', '麻古', '迷']);
@@ -34,12 +26,14 @@ const HomePageShop = ({ shop }) => {
       <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
         <img
           // className="flex-shrink m-auto "
-          className="w-full h-full "
+          className="w-full h-full"
           src={shop.URL}
           alt="品牌 logo 圖片"
         ></img>
       </div>
-      <span className="text-lg tracking-wide">{shop.brandName}</span>
+      <p className="overflow-hidden text-lg tracking-wide break-all whitespace-nowrap w-72 overflow-ellipsis">
+        {shop.brandName}
+      </p>
       <div className="flex text-sm">
         <div className="w-auto h-auto px-2 py-1 my-3 bg-white rounded-lg">
           {shop.isOpen}
@@ -64,34 +58,11 @@ const HomePage = () => {
     setShops(e);
   };
 
-  const data = {
-    time: '10:00～18:00',
-    distance: '7公尺',
-    image: store1
-  };
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
-      <ImageSlider
-        images={[
-          carousel1,
-          carousel2,
-          carousel3,
-          carousel4,
-          carousel5,
-          carousel6
-        ]}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            color: '#fff'
-          }}
-        ></div>
-      </ImageSlider>
-      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
+      <Carousel />
+      <div className="flex items-center mx-auto mt-16 rounded-md md:w-160 w-86 h-14 bg-yellow-deepYellow lg:w-2/3 lg:rounded-lg lg:h-24">
         <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput
             key="findBrand"
@@ -119,7 +90,7 @@ const HomePage = () => {
                 to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
                 key={shop.key}
               >
-                <HomePageShop data={data} shop={shop} />
+                <HomePageShop shop={shop} />
               </Link>
             );
           })}
