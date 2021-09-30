@@ -35,49 +35,36 @@
   }
 }
 
-.carousel-open:checked + .carousel-item {
-  position: static;
-  opacity: 100;
+.carousel {
+  display: inline-flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.carousel-item {
-  -webkit-transition: opacity 0.6s ease-out;
-  transition: opacity 0.6s ease-out;
+.wrapper {
+  height: 40vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  position: relative;
+  z-index: -1;
 }
 
-#carousel-1:checked ~ .control-1,
-#carousel-2:checked ~ .control-2,
-#carousel-3:checked ~ .control-3 {
-  display: block;
+.slide {
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  background-position: center;
+  background-size: cover;
+  transition: 750ms all ease-in-out;
 }
 
-.carousel-indicators {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.childrenWrapper {
   position: absolute;
-  bottom: 2%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 10;
-}
-
-#carousel-1:checked
-  ~ .control-1
-  ~ .carousel-indicators
-  li:nth-child(1)
-  .carousel-bullet,
-#carousel-2:checked
-  ~ .control-2
-  ~ .carousel-indicators
-  li:nth-child(2)
-  .carousel-bullet,
-#carousel-3:checked
-  ~ .control-3
-  ~ .carousel-indicators
-  li:nth-child(3)
-  .carousel-bullet {
-  color: #2b6cb0;
-  /*Set to match the Tailwind colour you want the active one to be */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
