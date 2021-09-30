@@ -32,16 +32,16 @@ const ProductsPage = () => {
           </Link>
         </div>
 
-        <ul className="px-8 py-8 no-underline ">
+        <ul className="px-8 py-8 no-underline lg:px-8 md:px-0">
           {products.map((product) => (
             <li
               key={product.id}
-              className="flex items-center justify-between px-2 py-1 mb-2 rounded hover:bg-gray-100"
+              className="flex items-center justify-between px-2 py-1 mb-2 rounded md:w-60 hover:bg-gray-100 lg:w-80 xl:w-96"
             >
               <span className="">{product.name}</span>
-              <div className="">
+              <div className="md:flex">
                 <Link to={`/products/${product.id}`}>
-                  <button className="px-6 py-1 text-white duration-500 ease-in-out border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
+                  <button className="px-6 py-1 text-white duration-500 ease-in-out rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover ">
                     修改
                   </button>
                 </Link>
