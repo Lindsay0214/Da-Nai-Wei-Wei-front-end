@@ -45,7 +45,8 @@
 }
 
 .wrapper {
-  height: 40vh;
+  height: 50vh;
+  width: 100vh;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;

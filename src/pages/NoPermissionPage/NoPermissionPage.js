@@ -9,14 +9,14 @@ const NoPermissionPage = () => {
         </div>
         <div className="mt-8">
           <Link
-            className="bg-yellow-deepYellow m-2 text-white  md:px-20 px-14 py-1.5 rounded-lg hover:hover"
+            className="flex justify-center mb-5 bg-yellow-deepYellow m-2 text-white px-10 md:px-16 py-1.5 rounded-lg hover:hover"
             type="button"
             to="/login"
           >
             登入
           </Link>
           <Link
-            className="bg-yellow-deepYellow m-2 text-white  md:px-20 px-14 py-1.5 rounded-lg hover:hover"
+            className="flex justify-center bg-yellow-deepYellow m-2 text-white px-10 md:px-16 py-1.5 rounded-lg hover:hover"
             type="button"
             to="/register"
           >

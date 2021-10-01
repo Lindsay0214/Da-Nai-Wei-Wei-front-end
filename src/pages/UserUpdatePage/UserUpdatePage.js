@@ -14,17 +14,17 @@ const UserUpdatePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      newName,
-      newEmail,
-      newCard,
-      newAddress
+      nickname: newName,
+      email: newEmail,
+      creditCard: newCard,
+      address: newAddress
     };
     const result = await updateMyInfo(payload);
     if (result.data.ok === 1) {
       setIsUpdated(true);
       setIsWaitingBack(true);
       setTimeout(() => {
-        history.push('/user-update');
+        history.push('/');
       }, 2000);
     }
   };
@@ -51,7 +51,7 @@ const UserUpdatePage = () => {
             onChange={(e) => {
               setNewName(e.target.value);
             }}
-            name="name"
+            name="nickname"
             placeholder="欲修改名字"
             value={newName}
             className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
@@ -61,7 +61,7 @@ const UserUpdatePage = () => {
             onChange={(e) => {
               setNewEmail(e.target.value);
             }}
-            name="name"
+            name="email"
             placeholder="欲修改信箱"
             value={newEmail}
             className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
@@ -71,7 +71,7 @@ const UserUpdatePage = () => {
             onChange={(e) => {
               setNewCard(e.target.value);
             }}
-            name="name"
+            name="creditCard"
             placeholder="欲修改信用卡"
             value={newCard}
             className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
@@ -81,7 +81,7 @@ const UserUpdatePage = () => {
             onChange={(e) => {
               setNewAddress(e.target.value);
             }}
-            name="name"
+            name="address"
             placeholder="欲修改地址"
             value={newAddress}
             className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
