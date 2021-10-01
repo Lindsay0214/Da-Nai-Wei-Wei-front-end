@@ -62,8 +62,8 @@ const HomePage = () => {
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
       <Carousel />
-      <div className="flex items-center mx-auto mt-16 rounded-md md:w-160 w-86 h-14 bg-yellow-deepYellow lg:w-270 lg:rounded-lg lg:h-24">
-        <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
+      <div className="flex items-center content-center justify-center mx-auto mt-16 rounded-md w-160 h-14 bg-yellow-deepYellow lg:rounded-lg lg:h-24">
+        <div className="flex items-center justify-around w-full px-6 mx-auto h-7 lg:h-14 lg:w-1/3">
           <HomePageInput
             key="findBrand"
             data="找品牌..."
@@ -81,12 +81,13 @@ const HomePage = () => {
           ></HomePageInput>
         </div>
       </div>
-      <div className="mx-auto mt-10  lg:mt-20 w-min md:w-176 lg:w-270">
+      <div className="mx-auto mt-10 w-160 lg:mt-20 md:w-176 lg:w-388">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
           {shops.map((shop) => {
             return (
               <Link
+                className="px-2 mb-8"
                 to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
                 key={shop.key}
               >

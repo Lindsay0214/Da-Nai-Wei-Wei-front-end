@@ -33,7 +33,7 @@ const Carousel = ({
 
   return (
     <div
-      className="m-auto md:rounded-lg md:w-160 lg:w-270 lg:mt-10 h-1/2 wrapper"
+      className="m-auto md:rounded-lg w-160 lg:w-388 lg:mt-10 h-1/2 wrapper"
       {...props}
     >
       {images.map((imageUrl, index) => (

@@ -77,10 +77,6 @@ export const getMeApi = () => instance.get('/users/me');
 export const updateURL = (payload) => instance.patch('/user-URL', payload);
 export const getShops = () => instance.get('/users-shops');
 
-// set new info
-export const newNickName = (payload) => instance.post('/users/edit', payload);
-// ? err catch ? how
-
 // productDetail
 export const getDetailId = (payload) =>
   instance.get(
