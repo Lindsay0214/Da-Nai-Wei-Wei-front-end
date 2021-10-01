@@ -46,6 +46,7 @@ function App() {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     // 應該要有 cookie 才做
     if (document.cookie) {

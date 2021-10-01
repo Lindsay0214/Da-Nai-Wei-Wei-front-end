@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getTotalPriceAmount, getIsPaid } from '../../api';
 import { setLoading } from '../../features/loadingSlice';
 
@@ -16,10 +17,10 @@ const OrderCheckPage = () => {
     return result;
   };
 
-  const { data, refetch, isSuccess } = useQuery(
+  const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-    { retry: 10, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
+    { retry: 3, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
   );
 
   // 取得 is_paid 結果
@@ -32,7 +33,14 @@ const OrderCheckPage = () => {
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }
-  }, [data, isSuccess]);
+    if (isError) {
+      toast.error('唉呦!結帳失敗', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
+      dispatch(setLoading(false));
+    }
+  }, [data, isSuccess, isError]);
   useEffect(async () => {
     const result = await getTotalPriceAmount();
     setOrderData(result.data);
