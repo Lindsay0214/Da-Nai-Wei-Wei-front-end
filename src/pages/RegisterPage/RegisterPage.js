@@ -44,7 +44,7 @@ const RegisterPage = () => {
               }}
             ></input>
             <input
-              placeholder="密碼"
+              placeholder="密碼，需要 8~16 位英數混合"
               className="flex-col p-2 mt-4 font-light rounded-lg w-60 bg-gray-input md:w-80"
               onChange={(e) => {
                 setPassword(e.target.value);

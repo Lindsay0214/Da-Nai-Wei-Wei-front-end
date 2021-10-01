@@ -38,8 +38,8 @@ const ProductsPage = () => {
               key={product.id}
               className="flex items-center justify-between px-2 py-1 mb-2 rounded hover:bg-gray-100"
             >
-              <span className="">{product.name}</span>
-              <div className="">
+              <span className="inline-block w-24 ">{product.name}</span>
+              <div>
                 <Link to={`/products/${product.id}`}>
                   <button className="px-6 py-1 text-white duration-500 ease-in-out border rounded-lg bg-yellow-deepYellow border-yellow-deepYellow hover:hover">
                     修改

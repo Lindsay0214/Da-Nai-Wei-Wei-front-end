@@ -19,19 +19,25 @@ const DrinkDetail = ({ handleDelete, drink }) => {
           {drink.name}{' '}
         </p>
         <p className="inline-flex w-48 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          {drink.size} / {drink.ice} / {drink.sweetness}
+          {drink.size} | {drink.ice} | {drink.sweetness}
         </p>
         <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          $ {drink.price} / {drink.quantity} 份
+          $ {drink.price} | {drink.quantity} 份
+        </p>
+        <p className="inline-flex w-40 overflow-hidden tracking-wide text-white whitespace-nowrap overflow-ellipsis lg:text-xl md:w-56 md:text-lg">
+          共 {drink.price * drink.quantity} 元
         </p>
       </div>
       <div>
-        <Link to={`/order-item-edit/${drink.order_item_id}`}>
-          <FaEdit className="absolute text-xl cursor-pointer md:top-5 top-4 right-3 text-gray-lightGray"></FaEdit>
+        <Link
+          className="absolute cursor-pointer md:top-5 top-5 right-3"
+          to={`/order-item-edit/${drink.order_item_id}`}
+        >
+          <FaEdit className="text-xl text-gray-lightGray"></FaEdit>
         </Link>
         <FaTrashAlt
           onClick={() => handleDelete(drink.order_item_id)}
-          className="absolute text-red-500 cursor-pointer md:top-17 top-15 right-4 "
+          className="absolute text-red-500 cursor-pointer md:top-24 top- top-20 right-4 "
         ></FaTrashAlt>
       </div>
     </div>

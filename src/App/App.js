@@ -42,8 +42,8 @@ import UserPasswordPage from '../pages/UserEditPage/UserPasswordPage';
 import UserEmailPage from '../pages/UserEditPage/UserEmailPage';
 import UserCreditCardPage from '../pages/UserEditPage/UserCreditCardPage';
 import UserUploadImage from '../pages/UserUploadImagePage';
-
 import AdminNavbar from '../components/AdminNavbar';
+import ShopNavbar from '../components/ShopNavbar';
 
 function App() {
   const user = useSelector(selectUser);
@@ -63,7 +63,10 @@ function App() {
         <ToastContainer autoClose={2000} />
         <ScrollToTop />
         <>
-          {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
+          {user === '' && <Navbar />}
+          {user.role === 'admin' && <AdminNavbar />}
+          {user.role === 'shop' && <ShopNavbar />}
+          {user.role === 'consumer' && <Navbar />}
           {/* <Hamburger /> */}
           <Switch>
             {user.role === 'admin' && (
