@@ -36,7 +36,6 @@ const UserUpdatePage = () => {
     setNewEmail(email);
     setNewCard(creditCard);
     setNewAddress(address);
-    // console.log(result.data.data);
   }, []);
 
   return (
