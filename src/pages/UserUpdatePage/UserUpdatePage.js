@@ -14,10 +14,10 @@ const UserUpdatePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      newName,
-      newEmail,
-      newCard,
-      newAddress
+      nickname: newName,
+      email: newEmail,
+      creditCard: newCard,
+      address: newAddress
     };
     const result = await updateMyInfo(payload);
     if (result.data.ok === 1) {

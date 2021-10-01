@@ -39,7 +39,7 @@ const HomePageShop = ({ shop }) => {
           {shop.isOpen}
         </div>
         <div className="w-auto h-auto px-2 py-1 my-3 ml-4 bg-white rounded-lg">
-          20 m
+          {shop.distance}
         </div>
         <div className="flex w-auto h-auto px-2 py-1 my-3 ml-4 bg-white rounded-lg">
           <FaStar className="mt-1 mr-1 text-yellow-deepYellow" />
@@ -62,14 +62,14 @@ const HomePage = () => {
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
       <Carousel />
-      <div className="flex items-center mx-auto mt-16 rounded-md md:w-160 w-86 h-14 bg-yellow-deepYellow lg:w-2/3 lg:rounded-lg lg:h-24">
+      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 bg-yellow-deepYellow lg:w-234 lg:rounded-lg lg:h-24">
         <div className="flex justify-around mx-auto lg:items-center md:justify-around w-72 h-7 lg:w-full lg:h-14">
           <HomePageInput
             key="findBrand"
             data="找品牌..."
             setSearchShop={setSearchShop}
           ></HomePageInput>
-          <HomePageInput
+          {/* <HomePageInput
             key="findCategory"
             data="找種類..."
             setSearchShop={setSearchShop}
@@ -78,7 +78,7 @@ const HomePage = () => {
             key="findComment"
             data="找評價..."
             setSearchShop={setSearchShop}
-          ></HomePageInput>
+          ></HomePageInput> */}
         </div>
       </div>
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
