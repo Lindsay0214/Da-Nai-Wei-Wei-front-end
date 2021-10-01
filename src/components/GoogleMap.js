@@ -54,7 +54,7 @@ function GoogleMap({ handleChange, searchShop }) {
               URL: item.URL
             });
           });
-          console.log(results);
+          // console.log(results);
           results.forEach((item) => {
             shopData.forEach((target) => {
               if (item.name.includes(target.brandName)) {

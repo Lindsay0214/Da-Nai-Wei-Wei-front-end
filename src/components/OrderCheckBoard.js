@@ -72,9 +72,7 @@ const OrderBoard = () => {
             <div className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 md:text-2xl border-gray-deepGray font-seminole">
               付款方式
             </div>
-            <div className="flex flex-col-reverse m-auto text-left rounded-md md:w-72 md:h-36 h-28 w-52 bg-yellow-deepYellow my-11">
-              <span className="pb-2 pl-4 text-sm">XXXX-XXXX-XXXX-XXXX</span>
-            </div>
+            <div className="flex flex-col-reverse m-auto text-left bg-cover rounded-md bg-creditCard md:w-72 md:h-36 h-28 w-52 my-11"></div>
           </div>
           <div className="flex justify-end mr-12 ">
             <button
