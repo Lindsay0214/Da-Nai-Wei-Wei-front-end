@@ -23,10 +23,10 @@ const HomePageInput = ({ data, setSearchShop }) => {
 const HomePageShop = ({ shop }) => {
   return (
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
-      <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
+      <div className="mb-2 overflow-hidden duration-500 ease-in-out transform hover:rotate-360 hover:border w-72 h-52 rounded-2xl hover:shadow-3xl">
         <img
           // className="flex-shrink m-auto "
-          className="w-full h-full"
+          className="w-full h-full "
           src={shop.URL}
           alt="品牌 logo 圖片"
         ></img>
@@ -87,11 +87,11 @@ const HomePage = () => {
           {shops.map((shop) => {
             return (
               <Link
-                className="px-2 mb-8"
+                className="px-2 mb-8 rounded-xl "
                 to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
                 key={shop.key}
               >
-                <HomePageShop shop={shop} />
+                <HomePageShop className="" shop={shop} />
               </Link>
             );
           })}
