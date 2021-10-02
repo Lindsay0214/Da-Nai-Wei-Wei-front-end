@@ -23,7 +23,7 @@ const ShopNavbar = () => {
         </Link>
       </div>{' '}
       <div className="relative mx-auto mt-10 border-t border-white p-7 lg:absolute lg:invisible lg:mr-0 lg:mb-20 lg:flex lg:flex-row w-80 "></div>
-      <div className="m-auto text-lg tracking-wider text-center w-36 lg:w-80 mb-7 lg:text-4xl ">
+      <div className="m-auto text-lg tracking-wider text-center w-36 lg:w-80 mb-7 lg:invisible ">
         後台管理
       </div>
       <div className="relative w-20 mx-auto lg:w-auto lg:mx-0">
