@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
-import Carousel from '../../components/Carousel';
+import MyCarousel from '../../components/MyCarousel';
 
 const HomePageInput = ({ data, setSearchShop }) => {
   return (
@@ -61,7 +61,7 @@ const HomePage = () => {
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
-      <Carousel />
+      <MyCarousel />
       <div className="flex items-center content-center justify-center mx-auto mt-16 rounded-md w-160 h-14 bg-yellow-deepYellow lg:rounded-lg lg:h-24">
         <div className="flex items-center justify-around w-full px-6 mx-auto h-7 lg:h-14 lg:w-1/3">
           <HomePageInput
