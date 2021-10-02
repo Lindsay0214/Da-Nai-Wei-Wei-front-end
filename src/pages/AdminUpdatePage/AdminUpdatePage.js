@@ -34,10 +34,12 @@ const AdminUpdatePage = () => {
         aria-hidden="true"
       >
         <div className="flex flex-col m-auto space-y-10 ">
-          <span className="inline-block mx-auto overflow-hidden text-4xl break-all w-52 h-ew whitespace-nowrap overflow-ellipsis">
+          <span className="inline-block text-3xl text-center truncate w-36">
             {brandName}
           </span>
-          <span className="inline-block mx-auto text-4xl h-ew">{nickName}</span>
+          <span className="inline-block text-3xl text-center truncate w-36">
+            {nickName}
+          </span>
         </div>
       </div>
     );
