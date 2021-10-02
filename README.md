@@ -1,23 +1,7 @@
-# Da-Nai-Wei-Wei
-
-Welcome to Da-Nai-Wei-Wei, this is a project clone from NiDin.
-
-# Team Member
-
-@auz @hsuan @jason @lindsay
-
-# Technologies
-
-React
-
----
-
-# 大奶微微
-
+# 大奶微微 Da-Nai-Wei-Wei
 #### 大奶微微，你訂飲料の大平台。
 
 ↳ [專案連結點這](https://test.d3v2d5gigfl1ab.amplifyapp.com/)
-↳ 影片介紹點這
 
 ## 專案簡介
 
@@ -37,8 +21,10 @@ Clone [你訂](https://order.nidin.shop/)的部份功能
     - 查詢附近飲料店
     - 選擇尺寸、冰塊與糖度後加入購物車，最後透過綠界支付
     - 查看當前訂購項目與歷史訂單
+    - 更改用戶資料
 
 - 後台功能
+
   - 店家
     - 上傳店家圖片
     - 新增、修改與刪除產品資訊
@@ -58,9 +44,12 @@ Clone [你訂](https://order.nidin.shop/)的部份功能
 - 套件
   - React Router
   - Redux Toolkit
+  - React Query
+  - @brainhubeu/react-carousel
 - API
   - Google API
-  - Imgur API
+  - Imgur
+  - 綠界
 
 ## 專案展示
 
