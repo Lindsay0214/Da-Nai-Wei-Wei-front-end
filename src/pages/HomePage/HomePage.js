@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
-import Carousel from '../../components/Carousel';
+import MyCarousel from '../../components/MyCarousel';
 
 const HomePageInput = ({ data, setSearchShop }) => {
   return (
@@ -23,7 +23,7 @@ const HomePageInput = ({ data, setSearchShop }) => {
 const HomePageShop = ({ shop }) => {
   return (
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
-      <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl">
+      <div className="mb-2 overflow-hidden w-72 h-52 rounded-2xl hover:opacity-70">
         <img
           // className="flex-shrink m-auto "
           className="w-full h-full"
@@ -61,7 +61,7 @@ const HomePage = () => {
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
-      <Carousel />
+      <MyCarousel />
       <div className="flex items-center content-center justify-center mx-auto mt-16 rounded-md w-160 h-14 bg-yellow-deepYellow lg:rounded-lg lg:h-24">
         <div className="flex items-center justify-around w-full px-6 mx-auto h-7 lg:h-14 lg:w-1/3">
           <HomePageInput
@@ -87,11 +87,11 @@ const HomePage = () => {
           {shops.map((shop) => {
             return (
               <Link
-                className="px-2 mb-8"
+                className="px-2 mb-8 "
                 to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
                 key={shop.key}
               >
-                <HomePageShop shop={shop} />
+                <HomePageShop shop={shop} className=" hover:opacity-60" />
               </Link>
             );
           })}

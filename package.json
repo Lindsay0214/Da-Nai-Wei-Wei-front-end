@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@brainhubeu/react-carousel": "^2.0.4",
     "@craco/craco": "^6.3.0",
     "@headlessui/react": "^1.4.1",
     "@reduxjs/toolkit": "^1.6.1",

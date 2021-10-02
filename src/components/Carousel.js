@@ -1,5 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
+import Carousel from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
 import React, { useState, useEffect } from 'react';
 import carousel1 from '../image/carousel1.png';
 import carousel2 from '../image/carousel2.png';
@@ -8,11 +10,10 @@ import carousel4 from '../image/carousel4.png';
 import carousel5 from '../image/carousel5.png';
 import carousel6 from '../image/carousel6.png';
 
-const Carousel = ({
+const MyCarousel = ({
   images = [carousel1, carousel2, carousel3, carousel4, carousel5, carousel6],
   autoPlay = true,
   autoPlayTime = 6000,
-  children,
   ...props
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,9 +34,10 @@ const Carousel = ({
 
   return (
     <div
-      className="m-auto md:rounded-lg w-160 lg:w-388 lg:mt-10 h-1/2 wrapper"
+      className="w-full m-auto h-4/12 md:w-160 lg:w-2/3 lg:mt-10 md:rounded-lg wrapper"
       {...props}
     >
+      {/* inline-block h-1/2  */}
       {images.map((imageUrl, index) => (
         <div
           className="slide"
@@ -46,9 +48,8 @@ const Carousel = ({
           }}
         ></div>
       ))}
-      <div className="childrenWrapper">{children}</div>
     </div>
   );
 };
 
-export default Carousel;
+export default MyCarousel;
