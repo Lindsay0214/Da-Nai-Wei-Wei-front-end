@@ -1,8 +1,8 @@
 /* eslint-disable  */
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import DetailBoard from '../../components/DetailBoard';
 import {
   getDetailId,
   addOrderItem,
@@ -12,46 +12,61 @@ import {
 
 const AddToCartPage = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    (async function() {
-      const result = await getProduct(id);
-      setProduct(result.data.product);
-    })();
+  const [data, setData] = useState({});
+  useEffect(async () => {
+    const result = await getProduct(id);
+    setData({
+      ...result.data.product,
+      productName: result.data.product.name,
+      quantity: 1,
+      size: '',
+      sweetness: '',
+      ice: ''
+    });
   }, []);
   const history = useHistory();
-  const detail = useRef({
-    size: '',
-    sweetness: '',
-    ice: ''
-  });
   function handleChangeSize(size) {
-    detail.current.size = size;
+    setData(() => {
+      return { ...data, size };
+    });
   }
   function handleChangeSweetness(sweetness) {
-    detail.current.sweetness = sweetness;
+    setData(() => {
+      return { ...data, sweetness };
+    });
   }
   function handleChangeIce(ice) {
-    detail.current.ice = ice;
+    setData(() => {
+      return { ...data, ice };
+    });
   }
-  const [quantity, setQuantity] = useState(1);
   const handlePlus = () => {
-    setQuantity((pre) => pre + 1);
+    setData({ ...data, quantity: data.quantity + 1 });
   };
   const handleMinus = () => {
-    setQuantity((pre) => pre - 1);
+    if (data.quantity === 1) return;
+    setData({ ...data, quantity: data.quantity - 1 });
   };
   async function handleClick() {
     (async function() {
       await addShoppingCart(); // 確保有購物車可以裝商品
     })();
-    if (quantity <= 0) return alert('數量不能是 0 或是負數');
-    if (detail.current.size && detail.current.sweetness && detail.current.ice) {
-      const result = await getDetailId(detail.current);
+    if (data.quantity <= 0)
+      return toast.error('數量不能是 0 或是負數', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
+
+    if (data.size && data.sweetness && data.ice) {
+      const result = await getDetailId({
+        size: data.size,
+        sweetness: data.sweetness,
+        ice: data.ice
+      });
       const detailId = result.data.detail_id;
       const payload = {
         detail_id: detailId,
-        quantity,
+        quantity: data.quantity,
         product_id: id
       };
       await addOrderItem(payload);
@@ -65,160 +80,15 @@ const AddToCartPage = () => {
   }
   return (
     <div className="flex items-center justify-center bg-yellow-lightYellow">
-      <div className="pb-10 mt-10 bg-white rounded-lg w-80 md:w-96">
-        <div className="flex items-center mt-8 justify-evenly">
-          <div className="h-20 bg-gray-200 w-28 md:w-32 md:h-24"></div>
-          <div className="space-y-3">
-            <div className="flex items-center text-sm md:text-base md:mr-10">
-              品名：{product.name}
-            </div>
-            <div className="flex items-center text-sm md:text-base md:mr-10">
-              價格：{product.price} 元 / 杯
-            </div>
-          </div>
-        </div>
-        <div className="m-10 mx-12 text-xs md:mx-12 md:text-base">
-          <div className="flex flex-col pb-4 mb-4 border-b border-black">
-            <label className="cursor-pointer">
-              <input
-                type="radio"
-                className="mr-2 cursor-pointer"
-                name="size"
-                onChange={() => handleChangeSize('大杯')}
-              ></input>
-              大杯
-            </label>
-            <label className="cursor-pointer">
-              <input
-                type="radio"
-                className="mr-2 cursor-pointer"
-                name="size"
-                onChange={() => handleChangeSize('中杯')}
-              ></input>
-              中杯
-            </label>
-          </div>
-          <div className="flex pb-4 mb-4 space-x-16 border-b border-black md:space-x-32">
-            <div className="flex flex-col">
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeSweetness('正常糖')}
-                  name="sweetness"
-                  className="mr-2 cursor-pointer"
-                ></input>
-                正常糖
-              </label>
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeSweetness('少糖')}
-                  className="mr-2 cursor-pointer"
-                  name="sweetness"
-                ></input>
-                少糖
-              </label>
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeSweetness('半糖')}
-                  className="mr-2 cursor-pointer"
-                  name="sweetness"
-                ></input>
-                半糖
-              </label>
-            </div>
-            <div className="flex flex-col md:ml-20">
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeSweetness('微糖')}
-                  className="mr-2 cursor-pointer"
-                  name="sweetness"
-                ></input>
-                微糖
-              </label>
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeSweetness('無糖')}
-                  className="mr-2 cursor-pointer"
-                  name="sweetness"
-                ></input>
-                無糖
-              </label>
-            </div>
-          </div>
-          <div className="flex pb-4 mb-4 space-x-16 border-b border-black md:space-x-32">
-            <div className="flex flex-col">
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeIce('正常冰')}
-                  className="mr-2 cursor-pointer"
-                  name="ice"
-                ></input>
-                正常冰
-              </label>
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeIce('少冰')}
-                  className="mr-2 cursor-pointer"
-                  name="ice"
-                ></input>
-                少冰
-              </label>
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeIce('微冰')}
-                  className="mr-2 cursor-pointer"
-                  name="ice"
-                ></input>
-                微冰
-              </label>
-            </div>
-            <div className="flex flex-col md:ml-20">
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  onChange={() => handleChangeIce('去冰')}
-                  className="mr-2 cursor-pointer"
-                  name="ice"
-                ></input>
-                去冰
-              </label>
-            </div>
-          </div>
-          <div className="flex items-center pb-4 border-b border-black">
-            <span className="inline-block my-auto ml-1 mr-5 ">數量</span>
-            {quantity > 0 && (
-              <FaMinus
-                className="mx-2 cursor-pointer"
-                onClick={handleMinus}
-              ></FaMinus>
-            )}
-            {quantity <= 0 && (
-              <FaMinus className="mx-2 cursor-pointer"></FaMinus>
-            )}
-            <span className="mx-2">{quantity}</span>
-            <FaPlus
-              className="mx-2 cursor-pointer"
-              onClick={handlePlus}
-            ></FaPlus>
-          </div>
-          <div className="relative">
-            <button
-              className="absolute right-0 w-20 px-4 py-2 text-white duration-500 ease-in-out border rounded-lg top-6 border-yellow-deepYellow bg-yellow-deepYellow hover:hover"
-              type="button"
-              onClick={handleClick}
-            >
-              確認
-            </button>
-          </div>
-        </div>
-      </div>
+      <DetailBoard
+        data={data}
+        handleChangeSize={handleChangeSize}
+        handleChangeSweetness={handleChangeSweetness}
+        handleChangeIce={handleChangeIce}
+        handlePlus={handlePlus}
+        handleMinus={handleMinus}
+        handleSubmit={handleClick}
+      ></DetailBoard>
     </div>
   );
 };

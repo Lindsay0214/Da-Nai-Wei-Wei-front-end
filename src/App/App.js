@@ -39,13 +39,14 @@ import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
 import AddProductPage from '../pages/AddProductPage';
 import UserUploadImage from '../pages/UserUploadImagePage';
-
 import AdminNavbar from '../components/AdminNavbar';
+import ShopNavbar from '../components/ShopNavbar';
 
 function App() {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     // 應該要有 cookie 才做
     if (document.cookie) {
@@ -60,7 +61,10 @@ function App() {
         <ToastContainer autoClose={2000} />
         <ScrollToTop />
         <>
-          {user.role === 'admin' ? <AdminNavbar /> : <Navbar />}
+          {user === '' && <Navbar />}
+          {user.role === 'admin' && <AdminNavbar />}
+          {user.role === 'shop' && <ShopNavbar />}
+          {user.role === 'consumer' && <Navbar />}
           {/* <Hamburger /> */}
           <Switch>
             {user.role === 'admin' && (

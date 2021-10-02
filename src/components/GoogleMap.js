@@ -38,6 +38,12 @@ function GoogleMap({ handleChange, searchShop }) {
   };
 
   const findDrinks = () => {
+    if (searchShop[0].length > 5) {
+      toast.error('哎唷！文字太長了', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
+    }
     if (mapApiLoaded) {
       const service = new mapApi.places.PlacesService(mapInstance);
       const distance = new mapApi.DistanceMatrixService();
@@ -89,7 +95,6 @@ function GoogleMap({ handleChange, searchShop }) {
               });
             });
             if (data.length === 0) {
-              console.log(123);
               toast.error('唉唷！找不到店家耶', {
                 position: toast.POSITION.TOP_CENTER,
                 theme: 'colored'
@@ -116,7 +121,6 @@ function GoogleMap({ handleChange, searchShop }) {
           key: KEY,
           libraries: ['places']
         }}
-        // onBoundsChange={handleCenterChange}
         defaultZoom={20}
         defaultCenter={myPosition}
         yesIWantToUseGoogleMapApiInternals

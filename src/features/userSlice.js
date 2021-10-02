@@ -31,6 +31,7 @@ export const login = (history, payload) => async (dispatch) => {
   loginApi(payload).then((result) => {
     const data = {
       email: payload.email,
+      nickname: result.data.nickname,
       role: result.data.role
     };
     toast.success('登入成功', {
@@ -58,6 +59,7 @@ export const register = (history, payload) => (dispatch) => {
       theme: 'colored'
     });
     const data = {
+      nickname: payload.nickname,
       email: payload.email,
       password: payload.password
     };

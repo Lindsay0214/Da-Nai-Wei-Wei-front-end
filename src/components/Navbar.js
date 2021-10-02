@@ -7,7 +7,7 @@ const NavbarButton = ({ data }) => {
   return (
     <li className="nav-item">
       <Link
-        className="items-center hidden text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:px-2 lg:px-8 py-9 hover:bg-yellow-deepYellow hover:text-white md:inline-block md:mt-0"
+        className="items-center hidden text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out md:px-2 lg:px-8 py-9 hover:bg-yellow-deepYellow hover:text-white lg:inline-block md:mt-0"
         to={data.url}
       >
         {data.name}
@@ -22,6 +22,7 @@ const Navbar = () => {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  // console.log(user); nickname undefined
   const history = useHistory();
   const handleLogout = (e) => {
     e.preventDefault();
@@ -70,8 +71,8 @@ const Navbar = () => {
             {user && (
               <>
                 <p className="items-center hidden w-40 overflow-hidden leading-snug tracking-wide text-black transition duration-500 ease-in-out overflow-ellipsis md:inline-block py-9 bg-yellow-default whitespace-nowrap hover:bg-yellow-deepYellow hover:text-white">
-                  <Link to="/user-update" className="px-4 ">
-                    {user.email}
+                  <Link to="/user-update" className="px-4">
+                    Hi，{user.nickname}
                   </Link>
                 </p>
                 <Link
