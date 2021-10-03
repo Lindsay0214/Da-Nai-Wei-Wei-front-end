@@ -22,7 +22,6 @@ const Navbar = () => {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  // console.log(user); nickname undefined
   const history = useHistory();
   const handleLogout = (e) => {
     e.preventDefault();
