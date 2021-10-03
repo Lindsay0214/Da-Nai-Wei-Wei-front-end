@@ -44,6 +44,7 @@ const AddToCartPage = () => {
     setData({ ...data, quantity: data.quantity + 1 });
   };
   const handleMinus = () => {
+    if (data.quantity === 1) return;
     setData({ ...data, quantity: data.quantity - 1 });
   };
   async function handleClick() {

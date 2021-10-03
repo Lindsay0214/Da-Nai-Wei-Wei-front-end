@@ -25,6 +25,7 @@ const OrderCheckPage = () => {
 
   // 取得 is_paid 結果
   const handleGetIsPaidClick = async () => {
+    window.open('https://da-nai-wei-wei.herokuapp.com/paymenys');
     refetch();
     dispatch(setLoading(true));
   };

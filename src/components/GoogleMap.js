@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import GoogleMapReact from 'google-map-react';
 import useDebounce from '../utils';
 import { getShops } from '../api';
@@ -37,8 +38,15 @@ function GoogleMap({ handleChange, searchShop }) {
   };
 
   const findDrinks = () => {
+    if (searchShop[0].length > 5) {
+      toast.error('哎唷！文字太長了', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
+    }
     if (mapApiLoaded) {
       const service = new mapApi.places.PlacesService(mapInstance);
+      const distance = new mapApi.DistanceMatrixService();
       const request = {
         location: myPosition,
         radius: 3000,
@@ -54,23 +62,46 @@ function GoogleMap({ handleChange, searchShop }) {
               URL: item.URL
             });
           });
-          // console.log(results);
+          const distances = [];
           results.forEach((item) => {
-            shopData.forEach((target) => {
-              if (item.name.includes(target.brandName)) {
-                data.push({
-                  id: target.id,
-                  key: item.place_id,
-                  brandName: item.name,
-                  rating: item.rating,
-                  address: item.vicinity,
-                  isOpen: item.business_status,
-                  URL: target.URL
-                });
-              }
+            distances.push({
+              lat: item.geometry.location.lat(),
+              lng: item.geometry.location.lng()
             });
           });
-          handleChange(data);
+          const distanceRequest = {
+            origins: [myPosition],
+            destinations: distances,
+            travelMode: mapApi.TravelMode.DRIVING,
+            unitSystem: mapApi.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false
+          };
+          distance.getDistanceMatrix(distanceRequest).then((response) => {
+            results.forEach((item, index) => {
+              shopData.forEach((target) => {
+                if (item.name.includes(target.brandName)) {
+                  data.push({
+                    id: target.id,
+                    distance: response.rows[0].elements[index].distance.text,
+                    key: item.place_id,
+                    brandName: item.name,
+                    rating: item.rating,
+                    address: item.vicinity,
+                    isOpen: item.business_status,
+                    URL: target.URL
+                  });
+                }
+              });
+            });
+            if (data.length === 0) {
+              toast.error('唉唷！找不到店家耶', {
+                position: toast.POSITION.TOP_CENTER,
+                theme: 'colored'
+              });
+            }
+            handleChange(data);
+          });
         }
       });
     }
@@ -90,7 +121,6 @@ function GoogleMap({ handleChange, searchShop }) {
           key: KEY,
           libraries: ['places']
         }}
-        // onBoundsChange={handleCenterChange}
         defaultZoom={20}
         defaultCenter={myPosition}
         yesIWantToUseGoogleMapApiInternals

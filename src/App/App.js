@@ -120,7 +120,15 @@ function App() {
             <Route path="/add-to-cart/:id" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
-            <Redirect to="/" component={HomePage} />
+            {user.role === 'admin' && (
+              <Redirect to="/admin-update" component={AdminUpdatePage} />
+            )}
+            {user.role === 'shop' && (
+              <Redirect to="/products" exact component={ProductsPage} />
+            )}
+            {user.role === 'consumer' && (
+              <Redirect to="/" component={HomePage} />
+            )}
           </Switch>
         </>
         <Footer />

@@ -3,7 +3,7 @@
 /* eslint-disable no-shadow */
 import Carousel, { autoplayPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import carousel1 from '../image/carousel1.png';
 import carousel2 from '../image/carousel2.png';
 import carousel3 from '../image/carousel3.png';
@@ -12,12 +12,6 @@ import carousel5 from '../image/carousel5.png';
 import carousel6 from '../image/carousel6.png';
 
 const MyCarousel = () => {
-  const [value, setValue] = useState(0);
-
-  const onChange = (value) => {
-    setValue(value);
-  };
-
   return (
     <div>
       <Carousel
@@ -31,8 +25,6 @@ const MyCarousel = () => {
           }
         ]}
         animationSpeed={1000}
-        value={value}
-        onChange={onChange}
         className="m-auto lg:mt-10"
       >
         <img

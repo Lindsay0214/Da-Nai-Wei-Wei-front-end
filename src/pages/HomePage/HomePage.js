@@ -1,23 +1,52 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import React, { useState, useMemo } from 'react';
+import { toast } from 'react-toastify';
+import { FaStar, FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
 import MyCarousel from '../../components/MyCarousel';
 
 const HomePageInput = ({ data, setSearchShop }) => {
+  function debounce(func, delay = 2500) {
+    let timer = null;
+    return () => {
+      const context = this;
+      // eslint-disable-next-line prefer-rest-params
+      const args = arguments;
+
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(context, args);
+      }, delay);
+    };
+  }
+  const handleChange = (e) => {
+    if (e.target.value === '') {
+      setSearchShop(['嵐', '麻古', '迷']);
+      return;
+    }
+    setSearchShop([e.target.value]);
+  };
+
   return (
-    <input
-      placeholder={data}
-      className="w-4/12 h-8 mx-1 text-xs text-center rounded md:mx-2 lg:w-60 md:w-44 lg:h-10 lg:rounded-md md:text-base"
-      onChange={async (e) => {
-        if (e.target.value === '') {
-          setSearchShop(['嵐', '麻古', '迷']);
-          return;
-        }
-        setSearchShop([e.target.value]);
-      }}
-    ></input>
+    <>
+      <div className="w-full">
+        <div className="flex items-center bg-white rounded-full shadow-xl">
+          <input
+            className="w-full px-6 py-4 leading-tight text-gray-700 rounded-l-full focus:outline-none"
+            id="search"
+            type="text"
+            placeholder={data}
+            onChange={handleChange}
+          />
+          <div className="p-4">
+            <button className="flex items-center justify-center w-12 h-12 p-2 text-white duration-500 ease-in-out rounded-full bg-yellow-deepYellow hover:hover focus:outline-none">
+              <FaSearch></FaSearch>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 const HomePageShop = ({ shop }) => {
@@ -25,7 +54,6 @@ const HomePageShop = ({ shop }) => {
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
       <div className="mb-2 overflow-hidden duration-500 ease-in-out transform hover:rotate-360 hover:border w-72 h-52 rounded-2xl hover:shadow-3xl">
         <img
-          // className="flex-shrink m-auto "
           className="w-full h-full "
           src={shop.URL}
           alt="品牌 logo 圖片"
@@ -39,7 +67,7 @@ const HomePageShop = ({ shop }) => {
           {shop.isOpen}
         </div>
         <div className="w-auto h-auto px-2 py-1 my-3 ml-4 bg-white rounded-lg">
-          20 m
+          {shop.distance}
         </div>
         <div className="flex w-auto h-auto px-2 py-1 my-3 ml-4 bg-white rounded-lg">
           <FaStar className="mt-1 mr-1 text-yellow-deepYellow" />
@@ -61,27 +89,20 @@ const HomePage = () => {
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
-      <MyCarousel />
-      <div className="flex items-center content-center justify-center mx-auto mt-16 rounded-md w-160 h-14 bg-yellow-deepYellow lg:rounded-lg lg:h-24">
-        <div className="flex items-center justify-around w-full px-6 mx-auto h-7 lg:h-14 lg:w-1/3">
-          <HomePageInput
-            key="findBrand"
-            data="找品牌..."
-            setSearchShop={setSearchShop}
-          ></HomePageInput>
-          <HomePageInput
-            key="findCategory"
-            data="找種類..."
-            setSearchShop={setSearchShop}
-          ></HomePageInput>
-          <HomePageInput
-            key="findComment"
-            data="找評價..."
-            setSearchShop={setSearchShop}
-          ></HomePageInput>
-        </div>
+      {useMemo(
+        () => (
+          <MyCarousel />
+        ),
+        []
+      )}
+      <div className="flex items-center mx-auto mt-16 rounded-lg md:w-160 w-72 h-14 lg:w-234 lg:rounded-lg lg:h-24">
+        <HomePageInput
+          key="findBrand"
+          data="找品牌"
+          setSearchShop={setSearchShop}
+        ></HomePageInput>
       </div>
-      <div className="mx-auto mt-10 w-160 lg:mt-20 md:w-176 lg:w-388">
+      <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
           {shops.map((shop) => {
