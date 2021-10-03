@@ -3,7 +3,6 @@
 /* eslint-disable no-shadow */
 import Carousel, { autoplayPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import { useState, useEffect } from 'react';
 import carousel1 from '../image/carousel1.png';
 import carousel2 from '../image/carousel2.png';
 import carousel3 from '../image/carousel3.png';

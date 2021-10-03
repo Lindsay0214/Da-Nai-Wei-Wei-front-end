@@ -61,7 +61,7 @@ function App() {
         <ToastContainer autoClose={2000} />
         <ScrollToTop />
         <>
-          {user === '' && <Navbar />}
+          {user === '' && <Navbar className="bg-lightYellow" />}
           {user.role === 'admin' && <AdminNavbar />}
           {user.role === 'shop' && <ShopNavbar />}
           {user.role === 'consumer' && <Navbar />}

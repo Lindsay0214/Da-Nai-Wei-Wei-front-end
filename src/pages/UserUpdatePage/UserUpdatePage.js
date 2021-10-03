@@ -45,46 +45,66 @@ const UserUpdatePage = () => {
           修改會員資料
         </div>
         <form className="flex flex-col items-center justify-center m-auto my-10 w-80">
-          <input
-            onFocus={() => setIsUpdated(false)}
-            onChange={(e) => {
-              setNewName(e.target.value);
-            }}
-            name="nickname"
-            placeholder="欲修改名字"
-            value={newName}
-            className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
-          ></input>
-          <input
-            onFocus={() => setIsUpdated(false)}
-            onChange={(e) => {
-              setNewEmail(e.target.value);
-            }}
-            name="email"
-            placeholder="欲修改信箱"
-            value={newEmail}
-            className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
-          ></input>
-          <input
-            onFocus={() => setIsUpdated(false)}
-            onChange={(e) => {
-              setNewCard(e.target.value);
-            }}
-            name="creditCard"
-            placeholder="欲修改信用卡"
-            value={newCard}
-            className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
-          ></input>
-          <input
-            onFocus={() => setIsUpdated(false)}
-            onChange={(e) => {
-              setNewAddress(e.target.value);
-            }}
-            name="address"
-            placeholder="欲修改地址"
-            value={newAddress}
-            className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
-          ></input>
+          <label>
+            <p className="pl-3 text-sm text-gray-500">
+              姓名<span className="text-xl text-red-500">*</span>
+            </p>
+            <input
+              onFocus={() => setIsUpdated(false)}
+              onChange={(e) => {
+                setNewName(e.target.value);
+              }}
+              name="nickname"
+              placeholder="欲修改名字"
+              value={newName}
+              className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+            ></input>
+          </label>
+          <label>
+            <p className="pl-3 text-sm text-gray-500">
+              信箱<span className="text-xl text-red-500">*</span>
+            </p>
+            <input
+              onFocus={() => setIsUpdated(false)}
+              onChange={(e) => {
+                setNewEmail(e.target.value);
+              }}
+              name="email"
+              placeholder="欲修改信箱"
+              value={newEmail}
+              className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+            ></input>
+          </label>
+          <label>
+            <p className="pl-3 text-sm text-gray-500">
+              信用卡<span className="text-xl text-red-500">*</span>
+            </p>
+            <input
+              onFocus={() => setIsUpdated(false)}
+              onChange={(e) => {
+                setNewCard(e.target.value);
+              }}
+              name="creditCard"
+              placeholder="ex. 1234-1234-1234-1234"
+              value={newCard}
+              className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+            ></input>
+          </label>
+          <label>
+            <p className="pl-3 text-sm text-gray-500">
+              地址<span className="text-xl text-red-500">*</span>
+            </p>
+            <input
+              onFocus={() => setIsUpdated(false)}
+              onChange={(e) => {
+                setNewAddress(e.target.value);
+              }}
+              name="address"
+              placeholder="ex. 台北市內湖區xxxxxx"
+              value={newAddress}
+              className="flex-col p-2 m-2 font-light rounded-lg w-60 bg-gray-input md:w-80"
+            ></input>
+          </label>
           {!isUpdated && (
             <button
               type="submit"
