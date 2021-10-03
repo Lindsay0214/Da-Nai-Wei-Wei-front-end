@@ -1,6 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useMemo } from 'react';
-import { toast } from 'react-toastify';
 import { FaStar, FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
@@ -31,7 +30,7 @@ const HomePageInput = ({ data, setSearchShop }) => {
   return (
     <>
       <div className="w-full">
-        <div className="flex items-center bg-white rounded-full shadow-xl">
+        <div className="flex items-center bg-white rounded-full shadow-md">
           <input
             className="w-full px-6 py-4 leading-tight text-gray-700 rounded-l-full focus:outline-none"
             id="search"
@@ -51,8 +50,8 @@ const HomePageInput = ({ data, setSearchShop }) => {
 };
 const HomePageShop = ({ shop }) => {
   return (
-    <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
-      <div className="mb-2 overflow-hidden duration-500 ease-in-out transform hover:rotate-360 hover:border w-72 h-52 rounded-2xl hover:shadow-3xl">
+    <div className="pb-3 w-72 h-86lg:w-124 lg:border-0">
+      <div className="mb-2 overflow-hidden duration-500 ease-in-out transform rounded-xl hover:rotate-5 hover:border w-72 h-52 hover:shadow-xl">
         <img
           className="w-full h-full "
           src={shop.URL}

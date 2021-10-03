@@ -17,7 +17,7 @@ export default function Ham() {
   };
 
   return (
-    <div className="fixed z-10 w-full text-right top-2">
+    <div className="fixed z-10 w-full text-right -top-4 -right-8 md:top-4 md:right-5">
       <Menu
         as="div"
         className="relative content-around inline-block transition"
