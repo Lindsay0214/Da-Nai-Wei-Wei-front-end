@@ -3,6 +3,7 @@ import React from 'react';
 import ImageUploading from 'react-images-uploading';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { updateURL } from '../../api';
 
 const UserUpdatePage = () => {
@@ -39,10 +40,12 @@ const UserUpdatePage = () => {
         }
       });
       const payload = { URL: result.data.data.link };
-      // console.log(payload); // 先留著，有印出 url 代表 有傳到 imgur 上面
       await updateURL(payload);
     } catch (error) {
-      // console.log(error);
+      toast.error('上傳失敗', {
+        position: toast.POSITION.TOP_CENTER,
+        theme: 'colored'
+      });
     }
     setImages(imageList);
   };
