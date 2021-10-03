@@ -20,13 +20,9 @@ export const userSlice = createSlice({
     }
   }
 });
-
 export const { isRegister, setLogout, setMe } = userSlice.actions;
-
 export const selectUser = (state) => state.user.user;
-
 export default userSlice.reducer;
-
 export const login = (history, payload) => async (dispatch) => {
   loginApi(payload).then((result) => {
     const data = {
@@ -51,7 +47,6 @@ export const login = (history, payload) => async (dispatch) => {
     }
   });
 };
-
 export const register = (history, payload) => (dispatch) => {
   registerApi(payload).then((result) => {
     toast.success('註冊成功', {
@@ -72,7 +67,6 @@ export const logout = () => (dispatch) => {
   logoutApi();
   dispatch(setLogout());
 };
-
 export const getMe = () => async (dispatch) => {
   getMeApi().then((result) => {
     if (result.data.ok === 1) {

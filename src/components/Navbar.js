@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 import { selectUser, logout } from '../features/userSlice';
 import Ham from './Ham';
 
@@ -22,7 +23,6 @@ const Navbar = () => {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  // console.log(user); nickname undefined
   const history = useHistory();
   const handleLogout = (e) => {
     e.preventDefault();
@@ -31,6 +31,7 @@ const Navbar = () => {
   };
   return (
     <>
+      <FaShoppingCart className="text-5xl text-gray-lightGray"></FaShoppingCart>
       <nav className="relative flex items-center h-24 py-16 md:py-20 lg:py-0 bg-yellow-lightYellow ">
         {/* after:border lg:after:border-none */}
         <div className="container flex items-center content-around justify-between mx-auto space-x-5">

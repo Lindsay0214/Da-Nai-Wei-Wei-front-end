@@ -32,11 +32,9 @@ const OrdersBlock = ({ data }) => {
 };
 const OrdersPage = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    (async function() {
-      const result = await getOrdersHistory();
-      setData(result.data.data);
-    })();
+  useEffect(async () => {
+    const result = await getOrdersHistory();
+    setData(result.data.data);
   }, []);
   return (
     <div className="min-h-screen bg-yellow-lightYellow">

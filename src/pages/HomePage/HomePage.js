@@ -52,7 +52,7 @@ const HomePageInput = ({ data, setSearchShop }) => {
 const HomePageShop = ({ shop }) => {
   return (
     <div className="pb-3 border-b-2 border-gray-300 w-72 h-86lg:w-124 lg:border-0">
-      <div className="mb-2 overflow-hidden duration-500 ease-in-out transform hover:rotate-360 hover:border w-72 h-52 rounded-2xl hover:shadow-3xl">
+      <div className="mb-2 overflow-hidden duration-500 ease-in-out transform hover:rotate-5 hover:border w-72 h-52 rounded-2xl hover:shadow-3xl">
         <img
           className="w-full h-full "
           src={shop.URL}
