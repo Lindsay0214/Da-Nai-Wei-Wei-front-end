@@ -69,7 +69,7 @@ const OrderPage = () => {
     history.push('/order-check');
   };
   const handleContinue = () => {
-    history.goBack();
+    history.push('/menu');
   };
   return (
     <>

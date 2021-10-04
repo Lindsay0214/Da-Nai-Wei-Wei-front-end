@@ -84,10 +84,7 @@ function App() {
               <Route path="/products/:id" component={UpdateProductPage} />
             )}
             <Route path="/" exact component={HomePage} />
-            <Route
-              path="/menu/:id/:brandName/:rating/:address"
-              component={MenuPage}
-            />
+            <Route path="/menu" component={MenuPage} />
             {/* <Route path="*" component={NoFoundPage} /> */}
             {/* user */}
             <Route path="/login" component={LoginPage} />
