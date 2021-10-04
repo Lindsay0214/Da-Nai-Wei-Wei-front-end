@@ -68,6 +68,9 @@ const OrderPage = () => {
     await updateTotalPriceAmount();
     history.push('/order-check');
   };
+  const handleContinue = () => {
+    history.goBack();
+  };
   return (
     <>
       <ProgressBar />
@@ -95,8 +98,8 @@ const OrderPage = () => {
               })}
               <div>
                 <button
-                  onClick={handleClick}
-                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-52 right-7 md:right-15 hover:hover bg-yellow-deepYellow"
+                  onClick={handleContinue}
+                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-52 right-46 md:right-44 hover:hover bg-yellow-deepYellow"
                 >
                   繼續選購
                 </button>
@@ -104,7 +107,7 @@ const OrderPage = () => {
               <div>
                 <button
                   onClick={handleClick}
-                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-7 md:right-15 hover:hover bg-yellow-deepYellow"
+                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-6 md:right-15 hover:hover bg-yellow-deepYellow"
                 >
                   下一步
                 </button>

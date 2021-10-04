@@ -93,9 +93,9 @@ const Navbar = () => {
         </div>
         {itemCount === false ? null : (
           <Link to="/order">
-            <div className="fixed flex items-center w-20 h-20 text-white align-middle duration-500 ease-in-out rounded-full cursor-pointer hover:text-yellow-deepYellow hover:bg-white shadow-3xl bg-yellow-deepYellow bottom-10 right-10">
+            <div className="fixed flex items-center text-white align-middle duration-500 ease-in-out rounded-full cursor-pointer w-15 h-15 md:w-20 md:h-20 hover:text-yellow-deepYellow hover:bg-white shadow-3xl bg-yellow-deepYellow md:bottom-10 md:right-10 bottom-7 right-9">
               <FaShoppingCart className="relative mx-auto text-4xl"></FaShoppingCart>
-              <div className="absolute w-8 h-8 p-1 text-center bg-red-500 rounded-full -right-2 -top-2">
+              <div className="absolute w-8 h-8 p-1 text-center bg-red-500 rounded-full -right-3 -top-3 md:-right-2 md:-top-2">
                 {itemCount}
               </div>
             </div>
