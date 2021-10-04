@@ -86,6 +86,14 @@ export default function Ham() {
                 </Menu.Item>
               )}
               {user && (
+                <Link
+                  to="/user-update"
+                  className="items-center inline-block py-2.5 mt-2 text-base leading-snug tracking-widest text-white rounded-lg px-7 bg-yellow-deepYellow hover:hover"
+                >
+                  會員資料
+                </Link>
+              )}
+              {user && (
                 <Menu.Item>
                   <Link
                     className="items-center inline-block px-12 py-2 mt-2 text-base leading-snug tracking-widest text-white rounded-lg bg-yellow-deepYellow hover:hover"

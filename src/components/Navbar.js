@@ -75,11 +75,12 @@ const Navbar = () => {
             )}
             {user && (
               <>
-                <p className="items-center hidden w-40 overflow-hidden leading-snug tracking-wide text-center text-black transition duration-500 ease-in-out overflow-ellipsis md:inline-block py-9 bg-yellow-default whitespace-nowrap hover:bg-yellow-deepYellow hover:text-white">
-                  <Link to="/user-update" className="px-4">
-                    Hi，{user.nickname}
-                  </Link>
-                </p>
+                <Link
+                  to="/user-update"
+                  className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
+                >
+                  Hi，{user.nickname}
+                </Link>
                 <Link
                   className="items-center hidden px-12 text-lg leading-snug tracking-wide text-black transition duration-500 ease-in-out lg:inline-block py-9 bg-yellow-default hover:bg-yellow-deepYellow hover:text-white"
                   to="/logout"
@@ -93,7 +94,7 @@ const Navbar = () => {
         </div>
         {itemCount === false ? null : (
           <Link to="/order">
-            <div className="fixed flex items-center text-white align-middle duration-500 ease-in-out rounded-full cursor-pointer w-15 h-15 md:w-20 md:h-20 hover:text-yellow-deepYellow hover:bg-white shadow-3xl bg-yellow-deepYellow md:bottom-10 md:right-10 bottom-7 right-9">
+            <div className="fixed flex items-center text-white align-middle duration-500 ease-in-out bg-black rounded-full cursor-pointer w-15 h-15 md:w-20 md:h-20 hover:text-yellow-deepYellow hover:bg-white shadow-3xl md:bg-yellow-deepYellow md:bottom-10 md:right-10 bottom-7 right-9">
               <FaShoppingCart className="relative mx-auto text-4xl"></FaShoppingCart>
               <div className="absolute w-8 h-8 p-1 text-center bg-red-500 rounded-full -right-3 -top-3 md:-right-2 md:-top-2">
                 {itemCount}
