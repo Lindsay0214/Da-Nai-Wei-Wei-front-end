@@ -2,6 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { logoutApi, getMeApi, loginApi, registerApi } from '../api';
+import toastConfig from '../constant';
 
 export const userSlice = createSlice({
   name: 'user',
@@ -20,13 +21,9 @@ export const userSlice = createSlice({
     }
   }
 });
-
 export const { isRegister, setLogout, setMe } = userSlice.actions;
-
 export const selectUser = (state) => state.user.user;
-
 export default userSlice.reducer;
-
 export const login = (history, payload) => async (dispatch) => {
   loginApi(payload).then((result) => {
     const data = {
@@ -34,10 +31,7 @@ export const login = (history, payload) => async (dispatch) => {
       nickname: result.data.nickname,
       role: result.data.role
     };
-    toast.success('登入成功', {
-      position: toast.POSITION.TOP_CENTER,
-      theme: 'colored'
-    });
+    toast.success('登入成功', toastConfig);
     document.cookie = 'isLogin=true;';
     if (result.data.role === 'consumer') {
       dispatch(setMe(data));
@@ -51,13 +45,9 @@ export const login = (history, payload) => async (dispatch) => {
     }
   });
 };
-
 export const register = (history, payload) => (dispatch) => {
   registerApi(payload).then((result) => {
-    toast.success('註冊成功', {
-      position: toast.POSITION.TOP_CENTER,
-      theme: 'colored'
-    });
+    toast.success('註冊成功', toastConfig);
     const data = {
       nickname: payload.nickname,
       email: payload.email,
@@ -72,7 +62,6 @@ export const logout = () => (dispatch) => {
   logoutApi();
   dispatch(setLogout());
 };
-
 export const getMe = () => async (dispatch) => {
   getMeApi().then((result) => {
     if (result.data.ok === 1) {

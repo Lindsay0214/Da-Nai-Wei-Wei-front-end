@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getTotalPriceAmount, getIsPaid } from '../../api';
 import { setLoading } from '../../features/loadingSlice';
+import toastConfig from '../../constant';
 
 const OrderCheckPage = () => {
   const [orderData, setOrderData] = useState(0);
@@ -35,10 +36,7 @@ const OrderCheckPage = () => {
       dispatch(setLoading(false));
     }
     if (isError) {
-      toast.error('唉呦!結帳失敗', {
-        position: toast.POSITION.TOP_CENTER,
-        theme: 'colored'
-      });
+      toast.error('唉呦!結帳失敗', toastConfig);
       dispatch(setLoading(false));
     }
   }, [data, isSuccess, isError]);

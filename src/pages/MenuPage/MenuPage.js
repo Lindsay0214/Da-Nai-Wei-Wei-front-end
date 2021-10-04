@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -11,7 +12,7 @@ const MenuDrink = ({ data, title }) => {
       </h2>
       {data.map((drink) => {
         return drink.categories === title ? (
-          <Link to={`/add-to-cart/${drink.id}`}>
+          <Link key={drink.id} to={`/add-to-cart/${drink.id}`}>
             <div className="flex justify-between w-56 px-5 mx-auto my-4">
               <span className="inline-block">{drink.name}</span>
               <span className="inline-block">{drink.price}</span>
@@ -60,8 +61,8 @@ const MenuPage = () => {
                   {brandName}
                 </div>
                 <div className="flex my-3 text-2xl text-white">
-                  {ratingArray.map(() => {
-                    return <FaStar className="mt-1 mr-1 " />;
+                  {ratingArray.map((item, index) => {
+                    return <FaStar key={index} className="mt-1 mr-1 " />;
                   })}
                 </div>
                 <div className="mt-2 text-black text-md lg:text-base">

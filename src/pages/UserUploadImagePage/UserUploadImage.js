@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { updateURL } from '../../api';
+import toastConfig from '../../constant';
 
 const UserUpdatePage = () => {
   const imgurKey = process.env.REACT_APP_IMGUR_KEY;
@@ -42,10 +43,7 @@ const UserUpdatePage = () => {
       const payload = { URL: result.data.data.link };
       await updateURL(payload);
     } catch (error) {
-      toast.error('上傳失敗', {
-        position: toast.POSITION.TOP_CENTER,
-        theme: 'colored'
-      });
+      toast.error('上傳失敗', toastConfig);
     }
     setImages(imageList);
   };

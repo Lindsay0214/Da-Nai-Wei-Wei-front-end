@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+// import { decrement } from '../features/shoppingCartSlice';
 import {
   getOrderItem,
   deleteOrderItem,
@@ -10,18 +11,19 @@ import {
 } from '../../api';
 import ProgressBar from '../../components/ProgressBar';
 import { selectUser, getMe } from '../../features/userSlice';
+import { decrement } from '../../features/shoppingCartSlice';
 
 const DrinkDetail = ({ handleDelete, drink }) => {
   return (
     <div className="relative w-10/12 mb-8 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow h-1/5">
       <div className="flex flex-col justify-start leading-6 md:pl-3 md:leading-7 lg:leading-10">
         <p className="tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
-          {drink.name}{' '}
+          {drink.name}
         </p>
         <p className="inline-flex w-48 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
           {drink.size} | {drink.ice} | {drink.sweetness}
         </p>
-        <p className="inline-flex w-40 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
+        <p className="inline-flex w-40 pl-1 tracking-wide text-white lg:text-xl md:w-56 md:text-lg">
           $ {drink.price} | {drink.quantity} 份
         </p>
         <p className="inline-flex w-40 overflow-hidden tracking-wide text-white whitespace-nowrap overflow-ellipsis lg:text-xl md:w-56 md:text-lg">
@@ -52,17 +54,22 @@ const OrderPage = () => {
   useEffect(async () => {
     await addShoppingCart();
     const result = await getOrderItem();
+    console.log(result);
     setDrinks(result.data.productInfo);
     dispatch(getMe());
   }, [change]);
   const handleDelete = async (id) => {
     const payload = { id };
     await deleteOrderItem(payload);
+    dispatch(decrement());
     setChange(change + 1);
   };
   const handleClick = async () => {
     await updateTotalPriceAmount();
     history.push('/order-check');
+  };
+  const handleContinue = () => {
+    history.goBack();
   };
   return (
     <>
@@ -91,8 +98,16 @@ const OrderPage = () => {
               })}
               <div>
                 <button
+                  onClick={handleContinue}
+                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-52 right-46 md:right-44 hover:hover bg-yellow-deepYellow"
+                >
+                  繼續選購
+                </button>
+              </div>
+              <div>
+                <button
                   onClick={handleClick}
-                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-7 md:right-15 hover:hover bg-yellow-deepYellow"
+                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-6 md:right-15 hover:hover bg-yellow-deepYellow"
                 >
                   下一步
                 </button>

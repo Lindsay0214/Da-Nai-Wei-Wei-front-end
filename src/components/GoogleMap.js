@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import GoogleMapReact from 'google-map-react';
 import useDebounce from '../utils';
 import { getShops } from '../api';
+import toastConfig from '../constant';
 
 const MyPositionMarker = ({ text }) => <div>{text}</div>;
 const KEY = process.env.REACT_APP_GOOGLE_KEY;
@@ -39,10 +40,7 @@ function GoogleMap({ handleChange, searchShop }) {
 
   const findDrinks = () => {
     if (searchShop[0].length > 5) {
-      toast.error('哎唷！文字太長了', {
-        position: toast.POSITION.TOP_CENTER,
-        theme: 'colored'
-      });
+      toast.error('哎唷！文字太長了', toastConfig);
     }
     if (mapApiLoaded) {
       const service = new mapApi.places.PlacesService(mapInstance);
@@ -95,10 +93,7 @@ function GoogleMap({ handleChange, searchShop }) {
               });
             });
             if (data.length === 0) {
-              toast.error('唉唷！找不到店家耶', {
-                position: toast.POSITION.TOP_CENTER,
-                theme: 'colored'
-              });
+              toast.error('唉唷！找不到店家耶', toastConfig);
             }
             handleChange(data);
           });

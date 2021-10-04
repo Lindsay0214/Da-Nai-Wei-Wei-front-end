@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 import { selectUser, logout } from '../features/userSlice';
+import { init } from '../features/shoppingCartSlice';
+import { getOrderItem } from '../api';
+
 import Ham from './Ham';
 
 const NavbarButton = ({ data }) => {
@@ -19,31 +24,33 @@ const Navbar = () => {
   const data1 = { name: '附近店家', url: '/' };
   const data3 = { name: '購物車', url: '/order' };
   const data4 = { name: '歷史訂單', url: '/orders' };
-
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const history = useHistory();
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    dispatch(init(false));
     history.push('/');
   };
+  const itemCount = useSelector((state) => state.shoppingCart);
+  useEffect(async () => {
+    if (user) {
+      const result = await getOrderItem();
+      dispatch(init(result.data.count));
+    }
+  }, []);
   return (
     <>
       <nav className="sticky top-0 z-10 flex items-center w-full h-24 md:py-20 lg:py-0 bg-yellow-lightYellow">
         <div className="container flex items-center content-around justify-between mx-auto space-x-5">
-          {/* logo */}
           <div className="flex">
             <Link
               className="flex w-40 h-20 mr-6 text-4xl leading-relaxed text-black bg-cover bg-logo lg:w-56 lg:h-24"
               to="/"
-            >
-              {/* 大奶薇薇 */}
-            </Link>
+            ></Link>
           </div>
-          {/* mobile */}
           <Ham />
-          {/* list */}
           <ul className="flex -ml-16 space-x-8 md:space-x-0">
             <NavbarButton data={data1}></NavbarButton>
             <NavbarButton data={data3}></NavbarButton>
@@ -68,7 +75,7 @@ const Navbar = () => {
             )}
             {user && (
               <>
-                <p className="items-center hidden w-40 overflow-hidden leading-snug tracking-wide text-black transition duration-500 ease-in-out overflow-ellipsis md:inline-block py-9 bg-yellow-default whitespace-nowrap hover:bg-yellow-deepYellow hover:text-white">
+                <p className="items-center hidden w-40 overflow-hidden leading-snug tracking-wide text-center text-black transition duration-500 ease-in-out overflow-ellipsis md:inline-block py-9 bg-yellow-default whitespace-nowrap hover:bg-yellow-deepYellow hover:text-white">
                   <Link to="/user-update" className="px-4">
                     Hi，{user.nickname}
                   </Link>
@@ -84,6 +91,16 @@ const Navbar = () => {
             )}
           </div>
         </div>
+        {itemCount === false ? null : (
+          <Link to="/order">
+            <div className="fixed flex items-center text-white align-middle duration-500 ease-in-out rounded-full cursor-pointer w-15 h-15 md:w-20 md:h-20 hover:text-yellow-deepYellow hover:bg-white shadow-3xl bg-yellow-deepYellow md:bottom-10 md:right-10 bottom-7 right-9">
+              <FaShoppingCart className="relative mx-auto text-4xl"></FaShoppingCart>
+              <div className="absolute w-8 h-8 p-1 text-center bg-red-500 rounded-full -right-3 -top-3 md:-right-2 md:-top-2">
+                {itemCount}
+              </div>
+            </div>
+          </Link>
+        )}
       </nav>
     </>
   );
