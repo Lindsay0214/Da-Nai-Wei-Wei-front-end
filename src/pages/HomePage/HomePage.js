@@ -1,23 +1,25 @@
-/* eslint-disable react/destructuring-assignment */
+/* eslint-disable  */
 import React, { useState, useMemo } from 'react';
 import { FaStar, FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import GoogleMap from '../../components/GoogleMap';
 import MyCarousel from '../../components/MyCarousel';
+import { setChosenShop } from '../../features/chosenShopSlice';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const HomePageInput = ({ data, setSearchShop }) => {
-  function debounce(func, delay = 2500) {
-    let timer = null;
-    return () => {
-      const context = this;
-      // eslint-disable-next-line prefer-rest-params
-      const args = arguments;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(context, args);
-      }, delay);
-    };
-  }
+  // function debounce(func, delay = 2500) {
+  //   let timer = null;
+  //   return () => {
+  //     const context = this;
+  //     // eslint-disable-next-line prefer-rest-params
+  //     const args = arguments;
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() => {
+  //       func.apply(context, args);
+  //     }, delay);
+  //   };
+  // }
   const handleChange = (e) => {
     if (e.target.value === '') {
       setSearchShop(['嵐', '麻古', '迷']);
@@ -80,8 +82,14 @@ const HomePageShop = ({ shop }) => {
 const HomePage = () => {
   const [shops, setShops] = useState([]);
   const [searchShop, setSearchShop] = useState(['嵐', '麻古', '迷']);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const handleChange = (e) => {
     setShops(e);
+  };
+  const handleClick = (shop) => {
+    dispatch(setChosenShop(shop));
+    history.push('/menu');
   };
 
   return (
@@ -105,13 +113,9 @@ const HomePage = () => {
           <div></div>
           {shops.map((shop) => {
             return (
-              <Link
-                className="px-2 mb-8 rounded-xl "
-                to={`/menu/${shop.id}/${shop.brandName}/${shop.rating}/${shop.address}`}
-                key={shop.key}
-              >
-                <HomePageShop className="" shop={shop} />
-              </Link>
+              <div className="cursor-pointer" onClick={() => handleClick(shop)}>
+                <HomePageShop key={shop.key} shop={shop} />
+              </div>
             );
           })}
         </div>

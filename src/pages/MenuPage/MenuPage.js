@@ -1,16 +1,17 @@
 /* eslint-disable */
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getShopProducts, getShop, logoutApi } from '../../api';
+import { useSelector } from 'react-redux';
 
-const MenuDrink = ({ data, title }) => {
+const MenuDrink = ({ drinkData, title }) => {
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
       <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
         {title} 系列
       </h2>
-      {data.map((drink) => {
+      {drinkData.map((drink) => {
         return drink.categories === title ? (
           <Link key={drink.id} to={`/add-to-cart/${drink.id}`}>
             <div className="flex justify-between w-56 px-5 mx-auto my-4">
@@ -24,14 +25,16 @@ const MenuDrink = ({ data, title }) => {
   );
 };
 const MenuPage = () => {
-  const { id, brandName, rating, address } = useParams();
+  const { id, brandName, rating, address } = useSelector(
+    (state) => state.chosenShop
+  );
   const ratingArray = new Array(Math.floor(rating)).fill('star');
-  const [data, setData] = useState([]);
+  const [drinkData, setDrinkData] = useState([]);
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
   useEffect(async () => {
     const result = await getShopProducts(id);
-    await setData(result.data.products);
+    await setDrinkData(result.data.products);
     const tempArray = [];
     for (let i = 0; i < result.data.products.length; i += 1) {
       if (!tempArray.includes(result.data.products[i].categories)) {
@@ -78,7 +81,9 @@ const MenuPage = () => {
             <div className="flex flex-wrap h-auto m-auto md:space-x-10 lg:space-x-12 bg-yellow-light">
               <div></div>
               {categories.map((title) => {
-                return <MenuDrink data={data} title={title}></MenuDrink>;
+                return (
+                  <MenuDrink drinkData={drinkData} title={title}></MenuDrink>
+                );
               })}
             </div>
           </div>
