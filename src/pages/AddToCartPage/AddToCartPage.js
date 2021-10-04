@@ -6,6 +6,7 @@ import DetailBoard from '../../components/DetailBoard';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../features/userSlice';
 import { increment } from '../../features/shoppingCartSlice';
+import toastConfig from '../../constant';
 import {
   getDetailId,
   addOrderItem,
@@ -17,15 +18,11 @@ const AddToCartPage = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const user = useSelector(selectUser);
-  const aa = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(async () => {
     user.role !== 'consumer' ? history.push('/login') : null;
     user.role !== 'consumer'
-      ? toast.warn('還沒登入喔，趕緊來登入', {
-          position: toast.POSITION.TOP_CENTER,
-          theme: 'colored'
-        })
+      ? toast.warn('還沒登入喔，趕緊來登入', toastConfig)
       : null;
     const result = await getProduct(id);
     setData({
@@ -65,10 +62,7 @@ const AddToCartPage = () => {
       await addShoppingCart(); // 確保有購物車可以裝商品
     })();
     if (data.quantity <= 0)
-      return toast.error('數量不能是 0 或是負數', {
-        position: toast.POSITION.TOP_CENTER,
-        theme: 'colored'
-      });
+      return toast.error('數量不能是 0 或是負數', toastConfig);
     if (data.size && data.sweetness && data.ice) {
       const result = await getDetailId({
         size: data.size,
@@ -82,14 +76,14 @@ const AddToCartPage = () => {
         product_id: id
       };
       await addOrderItem(payload);
+      toast.success('加入購物車成功 👍', toastConfig);
       dispatch(increment());
-      console.log(aa);
       history.goBack();
     } else {
-      toast.error('檢查一下，看看大小、糖度或是冰度有地方沒有填寫到', {
-        position: toast.POSITION.TOP_CENTER,
-        theme: 'colored'
-      });
+      toast.error(
+        '檢查一下，看看大小、糖度或是冰度有地方沒有填寫到',
+        toastConfig
+      );
     }
   }
   return (

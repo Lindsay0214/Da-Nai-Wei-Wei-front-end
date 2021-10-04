@@ -4,6 +4,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { setLoading } from './features/loadingSlice';
+import toastConfig from './constant';
 
 const instance = axios.create({
   // baseURL: 'https://da-nai-wei-wei.herokuapp.com'
@@ -28,10 +29,7 @@ export const interceptor = (store) => {
       if (error.response) {
         const { message } = error.response.data;
         store.dispatch(setLoading(false));
-        toast.error(message, {
-          position: toast.POSITION.TOP_CENTER,
-          theme: 'colored'
-        });
+        toast.error(message, toastConfig);
       }
       if (!window.navigator.onLine) {
         alert('網路出了點問題，請重新連線後重整網頁');

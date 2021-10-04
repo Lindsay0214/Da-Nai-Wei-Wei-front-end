@@ -8,7 +8,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from '../components/ScrollToTop';
 import { selectUser, getMe } from '../features/userSlice';
@@ -58,7 +58,7 @@ function App() {
     <>
       {isLoading && <Loading />}
       <Router>
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={2000} limit={2} transition={Flip} />
         <ScrollToTop />
         <>
           {user === '' && <Navbar className="bg-lightYellow" />}

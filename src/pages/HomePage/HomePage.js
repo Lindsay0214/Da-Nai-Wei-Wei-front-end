@@ -12,7 +12,6 @@ const HomePageInput = ({ data, setSearchShop }) => {
       const context = this;
       // eslint-disable-next-line prefer-rest-params
       const args = arguments;
-
       clearTimeout(timer);
       timer = setTimeout(() => {
         func.apply(context, args);
