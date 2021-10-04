@@ -5,6 +5,7 @@ import { FaBars } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser, logout } from '../features/userSlice';
+import { init } from '../features/shoppingCartSlice';
 
 export default function Ham() {
   const user = useSelector(selectUser);
@@ -13,6 +14,7 @@ export default function Ham() {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    dispatch(init(false));
     history.push('/');
   };
 
