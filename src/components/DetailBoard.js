@@ -10,8 +10,8 @@ const DetailBoard = ({
   handleSubmit
 }) => {
   return (
-    <div className="flex">
-      <div className="m-10 bg-white rounded-lg w-80 md:m-20 md:w-96">
+    <div className="flex" id="drink">
+      <div className="bg-white rounded-lg w-80 md:w-96">
         <div className="flex items-center justify-around mt-8 ">
           <div className="space-y-3">
             <div className="flex items-center text-md md:text-xl">

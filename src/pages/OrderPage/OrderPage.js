@@ -54,7 +54,6 @@ const OrderPage = () => {
   useEffect(async () => {
     await addShoppingCart();
     const result = await getOrderItem();
-    console.log(result);
     setDrinks(result.data.productInfo);
     dispatch(getMe());
   }, [change]);
@@ -74,44 +73,40 @@ const OrderPage = () => {
   return (
     <>
       <ProgressBar />
-      <div className="absolute w-full h-auto min-h-screen bg-yellow-lightYellow">
-        <div className="h-auto pb-16 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
-          <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
-            在購物車內的所有飲料
-          </h1>
+      <div className="h-auto pb-16 mx-auto mb-10 bg-white rounded-lg w-76 md:w-160 lg:w-192 ">
+        <h1 className="flex justify-center w-4/5 py-6 m-auto text-xl text-black border-b-2 border-black lg:py-10 lg:text-4xl border-opacity-60 font-seminole">
+          在購物車內的所有飲料
+        </h1>
+        <div className="relative">
+          <div className="flex md:ml-7">
+            <div className="flex justify-start w-10 h-10 mt-4 bg-cover rounded-full ml-9 bg-logo"></div>
+            <p className="h-6 pt-6 ml-3.5 mb-10 text-base ">{user.nickname}</p>
+          </div>
           <div className="relative">
-            <div className="flex md:ml-7">
-              <div className="flex justify-start w-10 h-10 mt-4 bg-cover rounded-full ml-9 bg-logo"></div>
-              <p className="h-6 pt-6 ml-3.5 mb-10 text-base ">
-                {user.nickname}
-              </p>
+            {drinks.map((drink) => {
+              return (
+                <DrinkDetail
+                  handleDelete={handleDelete}
+                  drink={drink}
+                  key={drink.order_item_id}
+                ></DrinkDetail>
+              );
+            })}
+            <div>
+              <button
+                onClick={handleContinue}
+                className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-52 right-46 md:right-44 hover:hover bg-yellow-deepYellow"
+              >
+                繼續選購
+              </button>
             </div>
-            <div className="relative">
-              {drinks.map((drink) => {
-                return (
-                  <DrinkDetail
-                    handleDelete={handleDelete}
-                    drink={drink}
-                    key={drink.order_item_id}
-                  ></DrinkDetail>
-                );
-              })}
-              <div>
-                <button
-                  onClick={handleContinue}
-                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-52 right-46 md:right-44 hover:hover bg-yellow-deepYellow"
-                >
-                  繼續選購
-                </button>
-              </div>
-              <div>
-                <button
-                  onClick={handleClick}
-                  className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-6 md:right-15 hover:hover bg-yellow-deepYellow"
-                >
-                  下一步
-                </button>
-              </div>
+            <div>
+              <button
+                onClick={handleClick}
+                className="absolute w-24 h-10 p-2 text-center text-white duration-500 ease-in-out rounded-lg lg:right-20 right-6 md:right-15 hover:hover bg-yellow-deepYellow"
+              >
+                下一步
+              </button>
             </div>
           </div>
         </div>

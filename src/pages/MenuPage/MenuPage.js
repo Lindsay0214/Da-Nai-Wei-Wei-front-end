@@ -1,25 +1,83 @@
-/* eslint-disable */
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getShopProducts, getShop, logoutApi } from '../../api';
 import { useSelector } from 'react-redux';
+import { getShopProducts, getShop } from '../../api';
+import AddToCart from '../../components/AddToCart';
 
-const MenuDrink = ({ drinkData, title }) => {
+const DrinkInfo = ({ id, showModal, handleShowModal }) => {
+  return (
+    <>
+      {showModal ? (
+        <>
+          <div
+            role="note"
+            aria-hidden="true"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
+            onClick={(e) => {
+              e.stopPropagation();
+              const drink = document.getElementById('drink');
+              if (!drink.contains(e.target)) {
+                handleShowModal(id);
+              }
+            }}
+          >
+            <div className="relative w-auto max-w-3xl mx-auto my-6">
+              <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+                <AddToCart id={id} handleShowModal={handleShowModal} />
+              </div>
+            </div>
+          </div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+        </>
+      ) : null}
+    </>
+  );
+};
+const MenuDrink = ({ drinkData, title, setDrinkData }) => {
+  const handleShowModal = (id) => {
+    let data;
+    if (id === 'close') {
+      data = drinkData.map((drink) => {
+        if (drink.isShow !== true) return drink;
+        return { ...drink, isShow: false };
+      });
+    } else {
+      data = drinkData.map((drink) => {
+        if (drink.id !== id) return drink;
+        return { ...drink, isShow: !drink.isShow };
+      });
+    }
+    setDrinkData(data);
+  };
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
       <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
         {title} 系列
       </h2>
       {drinkData.map((drink) => {
-        return drink.categories === title ? (
-          <Link key={drink.id} to={`/add-to-cart/${drink.id}`}>
-            <div className="flex justify-between w-56 px-5 mx-auto my-4">
-              <span className="inline-block">{drink.name}</span>
-              <span className="inline-block">{drink.price}</span>
-            </div>
-          </Link>
-        ) : null; // 不要顯示要用 null 還是 ''
+        return (
+          drink.categories === title && (
+            <>
+              <div
+                className="flex justify-between w-56 px-5 mx-auto my-4 transition-all duration-150 ease-linear hover:text-yellow-deepYellow"
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+                onClick={() => {
+                  handleShowModal(drink.id);
+                }}
+              >
+                <span className="inline-block">{drink.name}</span>
+                <span className="inline-block">{drink.price}</span>
+              </div>
+              <DrinkInfo
+                showModal={drink.isShow}
+                id={drink.id}
+                handleShowModal={handleShowModal}
+              />
+            </>
+          )
+        );
       })}
     </div>
   );
@@ -34,7 +92,10 @@ const MenuPage = () => {
   const [categories, setCategories] = useState([]);
   useEffect(async () => {
     const result = await getShopProducts(id);
-    await setDrinkData(result.data.products);
+    const newResult = result.data.products.map((item) => {
+      return { ...item, isShow: false };
+    });
+    await setDrinkData(newResult);
     const tempArray = [];
     for (let i = 0; i < result.data.products.length; i += 1) {
       if (!tempArray.includes(result.data.products[i].categories)) {
@@ -65,6 +126,7 @@ const MenuPage = () => {
                 </div>
                 <div className="flex my-3 text-2xl text-white">
                   {ratingArray.map((item, index) => {
+                    // eslint-disable-next-line react/no-array-index-key
                     return <FaStar key={index} className="mt-1 mr-1 " />;
                   })}
                 </div>
@@ -82,7 +144,11 @@ const MenuPage = () => {
               <div></div>
               {categories.map((title) => {
                 return (
-                  <MenuDrink drinkData={drinkData} title={title}></MenuDrink>
+                  <MenuDrink
+                    drinkData={drinkData}
+                    title={title}
+                    setDrinkData={setDrinkData}
+                  ></MenuDrink>
                 );
               })}
             </div>
