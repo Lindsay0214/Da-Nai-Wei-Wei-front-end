@@ -2,19 +2,14 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import DetailBoard from '../../components/DetailBoard';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../../features/userSlice';
-import { increment } from '../../features/shoppingCartSlice';
-import toastConfig from '../../constant';
-import {
-  getDetailId,
-  addOrderItem,
-  addShoppingCart,
-  getProduct
-} from '../../api';
+import DetailBoard from './DetailBoard';
+import { selectUser } from '../features/userSlice';
+import { increment } from '../features/shoppingCartSlice';
+import toastConfig from '../constant';
+import { getDetailId, addOrderItem, addShoppingCart, getProduct } from '../api';
 
-const AddToCartPage = ({ id }) => {
+const AddToCart = ({ id, handleShowModal }) => {
   const [data, setData] = useState({});
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -77,7 +72,7 @@ const AddToCartPage = ({ id }) => {
       await addOrderItem(payload);
       toast.success('加入購物車成功 👍', toastConfig);
       dispatch(increment());
-      history.goBack();
+      handleShowModal('close');
     } else {
       toast.error(
         '檢查一下，看看大小、糖度或是冰度有地方沒有填寫到',
@@ -100,4 +95,4 @@ const AddToCartPage = ({ id }) => {
   );
 };
 
-export default AddToCartPage;
+export default AddToCart;
