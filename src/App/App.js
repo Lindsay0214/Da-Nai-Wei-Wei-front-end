@@ -32,7 +32,7 @@ import CreditCardDeletePage from '../pages/CreditCardDeletePage';
 import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
@@ -125,7 +125,7 @@ function App() {
             )}
           </Switch>
         </>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );

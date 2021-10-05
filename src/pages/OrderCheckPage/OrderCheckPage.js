@@ -36,7 +36,7 @@ const OrderCheckPage = () => {
       dispatch(setLoading(false));
     }
     if (isError) {
-      toast.error('唉呦!結帳失敗', toastConfig);
+      toast.error('結帳失敗，再試一次！', toastConfig);
       dispatch(setLoading(false));
     }
   }, [data, isSuccess, isError]);

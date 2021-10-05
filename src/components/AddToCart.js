@@ -81,7 +81,7 @@ const AddToCart = ({ id, handleShowModal }) => {
     }
   }
   return (
-    <>
+    <div className="flex items-center justify-center -mx-10 -my-20 -p-10">
       <DetailBoard
         data={data}
         handleChangeSize={handleChangeSize}
@@ -91,7 +91,7 @@ const AddToCart = ({ id, handleShowModal }) => {
         handleMinus={handleMinus}
         handleSubmit={handleClick}
       ></DetailBoard>
-    </>
+    </div>
   );
 };
 
