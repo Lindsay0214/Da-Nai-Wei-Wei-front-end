@@ -83,10 +83,12 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
   );
 };
 const MenuPage = () => {
-  const { id, brandName, rating, address } = useSelector(
-    (state) => state.chosenShop
-  );
-  const ratingArray = new Array(Math.floor(rating)).fill('star');
+  // const { id, brandName, rating, address } = useSelector(
+  //   (state) => state.chosenShop
+  // );
+  const shopInfo = JSON.parse(localStorage.getItem('shop'));
+  const { id } = shopInfo;
+  const ratingArray = new Array(Math.floor(shopInfo.rating)).fill('star');
   const [drinkData, setDrinkData] = useState([]);
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -122,7 +124,7 @@ const MenuPage = () => {
               </div>
               <div>
                 <div className="font-black text-black md:mt-5 lg:text-xl">
-                  {brandName}
+                  {shopInfo.brandName}
                 </div>
                 <div className="flex my-3 text-2xl text-white">
                   {ratingArray.map((item, index) => {
@@ -131,7 +133,7 @@ const MenuPage = () => {
                   })}
                 </div>
                 <div className="mt-2 text-black text-md lg:text-base">
-                  {address}
+                  {shopInfo.address}
                 </div>
               </div>
             </div>

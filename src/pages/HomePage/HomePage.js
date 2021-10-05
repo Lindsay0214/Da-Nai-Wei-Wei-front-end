@@ -78,6 +78,7 @@ const HomePage = () => {
   };
   const handleClick = (shop) => {
     dispatch(setChosenShop(shop));
+    localStorage.setItem('shop', JSON.stringify(shop));
     history.push('/menu');
   };
 
