@@ -1,26 +1,53 @@
 /* eslint-disable */
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getShopProducts, getShop, logoutApi } from '../../api';
+import { getShopProducts, getShop } from '../../api';
 import { useSelector } from 'react-redux';
+import AddToCartPage from '../AddToCartPage';
 
 const MenuDrink = ({ drinkData, title }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
       <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
         {title} 系列
       </h2>
-      {drinkData.map((drink) => {
-        return drink.categories === title ? (
-          <Link key={drink.id} to={`/add-to-cart/${drink.id}`}>
-            <div className="flex justify-between w-56 px-5 mx-auto my-4">
-              <span className="inline-block">{drink.name}</span>
+      <span className="inline-block mt-5">
+        {drinkData.map((drink) => {
+          return drink.categories === title ? (
+            <div className="flex justify-between w-56 px-5 mx-auto my-1">
+              <button
+                className="inline-block transition-all duration-150 ease-linear hover:text-gray-600"
+                onClick={() => setShowModal(true)}
+              >
+                {drink.name}
+              </button>
               <span className="inline-block">{drink.price}</span>
+              {showModal ? (
+                <>
+                  <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+                    <div className="relative w-auto max-w-3xl mx-auto my-6">
+                      <div className="relative flex flex-col w-10/12 m-auto bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+                        <AddToCartPage id={drink.id} />
+                        {console.log('aaa', drink)}
+                        <button
+                          className="px-6 py-2 mb-1 text-sm font-bold text-red-500 uppercase transition-all duration-150 ease-linear outline-none background-transparent focus:outline-none"
+                          type="button"
+                          onClick={() => setShowModal(false)}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+                </>
+              ) : null}
             </div>
-          </Link>
-        ) : null; // 不要顯示要用 null 還是 ''
-      })}
+          ) : null;
+        })}
+      </span>
     </div>
   );
 };

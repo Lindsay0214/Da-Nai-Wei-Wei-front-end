@@ -54,7 +54,6 @@ const OrderPage = () => {
   useEffect(async () => {
     await addShoppingCart();
     const result = await getOrderItem();
-    console.log(result);
     setDrinks(result.data.productInfo);
     dispatch(getMe());
   }, [change]);

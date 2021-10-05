@@ -1,6 +1,6 @@
 /* eslint-disable  */
 import { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import DetailBoard from '../../components/DetailBoard';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,8 +14,7 @@ import {
   getProduct
 } from '../../api';
 
-const AddToCartPage = () => {
-  const { id } = useParams();
+const AddToCartPage = ({ id }) => {
   const [data, setData] = useState({});
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -87,7 +86,7 @@ const AddToCartPage = () => {
     }
   }
   return (
-    <div className="flex items-center justify-center bg-yellow-lightYellow">
+    <div className="flex items-center justify-center -mx-10 -my-20 -p-10">
       <DetailBoard
         data={data}
         handleChangeSize={handleChangeSize}
