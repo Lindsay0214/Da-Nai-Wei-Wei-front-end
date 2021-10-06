@@ -14,7 +14,7 @@ export default function Ham() {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    dispatch(init(false));
+    dispatch(init(0));
     history.push('/');
   };
 
