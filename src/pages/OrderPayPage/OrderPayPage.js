@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getOrderPaid } from '../../api';
+import { useDispatch } from 'react-redux';
+import { getOrderPaid, getOrderItem } from '../../api';
+import { init } from '../../features/shoppingCartSlice';
 
 const OrderPayPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(0);
+  const dispatch = useDispatch();
   useEffect(async () => {
     const result = await getOrderPaid(id);
+    const orderItemResult = await getOrderItem();
+    dispatch(init(orderItemResult.data.count));
     setData(result.data);
   }, []);
   return (

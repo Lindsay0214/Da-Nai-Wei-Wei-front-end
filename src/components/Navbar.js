@@ -30,7 +30,7 @@ const Navbar = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    dispatch(init(false));
+    dispatch(init(0));
     history.push('/');
   };
   const itemCount = useSelector((state) => state.shoppingCart);
@@ -92,7 +92,7 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        {itemCount === false ? null : (
+        {itemCount === 0 ? null : (
           <Link to="/order">
             <div className="fixed flex items-center text-white align-middle duration-500 ease-in-out bg-black rounded-full cursor-pointer w-15 h-15 md:w-20 md:h-20 hover:text-yellow-deepYellow hover:bg-white shadow-3xl md:bg-yellow-deepYellow md:bottom-10 md:right-10 bottom-7 right-9">
               <FaShoppingCart className="relative mx-auto text-4xl"></FaShoppingCart>

@@ -89,9 +89,11 @@ export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
 export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
 
-// order-item
+order - item;
 export const getIsPaid = (order_id) =>
   axios.get(
     `https://da-nai-wei-wei.herokuapp.com/orders-get-is-paid/${order_id}`,
     config
   );
+// export const getIsPaid = (order_id) =>
+//   axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
