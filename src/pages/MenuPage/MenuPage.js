@@ -50,7 +50,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
     setDrinkData(data);
   };
   return (
-    <div className="w-64 p-2 mb-12 bg-white rounded-lg h-80">
+    <div className="w-64 h-auto p-2 mb-12 bg-white rounded-lg">
       <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">
         {title} 系列
       </h2>
