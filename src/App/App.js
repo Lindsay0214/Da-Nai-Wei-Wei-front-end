@@ -26,6 +26,7 @@ import OrderInfoPage from '../pages/OrderInfoPage';
 import OrderItemEditPage from '../pages/OrderItemEditPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
 import OrdersPage from '../pages/OrdersPage';
+import ProductListsPage from '../pages/ProductListsPage';
 import NoPermissionPage from '../pages/NoPermissionPage';
 import CreditCardStartPage from '../pages/CreditCardStartPage';
 import CreditCardDeletePage from '../pages/CreditCardDeletePage';
@@ -114,6 +115,7 @@ function App() {
             <Route path="/order-info" component={OrderInfoPage} />
             <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
+            <Route path="/product-list" component={ProductListsPage} />
             {user.role === 'admin' && (
               <Redirect to="/admin-update" component={AdminUpdatePage} />
             )}
