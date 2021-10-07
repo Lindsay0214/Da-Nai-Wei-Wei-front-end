@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from '../../features/userSlice';
+import SubFooter from '../../components/SubFooter';
 
 const RegisterPage = () => {
   const [nickname, setNickname] = useState('');
@@ -69,6 +70,7 @@ const RegisterPage = () => {
           </div>
         </div>
       </div>
+      <SubFooter />
     </div>
   );
 };
