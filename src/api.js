@@ -96,3 +96,10 @@ export const getIsPaid = (order_id) =>
   );
 // export const getIsPaid = (order_id) =>
 //   axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
+
+export const getOrderHistory = (order_id) =>
+  instance.get(`/order-items/${order_id}`);
+
+// product-history
+export const addProductHistory = (payload) =>
+  instance.post('/product-history', payload);
