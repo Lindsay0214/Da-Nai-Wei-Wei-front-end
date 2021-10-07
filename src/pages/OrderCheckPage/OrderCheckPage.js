@@ -38,11 +38,6 @@ const OrderCheckPage = () => {
   };
   useEffect(async () => {
     if (isSuccess) {
-      orderId = orderData.order_id;
-      // eslint-disable-next-line prettier/prettier
-      const response = await getOrderHistory(orderId);
-      const { targetProductArr } = response.data;
-      addProductHistory(targetProductArr);
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }
