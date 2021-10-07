@@ -1,25 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const FooterInfo = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <button
-        className="mt-2 -ml-4 text-black transition-all duration-150 ease-linear hover:text-yellow-deepYellow"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        {data.name}
-      </button>
+      <span>
+        <button
+          className="mt-2 text-black transition-all duration-150 ease-linear hover:text-yellow-deepYellow"
+          type="button"
+          onClick={() => setShowModal(true)}
+        >
+          {data.name}
+        </button>
+      </span>
       {showModal ? (
         <>
           <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
             <div className="relative w-auto max-w-3xl mx-auto my-6">
               {/* content */}
-              <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+              <div className="relative flex flex-col w-10/12 m-auto bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
                 {/* header */}
                 <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200">
                   <h3 className="text-2xl font-semibold">{data.name}</h3>
@@ -98,7 +99,7 @@ const Footer = () => {
                 <FooterInfo data={data2} />
               </div>
               <div className="flex flex-col">
-                <span className="mt-4 mb-2 -ml-4 text-xl font-bold text-gray-700 uppercase md:mt-0">
+                <span className="mt-4 mb-2 text-xl font-bold text-gray-700 uppercase md:mt-0">
                   條款專區
                 </span>
                 <FooterInfo data={data3} />
@@ -108,7 +109,7 @@ const Footer = () => {
               <a
                 href="https://github.com/Lindsay0214/Da-Nai-Wei-Wei-front-end"
                 target="blank"
-                className="flex flex-col text-3xl"
+                className="flex flex-col mt-10 text-3xl md:mt-0"
               >
                 <FaGithub />
               </a>

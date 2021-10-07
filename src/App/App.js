@@ -24,16 +24,16 @@ import RegisterPage from '../pages/RegisterPage';
 import AdminEditPage from '../pages/AdminEditPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 import OrderItemEditPage from '../pages/OrderItemEditPage';
-import AddToCartPage from '../pages/AddToCartPage';
 import OrderCheckPage from '../pages/OrderCheckPage';
 import OrdersPage from '../pages/OrdersPage';
+import ProductListsPage from '../pages/ProductListsPage';
 import NoPermissionPage from '../pages/NoPermissionPage';
 import CreditCardStartPage from '../pages/CreditCardStartPage';
 import CreditCardDeletePage from '../pages/CreditCardDeletePage';
 import CreditCardUpdatePage from '../pages/CreditCardUpdatePage';
 import UserUpdatePage from '../pages/UserUpdatePage';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import ProductsPage from '../pages/ProductsPage';
 import UpdateProductPage from '../pages/UpdateProductPage';
@@ -46,7 +46,6 @@ function App() {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
-
   useEffect(() => {
     // 應該要有 cookie 才做
     if (document.cookie) {
@@ -114,9 +113,9 @@ function App() {
             <Route path="/orders" component={OrdersPage} />
             <Route path="/order-pay/:id" component={OrderPayPage} />
             <Route path="/order-info" component={OrderInfoPage} />
-            <Route path="/add-to-cart/:id" component={AddToCartPage} />
             <Route path="/order-check" component={OrderCheckPage} />
             <Route path="/order-item-edit/:id" component={OrderItemEditPage} />
+            <Route path="/product-list" component={ProductListsPage} />
             {user.role === 'admin' && (
               <Redirect to="/admin-update" component={AdminUpdatePage} />
             )}
@@ -128,7 +127,7 @@ function App() {
             )}
           </Switch>
         </>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );

@@ -6,20 +6,9 @@ import MyCarousel from '../../components/MyCarousel';
 import { setChosenShop } from '../../features/chosenShopSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Footer';
 
 const HomePageInput = ({ data, setSearchShop }) => {
-  // function debounce(func, delay = 2500) {
-  //   let timer = null;
-  //   return () => {
-  //     const context = this;
-  //     // eslint-disable-next-line prefer-rest-params
-  //     const args = arguments;
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => {
-  //       func.apply(context, args);
-  //     }, delay);
-  //   };
-  // }
   const handleChange = (e) => {
     if (e.target.value === '') {
       setSearchShop(['嵐', '麻古', '迷']);
@@ -51,7 +40,7 @@ const HomePageInput = ({ data, setSearchShop }) => {
 };
 const HomePageShop = ({ shop }) => {
   return (
-    <div className="pb-3 w-72 h-86lg:w-124 lg:border-0">
+    <div className="pb-3 mb-10 w-72 h-86lg:w-124 lg:border-0">
       <div className="mb-2 overflow-hidden duration-500 ease-in-out transform rounded-xl hover:rotate-5 hover:border w-72 h-52 hover:shadow-xl">
         <img
           className="w-full h-full "
@@ -89,6 +78,7 @@ const HomePage = () => {
   };
   const handleClick = (shop) => {
     dispatch(setChosenShop(shop));
+    localStorage.setItem('shop', JSON.stringify(shop));
     history.push('/menu');
   };
 
@@ -120,6 +110,7 @@ const HomePage = () => {
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

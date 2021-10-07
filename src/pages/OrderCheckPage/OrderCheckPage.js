@@ -32,7 +32,7 @@ const OrderCheckPage = () => {
 
   // 取得 is_paid 結果
   const handleGetIsPaidClick = async () => {
-    window.open('https://da-nai-wei-wei.herokuapp.com/paymenys');
+    window.open('https://da-nai-wei-wei.herokuapp.com/payments');
     refetch();
     dispatch(setLoading(true));
   };
@@ -49,7 +49,7 @@ const OrderCheckPage = () => {
       dispatch(setLoading(false));
     }
     if (isError) {
-      toast.error('唉呦!結帳失敗', toastConfig);
+      toast.error('結帳失敗，再試一次！', toastConfig);
       dispatch(setLoading(false));
     }
   }, [data, isSuccess, isError]);

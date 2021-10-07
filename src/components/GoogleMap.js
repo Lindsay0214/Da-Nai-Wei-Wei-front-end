@@ -15,10 +15,7 @@ function GoogleMap({ handleChange, searchShop }) {
   const [mapApiLoaded, setMapApiLoaded] = useState(false);
   const [mapInstance, setMapInstance] = useState(null);
   const [mapApi, setMapApi] = useState(null);
-  const [myPosition, setMyPosition] = useState({
-    lat: 25.0522048,
-    lng: 121.55581280000001
-  });
+  const [myPosition, setMyPosition] = useState({});
   const debouncedSearchShop = useDebounce(searchShop, 1000);
   const apiHasLoaded = (map, maps) => {
     setMapInstance(map);
@@ -117,7 +114,7 @@ function GoogleMap({ handleChange, searchShop }) {
           libraries: ['places']
         }}
         defaultZoom={20}
-        defaultCenter={myPosition}
+        center={myPosition}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => apiHasLoaded(map, maps)}
       >
@@ -132,12 +129,4 @@ function GoogleMap({ handleChange, searchShop }) {
 }
 
 // 由於改寫成 functional component，故另外設定 defaultProps
-GoogleMap.defaultProps = {
-  center: {
-    lat: 25.0523606,
-    lng: 121.5545303
-  },
-  zoom: 17
-};
-
 export default GoogleMap;

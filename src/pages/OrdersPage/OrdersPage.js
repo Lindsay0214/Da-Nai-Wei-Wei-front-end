@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getOrdersHistory } from '../../api';
 
 const OrdersBlock = ({ data }) => {
@@ -36,6 +38,7 @@ const OrdersPage = () => {
     const result = await getOrdersHistory();
     setData(result.data.data);
   }, []);
+
   return (
     <div className="min-h-screen bg-yellow-lightYellow">
       <div className="flex justify-center py-20 text-3xl text-black">
@@ -44,9 +47,21 @@ const OrdersPage = () => {
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
-          {data.map((i) => {
-            return <OrdersBlock data={i}></OrdersBlock>;
-          })}
+          {data.length === 0 ? (
+            <>
+              <div className="flex flex-col w-48 p-5 m-5 bg-white rounded-lg h-1/2">
+                <Link to="/product-list">
+                  <p className="flex content-center justify-center h-24 m-auto text-xl">
+                    尚無訂單
+                  </p>
+                </Link>
+              </div>
+            </>
+          ) : (
+            data.map((i) => {
+              return <OrdersBlock data={i}></OrdersBlock>;
+            })
+          )}
         </div>
       </div>
     </div>
