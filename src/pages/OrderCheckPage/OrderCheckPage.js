@@ -17,7 +17,6 @@ const OrderCheckPage = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
-  let orderId = null;
 
   const getIsPaidResponse = async () => {
     const result = await getIsPaid(orderData.order_id);
