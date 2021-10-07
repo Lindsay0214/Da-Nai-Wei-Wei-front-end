@@ -6,30 +6,27 @@ import { getOrdersHistory } from '../../api';
 
 const OrdersBlock = ({ data }) => {
   return (
-    <div className="pb-3 mb-10 bg-white border-b-2 border-gray-300 rounded-lg w-72 h-86lg:w-124 lg:border-0">
-      <div className="pb-2 mx-auto mt-8 text-xl border-b border-black w-44">
-        <div className="flex items-center justify-center pt-4 md:pt-0">
-          訂單編號
-        </div>
-        <div className="flex items-center justify-center ">No.{data.id}</div>
-      </div>
-      <div className="flex flex-col px-2 mx-auto mt-5 leading-8 w-44 md:leading-10 md:text-xl text-md ">
-        <div>飲料總數量: {data.item_count} 杯</div>
-        <div className="w-40 overflow-hidden overflow-ellipsis">
-          總金額: {data.total_price} 元
-        </div>
-        {!data.is_paid && (
-          <div>
-            是否付款: <span className="text-red-500">未付款</span>{' '}
+    <Link to="/product-list">
+      <div className="pt-2 pb-3 mb-10 bg-white border-b-2 border-gray-300 rounded-lg w-72 h-86lg:w-124 lg:border-0">
+        <div className="pb-2 mx-auto mt-8 text-xl border-b border-black w-44">
+          <div className="flex items-center justify-center pt-4 md:pt-0">
+            訂單編號
           </div>
-        )}
-        {!data.is_paid || (
-          <div>
-            是否付款: <span className="text-green-500">已付款</span>{' '}
+          <div className="flex items-center justify-center ">No.{data.id}</div>
+        </div>
+        <div className="flex flex-col px-2 mx-auto mt-5 leading-8 w-44 md:leading-10 md:text-xl text-md ">
+          <div>飲料總數量: {data.item_count} 杯</div>
+          <div className="w-40 overflow-hidden overflow-ellipsis">
+            總金額: {data.total_price} 元
           </div>
-        )}
+          {!data.is_paid || (
+            <div>
+              是否付款: <span className="text-green-500">已付款</span>{' '}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 const OrdersPage = () => {
