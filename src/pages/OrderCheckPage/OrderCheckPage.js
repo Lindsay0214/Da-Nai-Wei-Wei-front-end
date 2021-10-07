@@ -4,7 +4,12 @@ import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getTotalPriceAmount, getIsPaid } from '../../api';
+import {
+  getTotalPriceAmount,
+  getIsPaid,
+  getOrderHistory,
+  addProductHistory
+} from '../../api';
 import { setLoading } from '../../features/loadingSlice';
 import toastConfig from '../../constant';
 
@@ -12,6 +17,7 @@ const OrderCheckPage = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
+  let orderId = null;
 
   const getIsPaidResponse = async () => {
     const result = await getIsPaid(orderData.order_id);
@@ -30,8 +36,15 @@ const OrderCheckPage = () => {
     refetch();
     dispatch(setLoading(true));
   };
-  useEffect(() => {
+  useEffect(async () => {
     if (isSuccess) {
+      orderId = orderData.order_id;
+      // eslint-disable-next-line prettier/prettier
+      console.log(data);
+      const response = await getOrderHistory(orderId);
+      const { targetProductArr } = response.data;
+      console.log(targetProductArr);
+      addProductHistory(targetProductArr);
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }
