@@ -27,7 +27,7 @@ const OrderCheckPage = () => {
   const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-    { retry: 3, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
+    { retry: 7, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
   );
 
   // 取得 is_paid 結果
