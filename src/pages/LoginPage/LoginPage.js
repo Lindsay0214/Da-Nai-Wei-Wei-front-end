@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { login, getMe } from '../../features/userSlice';
+import SubFooter from '../../components/SubFooter';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -62,6 +63,7 @@ const LoginPage = () => {
           </div>
         </div>
       </form>
+      <SubFooter />
     </div>
   );
 };
