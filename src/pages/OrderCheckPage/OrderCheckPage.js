@@ -81,12 +81,18 @@ const OrderCheckPage = () => {
             <div className="flex flex-col-reverse m-auto text-left bg-cover rounded-md bg-creditCard md:w-72 md:h-44 h-28 w-52 my-11"></div>
           </div>
           <div className="flex justify-end mr-12 ">
-            <button
-              onClick={handleGetIsPaidClick}
-              className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow "
-            >
-              結帳
-            </button>
+            {orderData.item_count === 0 ? (
+              <div className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out bg-gray-500 rounded-lg ">
+                沒有商品
+              </div>
+            ) : (
+              <button
+                onClick={handleGetIsPaidClick}
+                className="w-24 h-10 p-2 tracking-wider text-center text-white duration-500 ease-in-out rounded-lg hover:hover bg-yellow-deepYellow "
+              >
+                結帳
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -7,8 +7,8 @@ import { setLoading } from './features/loadingSlice';
 import toastConfig from './constant';
 
 const instance = axios.create({
-  baseURL: 'https://da-nai-wei-wei.herokuapp.com',
-  // baseURL: 'http://localhost:5000',
+  // baseURL: 'https://da-nai-wei-wei.herokuapp.com',
+  baseURL: 'http://localhost:5000',
   withCredentials: true
 });
 const config = {
@@ -17,8 +17,18 @@ const config = {
 };
 export const interceptor = (store) => {
   instance.interceptors.request.use((config) => {
-    store.dispatch(setLoading(true));
-    return config;
+    const url = config.url.split('/')[1];
+    if (
+      url === 'order-items' ||
+      url === 'products' ||
+      url === 'orders' ||
+      url === 'product-details'
+    ) {
+      return config;
+    } else {
+      store.dispatch(setLoading(true));
+      return config;
+    }
   });
   instance.interceptors.response.use(
     (response) => {
@@ -89,11 +99,10 @@ export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
 export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
 
-order - item;
-export const getIsPaid = (order_id) =>
-  axios.get(
-    `https://da-nai-wei-wei.herokuapp.com/orders-get-is-paid/${order_id}`,
-    config
-  );
 // export const getIsPaid = (order_id) =>
-//   axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
+// axios.get(
+//   `https://da-nai-wei-wei.herokuapp.com/orders-get-is-paid/${order_id}`,
+//   config
+// );
+export const getIsPaid = (order_id) =>
+  axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);

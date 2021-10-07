@@ -7,7 +7,13 @@ import DetailBoard from './DetailBoard';
 import { selectUser } from '../features/userSlice';
 import { increment } from '../features/shoppingCartSlice';
 import toastConfig from '../constant';
-import { getDetailId, addOrderItem, addShoppingCart, getProduct } from '../api';
+import {
+  getDetailId,
+  addOrderItem,
+  addShoppingCart,
+  getProduct,
+  updateTotalPriceAmount
+} from '../api';
 
 const AddToCart = ({ id, handleShowModal }) => {
   const [data, setData] = useState({});
@@ -71,6 +77,7 @@ const AddToCart = ({ id, handleShowModal }) => {
       };
       await addOrderItem(payload);
       toast.success('加入購物車成功 👍', toastConfig);
+      await updateTotalPriceAmount();
       dispatch(increment());
       handleShowModal('close');
     } else {
