@@ -17,8 +17,18 @@ const config = {
 };
 export const interceptor = (store) => {
   instance.interceptors.request.use((config) => {
-    store.dispatch(setLoading(true));
-    return config;
+    const url = config.url.split('/')[1];
+    if (
+      url === 'order-items' ||
+      url === 'products' ||
+      url === 'orders' ||
+      url === 'product-details'
+    ) {
+      return config;
+    } else {
+      store.dispatch(setLoading(true));
+      return config;
+    }
   });
   instance.interceptors.response.use(
     (response) => {
