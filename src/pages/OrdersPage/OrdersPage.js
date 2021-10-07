@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -49,9 +50,11 @@ const OrdersPage = () => {
           {data.length === 0 ? (
             <>
               <div className="flex flex-col w-48 p-5 m-5 bg-white rounded-lg h-1/2">
-                <p className="flex content-center justify-center h-24 m-auto text-xl">
-                  尚無訂單
-                </p>
+                <Link to="/product-list">
+                  <p className="flex content-center justify-center h-24 m-auto text-xl">
+                    尚無訂單
+                  </p>
+                </Link>
               </div>
             </>
           ) : (
