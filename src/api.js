@@ -7,8 +7,8 @@ import { setLoading } from './features/loadingSlice';
 import toastConfig from './constant';
 
 const instance = axios.create({
-  // baseURL: 'https://da-nai-wei-wei.herokuapp.com',
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://da-nai-wei-wei.herokuapp.com',
+  // baseURL: 'http://localhost:5000',
   withCredentials: true
 });
 const config = {
@@ -88,6 +88,12 @@ export const updateTotalPriceAmount = () => instance.patch(`/orders`);
 export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
 export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
+
+// product-history
+export const getOrderHistory = (order_id) =>
+  instance.get(`/order-items/${order_id}`);
+export const addProductHistory = (payload) =>
+  instance.post('/product-history', payload);
 
 // export const getIsPaid = (order_id) =>
 //   axios.get(
