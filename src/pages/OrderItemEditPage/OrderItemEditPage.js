@@ -1,7 +1,11 @@
 /* eslint-disable  */
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getSingleOrderItem, getDetailId, updateOrderItem } from '../../api';
+import {
+  getSingleOrderItem,
+  getDetailId,
+  updateOrderItemDetail
+} from '../../api';
 import DetailBoard from '../../components/DetailBoard';
 
 const OrderItemEditPage = () => {
@@ -54,7 +58,7 @@ const OrderItemEditPage = () => {
       detail_id,
       quantity: data.quantity
     };
-    await updateOrderItem(payload2);
+    await updateOrderItemDetail(payload2);
     history.push('/order');
   };
   return (

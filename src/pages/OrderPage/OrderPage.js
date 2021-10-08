@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 // import { decrement } from '../features/shoppingCartSlice';
 import {
-  getOrderItem,
+  getOrderItems,
   deleteOrderItem,
   updateTotalPriceAmount,
   addShoppingCart
@@ -53,7 +53,7 @@ const OrderPage = () => {
   const [drinks, setDrinks] = useState([]);
   useEffect(async () => {
     await addShoppingCart();
-    const result = await getOrderItem();
+    const result = await getOrderItems();
     setDrinks(result.data.productInfo);
     dispatch(getMe());
   }, [change]);

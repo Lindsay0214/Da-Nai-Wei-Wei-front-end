@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaPhone } from 'react-icons/fa';
+// import { getOrderHistory } from '../../api';
 
 const ProductListsPage = () => {
   const shopInfo = JSON.parse(localStorage.getItem('shop'));
   const { id } = shopInfo;
   const [shop, setShop] = useState([]);
 
+  useEffect(async () => {
+    const orderId = localStorage.getItem('order_id');
+    // const data = await getOrderHistory(orderId);
+    // console.log(data);
+  }, []);
   return (
     <div className="bg-yellow-lightYellow">
       <div className="flex items-center justify-center mt-20 mb-12 text-2xl font-bold tracking-wider text-gray-deepGray">

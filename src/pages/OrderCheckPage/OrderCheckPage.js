@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import {
   getTotalPriceAmount,
   getIsPaid,
-  getOrderHistory,
-  addProductHistory
+  getItemsByOrderId,
+  updateOrderItemHistory
 } from '../../api';
 import { setLoading } from '../../features/loadingSlice';
 import toastConfig from '../../constant';
@@ -27,12 +27,12 @@ const OrderCheckPage = () => {
   const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-    { retry: 3, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
+    { retry: 8, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
   );
 
   // 取得 is_paid 結果
   const handleGetIsPaidClick = async () => {
-    window.open('https://da-nai-wei-wei.herokuapp.com/payments');
+    // window.open('https://da-nai-wei-wei.herokuapp.com/payments');
     refetch();
     dispatch(setLoading(true));
   };
@@ -40,11 +40,9 @@ const OrderCheckPage = () => {
     if (isSuccess) {
       orderId = orderData.order_id;
       // eslint-disable-next-line prettier/prettier
-      console.log(data);
-      const response = await getOrderHistory(orderId);
+      const response = await getItemsByOrderId(orderId);
       const { targetProductArr } = response.data;
-      console.log(targetProductArr);
-      addProductHistory(targetProductArr);
+      const aa = await updateOrderItemHistory(targetProductArr);
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }

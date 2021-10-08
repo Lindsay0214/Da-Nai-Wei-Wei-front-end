@@ -71,6 +71,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
                 <span className="inline-block">{drink.price}</span>
               </div>
               <DrinkInfo
+                key={drink.id}
                 showModal={drink.isShow}
                 id={drink.id}
                 handleShowModal={handleShowModal}
@@ -147,6 +148,7 @@ const MenuPage = () => {
               {categories.map((title) => {
                 return (
                   <MenuDrink
+                    key={title}
                     drinkData={drinkData}
                     title={title}
                     setDrinkData={setDrinkData}
