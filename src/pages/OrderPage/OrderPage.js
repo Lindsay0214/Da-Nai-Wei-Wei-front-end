@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-// import { decrement } from '../features/shoppingCartSlice';
+import { toast } from 'react-toastify';
+import toastConfig from '../../constant';
 import {
   getOrderItems,
   deleteOrderItem,
@@ -60,10 +61,15 @@ const OrderPage = () => {
   const handleDelete = async (id) => {
     const payload = { id };
     await deleteOrderItem(payload);
+    await updateTotalPriceAmount();
     dispatch(decrement());
     setChange(change + 1);
   };
+  // eslint-disable-next-line consistent-return
   const handleClick = async () => {
+    if (drinks.length === 0) {
+      return toast.error('唉呦！買杯飲料吧', toastConfig);
+    }
     await updateTotalPriceAmount();
     history.push('/order-check');
   };
