@@ -3,7 +3,6 @@ import SubFooter from '../../components/SubFooter';
 import { getItemsByOrderId, getOrderPaid } from '../../api';
 
 const DrinkItem = ({ data }) => {
-  console.log(data);
   return (
     <div className="p-2.5 mt-5 mx-auto rounded-lg bg-yellow-deepYellow">
       <div className="flex flex-col justify-start m-2">
@@ -31,9 +30,9 @@ const ProductListsPage = () => {
   useEffect(async () => {
     const orderId = localStorage.getItem('order_id');
     const response = await getItemsByOrderId(orderId);
-    console.log(response.data.targetProductArr);
     setDrinks(response.data.targetProductArr);
     const OrderPaidResult = await getOrderPaid(orderId);
+    console.log(OrderPaidResult.data);
     setOrderInformation(OrderPaidResult.data);
     // console.log(data);
   }, []);
@@ -65,7 +64,7 @@ const ProductListsPage = () => {
             </div>
             <div className="flex mt-2 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="m-2">訂單建立時間</p>
-              <p className="m-2">2021-10-10 10:10:10</p>
+              <p className="m-2">{orderInformation.updatedAt}</p>
             </div>
           </div>
           <div className="mt-20">
