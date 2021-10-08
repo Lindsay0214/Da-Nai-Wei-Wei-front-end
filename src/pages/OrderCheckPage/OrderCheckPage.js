@@ -42,7 +42,7 @@ const OrderCheckPage = () => {
       // eslint-disable-next-line prettier/prettier
       const response = await getItemsByOrderId(orderId);
       const { targetProductArr } = response.data;
-      const aa = await updateOrderItemHistory(targetProductArr);
+      await updateOrderItemHistory(targetProductArr);
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }
