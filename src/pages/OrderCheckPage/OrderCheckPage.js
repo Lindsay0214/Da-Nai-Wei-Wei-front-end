@@ -26,7 +26,6 @@ const OrderCheckPage = () => {
   const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-
     { retry: 8, enabled: false, cacheTime: 5000 }
   );
 
