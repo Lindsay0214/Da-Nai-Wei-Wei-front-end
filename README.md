@@ -155,6 +155,8 @@ Clone [你訂](https://order.nidin.shop/)部份功能的線上訂購飲料平台
 │   ├── index.js
 │   ├── store.js
 │   └── utils.js
+├── .eslintrc.js
+├── .prettierrc.js
 ├── craco.config.js
 ├── package-lock.json
 ├── package.json
