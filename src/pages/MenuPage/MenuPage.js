@@ -2,6 +2,7 @@ import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { getShopProducts, getShop } from '../../api';
 import AddToCart from '../../components/AddToCart';
+import SubFooter from '../../components/SubFooter';
 
 const DrinkInfo = ({ id, showModal, handleShowModal }) => {
   return (
@@ -155,6 +156,7 @@ const MenuPage = () => {
           </div>
         </div>
       </div>
+      <SubFooter />
     </>
   );
 };
