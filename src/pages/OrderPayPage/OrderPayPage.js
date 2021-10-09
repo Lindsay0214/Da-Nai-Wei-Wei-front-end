@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getOrderPaid, getOrderItems } from '../../api';
 import { init } from '../../features/shoppingCartSlice';
+import SubFooter from '../../components/SubFooter';
 
 const OrderPayPage = () => {
   const { id } = useParams();
@@ -53,6 +54,7 @@ const OrderPayPage = () => {
           </div>
         </div>
       </div>
+      <SubFooter />
     </div>
   );
 };

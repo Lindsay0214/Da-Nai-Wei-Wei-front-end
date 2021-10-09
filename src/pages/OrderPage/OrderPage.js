@@ -39,7 +39,7 @@ const DrinkDetail = ({ handleDelete, drink }) => {
         </Link>
         <FaTrashAlt
           onClick={() => handleDelete(drink.order_item_id)}
-          className="absolute mt-10 text-xl text-white cursor-pointer top-5 right-4 "
+          className="absolute mt-10 text-xl text-red-500 cursor-pointer top-5 right-4 "
         ></FaTrashAlt>
       </div>
     </div>

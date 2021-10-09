@@ -129,7 +129,7 @@ const Footer = () => {
           <div className="flex flex-col items-center mt-6 ">
             <div className="pt-10 text-center sm:w-2/3">
               <p className="mb-2 text-sm text-black">
-                © 2021 by Da Nei Wei Wei
+                © 2021 by Da Nai Wei Wei
               </p>
             </div>
           </div>
