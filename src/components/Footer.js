@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const FooterInfo = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
@@ -106,13 +106,22 @@ const Footer = () => {
                 <FooterInfo data={data4} />
                 <FooterInfo data={data5} />
               </div>
-              <a
-                href="https://github.com/Lindsay0214/Da-Nai-Wei-Wei-front-end"
-                target="blank"
-                className="flex flex-col mt-10 text-3xl md:mt-0"
-              >
-                <FaGithub />
-              </a>
+              <div className="flex">
+                <a
+                  href="https://docs.google.com/forms/d/1zsOLAtgRs2MwokC0RlCb0sVrgqygbXHECGH52tBNcvc/edit"
+                  target="blank"
+                  className="p-1 mt-10 text-3xl md:mt-0"
+                >
+                  <FaGoogle />
+                </a>
+                <a
+                  href="https://github.com/Lindsay0214/Da-Nai-Wei-Wei-front-end"
+                  target="blank"
+                  className="p-1 mt-10 text-3xl md:mt-0"
+                >
+                  <FaGithub />
+                </a>
+              </div>
             </div>
           </div>
         </div>

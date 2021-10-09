@@ -12,6 +12,7 @@ import {
 } from '../../api';
 import { setLoading } from '../../features/loadingSlice';
 import toastConfig from '../../constant';
+import SubFooter from '../../components/SubFooter';
 
 const OrderCheckPage = () => {
   const [orderData, setOrderData] = useState(0);
@@ -107,6 +108,7 @@ const OrderCheckPage = () => {
           </div>
         </div>
       </div>
+      <SubFooter />
     </div>
   );
 };

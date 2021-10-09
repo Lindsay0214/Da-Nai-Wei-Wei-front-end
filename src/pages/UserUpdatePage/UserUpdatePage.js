@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getMyInfo, updateMyInfo } from '../../api';
+import SubFooter from '../../components/SubFooter';
 
 const UserUpdatePage = () => {
   const [newName, setNewName] = useState('');
@@ -134,6 +135,7 @@ const UserUpdatePage = () => {
           )}
         </form>
       </div>
+      <SubFooter />
     </div>
   );
 };
