@@ -1,5 +1,5 @@
 # 大奶微微 Da-Nai-Wei-Wei
-#### 大奶微微，你訂飲料の大平台。
+#### 大杯奶茶，微糖微冰，大奶微微，你訂飲料の大平台。
 
 ↳ [專案連結點這](https://dev.d318dyc2vbskcy.amplifyapp.com/)
 
