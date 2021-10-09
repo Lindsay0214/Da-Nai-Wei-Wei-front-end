@@ -27,7 +27,6 @@ const AdminEditPage = () => {
   const [address, setAddress] = useState('');
   const { id } = useParams();
   const history = useHistory();
-
   useEffect(async () => {
     const result = await getShop(id);
     const { user } = result.data;

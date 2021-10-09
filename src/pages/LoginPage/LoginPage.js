@@ -10,7 +10,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {

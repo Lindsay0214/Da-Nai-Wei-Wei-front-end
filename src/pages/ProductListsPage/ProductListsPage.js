@@ -22,9 +22,6 @@ const DrinkItem = ({ data }) => {
   );
 };
 const ProductListsPage = () => {
-  const shopInfo = JSON.parse(localStorage.getItem('shop'));
-  const { id } = shopInfo;
-  const [shop, setShop] = useState([]);
   const [drinks, setDrinks] = useState([]);
   const [orderInformation, setOrderInformation] = useState({});
   useEffect(async () => {

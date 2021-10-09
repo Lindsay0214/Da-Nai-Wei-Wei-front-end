@@ -4,7 +4,6 @@ import { getAllShop, deleteShop } from '../../api';
 
 const AdminUpdatePage = () => {
   const [shops, setShops] = useState([]);
-
   useEffect(async () => {
     let result = await getAllShop();
     result = result.data.users.map((shop) => {
@@ -12,7 +11,6 @@ const AdminUpdatePage = () => {
     });
     setShops([...result]);
   }, []);
-
   const Store = ({ brandName, nickName, id }) => {
     const handleOnClick = () => {
       setShops(
@@ -62,7 +60,6 @@ const AdminUpdatePage = () => {
       await deleteShop(id);
       await setShops(shops.filter((shop) => shop.id !== id));
     };
-
     return (
       <div
         className="flex w-64 h-48 mb-10 bg-gray-600 rounded-3xl"
