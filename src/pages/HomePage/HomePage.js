@@ -14,7 +14,10 @@ const HomePageInput = ({ data, setSearchShop }) => {
       setSearchShop(['嵐', '麻古', '迷']);
       return;
     }
-    setSearchShop([e.target.value]);
+    if (e.target.value.trim() === '') {
+      return;
+    }
+    setSearchShop([e.target.value.trim()]);
   };
 
   return (

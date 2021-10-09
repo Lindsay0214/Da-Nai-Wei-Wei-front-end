@@ -16,9 +16,15 @@ import {
 } from '../api';
 
 const AddToCart = ({ id, handleShowModal }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    categories: '',
+    name: '',
+    price: 0,
+    quantity: 1
+  });
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  let isClick = false;
   useEffect(async () => {
     user.role !== 'consumer' ? history.push('/login') : null;
     user.role !== 'consumer'
@@ -58,6 +64,7 @@ const AddToCart = ({ id, handleShowModal }) => {
     setData({ ...data, quantity: data.quantity - 1 });
   };
   async function handleClick() {
+    isClick = true;
     (async function() {
       await addShoppingCart(); // 確保有購物車可以裝商品
     })();
@@ -75,17 +82,18 @@ const AddToCart = ({ id, handleShowModal }) => {
         quantity: data.quantity,
         product_id: id
       };
+      handleShowModal('close');
       await addOrderItem(payload);
       toast.success('加入購物車成功 👍', toastConfig);
       await updateTotalPriceAmount();
       dispatch(increment());
-      handleShowModal('close');
     } else {
       toast.error(
         '檢查一下，看看大小、糖度或是冰度有地方沒有填寫到',
         toastConfig
       );
     }
+    isClick = false;
   }
   return (
     <div className="flex items-center justify-center -mx-10 -my-20 -p-10">
@@ -96,7 +104,9 @@ const AddToCart = ({ id, handleShowModal }) => {
         handleChangeIce={handleChangeIce}
         handlePlus={handlePlus}
         handleMinus={handleMinus}
-        handleSubmit={handleClick}
+        handleSubmit={() => {
+          if (!isClick) handleClick();
+        }}
       ></DetailBoard>
     </div>
   );

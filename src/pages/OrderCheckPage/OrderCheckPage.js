@@ -17,7 +17,6 @@ const OrderCheckPage = () => {
   const [orderData, setOrderData] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
-  let orderId = null;
 
   const getIsPaidResponse = async () => {
     const result = await getIsPaid(orderData.order_id);
@@ -27,7 +26,8 @@ const OrderCheckPage = () => {
   const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-    { retry: 8, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
+
+    { retry: 8, enabled: false, cacheTime: 5000 }
   );
 
   // 取得 is_paid 結果
@@ -38,7 +38,7 @@ const OrderCheckPage = () => {
   };
   useEffect(async () => {
     if (isSuccess) {
-      orderId = orderData.order_id;
+      const orderId = orderData.order_id;
       // eslint-disable-next-line prettier/prettier
       const response = await getItemsByOrderId(orderId);
       const { targetProductArr } = response.data;
