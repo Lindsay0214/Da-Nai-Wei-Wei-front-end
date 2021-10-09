@@ -2,6 +2,8 @@
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import toastConfig from '../../constant';
 import { getOrdersHistory } from '../../api';
 
 const OrdersBlock = ({ data, handleClick }) => {
@@ -37,6 +39,7 @@ const OrdersPage = () => {
   const [data, setData] = useState([]);
   useEffect(async () => {
     const result = await getOrdersHistory();
+    if (result.data.data.length === 0) toast.error('尚無訂單喔', toastConfig);
     setData(result.data.data);
   }, []);
   const handleClick = (orderId) => {
@@ -51,17 +54,7 @@ const OrdersPage = () => {
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
         <div className="flex flex-wrap h-auto m-auto md:space-x-12 lg:space-x-12 bg-yellow-light">
           <div></div>
-          {data.length === 0 ? (
-            <>
-              <div className="flex flex-col w-48 p-5 m-5 bg-white rounded-lg h-1/2">
-                <Link to="/product-list">
-                  <p className="flex content-center justify-center h-24 m-auto text-xl">
-                    尚無訂單
-                  </p>
-                </Link>
-              </div>
-            </>
-          ) : (
+          {data.length !== 0 &&
             data.map((i) => {
               return (
                 <OrdersBlock
@@ -70,8 +63,7 @@ const OrdersPage = () => {
                   data={i}
                 ></OrdersBlock>
               );
-            })
-          )}
+            })}
         </div>
       </div>
     </div>

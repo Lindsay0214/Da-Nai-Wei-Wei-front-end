@@ -31,10 +31,12 @@ const ProductListsPage = () => {
     const OrderPaidResult = await getOrderPaid(orderId);
     setOrderInformation(OrderPaidResult.data);
   }, []);
-  const aa = new Date(orderInformation.updatedAt);
-  // console.log(aa);
-  const bb = new Date(Date.parse(orderInformation.updatedAt));
-  console.log(bb);
+  const updateDate = new Date(orderInformation.updatedAt);
+  const year = updateDate.getFullYear();
+  const month = updateDate.getMonth();
+  const date = updateDate.getDate();
+  const hour = updateDate.getHours();
+  const minute = updateDate.getMinutes();
   return (
     <div className="bg-yellow-lightYellow">
       <div className="mx-12 mt-20 bg-white rounded-lg pb-15 p-7 md:w-1/2 md:pl-12 md:mx-auto">
@@ -63,7 +65,8 @@ const ProductListsPage = () => {
             </div>
             <div className="flex mt-2 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="m-2">訂單建立時間</p>
-              <p className="m-2">{Date.parse(orderInformation.updatedAt)}</p>
+              <p className="m-2">{`${year}-${month +
+                1}-${date} ${hour}:${minute}`}</p>
             </div>
           </div>
           <div className="mt-20">
