@@ -1,11 +1,12 @@
 # 大奶微微 Da-Nai-Wei-Wei
-#### 大杯奶茶，微糖微冰，大奶微微，你訂飲料の大平台。
+#### 大奶微微，你訂飲料の大平台。
 
 ↳ [專案連結點這](https://dev.d318dyc2vbskcy.amplifyapp.com/)
 
 ## 專案簡介
 
-#### 線上訂飲料的平台，依據當前位置搜尋附近店家，讓消費者可以選擇喜好的口味與尺寸線上訂購想喝的飲料，幫消費者省去現場等待的時間。
+#### 大杯奶茶，微糖微冰，年輕世代多將過長但高頻率使用的語詞簡寫（大安森林公園 -> 安森, 國父紀念館 -> 國館等），大奶微微屬於詼諧式簡寫，目的為抓住以年輕世代為主力消費的客群。
+#### 線上訂飲料的平台，依據當前位置搜尋附近店家，讓消費者可以選擇喜好的口味與尺寸，線上訂購想喝的飲料，幫消費者省去現場等待的時間。
 
 此為前端原始碼，採用 React 框架開發。
 
@@ -46,6 +47,119 @@ Clone [你訂](https://order.nidin.shop/)部份功能的線上訂購飲料平台
   - Imgur
   - 綠界
 
+## 目錄結構說明
+```
+├── public                      // 靜態資源
+├── src                      
+|   ├── App.js                  // 應用
+│   │── components              // 共用元件
+│   │   ├── AddToCart.js                
+│   │   ├── AdminNavbar.js         
+│   │   ├── Carousel.js                
+│   │   ├── DeleteButton.js          
+│   │   ├── DetailBoard.js       
+│   │   ├── EditButton.js
+|   │   ├── ErrorMessage.js
+|   │   ├── Footer.js
+|   │   ├── GoogleMap.js
+|   │   ├── Ham.js
+|   │   ├── InputBar.js
+|   │   ├── Loading.js
+|   │   ├── MyCarousel.js
+|   │   ├── NavBar.js
+|   │   ├── ProgressBar.js
+|   │   ├── ScrollToTop.js
+|   │   ├── ShopNavbar.js
+|   │   ├── SmallButton.js
+|   │   ├── SubFooter.js
+|   │   └── TitleArea.js
+│   ├── features
+│   |   ├── chosenShopSlice.js
+│   |   ├── loadingSlice.js
+│   |   ├── shoppingCartSlice.js
+│   |   └── userSlice.js
+│   ├── image                    // 圖片
+│   ├── pages                    // 頁面元件
+│   |   ├── AddProductPage
+│   |   |   ├── AddProductPage.js
+│   |   |   └── index.js
+│   │   ├── AdminEditPage
+│   |   |   ├── AdminEditPage.js
+│   |   |   └── index.js
+│   │   ├── AdminUpdatePage
+│   |   |   ├── AdminUpdatePage.js
+│   |   |   └── index.js              
+│   │   ├── CreditCardDeletePage
+│   |   |   ├── CreditCardDeletePage.js
+│   |   |   └── index.js            
+│   │   ├── CreditCardStartPage
+│   |   |   ├── CreditCardStartPage.js
+│   |   |   └── index.js 
+│   │   ├── CreditCardUpdatePage
+│   |   |   ├── CreditCardUpdatePage.js
+│   |   |   └── index.js 
+│   │   ├── HomePage
+│   |   |   ├── HomePage.js
+│   |   |   └── index.js 
+│   │   ├── LoginPage
+│   |   |   ├── LoginPage.js
+│   |   |   └── index.js 
+│   │   ├── MenuPage
+│   |   |   ├── MenuPage.js
+│   |   |   └── index.js 
+│   │   ├── NoPermissionPage
+│   |   |   ├── NoPermissionPage.js
+│   |   |   └── index.js 
+│   │   ├── NotFoundPage
+│   |   |   ├── NotFoundPage.js
+│   |   |   └── index.js 
+│   │   ├── OrderCheckPage
+│   |   |   ├── OrderCheckPage.js
+│   |   |   └── index.js 
+│   │   ├── OrderInfoPage
+│   |   |   ├── OrderInfoPage.js
+│   |   |   └── index.js 
+│   │   ├── OrderItemEditPage
+│   |   |   ├── OrderItemEditPage.js
+│   |   |   └── index.js 
+│   │   ├── OrderPage
+│   |   |   ├── OrderPage.js
+│   |   |   └── index.js 
+│   │   ├── OrderPayPage
+│   |   |   ├── OrderPayPage.js
+│   |   |   └── index.js 
+│   │   ├── OrdersPage
+│   |   |   ├── OrdersPage.js
+│   |   |   └── index.js 
+│   │   ├── ProductListPage
+│   |   |   ├── ProductListPage.js
+│   |   |   └── index.js 
+│   │   ├── ProductsPage
+│   |   |   ├── ProductsPage.js
+│   |   |   └── index.js 
+│   │   ├── RegisterPage
+│   |   |   ├── RegisterPage.js
+│   |   |   └── index.js
+│   │   ├── UpdateProductPage
+│   |   |   ├── UpdateProductPage.js
+│   |   |   └── index.js
+│   │   ├── UserUpdatePage
+│   |   |   ├── UserUpdatePage.js
+│   |   |   └── index.js
+│   │   └── UserUploadImagePage
+│   |       ├── UserUploadImagePage.js
+│   |       └── index.js
+│   ├── api.js                    // fetch API 
+│   ├── constant.js
+│   ├── index.css
+│   ├── index.js
+│   ├── store.js
+│   └── utils.js
+├── craco.config.js
+├── README.md
+└── tailwind.config.js
+
+```
 
 ## 如何本地端執行
 0. 本地端要有 node.js、Git、SQL 環境
