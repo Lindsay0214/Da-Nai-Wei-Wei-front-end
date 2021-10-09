@@ -5,7 +5,7 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import toastConfig from '../../constant';
 import {
-  getOrderItem,
+  getOrderItems,
   deleteOrderItem,
   updateTotalPriceAmount,
   addShoppingCart
@@ -54,7 +54,7 @@ const OrderPage = () => {
   const [drinks, setDrinks] = useState([]);
   useEffect(async () => {
     await addShoppingCart();
-    const result = await getOrderItem();
+    const result = await getOrderItems();
     setDrinks(result.data.productInfo);
     dispatch(getMe());
   }, [change]);

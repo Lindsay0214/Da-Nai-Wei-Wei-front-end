@@ -1,6 +1,5 @@
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { getShopProducts, getShop } from '../../api';
 import AddToCart from '../../components/AddToCart';
 
@@ -73,6 +72,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
               <DrinkInfo
                 showModal={drink.isShow}
                 id={drink.id}
+                key={drink.id}
                 handleShowModal={handleShowModal}
               />
             </>
@@ -83,10 +83,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
   );
 };
 const MenuPage = () => {
-  // const { id, brandName, rating, address } = useSelector(
-  //   (state) => state.chosenShop
-  // );
-  const shopInfo = JSON.parse(localStorage.getItem('shop'));
+  const shopInfo = JSON.parse(sessionStorage.getItem('shop'));
   const { id } = shopInfo;
   const ratingArray = new Array(Math.floor(shopInfo.rating)).fill('star');
   const [drinkData, setDrinkData] = useState([]);
@@ -147,6 +144,7 @@ const MenuPage = () => {
               {categories.map((title) => {
                 return (
                   <MenuDrink
+                    key={title}
                     drinkData={drinkData}
                     title={title}
                     setDrinkData={setDrinkData}

@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import {
   getTotalPriceAmount,
   getIsPaid,
-  getOrderHistory,
-  addProductHistory
+  getItemsByOrderId,
+  updateOrderItemHistory
 } from '../../api';
 import { setLoading } from '../../features/loadingSlice';
 import toastConfig from '../../constant';
@@ -26,7 +26,8 @@ const OrderCheckPage = () => {
   const { data, refetch, isSuccess, isError } = useQuery(
     'isPaid',
     getIsPaidResponse,
-    { retry: 7, enabled: false, cacheTime: 5000 } // 在顯示錯誤前，將重試 10 次
+
+    { retry: 8, enabled: false, cacheTime: 5000 }
   );
 
   // 取得 is_paid 結果
@@ -37,6 +38,11 @@ const OrderCheckPage = () => {
   };
   useEffect(async () => {
     if (isSuccess) {
+      const orderId = orderData.order_id;
+      // eslint-disable-next-line prettier/prettier
+      const response = await getItemsByOrderId(orderId);
+      const { targetProductArr } = response.data;
+      await updateOrderItemHistory(targetProductArr);
       history.push(`/order-pay/${orderData.order_id}`);
       dispatch(setLoading(false));
     }

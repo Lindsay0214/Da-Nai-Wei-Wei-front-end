@@ -1,11 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SubFooter from '../../components/SubFooter';
+import { getItemsByOrderId, getOrderPaid } from '../../api';
 
+const DrinkItem = ({ data }) => {
+  return (
+    <div className="p-2.5 mt-5 mx-auto rounded-lg bg-yellow-deepYellow">
+      <div className="flex flex-col justify-start m-2">
+        <p className="tracking-wide text-white">{data.history_name} </p>
+        <p className="inline-flex tracking-wide text-white">
+          {data.productDetail.size} | {data.productDetail.ice} |{' '}
+          {data.productDetail.sweetness}
+        </p>
+        <p className="inline-flex w-40 pl-1 tracking-wide text-white ">
+          $ {data.history_price} | {data.quantity} 份
+        </p>
+        <p className="inline-flex w-40 tracking-wide text-white whitespace-nowrap overflow-ellipsis">
+          共 {data.history_price * data.quantity} 元
+        </p>
+      </div>
+    </div>
+  );
+};
 const ProductListsPage = () => {
-  const shopInfo = JSON.parse(localStorage.getItem('shop'));
-  const { id } = shopInfo;
-  const [shop, setShop] = useState([]);
-
+  const [drinks, setDrinks] = useState([]);
+  const [orderInformation, setOrderInformation] = useState({});
+  useEffect(async () => {
+    const orderId = sessionStorage.getItem('order_id');
+    const response = await getItemsByOrderId(orderId);
+    setDrinks(response.data.targetProductArr);
+    const OrderPaidResult = await getOrderPaid(orderId);
+    setOrderInformation(OrderPaidResult.data);
+  }, []);
+  const aa = new Date(orderInformation.updatedAt);
+  // console.log(aa);
+  const bb = new Date(Date.parse(orderInformation.updatedAt));
+  console.log(bb);
   return (
     <div className="bg-yellow-lightYellow">
       <div className="mx-12 mt-20 bg-white rounded-lg pb-15 p-7 md:w-1/2 md:pl-12 md:mx-auto">
@@ -16,7 +45,7 @@ const ProductListsPage = () => {
             </div>
             <div className="flex mt-6 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="m-2">訂單編號</p>
-              <p className="m-2">0000000000</p>
+              <p className="m-2"> No. {orderInformation.order_id} </p>
             </div>
             <div className="flex mt-2 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="pt-1 m-2">訂單狀態</p>
@@ -30,59 +59,20 @@ const ProductListsPage = () => {
             </div>
             <div className="flex mt-2 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="m-2">付款金額</p>
-              <p className="m-2">$100</p>
+              <p className="m-2">$ {orderInformation.total_price} </p>
             </div>
             <div className="flex mt-2 text-black border-b border-gray-200 text-md lg:text-base">
               <p className="m-2">訂單建立時間</p>
-              <p className="m-2">2021-10-10 10:10:10</p>
+              <p className="m-2">{Date.parse(orderInformation.updatedAt)}</p>
             </div>
           </div>
           <div className="mt-20">
             <div className="flex items-center justify-center mt-2 mb-12 text-2xl font-bold tracking-wider text-gray-deepGray">
               飲料品項
             </div>
-            <div className="p-2.5 mx-auto rounded-lg bg-yellow-deepYellow">
-              <div className="flex flex-col justify-start m-2">
-                <p className="tracking-wide text-white">高山金萱茶</p>
-                <p className="inline-flex tracking-wide text-white">
-                  中杯 / 去冰 / 一分糖
-                </p>
-                <p className="inline-flex w-40 pl-1 tracking-wide text-white ">
-                  $ 30 / 1 份
-                </p>
-                <p className="inline-flex w-40 tracking-wide text-white whitespace-nowrap overflow-ellipsis">
-                  共 30 元
-                </p>
-              </div>
-            </div>
-            <div className="mt-5 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow">
-              <div className="flex flex-col justify-start m-2">
-                <p className="tracking-wide text-white">高山金萱茶</p>
-                <p className="inline-flex tracking-wide text-white">
-                  中杯 / 去冰 / 一分糖
-                </p>
-                <p className="inline-flex w-40 pl-1 tracking-wide text-white ">
-                  $ 30 / 1 份
-                </p>
-                <p className="inline-flex w-40 tracking-wide text-white whitespace-nowrap overflow-ellipsis">
-                  共 30 元
-                </p>
-              </div>
-            </div>
-            <div className="mt-5 p-2.5 mx-auto rounded-lg bg-yellow-deepYellow">
-              <div className="flex flex-col justify-start m-2">
-                <p className="tracking-wide text-white">高山金萱茶</p>
-                <p className="inline-flex tracking-wide text-white">
-                  中杯 / 去冰 / 一分糖
-                </p>
-                <p className="inline-flex w-40 pl-1 tracking-wide text-white ">
-                  $ 30 / 1 份
-                </p>
-                <p className="inline-flex w-40 tracking-wide text-white whitespace-nowrap overflow-ellipsis">
-                  共 30 元
-                </p>
-              </div>
-            </div>
+            {drinks.map((item) => {
+              return <DrinkItem data={item}></DrinkItem>;
+            })}
           </div>
         </div>
       </div>

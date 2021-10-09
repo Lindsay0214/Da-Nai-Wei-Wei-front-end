@@ -7,8 +7,8 @@ import { setLoading } from './features/loadingSlice';
 import toastConfig from './constant';
 
 const instance = axios.create({
-  baseURL: 'https://da-nai-wei-wei.herokuapp.com',
-  // baseURL: 'http://localhost:5000',
+  // baseURL: 'https://da-nai-wei-wei.herokuapp.com',
+  baseURL: 'http://localhost:5000',
   withCredentials: true
 });
 const config = {
@@ -86,30 +86,31 @@ export const getDetailId = (payload) =>
   instance.get(
     `/product-details/${payload.size}/${payload.sweetness}/${payload.ice}`
   );
+
+// order-items
 export const addOrderItem = (payload) => instance.post('/order-items', payload);
-export const getOrderItem = () => instance.get('/order-items');
+export const getOrderItems = () => instance.get('/order-items');
 export const deleteOrderItem = (payload) =>
   instance.delete('/order-items', { data: payload });
 export const getSingleOrderItem = (id) => instance.get(`/order-item/${id}`);
-export const updateOrderItem = (payload) =>
-  instance.patch('/order-items', payload);
+export const updateOrderItemDetail = (payload) =>
+  instance.patch('/order-item-detail', payload);
+export const updateOrderItemHistory = (payload) =>
+  instance.patch('/order-items-history', payload);
+
+// order
 export const getTotalPriceAmount = () => instance.get(`/orders`);
 export const updateTotalPriceAmount = () => instance.patch(`/orders`);
 export const addShoppingCart = () => instance.post('/orders');
 export const getOrdersHistory = () => instance.get(`/orders-history`);
 export const getOrderPaid = (id) => instance.get(`/orders/${id}`);
+export const getItemsByOrderId = (order_id) =>
+  instance.get(`/order/${order_id}`);
 
-export const getIsPaid = (order_id) =>
-  axios.get(
-    `https://da-nai-wei-wei.herokuapp.com/orders-get-is-paid/${order_id}`,
-    config
-  );
 // export const getIsPaid = (order_id) =>
-//   axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
-
-export const getOrderHistory = (order_id) =>
-  instance.get(`/order-items/${order_id}`);
-
-// product-history
-export const addProductHistory = (payload) =>
-  instance.post('/product-history', payload);
+//   axios.get(
+//     // `https://da-nai-wei-wei.herokuapp.com/orders-get-is-paid/${order_id}`,
+//     config
+//   );
+export const getIsPaid = (order_id) =>
+  axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);

@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { selectUser, logout } from '../features/userSlice';
 import { init } from '../features/shoppingCartSlice';
-import { getOrderItem } from '../api';
+import { getOrderItems } from '../api';
 
 import Ham from './Ham';
 
@@ -36,7 +36,7 @@ const Navbar = () => {
   const itemCount = useSelector((state) => state.shoppingCart);
   useEffect(async () => {
     if (user) {
-      const result = await getOrderItem();
+      const result = await getOrderItems();
       dispatch(init(result.data.count));
     }
   }, []);

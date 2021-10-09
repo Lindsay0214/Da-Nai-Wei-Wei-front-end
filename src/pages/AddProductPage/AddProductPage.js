@@ -9,9 +9,7 @@ const AddProductPage = () => {
   const [status, setStatus] = useState('');
   const [renderIsOk, setRenderIsoK] = useState(false);
   const [isWaitingBack, setIsWaitingBack] = useState(false);
-
   const history = useHistory();
-
   const handleAddProductClick = async () => {
     const payload = {
       name,

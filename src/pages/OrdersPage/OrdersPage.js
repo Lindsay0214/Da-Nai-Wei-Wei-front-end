@@ -1,12 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable func-names */
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getOrdersHistory } from '../../api';
 
-const OrdersBlock = ({ data }) => {
+const OrdersBlock = ({ data, handleClick }) => {
   return (
-    <div className="pb-3 mb-10 bg-white border-b-2 border-gray-300 rounded-lg w-72 h-86lg:w-124 lg:border-0">
+    <div
+      key={data.id}
+      aria-hidden="true"
+      onClick={() => handleClick(data.id)}
+      className="pt-2 pb-3 mb-10 bg-white border-b-2 border-gray-300 rounded-lg cursor-pointer w-72 h-86lg:w-124 lg:border-0"
+    >
       <div className="pb-2 mx-auto mt-8 text-xl border-b border-black w-44">
         <div className="flex items-center justify-center pt-4 md:pt-0">
           訂單編號
@@ -18,11 +23,6 @@ const OrdersBlock = ({ data }) => {
         <div className="w-40 overflow-hidden overflow-ellipsis">
           總金額: {data.total_price} 元
         </div>
-        {!data.is_paid && (
-          <div>
-            是否付款: <span className="text-red-500">未付款</span>{' '}
-          </div>
-        )}
         {!data.is_paid || (
           <div>
             是否付款: <span className="text-green-500">已付款</span>{' '}
@@ -33,12 +33,16 @@ const OrdersBlock = ({ data }) => {
   );
 };
 const OrdersPage = () => {
+  const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(async () => {
     const result = await getOrdersHistory();
     setData(result.data.data);
   }, []);
-
+  const handleClick = (orderId) => {
+    sessionStorage.setItem('order_id', orderId);
+    history.push('/product-list');
+  };
   return (
     <div className="min-h-screen bg-yellow-lightYellow">
       <div className="flex justify-center py-20 text-3xl text-black">
@@ -59,7 +63,13 @@ const OrdersPage = () => {
             </>
           ) : (
             data.map((i) => {
-              return <OrdersBlock data={i}></OrdersBlock>;
+              return (
+                <OrdersBlock
+                  key={i.id}
+                  handleClick={handleClick}
+                  data={i}
+                ></OrdersBlock>
+              );
             })
           )}
         </div>
