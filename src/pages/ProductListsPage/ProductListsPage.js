@@ -28,13 +28,11 @@ const ProductListsPage = () => {
   const [drinks, setDrinks] = useState([]);
   const [orderInformation, setOrderInformation] = useState({});
   useEffect(async () => {
-    const orderId = localStorage.getItem('order_id');
+    const orderId = sessionStorage.getItem('order_id');
     const response = await getItemsByOrderId(orderId);
     setDrinks(response.data.targetProductArr);
     const OrderPaidResult = await getOrderPaid(orderId);
-    console.log(OrderPaidResult.data);
     setOrderInformation(OrderPaidResult.data);
-    // console.log(data);
   }, []);
   return (
     <div className="bg-yellow-lightYellow">

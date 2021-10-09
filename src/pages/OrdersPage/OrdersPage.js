@@ -40,7 +40,7 @@ const OrdersPage = () => {
     setData(result.data.data);
   }, []);
   const handleClick = (orderId) => {
-    localStorage.setItem('order_id', orderId);
+    sessionStorage.setItem('order_id', orderId);
     history.push('/product-list');
   };
   return (
