@@ -24,6 +24,10 @@ function GoogleMap({ handleChange, searchShop }) {
   };
 
   const geoLocation = () => {
+    setMyPosition({
+      lat: 25.0523606,
+      lng: 121.5545303
+    });
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const request = {
@@ -114,6 +118,7 @@ function GoogleMap({ handleChange, searchShop }) {
           libraries: ['places']
         }}
         defaultZoom={20}
+        defaultCenter={{ lat: 25.0523606, lng: 121.5545303 }}
         center={myPosition}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => apiHasLoaded(map, maps)}
