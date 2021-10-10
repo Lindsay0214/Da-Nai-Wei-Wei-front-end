@@ -2,6 +2,7 @@
 #### 大奶微微，你訂飲料の大平台。
 
 ↳ [專案連結點這](https://main.d318dyc2vbskcy.amplifyapp.com/)
+↳ [影片介紹點這](https://www.youtube.com/watch?v=wSeCTs_L-9c)
 
 ## 專案簡介
 
