@@ -106,7 +106,11 @@ const HomePage = () => {
           <div></div>
           {shops.map((shop) => {
             return (
-              <div className="cursor-pointer" onClick={() => handleClick(shop)}>
+              <div
+                key={shop.key}
+                className="cursor-pointer"
+                onClick={() => handleClick(shop)}
+              >
                 <HomePageShop key={shop.key} shop={shop} />
               </div>
             );
