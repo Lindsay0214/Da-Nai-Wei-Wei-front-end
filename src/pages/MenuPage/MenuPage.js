@@ -57,7 +57,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
       {drinkData.map((drink) => {
         return (
           drink.categories === title && (
-            <>
+            <div key={drink.id}>
               <div
                 className="flex justify-between w-56 px-5 mx-auto my-4 transition-all duration-150 ease-linear hover:text-yellow-deepYellow"
                 role="button"
@@ -76,7 +76,7 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
                 key={drink.id}
                 handleShowModal={handleShowModal}
               />
-            </>
+            </div>
           )
         );
       })}
