@@ -3,7 +3,6 @@ import React, { useState, useMemo } from 'react';
 import { FaStar, FaSearch } from 'react-icons/fa';
 import GoogleMap from '../../components/GoogleMap';
 import MyCarousel from '../../components/MyCarousel';
-import { setChosenShop } from '../../features/chosenShopSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
@@ -74,13 +73,11 @@ const HomePageShop = ({ shop }) => {
 const HomePage = () => {
   const [shops, setShops] = useState([]);
   const [searchShop, setSearchShop] = useState(['嵐', '麻古', '迷']);
-  const dispatch = useDispatch();
   const history = useHistory();
   const handleChange = (e) => {
     setShops(e);
   };
   const handleClick = (shop) => {
-    dispatch(setChosenShop(shop));
     sessionStorage.setItem('shop', JSON.stringify(shop));
     history.push('/menu');
   };
