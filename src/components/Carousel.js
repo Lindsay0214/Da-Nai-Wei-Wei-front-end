@@ -3,12 +3,12 @@
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import React, { useState, useEffect } from 'react';
-import carousel1 from '../image/carousel1.png';
-import carousel2 from '../image/carousel2.png';
-import carousel3 from '../image/carousel3.png';
-import carousel4 from '../image/carousel4.png';
-import carousel5 from '../image/carousel5.png';
-import carousel6 from '../image/carousel6.png';
+import carousel1 from '../image/carousel1.webp';
+import carousel2 from '../image/carousel2.webp';
+import carousel3 from '../image/carousel3.webp';
+import carousel4 from '../image/carousel4.webp';
+import carousel5 from '../image/carousel5.webp';
+import carousel6 from '../image/carousel6.webp';
 
 const MyCarousel = ({
   images = [carousel1, carousel2, carousel3, carousel4, carousel5, carousel6],

@@ -3,12 +3,12 @@
 /* eslint-disable no-shadow */
 import Carousel, { autoplayPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import carousel1 from '../image/carousel1.png';
-import carousel2 from '../image/carousel2.png';
-import carousel3 from '../image/carousel3.png';
-import carousel4 from '../image/carousel4.png';
-import carousel5 from '../image/carousel5.png';
-import carousel6 from '../image/carousel6.png';
+import carousel1 from '../image/carousel1.webp';
+import carousel2 from '../image/carousel2.webp';
+import carousel3 from '../image/carousel3.webp';
+import carousel4 from '../image/carousel4.webp';
+import carousel5 from '../image/carousel5.webp';
+import carousel6 from '../image/carousel6.webp';
 
 const MyCarousel = () => {
   return (
