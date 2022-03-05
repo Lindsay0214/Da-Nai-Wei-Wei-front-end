@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import { register } from '../../features/userSlice';
 import SubFooter from '../../components/SubFooter';
 
@@ -20,6 +21,16 @@ const RegisterPage = () => {
       password
     };
     dispatch(register(history, payload));
+  };
+
+  const GAevent = (categoryName, eventName) => {
+    ReactGA.event({
+      category: categoryName,
+      action: eventName,
+      label: 'labelName',
+      value: 10,
+      nonInteraction: false
+    });
   };
 
   return (
@@ -58,8 +69,16 @@ const RegisterPage = () => {
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
               type="button"
               onClick={handleSubmit}
+              // onClick={eventTrack.bind(this, "Sign Up Screen", "Sign Up Button", "Button")}
             >
               註冊
+            </button>
+            <button
+              className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
+              type="button"
+              onClick={() => GAevent('User', 'Get Started_up')}
+            >
+              TEST
             </button>
             <Link
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"

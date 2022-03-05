@@ -1,5 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 import { getShopProducts, getShop } from '../../api';
 import AddToCart from '../../components/AddToCart';
 import SubFooter from '../../components/SubFooter';
@@ -49,6 +50,22 @@ const MenuDrink = ({ drinkData, title, setDrinkData }) => {
     }
     setDrinkData(data);
   };
+  const GAtiming = (categoryName, variableName, valueNum) => {
+    ReactGA.timing({
+      category: categoryName,
+      variable: variableName,
+      value: valueNum
+    });
+  };
+  const currentTime = new Date().getMilliseconds();
+  useEffect(() => {
+    GAtiming(
+      'Timing',
+      'landingPage_render',
+      new Date().getMilliseconds() - currentTime
+    );
+  }, []);
+
   return (
     <div className="w-64 h-auto p-2 mb-12 bg-white rounded-lg">
       <h2 className="px-2 py-4 text-2xl tracking-wide text-center border-b-2 border-gray-deepGray ">

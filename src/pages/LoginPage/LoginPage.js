@@ -25,7 +25,6 @@ const LoginPage = () => {
       category: 'Button',
       action: 'Login'
     });
-    alert('Logging');
   };
 
   return (

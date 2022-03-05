@@ -43,6 +43,10 @@ import AdminNavbar from '../components/AdminNavbar';
 import ShopNavbar from '../components/ShopNavbar';
 
 ReactGA.initialize(process.env.REACT_APP_GA);
+ReactGA.set({
+  username: localStorage.getItem('userName')
+  // Other relevant user information
+});
 
 function App() {
   const user = useSelector(selectUser);
