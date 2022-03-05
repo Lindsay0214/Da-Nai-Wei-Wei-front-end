@@ -6,6 +6,7 @@ import MyCarousel from '../../components/MyCarousel';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
+import useGAEventsTracker from '../../hooks/useGAEventsTracker';
 
 const HomePageInput = ({ data, setSearchShop }) => {
   const handleChange = (e) => {
@@ -81,6 +82,7 @@ const HomePage = () => {
     sessionStorage.setItem('shop', JSON.stringify(shop));
     history.push('/menu');
   };
+  const GAEventsTracker = useGAEventsTracker('test-tracker');
 
   return (
     <>
@@ -96,6 +98,7 @@ const HomePage = () => {
           key="findBrand"
           data="找品牌"
           setSearchShop={setSearchShop}
+          onClick={(e) => GAEventsTracker('User Page Visit', searchInput)}
         ></HomePageInput>
       </div>
       <div className="mx-auto mt-10 lg:mt-20 w-min md:w-176 lg:w-270">
@@ -107,6 +110,7 @@ const HomePage = () => {
                 key={shop.key}
                 className="cursor-pointer"
                 onClick={() => handleClick(shop)}
+                onClick={(e) => GAEventsTracker('User Page Visit', moreButton)}
               >
                 <HomePageShop key={shop.key} shop={shop} />
               </div>

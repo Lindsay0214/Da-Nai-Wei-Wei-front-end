@@ -42,6 +42,8 @@ import UserUploadImage from '../pages/UserUploadImagePage';
 import AdminNavbar from '../components/AdminNavbar';
 import ShopNavbar from '../components/ShopNavbar';
 
+ReactGA.initialize(process.env.REACT_APP_GA);
+
 function App() {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
@@ -54,7 +56,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    ReactGA.initialize('G-D7YYWF2C2W');
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
