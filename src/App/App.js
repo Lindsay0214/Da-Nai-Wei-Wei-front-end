@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import React, { useEffect } from 'react';
-
+import ReactGA from 'react-ga';
 import {
   BrowserRouter as Router,
   Switch,
@@ -52,6 +52,15 @@ function App() {
       dispatch(getMe());
     }
   }, []);
+
+  useEffect(() => {
+    ReactGA.initialize('G-D7YYWF2C2W');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
+  useEffect(() => {
+    console.log(window.location.pathname);
+  });
 
   return (
     <>

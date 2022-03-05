@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import { login, getMe } from '../../features/userSlice';
 import SubFooter from '../../components/SubFooter';
 
@@ -17,6 +18,14 @@ const LoginPage = () => {
       password
     };
     dispatch(login(history, payload));
+  };
+
+  const ClickHandler = () => {
+    ReactGA.event({
+      category: 'Button',
+      action: 'Login'
+    });
+    alert('Logging');
   };
 
   return (
@@ -49,6 +58,7 @@ const LoginPage = () => {
               <button
                 className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
                 type="submit"
+                onClick={ClickHandler}
               >
                 登入
               </button>

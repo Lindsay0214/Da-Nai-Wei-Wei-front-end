@@ -113,4 +113,4 @@ export const getIsPaid = (order_id) =>
     config
   );
 // export const getIsPaid = (order_id) =>
-//   axios.get(`http://localhost:5000/orders-get-is-paid/${order_id}`, config);
+//   axios.get(`http://t:5000/orders-get-is-paid/${order_id}`, config);
