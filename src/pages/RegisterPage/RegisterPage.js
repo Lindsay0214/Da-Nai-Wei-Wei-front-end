@@ -23,11 +23,11 @@ const RegisterPage = () => {
     dispatch(register(history, payload));
   };
 
-  const GAevent = (categoryName, eventName) => {
+  const GAevent = (categoryName, eventName, labelName) => {
     ReactGA.event({
       category: categoryName,
       action: eventName,
-      label: 'labelName',
+      label: labelName,
       value: 10,
       nonInteraction: false
     });
@@ -76,7 +76,7 @@ const RegisterPage = () => {
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
               type="button"
-              onClick={() => GAevent('User', 'Get Started_up')}
+              onClick={() => GAevent('User', 'Button_Register', '註冊測試鈕')}
             >
               TEST
             </button>

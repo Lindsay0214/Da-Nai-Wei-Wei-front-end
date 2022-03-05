@@ -22,8 +22,9 @@ const LoginPage = () => {
 
   const ClickHandler = () => {
     ReactGA.event({
-      category: 'Button',
-      action: 'Login'
+      category: 'User',
+      action: 'Button_Login',
+      label: '登入測試鈕'
     });
   };
 
