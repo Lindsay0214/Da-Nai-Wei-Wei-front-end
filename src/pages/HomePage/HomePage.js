@@ -110,7 +110,6 @@ const HomePage = () => {
                 key={shop.key}
                 className="cursor-pointer"
                 onClick={() => handleClick(shop)}
-                onClick={(e) => GAEventsTracker('User Page Visit', moreButton)}
               >
                 <HomePageShop key={shop.key} shop={shop} />
               </div>
