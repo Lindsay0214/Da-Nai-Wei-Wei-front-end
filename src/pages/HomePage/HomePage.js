@@ -84,6 +84,17 @@ const HomePage = () => {
   };
   const GAEventsTracker = useGAEventsTracker('test-tracker');
 
+  // const trackingID = process.env.REACT_APP_GA
+  // cookieParams = {
+  //   cookieName: 'myGACookie',
+  //   cookieDomain: window.location.hostname,
+  //   cookieExpires: 604800
+  // };
+
+  // ngOnInit = () => {
+  //   ga('create', this.trackingID, this.cookieParams);
+  // }
+
   return (
     <>
       <GoogleMap handleChange={handleChange} searchShop={searchShop} />
