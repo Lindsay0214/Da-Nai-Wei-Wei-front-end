@@ -67,18 +67,11 @@ const RegisterPage = () => {
           <div className="flex items-center justify-center">
             <button
               className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
-              type="button"
-              onClick={handleSubmit}
-              // onClick={eventTrack.bind(this, "Sign Up Screen", "Sign Up Button", "Button")}
-            >
-              註冊
-            </button>
-            <button
-              className="bg-yellow-deepYellow m-2 text-white  md:px-4 px-4 py-1.5 border border-yellow-deepYellow rounded-lg hover:hover"
-              type="button"
+              type="submit"
+              onSubmit={handleSubmit}
               onClick={() => GAevent('User', 'Button_Register', '註冊測試鈕')}
             >
-              TEST
+              註冊
             </button>
             <Link
               className=" m-2 text-gray-500 bg-gray-200 md:px-4 px-2 py-1.5 rounded-lg border border-bg-gray-200 hover:hover"
