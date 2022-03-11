@@ -1,11 +1,13 @@
-import React from 'react';
 import ReactGA from 'react-ga';
 
-const useGAEventsTracker = (category = 'Event Category') => {
-  const trackEvent = (action = 'action', label = 'label') => {
-    ReactGA.event({ category, action, label });
-  };
-  return trackEvent;
+const useGAEventsTracker = (categoryName, eventName, labelName) => {
+  ReactGA.event({
+    category: categoryName,
+    action: eventName,
+    label: labelName,
+    value: 10,
+    nonInteraction: false
+  });
 };
 
 export default useGAEventsTracker;
