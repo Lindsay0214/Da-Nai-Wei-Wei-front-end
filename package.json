@@ -72,6 +72,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
+    "msw": "^0.47.4",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
     "tailwindcss-pseudo-elements": "^2.0.0"
